@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html >
 <head>
 
     <!--[if lt IE 9]>
@@ -95,7 +95,9 @@ $(&amp;apos;.nid di">
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
@@ -161,13 +163,13 @@ $(&amp;apos;.nid di">
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -301,7 +303,7 @@ $(&amp;apos;.nid di">
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap"><article id="post-s12-20160421-day14" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -649,17 +651,17 @@ ajax_jsonp
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2016/04/21/s12-20160421-day14/">python自动化开发 day14</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">南非波波</a></p>
-        <p><span>Created:</span>2016-04-21, 15:30:00</p>
-        <p><span>Updated:</span>2016-07-05, 18:30:05</p>
+        <p><span>本文标题:</span><a href="/2016/04/21/s12-20160421-day14/">python自动化开发 day14</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">南非波波</a></p>
+        <p><span>发布时间:</span>2016-04-21, 15:30:00</p>
+        <p><span>最后更新:</span>2016-07-05, 18:30:05</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2016/04/21/s12-20160421-day14/" title="python自动化开发 day14">http://blog.songqingbo.cn/2016/04/21/s12-20160421-day14/</a>
-            <span class="copy-path" data-clipboard-text="From http://blog.songqingbo.cn/2016/04/21/s12-20160421-day14/　　By 南非波波" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/04/21/s12-20160421-day14/" title="python自动化开发 day14">http://blog.songqingbo.cn/2016/04/21/s12-20160421-day14/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://blog.songqingbo.cn/2016/04/21/s12-20160421-day14/　　作者: 南非波波" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -686,7 +688,7 @@ ajax_jsonp
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
+        <strong class="toc-title">文章目录</strong>
         
             <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JQuery"><span class="toc-number">1.</span> <span class="toc-text">JQuery</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-查找"><span class="toc-number">1.1.</span> <span class="toc-text">1.查找</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#选择器"><span class="toc-number">1.1.1.</span> <span class="toc-text">选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#筛选器"><span class="toc-number">1.1.2.</span> <span class="toc-text">筛选器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-操作"><span class="toc-number">2.</span> <span class="toc-text">2.操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS"><span class="toc-number">2.1.</span> <span class="toc-text">CSS</span></a></li></ol></li></ol>
         
@@ -702,10 +704,10 @@ ajax_jsonp
         }
     </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
@@ -763,15 +765,15 @@ ajax_jsonp
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/04/30/s12-20160430-day15/" title="Pre: python自动化开发 day15">
+            <a href="/2016/04/30/s12-20160430-day15/" title="上一篇: python自动化开发 day15">
                 <i class="fa fa-angle-left"></i>
             </a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/04/09/s12-20160409-day13/" title="Next: python自动化开发 day13">
+            <a href="/2016/04/09/s12-20160409-day13/" title="下一篇: python自动化开发 day13">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -801,7 +803,7 @@ ajax_jsonp
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >Site Visitors: 
+                        <span id="site-visit" >本站到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
@@ -811,7 +813,7 @@ ajax_jsonp
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">Page Hits: 
+                        <span id="page-visit">本页阅读量: 
                             <span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
@@ -833,7 +835,7 @@ ajax_jsonp
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 5;
+                var backgroundnum = 9;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
             }
@@ -844,10 +846,31 @@ ajax_jsonp
 
 
 
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window

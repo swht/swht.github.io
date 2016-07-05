@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html >
 <head>
 
     <!--[if lt IE 9]>
@@ -100,7 +100,9 @@ http://www.cnblogs.com/alex3714/articles/5143440.html
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
@@ -166,13 +168,13 @@ http://www.cnblogs.com/alex3714/articles/5143440.html
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -306,7 +308,7 @@ http://www.cnblogs.com/alex3714/articles/5143440.html
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap"><article id="post-s12-20160123-day04" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -863,17 +865,17 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2016/01/23/s12-20160123-day04/">python自动化开发 day04</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">南非波波</a></p>
-        <p><span>Created:</span>2016-01-23, 15:30:00</p>
-        <p><span>Updated:</span>2016-07-05, 18:30:40</p>
+        <p><span>本文标题:</span><a href="/2016/01/23/s12-20160123-day04/">python自动化开发 day04</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">南非波波</a></p>
+        <p><span>发布时间:</span>2016-01-23, 15:30:00</p>
+        <p><span>最后更新:</span>2016-07-05, 18:30:40</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2016/01/23/s12-20160123-day04/" title="python自动化开发 day04">http://blog.songqingbo.cn/2016/01/23/s12-20160123-day04/</a>
-            <span class="copy-path" data-clipboard-text="From http://blog.songqingbo.cn/2016/01/23/s12-20160123-day04/　　By 南非波波" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/23/s12-20160123-day04/" title="python自动化开发 day04">http://blog.songqingbo.cn/2016/01/23/s12-20160123-day04/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://blog.songqingbo.cn/2016/01/23/s12-20160123-day04/　　作者: 南非波波" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -900,7 +902,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
+        <strong class="toc-title">文章目录</strong>
         
             <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、迭代器-amp-amp-生成器"><span class="toc-number">1.</span> <span class="toc-text">一、迭代器 && 生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-迭代器"><span class="toc-number">1.1.</span> <span class="toc-text">1.迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-生成器"><span class="toc-number">1.2.</span> <span class="toc-text">2.生成器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、装饰器"><span class="toc-number">2.</span> <span class="toc-text">二、装饰器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、递归"><span class="toc-number">3.</span> <span class="toc-text">三、递归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、二分查找"><span class="toc-number">4.</span> <span class="toc-text">四、二分查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、二维数组"><span class="toc-number">5.</span> <span class="toc-text">五、二维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、正则表达式"><span class="toc-number">6.</span> <span class="toc-text">六、正则表达式</span></a></li></ol>
         
@@ -916,10 +918,10 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
         }
     </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
@@ -977,15 +979,15 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/01/30/s12-20160130-day05/" title="Pre: python自动化开发 day05">
+            <a href="/2016/01/30/s12-20160130-day05/" title="上一篇: python自动化开发 day05">
                 <i class="fa fa-angle-left"></i>
             </a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/01/16/s12-20160116-day03/" title="Next: python自动化开发 day03">
+            <a href="/2016/01/16/s12-20160116-day03/" title="下一篇: python自动化开发 day03">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -1015,7 +1017,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >Site Visitors: 
+                        <span id="site-visit" >本站到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
@@ -1025,7 +1027,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">Page Hits: 
+                        <span id="page-visit">本页阅读量: 
                             <span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
@@ -1047,7 +1049,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 5;
+                var backgroundnum = 9;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
             }
@@ -1058,10 +1060,31 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
 
 
 
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
