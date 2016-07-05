@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>pytho自动化开发 day05 | 南非波波博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Author:@南非波波
+课程大纲：
+day04
+http://www.cnblogs.com/alex3714/articles/5143440.html
+day05
+http://www.cnblogs.com/alex3714/articles/5161349.html
+一、正则深入re
+匹配数字开头
+import re
+#匹配以数字开头
+p = re.compile(&amp;quot;^[0-9">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pytho自动化开发 day05">
+<meta property="og:url" content="http://yoursite.com/2016/01/30/s12-20160130-day05/index.html">
+<meta property="og:site_name" content="南非波波博客">
+<meta property="og:description" content="Author:@南非波波
+课程大纲：
+day04
+http://www.cnblogs.com/alex3714/articles/5143440.html
+day05
+http://www.cnblogs.com/alex3714/articles/5161349.html
+一、正则深入re
+匹配数字开头
+import re
+#匹配以数字开头
+p = re.compile(&amp;quot;^[0-9">
+<meta property="og:updated_time" content="2016-07-04T07:42:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pytho自动化开发 day05">
+<meta name="twitter:description" content="Author:@南非波波
+课程大纲：
+day04
+http://www.cnblogs.com/alex3714/articles/5143440.html
+day05
+http://www.cnblogs.com/alex3714/articles/5161349.html
+一、正则深入re
+匹配数字开头
+import re
+#匹配以数字开头
+p = re.compile(&amp;quot;^[0-9">
+  
+    <link rel="alternate" href="/atom.xml" title="南非波波博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">南非波波博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="http://www.cnblogs.com/songqingbo/">cnblogs博客</a>
+        
+          <a class="main-nav-link" href="https://github.com/swht">github</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-s12-20160130-day05" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/30/s12-20160130-day05/" class="article-date">
+  <time datetime="2016-01-30T07:30:00.000Z" itemprop="datePublished">2016-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pytho自动化开发 day05
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Author:@南非波波</p>
+<p>课程大纲：</p>
+<p>day04</p>
+<p><a href="http://www.cnblogs.com/alex3714/articles/5143440.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5143440.html</a></p>
+<p>day05</p>
+<p><a href="http://www.cnblogs.com/alex3714/articles/5161349.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5161349.html</a></p>
+<h3 id="一、正则深入"><a href="#一、正则深入" class="headerlink" title="一、正则深入"></a>一、正则深入</h3><p>re</p>
+<p>匹配数字开头</p>
+<pre><code>import re
+#匹配以数字开头
+p = re.compile(&quot;^[0-9]&quot;) #使用compile进行编译正则表达式，在大量匹配处理的时候非常有效
+m = p.match(&quot;14534Abc&quot;)
+print(m.group()) #输出结果：1
+&apos;&apos;&apos;
+m = re.match(&quot;^[0-9]&quot;,&quot;14534Abc&quot;)
+print(m.group()) #输出结果：1
+&apos;&apos;&apos;
+</code></pre><p>匹配数字、字母等开头</p>
+<pre><code>import re
+#匹配以数字和字母开头
+p = re.compile(&quot;^[0-9A-Za-z]&quot;)
+m = p.match(&quot;AK14534Abc&quot;)
+print(m.group()) #输出结果：A
+</code></pre><p>匹配IP地址：</p>
+<pre><code>#匹配IP地址
+string = &apos;180.115.183.45 - - [03/Feb/2016:10:35:50 +0800] &quot;CONNECT imppl.tradedoubler.com:443 HTTP/1.0&quot; 400 172 &quot;-&quot; &quot;-&quot;&apos;
+p = re.compile(&quot;([0-9]{1,3}\.){3}\d{1,3}&quot;)
+ip = p.match(string).group()
+# ip = re.match(&quot;([0-9]{1,3}\.){3}\d{1,3}&quot;,string).group()
+print(ip)
+</code></pre><p><strong>正则表达式常用5种操作</strong></p>
+<p>re.match(pattern,string) #从头匹配</p>
+<p>re.search(pattern,string) #匹配整个字符串，直到找到一个匹配</p>
+<p>re.split() #将匹配到的格式当做分隔点对字符串分成列表类型</p>
+<pre><code>示例：
+import re
+string = &quot;2016 02 02  00:26:35 Statistic_Svncommit.py[line:50] INFO [&apos;A6909850956019&apos;, &apos;A6997448878578&apos;, &apos;A6909712867884&apos;, &apos;A6996408725555&apos;, &apos;A6908651568946&apos;, &apos;A6996150172637&apos;, &apos;A6909747538711&apos;, &apos;A6994084740002&apos;, &apos;A6908427730549&apos;, &apos;A6982187752993&apos;, &apos;A6909861345295&apos;, &apos;A6909860252981&apos;, &apos;A6905214359647&apos;, &apos;A6995115894134&apos;]&quot;
+strlist = re.search(&quot;\[\&apos;.*?\&apos;\]&quot;,string).group().lstrip(&quot;[&quot;).rstrip(&quot;]&quot;)
+list1 = re.sub(&quot;[\&apos;&apos; &apos;]&quot;,&quot;&quot;,strlist).split(&quot;,&quot;)
+print(list1)
+
+返回结果：[&apos;A6909850956019&apos;, &apos;A6997448878578&apos;, &apos;A6909712867884&apos;, &apos;A6996408725555&apos;, &apos;A6908651568946&apos;, &apos;A6996150172637&apos;, &apos;A6909747538711&apos;, &apos;A6994084740002&apos;, &apos;A6908427730549&apos;, &apos;A6982187752993&apos;, &apos;A6909861345295&apos;, &apos;A6909860252981&apos;, &apos;A6905214359647&apos;, &apos;A6995115894134&apos;]
+列表类型
+
+m = re.split(&quot;[0-9]&quot;, &quot;swht1swht2jack3helenrachel8&quot;)
+print(m) #[&apos;swht&apos;, &apos;swht&apos;, &apos;jack&apos;, &apos;helenrachel&apos;, &apos;&apos;]
+</code></pre><p>re.findall()　# 找到所有要匹配的字符并返回列表格式</p>
+<pre><code>示例：
+import re
+string = &quot;sdsdss(welcome)dff(china)&quot;
+m = re.findall(&apos;\(.*?\)&apos;,string) #匹配所有以（开头和以）结尾的字符串,返回类型为list
+print(m) #[&apos;(welcome)&apos;, &apos;(china)&apos;]
+print(type(m))  #&lt;class &apos;list&apos;&gt;
+</code></pre><p>re.sub(pattern, repl, string, count,flag) # 替换匹配到的字符</p>
+<pre><code>示例：
+import re
+string = &quot;sdsdss(welcome)dff(china)&quot;
+m = re.sub(&quot;\(|\)&quot;,&quot;\&quot;&quot;,string) #匹配&quot;(&quot;或者&quot;)&quot;，然后将其替换成双引号
+print(m) #sdsdss&quot;welcome&quot;dff&quot;china&quot;
+print(type(m)) #&lt;class &apos;str&apos;&gt;
+</code></pre><p><strong>模式</strong></p>
+<p>re.I #大小写不敏感</p>
+<pre><code>import rz
+string = &quot;swht&quot;
+m = re.search(&quot;[A-Z]&quot;,string,flags = re.I)
+print(m.group()) #s
+</code></pre><p>匹配手机号：</p>
+<pre><code>import re
+string = &quot;sdssaawa15865921165sdsdscf&quot;
+m = re.search(&quot;(1)([358]\d{9})&quot;,string)
+print(m.group())
+</code></pre><p>匹配IP地址:</p>
+<pre><code>import re
+ip_addr = &quot;inet 192.168.60.223 netmask 0xffffff00 broadcast 192.168.60.255&quot;
+IP = re.search(&quot;(([1-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-5][0-5])\.){3}[0-9]{1,3}&quot;,ip_addr)
+print(IP.group()) #192.168.60.223
+</code></pre><p>匹配邮箱地址：</p>
+<pre><code>import re
+emailstr = &quot;qingbo.song@gmail.com www.baidu.com&quot;
+email = re.search(&quot;^[a-z]([0-9a-z]|\.){4,20}@[0-9a-z]{0,10}\.[0-9a-z]{0,8}&quot;,emailstr)
+print(email.group()) #qingbo.song@gmail.com
+
+#只匹配gmail邮箱
+import
+emailstr = &quot;qingbo.song@gmail.com www.baidu.com&quot;
+email = re.search(&quot;^[a-z]([0-9a-z]|\.){4,20}@gmail\.com&quot;,emailstr)
+if email:
+    print(email.group()) #qingbo.song@gmail.com
+else:
+    print(&quot;系统只接受gamil邮箱注册,感谢你的支持!&quot;)
+</code></pre><h3 id="二、冒泡排序算法"><a href="#二、冒泡排序算法" class="headerlink" title="二、冒泡排序算法"></a>二、冒泡排序算法</h3><pre><code>示例代码：
+#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+
+li = [11,78,45,12,90,34,56]
+
+# for m in range(1,len(li)):
+#     for i in range(len(li) - 1):
+#         if li[i] &gt; li[i+1]:
+#             temp = li[i]
+#             li[i] = li[i+1]
+#             li[i+1] = temp
+# print(li)
+
+for m in range(len(li) - 1):
+    for n in range(m+1,len(li)):
+        if li[m] &gt; li[n]:
+            temp = li[m]
+            li[m] = li[n]
+            li[n] = temp
+print(li) #[11, 12, 34, 45, 56, 78, 90]
+
+#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+
+data = [11,78,45,12,90,34,56]
+for i in range(1,len(data)):
+    for j in range(len(data) - i):
+        if data[j] &gt; data[j+1]:
+            tmp = data[j]
+            data[j+1] = data[j]
+            data[j] = tmp
+print(data)
+</code></pre><h3 id="三、模块"><a href="#三、模块" class="headerlink" title="三、模块"></a>三、模块</h3><p><strong>模块介绍</strong></p>
+<pre><code>模块：用一坨代码实现了某个功能的代码集合。
+类似于函数式编程和面向过程编程，函数式编程则完成一个功能，其他代码用来处理和代码间的耦合。可能需要多个.py的文件组成。
+
+模块类型：
+    1. 自定义模块
+    2. 内置标准模块（标准库）
+    3. 开源模块
+        1. 下载：
+            1. yum
+            2. apt-get
+            3. pip
+            4. easy_install
+            5. 源码编译安装 python stup.py install
+</code></pre><p><strong>导入模块</strong></p>
+<pre><code>import module
+from module.xx.xx import xx
+from module.xx.xx import xx as rename  
+#不推荐下面的导入方式，如果被导入的模块中含有与当前文件中相同名称的函数，容易产生调用混乱。
+from module.xx.xx import * 
+</code></pre><h4 id="四、自定义模块"><a href="#四、自定义模块" class="headerlink" title="四、自定义模块"></a>四、自定义模块</h4><p> 模块框架</p>
+<pre><code>1. backend
+    1. logic
+        handle.py
+            #!/usr/local/env python3
+            &apos;&apos;&apos;
+            Author:@南非波波
+            Blog:http://www.cnblogs.com/songqingbo/
+            E-mail:qingbo.song@gmail.com
+            &apos;&apos;&apos;
+            from backend.database.sql_select import select
+            def home():
+                print(&quot;welcome to home page!&quot;)
+                q_data = select(&quot;user&quot;,&quot;test&quot;)
+                print(&quot;query res:%s&quot; % q_data)
+
+            def tv():
+                print(&quot;welcome to tv page!&quot;)
+
+            def moive():
+                print(&quot;welcome to moive page!&quot;)
+    2. database
+        1. sql_select.py
+            #!/usr/local/env python3
+            &apos;&apos;&apos;
+            Author:@南非波波
+            Blog:http://www.cnblogs.com/songqingbo/
+            E-mail:qingbo.song@gmail.com
+            &apos;&apos;&apos;
+            &apos;&apos;&apos;
+            增加模块的路径。下面的语句增加的是dj路径
+            该功能解决的是在子模块中的文件单独调试的时候无法获取父模块路径，导致在导入其他模块的时候报错
+            &apos;&apos;&apos;
+            import sys,os
+            #获取dj的绝对路径
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            #将获取的路径添加到系统环境变量中
+            sys.path.append(base_dir)
+
+
+            from config import settings
+            from backend.database.user_auth import db_auth
+
+            def select(table,column):
+                if db_auth(settings):
+                    if table == &quot;user&quot;:
+                        user_info = {
+                            &quot;001&quot;:[&quot;swht&quot;,24,&quot;yunwei&quot;],
+                            &quot;002&quot;:[&quot;shen&quot;,26,&quot;dba&quot;],
+                            &quot;003&quot;:[&quot;test&quot;,28,&quot;student&quot;],
+                        }
+                        return user_info
+        2. user_auth.py
+            #!/usr/local/env python3
+            &apos;&apos;&apos;
+            Author:@南非波波
+            Blog:http://www.cnblogs.com/songqingbo/
+            E-mail:qingbo.song@gmail.com
+            &apos;&apos;&apos;
+            def db_auth(configs):
+                if configs.DATABASES[&quot;user&quot;] == &quot;root&quot; and configs.DATABASES[&quot;password&quot;] == 123:
+                    print(&quot;验证通过!&quot;)
+                    return True
+                else:
+                    print(&quot;验证错误!&quot;)
+
+2. frontend
+3. config
+    settings
+        #!/usr/local/env python3
+        &apos;&apos;&apos;
+        Author:@南非波波
+        Blog:http://www.cnblogs.com/songqingbo/
+        E-mail:qingbo.song@gmail.com
+        &apos;&apos;&apos;
+
+        DATABASES = {
+            &quot;engine&quot;:&quot;mysql&quot;,
+            &quot;host&quot;:&quot;localhost&quot;,
+            &quot;port&quot;:3306,
+            &quot;user&quot;:&quot;root&quot;,
+            &quot;password&quot;:123,
+        }
+4. user_main.py
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+
+    from backend.logic import handle
+
+    handle.home()
+</code></pre><h4 id="五、标准模块"><a href="#五、标准模块" class="headerlink" title="五、标准模块"></a>五、标准模块</h4><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/4963027.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/4963027.html</a></p>
+<p><strong>time &amp; datetime模块</strong></p>
+<pre><code>import time
+import datetime
+
+#作用：计算一个程序从执行到结束用的时间 
+print(time.clock()) #返回处理器时间,3.3开始已废弃
+print(time.process_time()) #返回处理器时间,3.3开始已废弃
+
+#获取系统的当前时间，从1970年1月1日0：00到当前时间的秒数
+print(time.time()) #返回当前系统时间戳
+
+#格式化输出的时间
+print(time.ctime()) #输出Tue Jan 26 18:23:48 2016 ,当前系统时间
+print(time.ctime(time.time()-86640)) #将时间戳转为字符串格式，输出昨天的时间Tue Jan 25 18:23:48 2016
+
+#time.struct_time(tm_year=2016, tm_mon=2,c=48, tm_wday=5, tm_yday=44, tm_isdst=0)
+#gmtime是从零时区算起的格林时间
+print(time.gmtime(time.time()-86640)) #将时间戳转换成struct_time格式
+#当前时间，是按照系统当前时区算起的
+print(time.localtime(time.time()-86640)) #将时间戳转换成struct_time格式,但返回 的本地时间
+print(time.mktime(time.localtime())) #与time.localtime()功能相反,将struct_time格式转回成时间戳格式
+#time.sleep(4) #sleep
+
+#格式化输出时间
+print(time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;,time.gmtime()) ) #将struct_time格式转成指定的字符串格式
+#time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;,time.localtime())
+#&apos;2016-02-14 12:45:49&apos;
+
+print(time.strptime(&quot;2016-01-28&quot;,&quot;%Y-%m-%d&quot;) ) #将字符串格式转换成struct_time格式
+
+#datetime module
+
+#将时间戳转换成日期格式
+print(datetime.date.today()) #输出格式python2 2016-01-26  python3：datetime.date(2016, 2, 14)
+print(datetime.date.fromtimestamp(time.time()-864400) ) #2016-01-16 将时间戳转成日期格式
+current_time = datetime.datetime.now() #
+print(current_time) #输出2016-01-26 19:04:30.335935
+print(current_time.timetuple()) #返回struct_time格式
+
+#datetime.replace([year[, month[, day[, hour[, minute[, second[, microsecond[, tzinfo]]]]]]]])
+#将当前的时间替换成输入的时间
+print(current_time.replace(2014,9,12)) #输出2014-09-12 19:06:24.074900,返回当前时间,但指定的值将被替换
+
+str_to_date = datetime.datetime.strptime(&quot;21/11/06 16:30&quot;, &quot;%d/%m/%y %H:%M&quot;) #将字符串转换成日期格式
+new_date = datetime.datetime.now() + datetime.timedelta(days=10) #比现在加10天
+new_date = datetime.datetime.now() + datetime.timedelta(days=-10) #比现在减10天
+new_date = datetime.datetime.now() + datetime.timedelta(hours=-10) #比现在减10小时
+new_date = datetime.datetime.now() + datetime.timedelta(seconds=120) #比现在+120s
+print(new_date)
+</code></pre><p><strong>random模块</strong></p>
+<p>产生随机数</p>
+<pre><code>#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import random
+
+#产生随机小数
+print(random.random())
+&apos;&apos;&apos;
+0.8426794741026359
+0.8703558703687821
+&apos;&apos;&apos;
+
+#产生随机整数
+print(random.randint(1,10))
+print(random.randrange(1,10))
+&apos;&apos;&apos;
+1
+9
+&apos;&apos;&apos;
+</code></pre><p>生成随机验证码</p>
+<pre><code>#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+&apos;&apos;&apos;
+生成n位随机数，包含大写字母和数字
+&apos;&apos;&apos;
+import random
+def checkcode(n):
+    checkcode = &apos;&apos;
+    for i in range(n):
+        current = random.randrange(0,4)
+        if current != i:
+            tmp = chr(random.randint(65,90))
+        else:
+            tmp = random.randint(0,9)
+        checkcode += str(tmp)
+    return checkcode
+
+print(checkcode(6))
+</code></pre><p><strong>os模块</strong></p>
+<p>提供对操作系统进行调用的接口</p>
+<pre><code>os.getcwd() 获取当前工作目录，即当前python脚本工作的目录路径
+os.chdir(&quot;dirname&quot;)  改变当前脚本工作目录；相当于shell下cd
+os.curdir  返回当前目录: (&apos;.&apos;)
+os.pardir  获取当前目录的父目录字符串名：(&apos;..&apos;)
+os.makedirs(&apos;dirname1/dirname2&apos;)    可生成多层递归目录
+os.removedirs(&apos;dirname1&apos;) 删除空的目录，或多级空目录
+os.mkdir(&apos;dirname&apos;)    生成单级目录；相当于shell中mkdir dirname
+os.rmdir(&apos;dirname&apos;)    删除单级空目录，若目录不为空则无法删除，报错；相当于shell中rmdir dirname
+os.listdir(&apos;dirname&apos;)    列出指定目录下的所有文件和子目录，包括隐藏文件，并以列表方式打印
+os.remove()  删除一个文件
+os.rename(&quot;oldname&quot;,&quot;newname&quot;)  重命名文件/目录，或者移动，相当于shell命令mv
+os.stat(&apos;path/filename&apos;)  获取文件/目录信息
+os.sep    输出操作系统特定的路径分隔符，win下为&quot;\\&quot;,Linux下为&quot;/&quot;
+os.linesep    输出当前平台使用的行终止符，win下为&quot;\t\n&quot;,Linux下为&quot;\n&quot;
+os.pathsep    输出用于分割文件路径的字符串
+os.name    输出字符串指示当前使用平台。win-&gt;&apos;nt&apos;; Linux-&gt;&apos;posix&apos;
+os.system(&quot;bash command&quot;)  运行shell命令，直接显示，只是单个shell命令的执行
+os.environ  获取系统环境变量
+os.path.abspath(path)  返回path规范化的绝对路径
+os.path.split(path)  将path分割成目录和文件名二元组返回
+os.path.dirname(path)  返回path的目录。其实就是os.path.split(path)的第一个元素
+os.path.basename(path)  返回path最后的文件名。如何path以／或\结尾，那么就会返回空值。即os.path.split(path)的第二个元素
+os.path.exists(path)  如果path存在，返回True；如果path不存在，返回False
+os.path.isabs(path)  如果path是绝对路径，返回True
+os.path.isfile(path)  如果path是一个存在的文件，返回True。否则返回False
+os.path.isdir(path)  如果path是一个存在的目录，则返回True。否则返回False
+os.path.join(path1[, path2[, ...]])  将多个路径组合后返回，第一个绝对路径之前的参数将被忽略
+os.path.getatime(path)  返回path所指向的文件或者目录的最后存取时间
+os.path.getmtime(path)  返回path所指向的文件或者目录的最后修改时间
+</code></pre><p><strong>sys模块</strong></p>
+<pre><code>sys.argv           命令行参数List，第一个元素是程序本身路径
+sys.exit(n)        退出程序，正常退出时exit(0)
+sys.version        获取Python解释程序的版本信息
+sys.maxint         最大的Int值
+sys.path           返回模块的搜索路径，初始化时使用PYTHONPATH环境变量的值
+sys.platform       返回操作系统平台名称
+sys.stdout.write(&apos;please:&apos;)
+val = sys.stdin.readline()[:-1] #输入一行内容，减去后面的最后一个\n
+</code></pre><p>使用sys和time模块生成进度条</p>
+<pre><code>#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+&apos;&apos;&apos;
+生成进度条。调用函数输入的参数为进度条长度
+&apos;&apos;&apos;
+import sys,time
+def processbar(rangenum):
+    for i in range(rangenum):
+        if i == 0:
+            sys.stdout.write(&quot;0%[#&quot;)
+        elif i == rangenum - 1:
+            sys.stdout.write(&quot;#]100%&quot;)
+        else:
+            sys.stdout.write(&quot;#&quot;)
+            #刷新缓存，使其实时显示出来
+            sys.stdout.flush()
+            time.sleep(0.5)
+
+processbar(16)
+</code></pre><p><strong>json 和 pickle</strong> </p>
+<p>json和pickle是用于序列化的两个模块：</p>
+<pre><code>json：用于处理字符串和python数据类型间的转换
+pickle：用于处理python特有类型和python数据类型间的转换
+</code></pre><p>json</p>
+<pre><code>json模块提供了四个功能：dumps、dump、loads、load
+json在所有的语言中都通用，存取的直接字符
+</code></pre><p>pickle</p>
+<pre><code>pickle模块提供了四个功能：dumps、dump、loads、load
+在python中独有一个模块，存取二进制字符
+不仅仅可以序列化简单的字符、列表、字典，还能序列化函数、类以至于整个程序
+</code></pre><p>关于dump和dumps的区别</p>
+<pre><code>dump直接将序列化后的字符写到文件中，dumps是将序列化后的字符先赋给一个变量，然后再有write方法将其写入到文件中
+</code></pre><p>关于load和loads的区别</p>
+<pre><code>load直接从文件中读取内容，loads是从内存中获取文件的内容
+</code></pre><p><strong>shutil模块</strong></p>
+<p>高级的 文件、文件夹、压缩包 处理模块</p>
+<p>shutil.copyfileobj(fsrc, fdst[, length])</p>
+<pre><code>功能：将文件内容拷贝到另一个文件中，可以部分内容
+</code></pre><p>shutil.copyfile(src, dst)</p>
+<pre><code>功能：仅拷贝文件
+</code></pre><p>shutil.copymode(src, dst)</p>
+<pre><code>功能：仅拷贝权限，内容、组、用户均不变
+</code></pre><p>shutil.copystat(src, dst)</p>
+<pre><code>功能：拷贝状态的信息，包括：mode bits, atime, mtime, flags
+</code></pre><p>shutil.copy(src, dst)</p>
+<pre><code>功能：拷贝文件和权限
+</code></pre><p>shutil.copy2(src, dst)</p>
+<pre><code>功能：拷贝文件和状态信息
+</code></pre><h4 id="作业需求："><a href="#作业需求：" class="headerlink" title="作业需求："></a>作业需求：</h4><pre><code>模拟实现一个ATM + 购物商城程序
+
+额度 15000或自定义
+实现购物商城，买东西加入 购物车，调用信用卡接口结账
+可以提现，手续费5%
+每月22号出账单，每月10号为还款日，过期未还，按欠款总额 万分之5 每日计息
+支持多账户登录
+支持账户间转账
+记录每月日常消费流水
+提供还款接口
+ATM记录操作日志
+提供管理接口，包括添加账户、用户额度，冻结账户等。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/01/30/s12-20160130-day05/" data-id="ciq8usae40007ogj5sz3adcph" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/20/s12-20160130-day06/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          pytho自动化开发 day06
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/23/s12-20160123-day04/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">pytho自动化开发 day04</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python开发之路/" style="font-size: 10px;">Python开发之路</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/14/s12-20160514-day17/">pytho自动化开发 day17</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/07/s12-20160507-day16/">pytho自动化开发 day16</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/30/s12-20160430-day15/">pytho自动化开发 day15</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/s12-20160421-day14/">pytho自动化开发 day14</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/09/s12-20160409-day13/">pytho自动化开发 day13</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 南非波波<br>
+      Powered by <a href="http://blog.songqingbo,cn/" target="_blank">南非波波</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="http://www.cnblogs.com/songqingbo/" class="mobile-nav-link">cnblogs博客</a>
+  
+    <a href="https://github.com/swht" class="mobile-nav-link">github</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-2.2.3.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

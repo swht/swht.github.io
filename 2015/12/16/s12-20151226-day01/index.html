@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>pytho自动化开发 day01 | 南非波波博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Author:@南非波波
+作者注：
+　　python学习旅程正式开启，这一天将是一个新的开始。希望我们在python开发的道路上多多积累、多分享！
+ 一、python简介
+python应用 
+    Disgus Voitze Yelip Mozilla Quora  Redit
+    豆瓣、知乎、sohu、腾讯、网易、金山、雅虎、Facebook、 Instagram（图片分享）
+python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pytho自动化开发 day01">
+<meta property="og:url" content="http://yoursite.com/2015/12/16/s12-20151226-day01/index.html">
+<meta property="og:site_name" content="南非波波博客">
+<meta property="og:description" content="Author:@南非波波
+作者注：
+　　python学习旅程正式开启，这一天将是一个新的开始。希望我们在python开发的道路上多多积累、多分享！
+ 一、python简介
+python应用 
+    Disgus Voitze Yelip Mozilla Quora  Redit
+    豆瓣、知乎、sohu、腾讯、网易、金山、雅虎、Facebook、 Instagram（图片分享）
+python">
+<meta property="og:updated_time" content="2016-07-04T07:41:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pytho自动化开发 day01">
+<meta name="twitter:description" content="Author:@南非波波
+作者注：
+　　python学习旅程正式开启，这一天将是一个新的开始。希望我们在python开发的道路上多多积累、多分享！
+ 一、python简介
+python应用 
+    Disgus Voitze Yelip Mozilla Quora  Redit
+    豆瓣、知乎、sohu、腾讯、网易、金山、雅虎、Facebook、 Instagram（图片分享）
+python">
+  
+    <link rel="alternate" href="/atom.xml" title="南非波波博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">南非波波博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="http://www.cnblogs.com/songqingbo/">cnblogs博客</a>
+        
+          <a class="main-nav-link" href="https://github.com/swht">github</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-s12-20151226-day01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/16/s12-20151226-day01/" class="article-date">
+  <time datetime="2015-12-16T07:30:00.000Z" itemprop="datePublished">2015-12-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pytho自动化开发 day01
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Author:@南非波波</p>
+<p>作者注：</p>
+<p>　　python学习旅程正式开启，这一天将是一个新的开始。希望我们在python开发的道路上多多积累、多分享！</p>
+<p> 一、python简介</p>
+<pre><code>python应用 
+    Disgus Voitze Yelip Mozilla Quora  Redit
+    豆瓣、知乎、sohu、腾讯、网易、金山、雅虎、Facebook、 Instagram（图片分享）
+python2与python3比较
+    经过多年的发展，python3已经得到更多的第三方优秀函数库兼容，对比python2来说，python3表现出来的精简高效特性让开发者们跃跃欲试。
+    另外，python2.7.11作为python2版本的最后一个版本，不再有新版本推出，这样官方更多的引导开发者快速的向python3版本上进行转移。
+    在本次学习的过程中，我们会穿插在python2和python3两个版本之间进行学习，后续的测试代码在开头会明确标记python的使用版本。相关注释都会对python2和python3的差异进行描述。
+</code></pre><p>二、python安装</p>
+<pre><code>1.windows端安装
+    安装包下载地址：
+        python2.7版本：
+            https://www.python.org/ftp/python/2.7.11/python-2.7.11.amd64.msi
+        python3.5版本：
+            https://www.python.org/ftp/python/3.5.1/python-3.5.1-amd64.exe  #安装版
+            https://www.python.org/ftp/python/3.5.1/python-3.5.1-embed-win32.zip #免安装版
+    安装步骤：
+        使用可执行程序进行安装，按照流程进行安装即可，注意在安装的时候选择“安装路径”和一些必要的插件，比如pip、easy_install等
+        使用免安装的文件（可嵌入的）进行环境配置：
+        ![](http://i.imgur.com/U827QAb.jpg)
+2.linux端安装
+    centos6等常用系统自带的python版本为2.6，有特殊需求的朋友可能需要升级到python2.7或者python3版本。下面链接以python2.7.8为例进行编译安装。
+        http://swht1278.blog.51cto.com/7138082/1728427
+    提供一下python版本的下载地址：
+        python2.7.11版本：
+            https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz
+        python3.5版本：
+            https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
+3.Ubuntu端安装
+    最新版本的Ubuntu系统（15.04等）已经自带了python2.7.9和python3.4.5两个版本的python环境，我们只需要在shell终端输入python2或python3进行调用即可。老版本的系统升级python环境需要以下操作：
+        # 增加python源
+        sudo add-apt-repository ppa:fkrull/deadsnakes
+        # update 软件列表
+        sudo apt-get update
+        # 安装python3
+        sudo apt-get install python3.5
+</code></pre><p>三、基础概念</p>
+<pre><code>变量：Python 是动态类型语言， 也就是说不需要预先声明变量的类型。变量是对象的引用，变量只是将指针指向了对象所在的内存地址。变量的类型和值在赋值那一刻被初始化。
+变量起名：
+    1.显式--&gt;通俗易懂
+    2.nums_of_alex_gf = 19 
+    3.NumsOfAlexGf = 20  驼峰写法
+    4.中横线不能作为变量的命名字符
+    5.数字不能作为开头，但可以在中间或者结尾
+    6.特殊字符不能作为变量名的组成部分
+    7.不能使用空格
+    8.关键字不能声明为变量
+</code></pre><p>四、运算符</p>
+<pre><code>算术运算符
+    +  -  *  /   //  %  **
+    /:传统除法，将执行地板除法，
+    //:浮点除法，即去尾法除法，保留位数与除数和被除数的小数位数有关 （取整除，返回商的部分）
+    **：平方运算
+比较运算符
+    &lt;  &lt;=  &gt;  &gt;=  ==  !=   &lt;&gt;
+    不等于：!=   &lt;&gt;
+    返回值是：True 和 False
+赋值运算符
+    &gt;&gt;&gt; counter = 0 
+    &gt;&gt;&gt; miles = 1000.0 
+    &gt;&gt;&gt; name = &apos;Bob&apos; 
+    &gt;&gt;&gt; counter = counter + 1 
+    &gt;&gt;&gt; kilometers = 1.609 * miles 
+    &gt;&gt;&gt; print &apos;%f miles is the same as %f km&apos; % (miles, kilometers)
+    1000.000000 miles is the same as 1609.000000 km
+    支持简写：n=n*3 -&gt; n*=3  但不支持自增自减，因为“-” 和”+”是单目字符，--n -&gt; -(-n)n
+位运算符
+    &amp;      按位与      （a&amp;b）
+    |      按位或    （a|b）
+    ^    按位异或    （a^b）
+    ~    按位取反    （~a）
+    &lt;&lt;    左移动     a&lt;&lt;1 整体向左移动，结果是原来数值的2倍
+    &gt;&gt;  右移动    a&gt;&gt;1 整体向右移动，结果是原来数值的1/2
+逻辑运算符
+    and 布尔“与”     同真为True
+    or  布尔“或”     同假为False
+    not    布尔“非”     非True即False
+成员运算符
+    in     如果在指定序列中找到指定的值，返回True
+    not in 如果在指定序列中没找到指定的值，返回False
+身份运算符
+    is  判断两个标识符是不是引用自同一个对象
+        type(names) is list 判断某个变量值的类型（list、int、dic）
+    is not 判断两个标识符是不是引用自不同对象
+</code></pre><p>五、字符编码</p>
+<pre><code>python2 中在输入中文字符的时候会报字符编码的错误，在python3中已经引入了Unicode（万国码、统一码、），它为每种语言中的每个字符设定了统一并且唯一的二进制编码，规定所有的字符和符号最少由16位二进制来表示（2个字节），即2 ** 16 = 65536
+UTF-8，是对Unicode编码的压缩和优化，它不再使用最少2个字节，而是将所有的字符和符号进行分类：ascii码中的内容用1个字节保存，欧洲的字符用2个字节保存，东亚的字符用3个字节保存
+
+示例
+python2
+    #!/usr/local/env python2
+    # -*- coding: utf-8 -*-  # 声明使用的字符类型，否则会报错
+    &apos;&apos;&apos;
+    @swht
+    &apos;&apos;&apos;
+    print &quot;你好！&quot;
+
+python3
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    @swht
+    &apos;&apos;&apos;
+    print (&quot;你好！&quot;)
+
+总结：在python3中完全不用考虑字符编码的问题，python解释器会自行处理字符类型的问题
+</code></pre><p>六、python流程控制</p>
+<pre><code>流程控制分为两大类：条件判断和循环
+其中循环又分为两类：for循环和while循环
+条件判断和循环可以单独存在，也可以嵌套使用，以处理更为复杂的逻辑问题。
+</code></pre><p>下面会从<em>if条件判断</em>、<em>for循环</em>和<em>while循环</em>进行代码示例：</p>
+<h4 id="if-ex-py"><a href="#if-ex-py" class="headerlink" title="if_ex.py"></a>if_ex.py</h4><pre><code>#!/usr/bin/env python3
+&apos;&apos;&apos;
+@swht
+&apos;&apos;&apos;
+LuckyNum = 9
+# 让用户输入一个数值与指定的值进行比较，当然这里没有处理用户输入为空的情况
+# strip() 可以截取用户输入字符串首尾的空格
+UserInputNum = int(input(&quot;请从1-100之间选择一个数字输入:&quot;).strip())
+if UserInputNum &gt; LuckyNum:
+    print(&quot;你输入的数字比我的LuckNum要大哦!&quot;)
+elif UserInputNum &lt; LuckyNum:
+    print(&quot;你输入的数字比我的LuckNum要小哦!&quot;)
+else:
+    print(&quot;恭喜你猜中了我的LuckNum,原来你就是我的幸运天使!&quot;)
+</code></pre><h3 id="while-ex-py"><a href="#while-ex-py" class="headerlink" title="while_ex.py"></a>while_ex.py</h3><pre><code>#!/usr/bin/env python3
+&apos;&apos;&apos;
+@swht
+&apos;&apos;&apos;
+LuckyNum = 9
+# 设置一个标志位，用于程序判断退出循环，
+flag = True
+while flage:
+UserInputNum = int(input(&quot;请从1-100之间选择一个数字输入:&quot;).strip())
+if UserInputNum &gt; LuckyNum:
+    print(&quot;你输入的数字比我的LuckyNum要大哦!&quot;)
+elif UserInputNum &lt; LuckyNum:
+    print(&quot;你输入的数字比我的LuckyNum要小哦!&quot;)
+else:
+    print(&quot;恭喜你猜中了我的LuckyNum,原来你就是我的幸运天使!&quot;)
+    flag = False 
+</code></pre><h3 id="for-ex-py"><a href="#for-ex-py" class="headerlink" title="for_ex.py"></a>for_ex.py</h3><pre><code>#!/usr/bin/env python3
+&apos;&apos;&apos;
+@swht
+&apos;&apos;&apos;
+LuckyNum = 9
+for count in range(3):
+    UserInputNum = int(input(&quot;请从1-100之间选择一个数字输入:&quot;).strip())
+    if UserInputNum &gt; LuckyNum:
+        print(&quot;你输入的数字比我的LuckyNum要大哦!&quot;)
+    elif UserInputNum &lt; LuckyNum:
+        print(&quot;你输入的数字比我的LuckyNum要小哦!&quot;)
+    else:
+        print(&quot;恭喜你猜中了我的LuckyNum,原来你就是我的幸运天使!&quot;)
+        break
+else:
+    print(&quot;你输入的次数已达到3次,程序即将退出!&quot;)
+</code></pre><p>对比break和countnue</p>
+<pre><code>break是结束整个循环体，continue是结束单次循环
+
+示例
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    @swht
+    &apos;&apos;&apos;
+    x = 0
+    while x &lt; 10:
+        if x ==3:
+            break
+        x += 1
+        print(&quot;x=%s&quot; % x)
+    输出结果：    x=1
+                x=2
+                x=3
+    直接退出了整个while循环
+</code></pre><p>七、格式化输出</p>
+<pre><code>使用&apos;&apos;&apos;string&apos;&apos;&apos;可以很方便的将多行内容进行注释，另外这个符号还有一个功能，那就是文档描述的功能。一般而言，在程序的前面后有一个文档说明，包括作者信息，版本信息，功能等
+
+#!/usr/bin/env python
+&apos;&apos;&apos;
+@swht
+&apos;&apos;&apos;
+
+name = input(&quot;name:&quot;)
+age = input(&quot;age:&quot;)
+job = input(&quot;job:&quot;)
+
+print(&quot;Information of:&quot; + name + &quot;\nname:&quot; + name + &quot;\nage:&quot; + age + &quot;\njob:&quot; + job)
+print(&quot;Information of %s\nname:%s\nage:%s\njob:%s&quot; %(name,name,age,job))
+print(&apos;&apos;&apos;
+    Infomation of %s
+             name:%s
+              age:%s
+              job:%s
+    &apos;&apos;&apos; % (name,name,age,job))
+</code></pre><p>八、数据类型：</p>
+<p><em>列表转换成元组：tuple(name_list)</em></p>
+<p><em>元组转换成列表：list(元组_name)</em></p>
+<pre><code>1.数字
+    int     整型
+    long     长整型
+    float     浮点型
+2.布尔
+    1    真
+    0    假
+3.字符串
+        stinglist = “Hello World”
+    字符串操作：
+        (参考：http://www.cnblogs.com/zhxiang/p/3385242.html
+        http://www.jb51.net/article/47956.htm)
+        移除空白：stinglist.strip()
+        移除特殊字符：stinglist.lstrip().rstrip(&apos;,&apos;)
+        分割：&gt;&gt;&gt; stringlist[2]
+                 &apos;l&apos;
+        长度：&gt;&gt;&gt; len(stringlist)
+                 11
+        索引：&gt;&gt;&gt; stringlist.index(&apos;W&apos;) #字母‘W’所在的索引值
+                 6
+        切片：&gt;&gt;&gt; stringlist[0:3] #顾前不顾尾
+                 &apos;Hel&apos;
+        字符串在输出时的对齐：
+            &gt;&gt;&gt; stringlist[0:3]
+            &apos;Hel&apos;
+            &gt;&gt;&gt; stringlist[0:3].ljust(5) #ljust(width,[fillchar]) fillchar为填充字符，默认为空格
+            &apos;Hel  &apos;
+        字符串拼接：
+            &gt;&gt;&gt; stringlist += s
+            &gt;&gt;&gt; stringlist
+            &apos;Hello Worldab,cde,fgh,ijk&apos;
+        大小写转换：
+            &gt;&gt;&gt;stringlist.lower() #小写
+               &apos;hello world&apos;
+            &gt;&gt;&gt; stringlist.upper() #大写
+                &apos;HELLO WORLD&apos;
+            &gt;&gt;&gt; stringlist.swapcase() #大小写互换
+                &apos;hELLO wORLD&apos;
+            &gt;&gt;&gt; stringlist.capitalize() #首字母大写
+                &apos;Hello world&apos; 
+            &gt;&gt;&gt; string.capwords(stringlist) #以空格分割，每个单词首字母大写
+                &apos;Hello World&apos;
+        字符串翻转：
+            &gt;&gt;&gt; s
+            &apos;sdsds sdsdsff&apos;
+            &gt;&gt;&gt; s = s[::-1]
+            &gt;&gt;&gt; s
+            &apos;ffsdsds sdsds&apos;
+        字符串查找：
+            &gt;&gt;&gt; stringlist.find(&apos;World&apos;)
+                6
+        判断是否为整型：
+            &gt;&gt;&gt; stringlist.isdigit()
+                False
+        判断字符串是否为空格：
+            &gt;&gt;&gt; stringlist.isspace()
+                False
+        转换成列表：
+            &gt;&gt;&gt; stringlist.split() #默认以空格为分割
+                [&apos;Hello&apos;, &apos;World&apos;]
+
+4.列表（dir(name_list)获取列表操作帮助）
+    参考：http://www.jb51.net/article/46768.htm
+    name_list = [&apos;alex&apos;, &apos;sddkd&apos;, &apos;shdjsjd&apos;, &apos;shen&apos;, &apos;swht&apos;, &apos;test&apos;]
+    移除空白：name_list.strip()
+    获取元素：name_list[index_num]
+    索引：name_list.index(&quot;swht&quot;)  获取指定元素的索引值
+    追加：name_list.append(&quot;test&quot;) 在列表后面追加一个元素
+    插入：name_list.insert(3,&quot;ssdd&quot;) 在索引值3后面插入新的元素
+    删除：name_list.pop() 删除最后一个元素
+         name_list.remove(&quot;test&quot;) 删除指定的元素
+    排序：name_list.sort()  对元素按照ASCII码进行排序
+        python3 里面不能同时sort int 和 str类型
+    反转顺序：name_list.reverse()  对列表中的元素进行反转操作
+    切片：name_list[0:3]  切取索引值从0-2的值（切片顾头不顾尾）
+    扩展：name_list.extend(name_list2) 在一个列表后面追加另一个列表的元素，或者追加一个变量中的单个字符
+5.元组
+    &gt;&gt;&gt; namelist = (&quot;swht&quot;,&quot;test&quot;)
+    &gt;&gt;&gt; type(namelist)
+        &lt;class &apos;tuple&apos;&gt;
+    索引：&gt;&gt;&gt; namelist.index(&apos;swht&apos;) #查找某个字符串的索引值
+             0
+    统计：&gt;&gt;&gt; namelist.count(&apos;swht&apos;) #统计某个字符串出现的次数
+             1
+6.字典（无序）
+    参考：http://www.jb51.net/article/47990.htm
+
+    不允许同一个键出现两次。创建时如果同一个键被赋值两次，后一个值会被记住
+    键必须不可变，所以可以用数，字符串或元组充当，所以用列表就不行
+
+    dict = {&quot;swht&quot;:&quot;test123&quot;,&quot;shen&quot;:&quot;test124&quot;,&quot;test&quot;:&quot;test125&quot;}
+    访问字典里的值：
+        &gt;&gt;&gt; dict[&quot;swht&quot;]
+            &apos;test123&apos;
+    增加字典里的值：
+        &gt;&gt;&gt; dict[&quot;alex&quot;] = &quot;test126&quot;
+        &gt;&gt;&gt; dict
+        {&apos;test&apos;: &apos;test125&apos;, &apos;shen&apos;: &apos;test124&apos;, &apos;swht&apos;: &apos;test123&apos;, &apos;alex&apos;: &apos;test126&apos;}
+
+    删除字典当中的元素：
+        &gt;&gt;&gt; del dict[&quot;test&quot;]
+        &gt;&gt;&gt; dict
+        {&apos;shen&apos;: &apos;test124&apos;, &apos;swht&apos;: &apos;test123&apos;, &apos;alex&apos;: &apos;test126&apos;}
+        &gt;&gt;&gt;                
+    清空字典里的所有条目：
+        &gt;&gt;&gt; dict.clear()
+        &gt;&gt;&gt; dict
+        {}
+    删除字典：del dict
+</code></pre><p>九、文件操作</p>
+<pre><code>简单操作：
+    filename = open(&quot;文件路径&quot;,&quot;模式&quot;)    #打开文件
+    filename.write(&apos;内容&apos;)    #往文件中写入内容
+    filename.read()        #一次性加载文件中的内容到内存
+    filename.readlines()    #一次性加载所有的内容到内存，并根据行分割成字符串
+    filename.close()    #关闭文件句柄
+</code></pre><p>十、作业</p>
+<pre><code>作业一：编写登录接口
+</code></pre><p>，</p>
+<pre><code>作业二：多级菜单    
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/12/16/s12-20151226-day01/" data-id="ciq8usadp0000ogj5eu4fjyhz" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/09/s12-20160109-day02/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          pytho自动化开发 day02
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python开发之路/" style="font-size: 10px;">Python开发之路</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/14/s12-20160514-day17/">pytho自动化开发 day17</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/07/s12-20160507-day16/">pytho自动化开发 day16</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/30/s12-20160430-day15/">pytho自动化开发 day15</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/s12-20160421-day14/">pytho自动化开发 day14</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/09/s12-20160409-day13/">pytho自动化开发 day13</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 南非波波<br>
+      Powered by <a href="http://blog.songqingbo,cn/" target="_blank">南非波波</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="http://www.cnblogs.com/songqingbo/" class="mobile-nav-link">cnblogs博客</a>
+  
+    <a href="https://github.com/swht" class="mobile-nav-link">github</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-2.2.3.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

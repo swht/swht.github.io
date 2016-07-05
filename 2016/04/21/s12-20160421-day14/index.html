@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>pytho自动化开发 day14 | 南非波波博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Author:@南非波波
+课程大纲：
+http://www.cnblogs.com/wupeiqi/articles/5369773.html
+http://www.php100.com/manual/jquery/
+JQuery1.查找选择器$(&amp;apos;#nid&amp;apos;)  根据id找到某个标签
+$(&amp;apos;.nid&amp;apos;)  根据class查找
+$(&amp;apos;.nid di">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pytho自动化开发 day14">
+<meta property="og:url" content="http://yoursite.com/2016/04/21/s12-20160421-day14/index.html">
+<meta property="og:site_name" content="南非波波博客">
+<meta property="og:description" content="Author:@南非波波
+课程大纲：
+http://www.cnblogs.com/wupeiqi/articles/5369773.html
+http://www.php100.com/manual/jquery/
+JQuery1.查找选择器$(&amp;apos;#nid&amp;apos;)  根据id找到某个标签
+$(&amp;apos;.nid&amp;apos;)  根据class查找
+$(&amp;apos;.nid di">
+<meta property="og:updated_time" content="2016-07-04T07:43:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pytho自动化开发 day14">
+<meta name="twitter:description" content="Author:@南非波波
+课程大纲：
+http://www.cnblogs.com/wupeiqi/articles/5369773.html
+http://www.php100.com/manual/jquery/
+JQuery1.查找选择器$(&amp;apos;#nid&amp;apos;)  根据id找到某个标签
+$(&amp;apos;.nid&amp;apos;)  根据class查找
+$(&amp;apos;.nid di">
+  
+    <link rel="alternate" href="/atom.xml" title="南非波波博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">南非波波博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="http://www.cnblogs.com/songqingbo/">cnblogs博客</a>
+        
+          <a class="main-nav-link" href="https://github.com/swht">github</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-s12-20160421-day14" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/21/s12-20160421-day14/" class="article-date">
+  <time datetime="2016-04-21T07:30:00.000Z" itemprop="datePublished">2016-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pytho自动化开发 day14
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Author:@南非波波</p>
+<p>课程大纲：</p>
+<p><a href="http://www.cnblogs.com/wupeiqi/articles/5369773.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5369773.html</a></p>
+<p><a href="http://www.php100.com/manual/jquery/" target="_blank" rel="external">http://www.php100.com/manual/jquery/</a></p>
+<h2 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery"></a>JQuery</h2><h3 id="1-查找"><a href="#1-查找" class="headerlink" title="1.查找"></a>1.查找</h3><h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><pre><code>$(&apos;#nid&apos;)  根据id找到某个标签
+$(&apos;.nid&apos;)  根据class查找
+$(&apos;.nid div #nid&apos;)  根据class查找下面的div标签下面的id
+$(&apos;.nid,div,#nid&apos;)  查找到class或div或id条件的查找到
+$(&apos;li:eq(0)&apos;)  查到到第一个li标签行
+</code></pre><h4 id="筛选器"><a href="#筛选器" class="headerlink" title="筛选器"></a>筛选器</h4><pre><code>$(&apos;li&apos;).eq(0)  查到到第一个li标签行
+</code></pre><h2 id="2-操作"><a href="#2-操作" class="headerlink" title="2.操作"></a>2.操作</h2><p>属性</p>
+<pre><code>添加指定属性，并删除兄弟的属性
+ $(ths).addClass(&apos;current&apos;).siblings().removeClass(&apos;current&apos;);
+
+attr：
+    其他所有标签都适用，除checkbox、redio之外
+prop：
+    checkbox、redio
+
+jQuery循环：
+
+    var userList = [&apos;swht&apos;,&apos;shen&apos;,&apos;test&apos;];
+    $.each(userList,fun(i,item){
+        console.log(i,item);
+    })    
+</code></pre><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>文档处理</p>
+<pre><code>增加
+append(content|fn)
+    在指定的标签内部后面追加
+appendTo(content)
+    把指定的某个标签追加某个标签内部后面
+prepend(content|fn)
+    在指定的标签内部前面追加
+prependTo(content)
+    把指定的某个标签追加某个标签内部前面
+包裹
+wrap(html|ele|fn)
+unwrap()
+wrapAll(html|ele)
+wrapInner(html|ele|fn)
+
+删除
+empty()
+remove([expr])
+detach([expr])
+复制
+clone([Even[,deepEven]])
+</code></pre><p>事件</p>
+<pre><code>绑定事件：
+    1. 直接绑定ready(fn) 文本加载完之后执行事件绑定
+        1. $(document).ready(function(){
+
+            })
+        2. $(function(){
+
+            })
+    2. 委派delegate(s,[t],[d],fn)
+        1. $(&apos;ul&apos;).delegate(&apos;li&apos;,&apos;click&apos;,function(){
+
+           })
+
+    3. bind(type,[data],fn)
+        1. $(&apos;li&apos;).click(function(){
+
+            })
+        2. $(&apos;li&apos;).bind(&apos;click&apos;)
+        3. unbind
+</code></pre><p>AJAX</p>
+<pre><code>异步的javascript和xml
+ajax是对javascript和Dom的封装。
+ajax容易出现跨域的问题。
+$.ajax({
+    url:&quot;&quot;,
+    data:{},
+    type:&quot;&quot;,
+    dateType:&quot;&quot;,
+    jsonp:&quot;&quot;,
+    jsonpCallback:&quot;&quot;,
+    sucess:function(){},
+    error:function(){}
+})
+</code></pre><p>JQuery扩展</p>
+<pre><code>(function(arg){
+    arg.extend({
+      qinghua: function() {
+        return &quot;SB&quot;;
+      },
+      qinghua1: function() {
+        return this.each(function() { this.checked = false; });
+      }
+    });
+
+    arg.fn.extend({
+       sanjiang:function(){
+           return &quot;DSB&quot;
+       }
+    });
+})(jQuery);
+</code></pre><p>其他</p>
+<p>30款最好的 Bootstrap 3.0 免费主题和模板<br><a href="http://www.cnblogs.com/lhb25/p/30-free-bootstrap-templates.html" target="_blank" rel="external">http://www.cnblogs.com/lhb25/p/30-free-bootstrap-templates.html</a></p>
+<p>例子：</p>
+<pre><code>tab菜单
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;tab&lt;/title&gt;
+    &lt;style&gt;
+        .tab-box .box-menu{
+            background-color: #DDDDDD;
+            border: 1px solid #DDDDDD;
+            height: 33px;
+            line-height: 33px;
+        }
+        .box-menu a{
+            border-right: 1px solid #664747;
+            padding: 10px;
+            background-color: #425a66;;
+        }
+        .tab-box .box-body{
+            border: 1px solid #dddddd;
+        }
+        .hide{
+            display: none;
+        }
+         .current{
+            background-color: white;
+            color: black;
+            border-top: 2px solid red;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;tab-box&quot;&gt;
+        &lt;div class=&quot;box-menu&quot;&gt;
+            &lt;!--所有菜单--&gt;
+            &lt;a menu1=&quot;c1&quot; onclick=&quot;ChangeTab(this);&quot; class=&quot;current&quot;&gt;菜单一&lt;/a&gt;
+            &lt;a menu1=&quot;c2&quot; onclick=&quot;ChangeTab(this);&quot;&gt;菜单二&lt;/a&gt;
+            &lt;a menu1=&quot;c3&quot; onclick=&quot;ChangeTab(this);&quot;&gt;菜单三&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;box-body&quot;&gt;
+            &lt;!--所有内容--&gt;
+            &lt;div id=&quot;c1&quot;&gt;内容一&lt;/div&gt;
+            &lt;div id=&quot;c2&quot; class=&quot;hide&quot;&gt;内容二&lt;/div&gt;
+            &lt;div id=&quot;c3&quot; class=&quot;hide&quot;&gt;内容三&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;jquery-2.2.3.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        function ChangeTab(ths){
+            $(ths).addClass(&apos;current&apos;).siblings().removeClass(&apos;current&apos;);
+            var contentId = $(ths).attr(&apos;menu1&apos;);
+            var temp = &quot;#&quot; + contentId;
+            $(temp).removeClass(&apos;hide&apos;).siblings().addClass(&apos;hide&apos;);
+
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+全选、反选、取消
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;全选、反选、取消&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;input type=&quot;button&quot; value=&quot;全选&quot; onclick=&quot;selectAll();&quot; /&gt;
+        &lt;input type=&quot;button&quot; value=&quot;反选&quot; onclick=&quot;selectInvert();&quot; /&gt;
+        &lt;input type=&quot;button&quot; value=&quot;取消&quot; onclick=&quot;clearAll();&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;table border=&quot;1&quot;&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;input type=&quot;checkbox&quot; /&gt;
+                &lt;/td&gt;
+                &lt;td&gt;
+                    第一章
+                &lt;/td&gt;
+                &lt;td&gt;
+                    第一篇
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;input type=&quot;checkbox&quot; /&gt;
+                &lt;/td&gt;
+                &lt;td&gt;
+                    第二章
+                &lt;/td&gt;
+                &lt;td&gt;
+                    第一篇
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;input type=&quot;checkbox&quot; /&gt;
+                &lt;/td&gt;
+                &lt;td&gt;
+                   第三章
+                &lt;/td&gt;
+                &lt;td&gt;
+                    第一篇
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;input type=&quot;checkbox&quot; /&gt;
+                &lt;/td&gt;
+                &lt;td&gt;
+                   第四章
+                &lt;/td&gt;
+                &lt;td&gt;
+                    第一篇
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+    &lt;script src=&quot;jquery-2.2.3.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        function selectAll(){
+            $(&quot;table input[type=&apos;checkbox&apos;]&quot;).prop(&apos;checked&apos;,true);
+        }
+        function selectInvert(){
+            $(&quot;table input[type=&apos;checkbox&apos;]&quot;).each(function(){
+               var isChecked = $(this).prop(&apos;checked&apos;);
+                if(isChecked){
+                    $(this).prop(&apos;checked&apos;,false);
+                }else{
+                    $(this).prop(&apos;checked&apos;,true);
+                }
+            });
+        }
+        function clearAll(){
+            $(&quot;table input[type=&apos;checkbox&apos;]&quot;).prop(&apos;checked&apos;,false);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+ajax_jsonp
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;ajax_jsonp&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;input type=&quot;button&quot; value=&quot;获取电视节目&quot; onclick=&quot;Ajax_jsonp();&quot;/&gt;
+    &lt;dev id=&quot;contaner&quot;&gt;
+
+    &lt;/dev&gt;
+    &lt;script src=&quot;jquery-2.2.3.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        function Ajax_jsonp(){
+            $.ajax({
+                url:&quot;http://www.jxntv.cn/data/jmd-jxtv2.html&quot;,
+                data:{},
+                type:&quot;GET&quot;,
+                dataType:&quot;jsonp&quot;,
+                jsonp:&quot;callback&quot;,
+                jsonpCallback:&quot;list&quot;,
+                success:function(arg){
+                    console.log(arg);
+                    var jsonArray = arg.data;
+                    $.each(jsonArray,function(k,v){
+                        var week = v.week;
+                        var label = &quot;&lt;h1&gt;&quot; + week + &quot;&lt;/h1&gt;&quot;;
+                        $(&quot;#contaner&quot;).append(label);
+                        var listArray = v.list;
+                        $.each(listArray,function(kk,vv){
+                            var link = vv.link;
+                            var name = vv.name;
+                            var time = vv.time;
+                            var labelNew = &quot;&lt;a href=&apos;&quot; + link + &quot;&apos;&gt;&quot; + time+name + &quot;&lt;/a&gt;&lt;br/&gt;&quot;;
+                            $(&quot;#contaner&quot;).append(labelNew);
+                        })
+                    })
+                },
+                error:function(arg){
+                    console.log(arg);
+                }
+            })
+        }
+    &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/21/s12-20160421-day14/" data-id="ciq8usaeo000logj5lw9qiw3d" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/30/s12-20160430-day15/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          pytho自动化开发 day15
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/09/s12-20160409-day13/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">pytho自动化开发 day13</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python开发之路/" style="font-size: 10px;">Python开发之路</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/14/s12-20160514-day17/">pytho自动化开发 day17</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/07/s12-20160507-day16/">pytho自动化开发 day16</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/30/s12-20160430-day15/">pytho自动化开发 day15</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/s12-20160421-day14/">pytho自动化开发 day14</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/09/s12-20160409-day13/">pytho自动化开发 day13</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 南非波波<br>
+      Powered by <a href="http://blog.songqingbo,cn/" target="_blank">南非波波</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="http://www.cnblogs.com/songqingbo/" class="mobile-nav-link">cnblogs博客</a>
+  
+    <a href="https://github.com/swht" class="mobile-nav-link">github</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-2.2.3.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

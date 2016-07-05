@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>pytho自动化开发 day02 | 南非波波博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Author:@南非波波
+作者注：
+经过第一天的学习以及后续的代码练习,给自己一个约定的代码风格、格式：
+1. 模块名：
+    模块应该使用尽可能短的、全小写命名，可以在模块命名时使用下划线以增强可读性。
+    例如：
+        login_shop.py
+2. 类名定义：
+    由于类名要求首字母必须大写，所以这样定义：
+    class MyFristClass:  # 类名有三">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pytho自动化开发 day02">
+<meta property="og:url" content="http://yoursite.com/2016/01/09/s12-20160109-day02/index.html">
+<meta property="og:site_name" content="南非波波博客">
+<meta property="og:description" content="Author:@南非波波
+作者注：
+经过第一天的学习以及后续的代码练习,给自己一个约定的代码风格、格式：
+1. 模块名：
+    模块应该使用尽可能短的、全小写命名，可以在模块命名时使用下划线以增强可读性。
+    例如：
+        login_shop.py
+2. 类名定义：
+    由于类名要求首字母必须大写，所以这样定义：
+    class MyFristClass:  # 类名有三">
+<meta property="og:image" content="http://i.imgur.com/tieH6Vh.png">
+<meta property="og:image" content="http://i.imgur.com/U6KPbcR.png">
+<meta property="og:image" content="http://i.imgur.com/O2wZsUd.png">
+<meta property="og:updated_time" content="2016-07-04T07:41:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pytho自动化开发 day02">
+<meta name="twitter:description" content="Author:@南非波波
+作者注：
+经过第一天的学习以及后续的代码练习,给自己一个约定的代码风格、格式：
+1. 模块名：
+    模块应该使用尽可能短的、全小写命名，可以在模块命名时使用下划线以增强可读性。
+    例如：
+        login_shop.py
+2. 类名定义：
+    由于类名要求首字母必须大写，所以这样定义：
+    class MyFristClass:  # 类名有三">
+<meta name="twitter:image" content="http://i.imgur.com/tieH6Vh.png">
+  
+    <link rel="alternate" href="/atom.xml" title="南非波波博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">南非波波博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="http://www.cnblogs.com/songqingbo/">cnblogs博客</a>
+        
+          <a class="main-nav-link" href="https://github.com/swht">github</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-s12-20160109-day02" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/09/s12-20160109-day02/" class="article-date">
+  <time datetime="2016-01-09T07:30:00.000Z" itemprop="datePublished">2016-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pytho自动化开发 day02
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Author:@南非波波</p>
+<p>作者注：</p>
+<pre><code>经过第一天的学习以及后续的代码练习,给自己一个约定的代码风格、格式：
+1. 模块名：
+    模块应该使用尽可能短的、全小写命名，可以在模块命名时使用下划线以增强可读性。
+    例如：
+        login_shop.py
+2. 类名定义：
+    由于类名要求首字母必须大写，所以这样定义：
+    class MyFristClass:  # 类名有三个单词组成，分别首字母大写
+        def __init__(self,a):
+            pass
+3. 函数名定义：
+    普通函数：
+        选择使用字母小写，单词直接使用下划线_分割：
+            shop_mag(users):
+                pass
+4. 变量名定义：
+    全局变量名：
+        字母全大写： SHOPLIST
+    普通变量名：
+        字母小写，单词分割选择使用首字母大写： shopUsers
+</code></pre><p>以上规范并不是必须，但是作为个人的编程习惯而言，是一种很好的养成约束。</p>
+<p>课程大纲地址： <a href="http://www.cnblogs.com/wupeiqi/articles/5115190.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5115190.html</a></p>
+<h3 id="python知识拾忆："><a href="#python知识拾忆：" class="headerlink" title="python知识拾忆："></a>python知识拾忆：</h3><p>Python2.x与Python3.x关于dict.keys()返回值的类型对比：</p>
+<p><img src="http://i.imgur.com/tieH6Vh.png" alt=""></p>
+<h4 id="一、python种类"><a href="#一、python种类" class="headerlink" title="一、python种类"></a>一、python种类</h4><p>关于Python的一些版本内部执行的一些原理。从原理上来看待执行快慢的类型，从而选择自己需要的去学习。目前而言，最火的就是cpython了，这也是官方版本的Python。后面出现的pypy渐渐崭露头角，用银角大王的话讲：这货日后指定会火…</p>
+<pre><code>1. cpython  使用c解释器生产.pyc(字节码)，然后转换成机器码，最后到cpu
+2. javapython java解释器--&gt;字节码--&gt;机器码--&gt;cpu
+3. IronPython C#解释器--&gt;字节码 --&gt; 机器码--&gt; cpu
+4. pypy  内部使用自己的解释器编译成字节码--&gt;机器码.最后在外部执行的时候直接是机器码，速度要快
+</code></pre><p>银角大王推荐阅读书：<strong>《python源码剖析》</strong></p>
+<h4 id="二、字节码"><a href="#二、字节码" class="headerlink" title="二、字节码"></a>二、字节码</h4><p>在Python内部字节码直接的转换过程如图：</p>
+<p><img src="http://i.imgur.com/U6KPbcR.png" alt=""></p>
+<pre><code>python中进行字节码之间的转换流程大概是这样的：字节码类型转换从utf-8转换成gbk类型，首先需要执行解码变成Unicode类型，然后再由Unicode类型编码成gbk类型。[图片来源：银角大王课堂笔记]
+</code></pre><h4 id="三、字符串"><a href="#三、字符串" class="headerlink" title="三、字符串"></a>三、字符串</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126957.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126957.html</a></p>
+<p>字符串的常用操作包括但不限于以下操作：</p>
+<pre><code>字符串的替换、删除、截取、复制、连接、比较、查找、分割等
+</code></pre><p>这里将对字符串的内置操作方法进行总结归纳，重点是以示例的方式进行展示。</p>
+<pre><code>使用type获取创建对象的类 type(name)
+使用dir获取类的成员dir(name)
+使用vars获取类的成员和各个成员的值
+</code></pre><p><strong>capitalize</strong></p>
+<pre><code>功能：字符串首字母大写
+name = &apos;swhthaitun&apos;
+name.capitalize()
+返回结果：&apos;Swht&apos;
+</code></pre><p><strong>casefold()首字母小写</strong></p>
+<pre><code>name = &apos;HelloWord&apos;
+reault = name.casefold()
+print(reault)
+返回结果：helloword
+</code></pre><p><strong>casefold</strong></p>
+<pre><code>功能：将字符串中所有的大写字母转换成小写字母
+s1 = &quot;[&apos;bsondump&apos;, &apos;mongo&apos;, &apos;mongod&apos;, &apos;mongodump&apos;, &apos;mongoexport&apos;, &apos;mongofiles&apos;, &apos;mongoimport&apos;, &apos;mongooplog&apos;, &apos;mongoperf&apos;, &apos;mongoLLKJKKore&apos;, &apos;mongos&apos;, &apos;UUUngostat&apos;, &apos;monGGtop&apos;]&quot;
+s1.casefold()
+返回结果：&quot;[&apos;bsondump&apos;, &apos;mongo&apos;, &apos;mongod&apos;, &apos;mongodump&apos;, &apos;mongoexport&apos;, &apos;mongofiles&apos;, &apos;mongoimport&apos;, &apos;mongooplog&apos;, &apos;mongoperf&apos;, &apos;mongollkjkkore&apos;, &apos;mongos&apos;, &apos;uuungostat&apos;, &apos;monggtop&apos;]&quot;
+</code></pre><p><strong>center</strong></p>
+<pre><code>功能：字符串宽度填充，使用原有字符串+填充字符构成指定长度的新的字符串
+name = &apos;swhthaitun&apos;
+name.center(15)
+返回结果：&apos;   swhthaitun  &apos; #默认以空格进行填充
+name.center(16,&apos;*&apos;)
+返回结果：&apos;***swhthaitun***&apos;
+
+功能：字符串居中，以‘*’分割(20为新产生字符串的总的宽度)
+name = &apos;HelloWord&apos;
+reault = name.center(20,&apos;*&apos;)
+print(reault)
+返回结果：*****HelloWord******
+</code></pre><p><strong>count</strong></p>
+<pre><code>功能：统计某个字符在字符串中出现的次数，或在字符串指定区间内完成上述操作
+name = &apos;swhthaitun&apos;
+name.count(&apos;h&apos;)
+返回结果：2
+name.count(&apos;h&apos;,0,3)  #从索引值0-3范围的字符中统计&apos;h&apos;出现的次数
+返回结果：1
+
+功能：统计子序列出现的次数
+name = &apos;HelloWord&apos;
+reault = name.count(&apos;W&apos;) #如果换成&apos;w&apos;，返回结果为0，python对大小写敏感
+print(reault)
+返回结果：1
+
+name = &apos;HelloWord&apos;
+reault = name.count(&apos;l&apos;,0,3) #统计单个字符出现的次数,可以指定起始范围,另外在python中起始范围讲究顾头不顾尾的原则，即[0,3)
+print(reault)
+</code></pre><p><strong>encode</strong></p>
+<pre><code>功能：对字符串进行编码操作
+name = &apos;swhthaitun&apos;
+name.encode()
+返回结果：b&apos;swhthaitun&apos;
+
+功能：转变字符串的编码
+name = &apos;南非波波&apos;
+reault = name.encode(&apos;gbk&apos;)
+print(reault)
+返回结果：b&apos;\xc4\xcf\xb7\xc7\xb2\xa8\xb2\xa8&apos;
+</code></pre><p><strong>endswith</strong></p>
+<pre><code>功能：判断字符串是否以某个字符串结尾的，返回值为bool型
+name = &apos;swhthaitun&apos;
+name.endswith(&apos;s&apos;)
+返回结果：False
+name.endswith(&apos;n&apos;)
+返回结果：True
+name.endswith(&apos;tun&apos;)
+返回结果：True
+
+name = &apos;Iamalatterboy&apos;
+reault = name.endswith(&apos;y&apos;)
+print(reault)
+返回结果：True
+</code></pre><p><strong>expandtabs</strong></p>
+<pre><code>功能：将制表符&apos;\t&apos;转换成指定宽度的tab键分割，默认tabsize=8
+li = &apos;sw\tht&apos;
+li.expandtabs(4)
+返回结果：&apos;sw  ht&apos;
+li.expandtabs()
+返回结果：&apos;sw      ht&apos;
+</code></pre><p><strong>find</strong></p>
+<pre><code>功能：在字符串中查找指定字符串，找不到时返回-1
+name = &apos;swht&apos;
+name.find(&apos;s&apos;)
+返回结果：0
+name.find(&apos;h&apos;)
+返回结果：2
+</code></pre><p><strong>format</strong></p>
+<pre><code>功能：格式化输出字符串
+li = &apos;I\&apos;m {},{}&apos; #两个&apos;{}&apos;是占位符
+li.format(&apos;swht&apos;,&apos;欢迎来中国&apos;)
+返回结果：&quot;I&apos;m swht,欢迎来中国&quot;
+参考：http://blog.chinaunix.net/uid-23802873-id-4477364.html
+</code></pre><p>__contains__ </p>
+<pre><code>功能：包含 --&gt;&apos;eal&apos; in name
+name = &apos;swhtkkskjj&apos;
+reault = name.__contains__(&apos;swht&apos;)
+print(reault)
+返回结果：True
+</code></pre><p><strong>index</strong></p>
+<pre><code>功能：在字符串中查找指定的字符串,找不到时直接报错
+name = &apos;swhthaitun&apos;
+name.index(&apos;w&apos;)
+返回结果：1    
+</code></pre><p><strong>join()</strong></p>
+<pre><code>功能：字符串连接
+name = &apos;swhthaitun&apos;
+&apos;*&apos;.join(name)
+返回结果：&apos;s*w*h*t*h*a*i*t*u*n&apos;
+</code></pre><p><strong>isalnum</strong></p>
+<pre><code>功能：检查判断字符串是否包含字母数字字符（http://www.yiibai.com/python/string_isalnum.html）
+name = &apos;swhthaitun&apos;
+name.isalnum()
+返回结果：True
+</code></pre><p><strong>isalpha</strong></p>
+<pre><code>功能：检测字符串是否只由字母组成（http://www.runoob.com/python/att-string-isalpha.html）
+name = &apos;swhthaitun&apos;
+name.isalpha()
+返回结果：True
+</code></pre><p><strong>isdecimal</strong></p>
+<pre><code>功能：检查字符串是否只包含十进制字符。这种方法只存在于unicode对象。（参考：http://www.runoob.com/python/att-string-isdecimal.html）
+name = &apos;swhthaitun&apos;
+name.isdecimal()
+返回结果：False
+</code></pre><p><strong>isdigit</strong></p>
+<pre><code>功能：检测字符串是否只由数字组成。(参考:http://www.runoob.com/python/att-string-isdigit.html)
+name = &apos;swhthaitun&apos;
+name.isdigit()
+返回结果：False
+</code></pre><p><strong>isidentifier</strong></p>
+<pre><code>功能：检测字符串是否是字母开头
+name = &apos;swhthaitun&apos;
+name.isidentifier()
+返回结果：True
+name = &apos;1swhthaitun&apos;
+name.isidentifier()
+返回结果：False
+</code></pre><p><strong>isnumeric</strong></p>
+<pre><code>功能：检测字符串是否只由数字组成。这种方法是只针对unicode对象。
+name = &apos;swhthaitun&apos;
+name.isnumeric()
+返回结果：False
+Li = &apos;5523&apos;
+Li.isnumeric()
+返回结果：True
+</code></pre><p><strong>isprintable</strong></p>
+<pre><code>功能：判断字符串中所有字符是否都属于可见字符
+a = &quot;\tPuppy&quot;
+a.isprintable()
+返回结果：False
+name = &apos;swhthaitun&apos;
+name.isprintable()
+返回结果：True
+</code></pre><p><strong>isspace</strong></p>
+<pre><code>功能：检测字符串是否为空格
+name = &apos;swhthaitun&apos;
+name.isspace()
+返回结果：False
+Li = &apos; &apos;
+Li.isspace()
+返回结果：True
+</code></pre><p><strong>istitle</strong></p>
+<pre><code>功能：判断字符串是否适合当作标题（其实就是每个单词首字母大写）
+a = &quot;a puppy&quot;
+b = &quot;Puppy&quot;
+a.istitle()
+返回结果：False
+b.istitle()
+返回结果：True
+</code></pre><p><strong>isupper</strong></p>
+<pre><code>功能：判断字符串中所有字母字符是否都是大写字母
+a = &quot;puppy&quot;
+b = &quot;PUPPY&quot;
+a.isupper()
+返回结果：False
+b.isupper()
+返回结果：True
+</code></pre><p><strong>ljust</strong></p>
+<pre><code>功能：返回一个原字符串左对齐,并使用空格填充至指定长度的新字符串。如果指定的长度小于原字符串的长度则返回原字符串。（参考：http://www.runoob.com/python/att-string-ljust.html）
+语法：str.ljust(width[, fillchar])
+     width -- 指定字符串长度。
+     fillchar -- 填充字符，默认为空格。
+name = &apos;swhthaitun&apos;
+name.ljust(50,&apos;*&apos;)
+返回结果：&apos;swhthaitun****************************************&apos;
+</code></pre><p><strong>lower</strong></p>
+<pre><code>功能：将所有的字母转换成小写字母
+name = &apos;SWHT&apos;
+name.lower()
+返回结果：&apos;swht&apos;
+</code></pre><p><strong>lstrip</strong></p>
+<pre><code>功能：去除字符串左边开头的空格
+name = &apos;  swht   &apos;
+name.lstrip()
+返回结果：&apos;swht   &apos;
+</code></pre><p><strong>rstrip</strong></p>
+<pre><code>功能：去除字符串右边结尾的空格
+name = &apos;  swht   &apos;
+name.rstrip()
+返回结果：&apos;   swht&apos;
+</code></pre><p><strong>strip</strong></p>
+<pre><code>功能：去除字符串两边的空格
+name = &apos;  swht   &apos;
+name.rstrip()
+返回结果：&apos;swht&apos;
+</code></pre><p><strong>maketrans</strong></p>
+<pre><code>功能：用于创建字符映射的转换表，对于接受两个参数的最简单的调用方式，第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标。
+注：两个字符串的长度必须相同，为一一对应的关系。
+语法：str.maketrans(intab, outtab)
+参数：intab -- 字符串中要替代的字符组成的字符串。
+      outtab -- 相应的映射字符的字符串。
+intab = &quot;swhtr&quot;
+outtab = &quot;12345&quot;
+name = &quot;hjjksknsnjmk&quot;
+name.maketrans(intab, outtab)
+返回结果：{104: 51, 114: 53, 115: 49, 116: 52, 119: 50}
+</code></pre><p><strong>partition</strong></p>
+<pre><code>功能：根据指定的分隔符将字符串进行分割。
+    如果字符串包含指定的分隔符，则返回一个3元的元组，第一个为分隔符左边的子串，第二个为分隔符本身，第三个为分隔符右边的子串。
+name = &apos;swht&apos;
+li = &apos;hhsslswhtolljm&apos;
+li.partition(name)
+返回结果：(&apos;hhssl&apos;, &apos;swht&apos;, &apos;olljm&apos;)
+</code></pre><p><strong>replace</strong></p>
+<pre><code>功能：把字符串中的 old（旧字符串） 替换成 new(新字符串)，如果指定第三个参数max，则替换不超过 max 次。
+语法：str.replace(old, new[, max])
+参数：old -- 将被替换的子字符串。
+     new -- 新字符串，用于替换old子字符串。
+     max -- 可选字符串, 替换不超过 max 次
+str = &quot;this is string example....wow!!! this is really string&quot;
+str.replace(&quot;is&quot;, &quot;was&quot;)
+返回结果：&apos;thwas was string example....wow!!! thwas was really string&apos;
+str.replace(&quot;is&quot;, &quot;was&quot;, 3)
+返回结果：&apos;thwas was string example....wow!!! thwas is really string&apos;
+</code></pre><p><strong>split</strong></p>
+<pre><code>功能：字符串分割，默认是空格
+name.split()
+返回结果：[&apos;swht&apos;]
+name.split(&apos;s&apos;) #以&apos;s&apos;字符进行分割
+返回结果：[&apos;&apos;, &apos;wht&apos;]
+</code></pre><p><strong>__add__</strong></p>
+<pre><code>功能：在字符串后面增加指定的字符或字符串
+name = &apos;swht&apos;
+name.__add__(&apos;e&apos;)
+返回结果：&apos;swhte&apos;
+li = &apos;hjh&apos;
+name.__add__(li)
+返回结果：&apos;swhthjh&apos;
+</code></pre><p><strong>__contains__</strong></p>
+<pre><code>功能：判断指定字符串是否包含在字符串中,返回值为True和False
+name = &apos;swht&apos;
+name.__contains__(&apos;s&apos;)
+返回结果：True
+</code></pre><p><strong>__eq__</strong></p>
+<pre><code>功能：判断字符串是否相等，返回值为True和False
+name = &apos;swht&apos;
+li = &apos;test&apos;
+name.__eq__(li)
+返回结果：False        
+</code></pre><p><strong>splitlines</strong>    </p>
+<pre><code>功能：按照行分隔，返回一个包含各行作为元素的列表，如果 num 指定则仅切片 num 个行.
+语法：str.splitlines( num=string.count(&apos;\n&apos;))
+参数：num -- 分割行的次数
+Li = &quot;Line1-a b c d e f\nLine2- a b c\n\nLine4- a b c d&quot;
+Li.splitlines(0)
+返回结果：[&apos;Line1-a b c d e f&apos;, &apos;Line2- a b c&apos;, &apos;&apos;, &apos;Line4- a b c d&apos;]
+Li.splitlines(1)
+返回结果：[&apos;Line1-a b c d e f\n&apos;, &apos;Line2- a b c\n&apos;, &apos;\n&apos;, &apos;Line4- a b c d&apos;]
+</code></pre><p><strong>startswith</strong></p>
+<pre><code>功能：判断一个字符串是否以某个或几个字符开始，结果以True或者False返回。
+name = &quot;swhtlllds&quot;
+name.startswith(&apos;s&apos;)
+返回结果：True
+</code></pre><p><strong>endswith</strong></p>
+<pre><code>功能：判断一个字符串是否以某个或几个字符结束，结果以True或者False返回。
+name = &quot;swhtlllds&quot;
+name.endswith(&apos;ds&apos;)
+返回结果：True
+</code></pre><p><strong>swapcase</strong></p>
+<pre><code>功能：用于对字符串的大小写字母进行转换。
+name = &apos;swht&apos;
+name.swapcase()
+返回结果：&apos;SWHT&apos;
+name = &apos;Swht&apos;
+name.swapcase()
+返回结果：&apos;sWHT&apos;
+</code></pre><p><strong>upper</strong></p>
+<pre><code>功能：将字符串中的小写字母转为大写字母
+name = &apos;swht&apos;
+name.swapcase()
+返回结果：&apos;SWHT&apos;
+</code></pre><p><strong>title</strong></p>
+<pre><code>功能：进行标题转换,即单词首字母大写
+name = &apos;swht ni li&apos;
+name.title()
+返回结果： &apos;Swht Ni Li&apos;
+</code></pre><p><strong>translate</strong></p>
+<pre><code>功能：根据参数table给出的表(包含 256 个字符)转换字符串的字符, 要过滤掉的字符放到 del 参数中。
+方法：str.translate(table[, deletechars]);
+参数：table -- 翻译表，翻译表是通过maketrans方法转换而来。
+     deletechars -- 字符串中要过滤的字符列表。
+intab = &quot;aeiou&quot;
+outtab = &quot;12345&quot;
+trantab = maketrans(intab, outtab)
+
+str = &quot;this is string example....wow!!!&quot;;
+print str.translate(trantab);
+返回结果：th3s 3s str3ng 2x1mpl2....w4w!!!
+</code></pre><p><strong>zfill</strong></p>
+<pre><code>功能：垫零左侧的字符串，以填补宽度
+语法：str.zfill(width)
+参数：width：最后的字符串宽度
+str = &quot;this is string example....wow!!!&quot;        
+print str.zfill(40)
+print str.zfill(50)
+返回结果：00000000this is string example....wow!!!
+         000000000000000000this is string example....wow!!!
+</code></pre><h4 id="四、列表"><a href="#四、列表" class="headerlink" title="四、列表"></a>四、列表</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126943.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126943.html</a></p>
+<p>列表的基本操作示例展示：</p>
+<p><strong>append</strong></p>
+<pre><code>功能：列表追加元素
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;]
+name.append(&apos;sdsd&apos;)
+返回结果：name
+        [&apos;sd&apos;, &apos;dfdf&apos;, &apos;drer&apos;, &apos;sdsd&apos;]
+</code></pre><p><strong>clear</strong></p>
+<pre><code>功能：情况列表元素
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;]
+name.clear()
+返回结果：name
+         []
+</code></pre><p><strong>copy</strong></p>
+<pre><code>功能：浅拷贝，即只拷贝第一层的元素
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;]
+li = [&apos;ssd&apos;]
+li = name.copy()
+返回结果：li
+         [&apos;sd&apos;, &apos;dfdf&apos;, &apos;drer&apos;]
+
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,[&apos;sddss&apos;,&apos;sdsdsd&apos;]]
+li = [&apos;ssd&apos;]
+li = name.copy()
+返回结果：li
+[&apos;sd&apos;, &apos;dfdf&apos;, &apos;drer&apos;, [&apos;sddss&apos;, &apos;sdsdsd&apos;]]
+</code></pre><p><strong>count</strong></p>
+<pre><code>功能：统计列表指定元素个数
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,[&apos;sddss&apos;,&apos;sdsdsd&apos;]]
+name.count(&apos;sd&apos;)
+返回结果：1
+li = [&apos;sd&apos;,&apos;sdsds&apos;,[&apos;sd&apos;,&apos;dffdg&apos;,],]
+li.count(&apos;sd&apos;) #只统计第一层的元素个数
+返回结果：1
+</code></pre><p><strong>extend</strong></p>
+<pre><code>功能：追加字符元素或列表元素
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,[&apos;sddss&apos;,&apos;sdsdsd&apos;]]
+li = [&apos;sd&apos;,&apos;sdsds&apos;,[&apos;sd&apos;,&apos;dffdg&apos;,],]
+name.extend(&apos;ss&apos;)
+返回结果：name
+[&apos;sd&apos;, &apos;dfdf&apos;, &apos;drer&apos;, [&apos;sddss&apos;, &apos;sdsdsd&apos;], &apos;s&apos;, &apos;s&apos;]
+name.extend(&apos;d&apos;)
+返回结果：name
+[&apos;sd&apos;, &apos;dfdf&apos;, &apos;drer&apos;, [&apos;sddss&apos;, &apos;sdsdsd&apos;], &apos;s&apos;, &apos;s&apos;, &apos;d&apos;]
+name.extend(li)
+返回结果：name
+[&apos;sd&apos;, &apos;dfdf&apos;, &apos;drer&apos;, [&apos;sddss&apos;, &apos;sdsdsd&apos;], &apos;s&apos;, &apos;s&apos;, &apos;d&apos;, &apos;sd&apos;, &apos;sdsds&apos;, [&apos;sd&apos;, &apos;dffdg&apos;]]
+</code></pre><p><strong>index</strong></p>
+<pre><code>功能：定位列表中某元素
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,[&apos;sddss&apos;,&apos;sdsdsd&apos;]]
+name.index(&apos;sd&apos;)
+返回结果：0
+name.index(&apos;drer&apos;)
+返回结果：2
+返回结果：name.index(&apos;dr&apos;)  #当出现某元素不在列表中的时候会直接报错
+        Traceback (most recent call last):
+          File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+        ValueError: &apos;dr&apos; is not in list
+</code></pre><p><strong>insert</strong></p>
+<pre><code>功能：在指定索引位置的元素前面插入新的元素
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,[&apos;sddss&apos;,&apos;sdsdsd&apos;]]
+name.insert(3,&apos;sd&apos;)
+返回结果：name
+[&apos;sd&apos;, &apos;dfdf&apos;, &apos;drer&apos;, &apos;sd&apos;, [&apos;sddss&apos;, &apos;sdsdsd&apos;]]
+</code></pre><p><strong>pop</strong></p>
+<pre><code>功能：删除指定索引值的元素,返回值为当前删除的元素的值。不指定索引值，默认删除最后一个元素
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,[&apos;sddss&apos;,&apos;sdsdsd&apos;]]
+name.pop(3)
+返回结果：&apos;sd&apos;
+</code></pre><p><strong>remove</strong></p>
+<pre><code>功能：删除列表中指定的元素
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,[&apos;sddss&apos;,&apos;sdsdsd&apos;]]
+name.remove(&apos;sd&apos;)
+name
+返回结果：[&apos;dfdf&apos;, &apos;drer&apos;, [&apos;sddss&apos;, &apos;sdsdsd&apos;]]
+</code></pre><p><strong>reverse</strong></p>
+<pre><code>功能：用于反向列表中元素。
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,[&apos;sddss&apos;,&apos;sdsdsd&apos;]]
+name.reverse()
+name
+返回结果：[[&apos;sddss&apos;, &apos;sdsdsd&apos;], &apos;drer&apos;, &apos;dfdf&apos;, &apos;sd&apos;]
+</code></pre><p><strong>sort</strong></p>
+<pre><code>功能：对单层列表进行元素的排序
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,]
+name.sort()
+name
+返回结果：[&apos;dfdf&apos;, &apos;drer&apos;, &apos;sd&apos;]
+
+name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,[&apos;sddss&apos;,&apos;sdsdsd&apos;]]
+name.sort() #报错的
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+</code></pre><h4 id="五、元组"><a href="#五、元组" class="headerlink" title="五、元组"></a>五、元组</h4><p>关于元组的常用操作，请参考：<a href="http://www.runoob.com/python/python-tuples.html" target="_blank" rel="external">http://www.runoob.com/python/python-tuples.html</a></p>
+<p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126947.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126947.html</a></p>
+<p>元组的元素不可修改    ，元组的元素的元素可修改</p>
+<p><strong>count(self,value)</strong></p>
+<pre><code>功能：统计当前元组中某元素的个数
+tup = (55,77,85,55,96,99,22,55,)
+tup.count(55)
+返回结果：3 
+备注：元素‘55’在元组tup中出现了3次
+</code></pre><p><strong>index(self, value, start=None, stop=None)</strong></p>
+<pre><code>功能：获取元素在元组中的索引值,对于重复的元素,默认获取从左起第一个元素的索引值
+tup = (55,77,85,55,96,99,22,55,)
+tup.index(55)
+返回结果：0
+tup.index(85)
+返回结果：2
+tup.index(55,2,7)
+返回结果：3
+</code></pre><p><strong>__add__</strong></p>
+<pre><code>功能：将另一个元组追加到当前元组后面.__add__()只接收元组类型的序列
+tup1 = (12,33,566,78,)
+tup2 = (55,66,77,)
+tup1.__add__(tup2)
+返回结果：(12,33,566,78,55,66,77,)
+</code></pre><p><strong>__contains__</strong></p>
+<pre><code>功能：包含，判断某元素是否包含在元组中
+tup = (55,77,85,55,96,99,22,55,)
+tup.__contains__(55)
+返回结果：True  
+备注：返回值类型是bool型，该方法判断在对成员元素是否存在元组中，程序根据返回不同的bool值进行相应的值返回或者操作
+</code></pre><p><strong>__eq__</strong></p>
+<pre><code>功能：判断两个元组是否相等，返回值类型为bool型
+tup = (55,77,85,55,96,99,22,55,)
+tup1 = (55,77,85,55,96,99,22,551,)
+tup.__eq__(tup1)
+返回结果：False
+</code></pre><p><strong>__getattribute__</strong></p>
+<pre><code>pass
+</code></pre><p><strong>__getitem__</strong></p>
+<pre><code>功能：获取指定索引值的元素值
+tup = (55,77,85,55,96,99,22,55,)
+tup.__getitem__(5)
+返回结果：99
+</code></pre><p><strong>__getnewargs__</strong></p>
+<pre><code>功能：只是获取原来的元组？？无卵用
+tup = (55,77,85,55,96,99,22,55,)
+tup.__getnewargs__()
+返回结果：((55, 77, 85, 55, 96, 99, 22, 55),)
+</code></pre><p><strong>__ge__</strong></p>
+<pre><code>功能：判断当前元组是否大于等于某个元组
+tup = (55,77,85,55,96,99,22,55,)
+tup1 = (55,77,85,55,96,99,22,551,)
+tup.__ge__(tup1)
+返回结果：False #bool类型
+</code></pre><p><strong>__gt__</strong></p>
+<pre><code>功能：判断当前元组是否大于某个元组
+tup = (55,77,85,55,96,99,22,55,)
+tup1 = (55,77,85,55,96,99,22,551,)
+tup.__ge__(tup1)
+返回结果：False #bool类型
+</code></pre><p><strong>__hash__</strong></p>
+<pre><code>功能：计算元组的hash值
+tup = (55,77,85,55,96,99,22,55,)
+tup1 = (55,77,85,55,96,99,22,551,)
+tup.__hash__()
+返回结果：-2123087613
+tup1.__hash__()
+返回结果：1338854611
+</code></pre><p><strong>__init__</strong></p>
+<pre><code>功能：初始化作用，无返回值
+</code></pre><p><strong>__iter__</strong></p>
+<pre><code>功能：获取元组的内存地址
+tup = (55,77,85,55,96,99,22,55,)
+tup1 = (55,77,85,55,96,99,22,551,)
+tup.__iter__()
+返回结果：&lt;tuple_iterator object at 0x01C21F70&gt;
+tup1.__iter__()
+返回结果：&lt;tuple_iterator object at 0x01C21F50&gt;
+</code></pre><p><strong>__len__</strong></p>
+<pre><code>功能：获取元组的长度
+tup.__len__()  #该方法已经被放到python的内置函数中，可以使用len(tup)获取长度
+返回结果：8
+</code></pre><p><strong>__le__</strong></p>
+<pre><code>功能：判断当前元组是否小于等于某个元组
+tup = (55,77,85,55,96,99,22,55,)
+tup1 = (55,77,85,55,96,99,22,551,)
+tup.__le__(tup1)
+返回结果：True #bool类型
+</code></pre><p><strong>__lt__</strong></p>
+<pre><code>功能：判断当前元组是否小于某个元组
+tup = (55,77,85,55,96,99,22,55,)
+tup1 = (55,77,85,55,96,99,22,551,)
+tup.__lt__(tup1)
+返回结果：True #bool类型
+</code></pre><p><strong>__mul__</strong></p>
+<pre><code>功能：把当前元组按照某个值的倍数进行元组的扩展，产生新的元组
+tup = (55,77,85,55,96,99,22,55,)
+tup.__mul__(2)
+返回结果：(55, 77, 85, 55, 96, 99, 22, 55, 55, 77, 85, 55, 96, 99, 22, 55)
+tup.__iter__()
+返回结果：&lt;tuple_iterator object at 0x01C21F70&gt;
+tup.__mul__(2).__iter__()
+返回结果：&lt;tuple_iterator object at 0x01C2F050&gt;
+</code></pre><p><strong>__new__</strong></p>
+<pre><code>pass
+</code></pre><p><strong>__ne__</strong></p>
+<pre><code>功能：判断当前元组不等于某个元组
+tup = (55,77,85,55,96,99,22,55,)
+tup1 = (55,77,85,55,96,99,22,551,)
+tup.__ne__(tup1)
+返回结果：True #bool类型
+</code></pre><p><strong>__repr__</strong></p>
+<pre><code>功能：将元组转换成一个字符串
+tup = (55,77,85,55,96,99,22,55,)
+tup.__repr__()
+返回结果：&apos;(55, 77, 85, 55, 96, 99, 22, 55)&apos;
+ type(tup.__repr__())
+返回结果：&lt;class &apos;str&apos;&gt;
+</code></pre><p><strong>__rmul__</strong></p>
+<pre><code>功能：？？怎么感觉跟__mul__一个德行？？
+tup = (55,77,85,55,96,99,22,55,)
+tup.__rmul__(2)
+返回结果：(55, 77, 85, 55, 96, 99, 22, 55, 55, 77, 85, 55, 96, 99, 22, 55)
+</code></pre><h4 id="六、字典"><a href="#六、字典" class="headerlink" title="六、字典"></a>六、字典</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5127044.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5127044.html</a></p>
+<p>字典的常用操作：</p>
+<p><strong>clear</strong></p>
+<pre><code>功能：清空字典
+dict_li = {&apos;users&apos;:&apos;swht&apos;,&apos;age&apos;:&apos;18&apos;,}
+dict_li.clear()
+返回结果：dict_li
+        {}
+</code></pre><p><strong>copy</strong></p>
+<pre><code>功能：浅拷贝
+dict_li = {&apos;users&apos;:&apos;swht&apos;,&apos;age&apos;:&apos;18&apos;,}
+dict_li.copy()
+返回结果：{&apos;age&apos;: &apos;18&apos;, &apos;users&apos;: &apos;swht&apos;}
+dict_li = {&apos;users&apos;:&apos;swht&apos;,&apos;age&apos;:&apos;18&apos;,&apos;address&apos;:{&apos;sd&apos;:&apos;dz&apos;}}
+dict_li.copy()
+返回结果：{&apos;age&apos;: &apos;18&apos;, &apos;users&apos;: &apos;swht&apos;, &apos;address&apos;: {&apos;sd&apos;: &apos;dz&apos;}}
+</code></pre><p><strong>fromkeys()</strong></p>
+<pre><code>功能：用于创建一个新字典，以序列seq中元素做字典的键，value为字典所有键对应的初始值。
+语法：dict.fromkeys(seq[, value]))
+参数：seq -- 字典键值列表。
+     value -- 可选参数, 设置键序列（seq）的值。
+li = [&apos;users&apos;,&apos;age&apos;]
+dict_li = dict.fromkeys(li,&apos;swht&apos;)
+返回结果：dict_li
+        {&apos;age&apos;: &apos;swht&apos;, &apos;users&apos;: &apos;swht&apos;}
+</code></pre><p><strong>get</strong></p>
+<pre><code>功能：获取字典的value值
+dict_li = {&apos;users&apos;:&apos;swht&apos;,&apos;age&apos;:&apos;18&apos;,}
+dict_li.get(&apos;users&apos;)
+返回结果：&apos;swht&apos;
+</code></pre><p><strong>items</strong></p>
+<pre><code>功能：返回可遍历的(键, 值) 元组数组
+dict_li = {&apos;users&apos;:&apos;swht&apos;,&apos;age&apos;:&apos;18&apos;,}
+dict_li.items()
+返回结果：dict_items([(&apos;age&apos;, &apos;18&apos;), (&apos;users&apos;, &apos;swht&apos;)])
+</code></pre><p><strong>keys</strong></p>
+<pre><code>功能：获取字典可遍历的键
+dict_li = {&apos;users&apos;:&apos;swht&apos;,&apos;age&apos;:&apos;18&apos;,}
+dict_li.keys()
+返回结果：dict_keys([&apos;age&apos;, &apos;users&apos;])
+</code></pre><p><strong>pop</strong></p>
+<pre><code>功能：删除字典中指定的键值
+dict_li = {&apos;users&apos;:&apos;swht&apos;,&apos;age&apos;:&apos;18&apos;,}
+dict_li.pop(&apos;age&apos;)
+返回结果：&apos;18&apos;
+</code></pre><p><strong>popitem</strong></p>
+<pre><code>功能：随机返回并删除字典中的一对键和值
+dict_li = {&apos;users&apos;:&apos;swht&apos;,&apos;age&apos;:&apos;18&apos;,}
+dict_li.popitem()
+返回结果：(&apos;age&apos;, &apos;18&apos;)
+dict_li
+{&apos;users&apos;: &apos;swht&apos;}
+</code></pre><p><strong>setdefault</strong></p>
+<pre><code>功能：查找键值，如果键不已经存在于字典中，将会添加键并将值设为默认值。
+dict_li = {&apos;users&apos;:&apos;swht&apos;,&apos;age&apos;:&apos;18&apos;,}
+dict_li.setdefault(&apos;ID&apos;,5)
+返回结果：5
+dict_li
+返回结果：{&apos;age&apos;: &apos;18&apos;, &apos;users&apos;: &apos;swht&apos;, &apos;ID&apos;: 5}
+</code></pre><p><strong>update</strong></p>
+<pre><code>功能：把指定字典的键值更新到当前字典中
+dict_li = {&apos;users&apos;:&apos;swht&apos;,&apos;age&apos;:&apos;18&apos;,}
+dict_ai = {&apos;address&apos;:&apos;山东&apos;}
+dict_li.update(dict_ai)
+dict_li
+返回结果：{&apos;age&apos;: &apos;18&apos;, &apos;users&apos;: &apos;swht&apos;, &apos;address&apos;: &apos;山东&apos;}
+</code></pre><p><strong>values</strong></p>
+<pre><code>功能：获取字典的所有值
+dict_li = {&apos;age&apos;: &apos;18&apos;, &apos;users&apos;: &apos;swht&apos;, &apos;address&apos;: &apos;山东&apos;}
+dict_li.values()
+返回结果：dict_values([&apos;18&apos;, &apos;swht&apos;, &apos;山东&apos;])
+</code></pre><h3 id="七、set集合"><a href="#七、set集合" class="headerlink" title="七、set集合"></a>七、set集合</h3><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5128066.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5128066.html</a></p>
+<pre><code>set集合是一个无序且不重复的集合。
+创建一个set集合：
+    name = set(&apos;sdd&apos;)
+    name
+    返回结果：{&apos;d&apos;, &apos;s&apos;}
+</code></pre><p><strong>add</strong></p>
+<pre><code>功能：增加集合元素
+name = {&apos;d&apos;, &apos;s&apos;}
+name.add(&apos;d&apos;)
+name
+返回结果：{&apos;d&apos;, &apos;s&apos;}
+name.add(&apos;sd&apos;)
+name
+返回结果：{&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+</code></pre><p><strong>clear</strong></p>
+<pre><code>功能：清空集合元素
+name = {&apos;d&apos;, &apos;s&apos;}
+name.clear()
+name
+返回结果：{}
+</code></pre><p><strong>copy</strong></p>
+<pre><code>功能：浅拷贝
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+li = name.copy()
+返回结果：li
+        {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+</code></pre><p><strong>difference</strong></p>
+<pre><code>功能：取差集
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+li = set()
+name.difference(li)
+返回结果：name.difference()
+{&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+</code></pre><p><strong>difference_update</strong></p>
+<pre><code>功能：删除当前set中的所有包含在 new set 里的元素
+li = (&apos;s&apos;, &apos;d&apos;)
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+name.difference_update(li)
+name
+返回结果：{&apos;sd&apos;}
+</code></pre><p><strong>discard</strong></p>
+<pre><code>功能：移除元素
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+name.discard(&apos;s&apos;)
+返回结果：name 
+        {&apos;sd&apos;, &apos;d&apos;}
+</code></pre><p><strong>intersection</strong></p>
+<pre><code>功能：取交集,建立新的set集合
+li = (&apos;s&apos;, &apos;d&apos;)
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+name.intersection(li)
+返回结果：{&apos;d&apos;, &apos;s&apos;}
+</code></pre><p><strong>intersection_update</strong></p>
+<pre><code>功能：取交集,更新原来的set集合
+li = (&apos;s&apos;, &apos;d&apos;)
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+name.intersection_update(li)
+返回结果：{&apos;d&apos;, &apos;s&apos;}
+</code></pre><p><strong>isdisjoint</strong></p>
+<pre><code>功能：判断没有交集，返回True,否则,返回False
+li = {&apos;s&apos;, &apos;d&apos;}
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+name.isdisjoint(li)
+</code></pre><p><strong>issubset</strong></p>
+<pre><code>功能：判断是否是子集
+li = {&apos;s&apos;, &apos;d&apos;}
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+name.issubset(li)  #判断name是不是li的子集
+返回结果：False
+li.issubset(name)  #判断li是不是name的子集
+返回结果：True
+</code></pre><p><strong>issuperset</strong></p>
+<pre><code>功能：判断是否是父集
+li = {&apos;s&apos;, &apos;d&apos;}
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+name.issuperset(li)  #判断name是不是li的父集
+返回结果：True
+li.issuperset(name)  #判断li是不是name的父集
+返回结果：False
+</code></pre><p><strong>pop</strong></p>
+<pre><code>功能：移除集合元素
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+name.pop()
+返回结果：&apos;sd&apos; #随机删除集合元素
+se1 = {&apos;a&apos;,&apos;s&apos;,&apos;sb&apos;}
+se1.pop()
+返回结果：&apos;sb&apos;
+</code></pre><p><strong>remove</strong></p>
+<pre><code>功能：移除指定集合元素
+name = {&apos;sd&apos;,&apos;d&apos;,&apos;s&apos;}
+name.remove(&apos;s&apos;)
+返回结果：name
+{&apos;sd&apos;, &apos;d&apos;}
+</code></pre><p><strong>symmetric_difference</strong></p>
+<pre><code>功能：去两个集合的差集，建立新的set集合对象
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+li = {&apos;s&apos;, &apos;d&apos;}
+name.symmetric_difference(li)
+返回结果：{&apos;sd&apos;}
+</code></pre><p><strong>symmetric_difference_update</strong></p>
+<pre><code>功能：去两个集合的差集，更新原来的集合对象
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+li = {&apos;s&apos;, &apos;d&apos;}
+name.symmetric_difference_update(li)
+返回结果：{&apos;sd&apos;}
+</code></pre><p><strong>union</strong></p>
+<pre><code>功能：并集，创建新的对象
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+li = {&apos;s&apos;, &apos;d&apos;,&apos;h&apos;}
+name.union(li)
+返回结果：{&apos;h&apos;, &apos;s&apos;, &apos;d&apos;, &apos;sd&apos;}
+</code></pre><p><strong>update</strong></p>
+<pre><code>功能：更新已有集合
+name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
+name.update(&apos;df&apos;)
+name
+返回结果：{&apos;sd&apos;, &apos;d&apos;, &apos;f&apos;, &apos;s&apos;}
+</code></pre><h4 id="八、类与对象"><a href="#八、类与对象" class="headerlink" title="八、类与对象"></a>八、类与对象</h4><p><img src="http://i.imgur.com/O2wZsUd.png" alt=""></p>
+<p>对象</p>
+<pre><code>python中一切事物皆对象,对象是一开始就有的,只是我们无法访问它。访问对象需要以变量的形式去访问（即创建变量指向到对象的，变量即对对象的引用）
+在python中，一个对象的特征也称为属性（attribute）。它所具有的行为也称为方法（method）
+结论：对象=属性+方法
+</code></pre><p>类</p>
+<pre><code>在python中，把具有相同属性和方法的对象归为一个类（class）
+比如人类，动物，植物等等，这些都是类的概念。 
+类是对象的模板或蓝图，类是对象的抽象化，对象是类的实例化。类不代表具体的事物，而对象表示具体的事物。
+类包含描述对象的方法。
+</code></pre><h4 id="int"><a href="#int" class="headerlink" title="int"></a>int</h4><pre><code>取绝对值：
+    age = -19
+    age.__abs__() #int类函数调用
+    abs(-19) #内置函数方式操作
+取商和余数：
+    age = 95
+    age.__divmod__(10) #95/10 --&gt;(9,5)
+相加：
+    a = 5，b=6
+    a.__add__(b) #调用int的类函数add，相当于a + b  --&gt;11
+    a + b #内置函数方式操作
+</code></pre><p>作业：</p>
+<pre><code>1. 博客整理
+2. 购物商城实现
+    1. 商品展示，价格
+    2. 购物车添加商品（进行差异商品，同一种商品应该只存在一条数据）
+    3. 付款（根据钱进行判断是否可以满足付款）
+3. 预习
+    http://www.cnblogs.com/wupeiqi/articles/5115190.html  后面的部分
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/01/09/s12-20160109-day02/" data-id="ciq8usadz0003ogj5h7kj6cbc" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/16/s12-20160116-day03/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          pytho自动化开发 day03
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/16/s12-20151226-day01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">pytho自动化开发 day01</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Python开发之路/" style="font-size: 10px;">Python开发之路</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/14/s12-20160514-day17/">pytho自动化开发 day17</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/07/s12-20160507-day16/">pytho自动化开发 day16</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/30/s12-20160430-day15/">pytho自动化开发 day15</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/21/s12-20160421-day14/">pytho自动化开发 day14</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/09/s12-20160409-day13/">pytho自动化开发 day13</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 南非波波<br>
+      Powered by <a href="http://blog.songqingbo,cn/" target="_blank">南非波波</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="http://www.cnblogs.com/songqingbo/" class="mobile-nav-link">cnblogs博客</a>
+  
+    <a href="https://github.com/swht" class="mobile-nav-link">github</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-2.2.3.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
