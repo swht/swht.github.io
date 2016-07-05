@@ -4,17 +4,156 @@
   
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day17]]></title>
+      <title><![CDATA[python自动化开发 day17]]></title>
       <url>http://blog.songqingbo.cn/2016/05/14/s12-20160514-day17/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
 <p><a href="http://www.cnblogs.com/alex3714/articles/5474411.html" title="常用算法设计" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5474411.html</a></p>
-<p>一、</p>
-]]></content>
+<h2 id="一、冒泡排序算法"><a href="#一、冒泡排序算法" class="headerlink" title="一、冒泡排序算法"></a>一、冒泡排序算法</h2><pre><code>#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import random,time
+#m冒泡排序
+
+def bubble_up1(array):
+    &apos;&apos;&apos;
+    m冒泡排序算法
+    :param array:
+    :return: count: 6190862 time: 6.706383466720581
+    &apos;&apos;&apos;
+    count = 0
+    for i in range(len(array)):
+        for j in range(len(array) - 1 - i):
+            if array[j] &gt; array[j + 1]:
+                temp = array[j + 1]
+                array[j + 1] = array[j]
+                array[j] = temp
+                count += 1
+    print(&quot;count:&quot;, count)
+    print(&quot;array:&quot;, array)
+
+def bubble_up2(array):
+    &apos;&apos;&apos;
+    m冒泡排序算法
+    :param array:
+    :return:count: 5000 time: 3.825218915939331
+    &apos;&apos;&apos;
+    count = 0
+    for i in range(len(array)):
+        for j in range(len(array) - 1 - i):
+            big_temp = j
+            if array[big_temp] &gt; array[j + 1]:
+                big_temp = j + 1
+        temp = array[big_temp]
+        array[i] = array[big_temp]
+        array[big_temp] = temp
+        count += 1
+    print(&quot;count:&quot;, count)
+    print(&quot;array:&quot;, array)
+
+
+if __name__ == &apos;__main__&apos;:
+    array = []
+    for i in range(5000):
+        array.append(random.randrange(1000))
+
+    time_start = time.time()
+    bubble_up2(array)
+    time_end = time.time()
+    #
+    print(array[0:100])
+    print(&quot;time:&quot;,time_end - time_start)
+</code></pre><h2 id="二、-选择排序"><a href="#二、-选择排序" class="headerlink" title="二、 选择排序"></a>二、 选择排序</h2><pre><code>def select1(array):
+    &apos;&apos;&apos;
+    选择排序算法v1
+    :param array:
+    :return:count: 1996750 time: 3.2961885929107666
+    &apos;&apos;&apos;
+    count = 0
+    for i in range(len(array)):
+        for j in range(i,len(array)):
+            if array[i] &gt; array[j]:
+                temp = array[j]
+                array[j] = array[i]
+                array[i] = temp
+                count += 1
+    print(&quot;count:&quot;,count)
+    print(&quot;array:&quot;,array)
+
+def select2(array):
+    &apos;&apos;&apos;
+    选择排序算法v2
+    :param array:
+    :return:count: 5000 time: 2.4801418781280518
+    &apos;&apos;&apos;
+    count = 0
+    for i in range(len(array)):
+        smallest_index = i
+        for j in range(i,len(array)):
+            if array[smallest_index] &gt; array[j]:
+                smallest_index = j
+        temp = array[smallest_index]
+        array[smallest_index] = array[i]
+        array[i] = temp
+        count += 1
+    print(&quot;count:&quot;,count)
+    print(&quot;array:&quot;,array)
+</code></pre><h2 id="三、直接插入排序算法"><a href="#三、直接插入排序算法" class="headerlink" title="三、直接插入排序算法"></a>三、直接插入排序算法</h2><pre><code>def insert1(array):
+    &apos;&apos;&apos;
+    插入排序算法
+    :param array:
+    :return: count: 4999 time: 3.685210704803467
+    &apos;&apos;&apos;
+    count = 0
+    for index in range(1, len(array)):
+        current_val = array[index]  # 先记下来每次大循环走到的第几个元素的值
+        position = index
+
+        while position &gt; 0 and array[
+                    position - 1] &gt; current_val:  # 当前元素的左边的紧靠的元素比它大,要把左边的元素一个一个的往右移一位,给当前这个值插入到左边挪一个位置出来
+            array[position] = array[position - 1]  # 把左边的一个元素往右移一位
+            position -= 1  # 只一次左移只能把当前元素一个位置 ,还得继续左移只到此元素放到排序好的列表的适当位置 为止
+
+        array[position] = current_val  # 已经找到了左边排序好的列表里不小于current_val的元素的位置,把current_val放在这里
+        count += 1
+    print(&quot;count:&quot;, count)
+    print(array)
+</code></pre><h2 id="四、快速排序"><a href="#四、快速排序" class="headerlink" title="四、快速排序"></a>四、快速排序</h2><pre><code>def quick_sort(array,start,end):
+    &apos;&apos;&apos;
+    快速排序算法
+    :param array:
+    :param start:
+    :param end:
+    :return:time: 0.03600192070007324
+    &apos;&apos;&apos;
+    if start &gt;= end:
+        return
+    k = array[start]
+    left_flag = start
+    right_flag = end
+    while left_flag &lt; right_flag:
+        while array[right_flag] &gt; k:
+            right_flag -= 1
+        temp = array[right_flag]
+        array[left_flag] = array[right_flag]
+        array[right_flag] = temp
+
+        while array[left_flag] &lt;= k:
+            left_flag += 1
+        temp = array[left_flag]
+        array[left_flag] = array[right_flag]
+        array[right_flag] = temp
+
+    quick_sort(array,start,left_flag - 1)
+    quick_sort(array,left_flag + 1,end)
+</code></pre>]]></content>
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day16]]></title>
+      <title><![CDATA[python自动化开发 day16]]></title>
       <url>http://blog.songqingbo.cn/2016/05/07/s12-20160507-day16/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
@@ -238,7 +377,7 @@ python2 manage.py createsuperuser #创建一个超级用户
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day15]]></title>
+      <title><![CDATA[python自动化开发 day15]]></title>
       <url>http://blog.songqingbo.cn/2016/04/30/s12-20160430-day15/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
@@ -443,7 +582,7 @@ e.
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day14]]></title>
+      <title><![CDATA[python自动化开发 day14]]></title>
       <url>http://blog.songqingbo.cn/2016/04/21/s12-20160421-day14/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
@@ -747,7 +886,7 @@ ajax_jsonp
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day13]]></title>
+      <title><![CDATA[python自动化开发 day13]]></title>
       <url>http://blog.songqingbo.cn/2016/04/09/s12-20160409-day13/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
@@ -1064,7 +1203,7 @@ selector1,selector2,selectorN
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day10]]></title>
+      <title><![CDATA[python自动化开发 day10]]></title>
       <url>http://blog.songqingbo.cn/2016/03/19/s12-20160319-day10/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
@@ -2269,7 +2408,7 @@ subscriber.py
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day09]]></title>
+      <title><![CDATA[python自动化开发 day09]]></title>
       <url>http://blog.songqingbo.cn/2016/03/12/s12-20160312-day09/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
@@ -2803,7 +2942,7 @@ print(ssh_connet(&quot;192.168.137.5:22&quot;,&quot;root&quot;,private_key,&quot
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day08]]></title>
+      <title><![CDATA[python自动化开发 day08]]></title>
       <url>http://blog.songqingbo.cn/2016/03/05/s12-20160305-day08/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
@@ -3246,7 +3385,7 @@ manager
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day07]]></title>
+      <title><![CDATA[python自动化开发 day07]]></title>
       <url>http://blog.songqingbo.cn/2016/02/27/s12-20160227-day07/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
@@ -3669,7 +3808,7 @@ ssh_client.close()
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day06]]></title>
+      <title><![CDATA[python自动化开发 day06]]></title>
       <url>http://blog.songqingbo.cn/2016/02/20/s12-20160130-day06/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
@@ -3969,7 +4108,7 @@ print(&quot;t1[weapon]当前值:&quot;,t1.weapon)
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day05]]></title>
+      <title><![CDATA[python自动化开发 day05]]></title>
       <url>http://blog.songqingbo.cn/2016/01/30/s12-20160130-day05/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
@@ -4422,7 +4561,7 @@ ATM记录操作日志
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day04]]></title>
+      <title><![CDATA[python自动化开发 day04]]></title>
       <url>http://blog.songqingbo.cn/2016/01/23/s12-20160123-day04/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
@@ -4935,7 +5074,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day03]]></title>
+      <title><![CDATA[python自动化开发 day03]]></title>
       <url>http://blog.songqingbo.cn/2016/01/16/s12-20160116-day03/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
@@ -6054,7 +6193,7 @@ backend buy.oldboy.org
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day02]]></title>
+      <title><![CDATA[python自动化开发 day02]]></title>
       <url>http://blog.songqingbo.cn/2016/01/09/s12-20160109-day02/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>作者注：</p>
@@ -6850,7 +6989,7 @@ name
     </entry>
     
     <entry>
-      <title><![CDATA[pytho自动化开发 day01]]></title>
+      <title><![CDATA[python自动化开发 day01]]></title>
       <url>http://blog.songqingbo.cn/2015/12/16/s12-20151226-day01/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>作者注：</p>
