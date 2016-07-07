@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html lang="zh-CN">
 <head>
 
     <!--[if lt IE 9]>
@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://i.imgur.com/tieH6Vh.png">
 <meta property="og:image" content="http://i.imgur.com/U6KPbcR.png">
 <meta property="og:image" content="http://i.imgur.com/O2wZsUd.png">
-<meta property="og:updated_time" content="2016-07-05T10:30:54.000Z">
+<meta property="og:updated_time" content="2016-07-07T03:19:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python自动化开发 day02">
 <meta name="twitter:description" content="Author:@南非波波
@@ -206,7 +206,7 @@
                             
                                 <a class="fa Email" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -292,7 +292,7 @@
                             
                                 <a class="fa Email" target="_blank" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" target="_blank" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -384,16 +384,16 @@
 <p>课程大纲地址： <a href="http://www.cnblogs.com/wupeiqi/articles/5115190.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5115190.html</a></p>
 <h3 id="python知识拾忆："><a href="#python知识拾忆：" class="headerlink" title="python知识拾忆："></a>python知识拾忆：</h3><p>Python2.x与Python3.x关于dict.keys()返回值的类型对比：</p>
 <p><img src="http://i.imgur.com/tieH6Vh.png" alt=""></p>
-<h4 id="一、python种类"><a href="#一、python种类" class="headerlink" title="一、python种类"></a>一、python种类</h4><p>关于Python的一些版本内部执行的一些原理。从原理上来看待执行快慢的类型，从而选择自己需要的去学习。目前而言，最火的就是cpython了，这也是官方版本的Python。后面出现的pypy渐渐崭露头角，用银角大王的话讲：这货日后指定会火…</p>
+<h2 id="一、python种类"><a href="#一、python种类" class="headerlink" title="一、python种类"></a>一、python种类</h2><p>关于Python的一些版本内部执行的一些原理。从原理上来看待执行快慢的类型，从而选择自己需要的去学习。目前而言，最火的就是cpython了，这也是官方版本的Python。后面出现的pypy渐渐崭露头角，用银角大王的话讲：这货日后指定会火…</p>
 <pre><code>1. cpython  使用c解释器生产.pyc(字节码)，然后转换成机器码，最后到cpu
 2. javapython java解释器--&gt;字节码--&gt;机器码--&gt;cpu
 3. IronPython C#解释器--&gt;字节码 --&gt; 机器码--&gt; cpu
 4. pypy  内部使用自己的解释器编译成字节码--&gt;机器码.最后在外部执行的时候直接是机器码，速度要快
 </code></pre><p>银角大王推荐阅读书：<strong>《python源码剖析》</strong></p>
-<h4 id="二、字节码"><a href="#二、字节码" class="headerlink" title="二、字节码"></a>二、字节码</h4><p>在Python内部字节码直接的转换过程如图：</p>
+<h2 id="二、字节码"><a href="#二、字节码" class="headerlink" title="二、字节码"></a>二、字节码</h2><p>在Python内部字节码直接的转换过程如图：</p>
 <p><img src="http://i.imgur.com/U6KPbcR.png" alt=""></p>
 <pre><code>python中进行字节码之间的转换流程大概是这样的：字节码类型转换从utf-8转换成gbk类型，首先需要执行解码变成Unicode类型，然后再由Unicode类型编码成gbk类型。[图片来源：银角大王课堂笔记]
-</code></pre><h4 id="三、字符串"><a href="#三、字符串" class="headerlink" title="三、字符串"></a>三、字符串</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126957.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126957.html</a></p>
+</code></pre><h2 id="三、字符串"><a href="#三、字符串" class="headerlink" title="三、字符串"></a>三、字符串</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126957.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126957.html</a></p>
 <p>字符串的常用操作包括但不限于以下操作：</p>
 <pre><code>字符串的替换、删除、截取、复制、连接、比较、查找、分割等
 </code></pre><p>这里将对字符串的内置操作方法进行总结归纳，重点是以示例的方式进行展示。</p>
@@ -714,7 +714,7 @@ print str.zfill(40)
 print str.zfill(50)
 返回结果：00000000this is string example....wow!!!
          000000000000000000this is string example....wow!!!
-</code></pre><h4 id="四、列表"><a href="#四、列表" class="headerlink" title="四、列表"></a>四、列表</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126943.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126943.html</a></p>
+</code></pre><h2 id="四、列表"><a href="#四、列表" class="headerlink" title="四、列表"></a>四、列表</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126943.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126943.html</a></p>
 <p>列表的基本操作示例展示：</p>
 <p><strong>append</strong></p>
 <pre><code>功能：列表追加元素
@@ -807,7 +807,7 @@ name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,[&apos;sddss&apos;,&apo
 name.sort() #报错的
 Traceback (most recent call last):
   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-</code></pre><h4 id="五、元组"><a href="#五、元组" class="headerlink" title="五、元组"></a>五、元组</h4><p>关于元组的常用操作，请参考：<a href="http://www.runoob.com/python/python-tuples.html" target="_blank" rel="external">http://www.runoob.com/python/python-tuples.html</a></p>
+</code></pre><h2 id="五、元组"><a href="#五、元组" class="headerlink" title="五、元组"></a>五、元组</h2><p>关于元组的常用操作，请参考：<a href="http://www.runoob.com/python/python-tuples.html" target="_blank" rel="external">http://www.runoob.com/python/python-tuples.html</a></p>
 <p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126947.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126947.html</a></p>
 <p>元组的元素不可修改    ，元组的元素的元素可修改</p>
 <p><strong>count(self,value)</strong></p>
@@ -930,7 +930,7 @@ tup.__repr__()
 tup = (55,77,85,55,96,99,22,55,)
 tup.__rmul__(2)
 返回结果：(55, 77, 85, 55, 96, 99, 22, 55, 55, 77, 85, 55, 96, 99, 22, 55)
-</code></pre><h4 id="六、字典"><a href="#六、字典" class="headerlink" title="六、字典"></a>六、字典</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5127044.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5127044.html</a></p>
+</code></pre><h2 id="六、字典"><a href="#六、字典" class="headerlink" title="六、字典"></a>六、字典</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5127044.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5127044.html</a></p>
 <p>字典的常用操作：</p>
 <p><strong>clear</strong></p>
 <pre><code>功能：清空字典
@@ -1001,7 +1001,7 @@ dict_li
 dict_li = {&apos;age&apos;: &apos;18&apos;, &apos;users&apos;: &apos;swht&apos;, &apos;address&apos;: &apos;山东&apos;}
 dict_li.values()
 返回结果：dict_values([&apos;18&apos;, &apos;swht&apos;, &apos;山东&apos;])
-</code></pre><h3 id="七、set集合"><a href="#七、set集合" class="headerlink" title="七、set集合"></a>七、set集合</h3><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5128066.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5128066.html</a></p>
+</code></pre><h2 id="七、set集合"><a href="#七、set集合" class="headerlink" title="七、set集合"></a>七、set集合</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5128066.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5128066.html</a></p>
 <pre><code>set集合是一个无序且不重复的集合。
 创建一个set集合：
     name = set(&apos;sdd&apos;)
@@ -1119,7 +1119,7 @@ name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
 name.update(&apos;df&apos;)
 name
 返回结果：{&apos;sd&apos;, &apos;d&apos;, &apos;f&apos;, &apos;s&apos;}
-</code></pre><h4 id="八、类与对象"><a href="#八、类与对象" class="headerlink" title="八、类与对象"></a>八、类与对象</h4><p><img src="http://i.imgur.com/O2wZsUd.png" alt=""></p>
+</code></pre><h2 id="八、类与对象"><a href="#八、类与对象" class="headerlink" title="八、类与对象"></a>八、类与对象</h2><p><img src="http://i.imgur.com/O2wZsUd.png" alt=""></p>
 <p>对象</p>
 <pre><code>python中一切事物皆对象,对象是一开始就有的,只是我们无法访问它。访问对象需要以变量的形式去访问（即创建变量指向到对象的，变量即对对象的引用）
 在python中，一个对象的特征也称为属性（attribute）。它所具有的行为也称为方法（method）
@@ -1129,7 +1129,7 @@ name
 比如人类，动物，植物等等，这些都是类的概念。 
 类是对象的模板或蓝图，类是对象的抽象化，对象是类的实例化。类不代表具体的事物，而对象表示具体的事物。
 类包含描述对象的方法。
-</code></pre><h4 id="int"><a href="#int" class="headerlink" title="int"></a>int</h4><pre><code>取绝对值：
+</code></pre><h3 id="int"><a href="#int" class="headerlink" title="int"></a>int</h3><pre><code>取绝对值：
     age = -19
     age.__abs__() #int类函数调用
     abs(-19) #内置函数方式操作
@@ -1140,8 +1140,7 @@ name
     a = 5，b=6
     a.__add__(b) #调用int的类函数add，相当于a + b  --&gt;11
     a + b #内置函数方式操作
-</code></pre><p>作业：</p>
-<pre><code>1. 博客整理
+</code></pre><h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><pre><code>1. 博客整理
 2. 购物商城实现
     1. 商品展示，价格
     2. 购物车添加商品（进行差异商品，同一种商品应该只存在一条数据）
@@ -1159,7 +1158,7 @@ name
         <p><span>本文标题:</span><a href="/2016/01/09/s12-20160109-day02/">python自动化开发 day02</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">南非波波</a></p>
         <p><span>发布时间:</span>2016-01-09, 15:30:00</p>
-        <p><span>最后更新:</span>2016-07-05, 18:30:54</p>
+        <p><span>最后更新:</span>2016-07-07, 11:19:20</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/01/09/s12-20160109-day02/" title="python自动化开发 day02">http://blog.songqingbo.cn/2016/01/09/s12-20160109-day02/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.songqingbo.cn/2016/01/09/s12-20160109-day02/　　作者: 南非波波" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -1195,7 +1194,7 @@ name
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#python知识拾忆："><span class="toc-number">1.</span> <span class="toc-text">python知识拾忆：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、python种类"><span class="toc-number">1.1.</span> <span class="toc-text">一、python种类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、字节码"><span class="toc-number">1.2.</span> <span class="toc-text">二、字节码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、字符串"><span class="toc-number">1.3.</span> <span class="toc-text">三、字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四、列表"><span class="toc-number">1.4.</span> <span class="toc-text">四、列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五、元组"><span class="toc-number">1.5.</span> <span class="toc-text">五、元组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#六、字典"><span class="toc-number">1.6.</span> <span class="toc-text">六、字典</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、set集合"><span class="toc-number">2.</span> <span class="toc-text">七、set集合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#八、类与对象"><span class="toc-number">2.1.</span> <span class="toc-text">八、类与对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#int"><span class="toc-number">2.2.</span> <span class="toc-text">int</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#python知识拾忆："><span class="toc-text">python知识拾忆：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、python种类"><span class="toc-text">一、python种类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、字节码"><span class="toc-text">二、字节码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、字符串"><span class="toc-text">三、字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、列表"><span class="toc-text">四、列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、元组"><span class="toc-text">五、元组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、字典"><span class="toc-text">六、字典</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、set集合"><span class="toc-text">七、set集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、类与对象"><span class="toc-text">八、类与对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#int"><span class="toc-text">int</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作业："><span class="toc-text">作业：</span></a></li></ol>
         
     </div>
     <style>
@@ -1212,7 +1211,7 @@ name
     <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
     </script>
 
 

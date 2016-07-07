@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html lang="zh-CN">
 <head>
 
     <!--[if lt IE 9]>
@@ -21,8 +21,7 @@ day06
 http://www.cnblogs.com/alex3714/articles/5188179.html
 day07
 http://www.cnblogs.com/alex3714/articles/5213184.html
-一、类的多态、继承类的多态：统一接口调用
-#!/usr/bin/env python
+一、类的多态、继承类的多态：统一接口调用#!/usr/bin/env python
 # -*- coding:utf-8">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python自动化开发 day07">
@@ -34,11 +33,10 @@ day06
 http://www.cnblogs.com/alex3714/articles/5188179.html
 day07
 http://www.cnblogs.com/alex3714/articles/5213184.html
-一、类的多态、继承类的多态：统一接口调用
-#!/usr/bin/env python
+一、类的多态、继承类的多态：统一接口调用#!/usr/bin/env python
 # -*- coding:utf-8">
 <meta property="og:image" content="http://i.imgur.com/dmSh15M.png">
-<meta property="og:updated_time" content="2016-07-05T10:30:28.000Z">
+<meta property="og:updated_time" content="2016-07-07T03:08:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python自动化开发 day07">
 <meta name="twitter:description" content="Author:@南非波波
@@ -47,8 +45,7 @@ day06
 http://www.cnblogs.com/alex3714/articles/5188179.html
 day07
 http://www.cnblogs.com/alex3714/articles/5213184.html
-一、类的多态、继承类的多态：统一接口调用
-#!/usr/bin/env python
+一、类的多态、继承类的多态：统一接口调用#!/usr/bin/env python
 # -*- coding:utf-8">
 <meta name="twitter:image" content="http://i.imgur.com/dmSh15M.png">
 
@@ -201,7 +198,7 @@ http://www.cnblogs.com/alex3714/articles/5213184.html
                             
                                 <a class="fa Email" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -287,7 +284,7 @@ http://www.cnblogs.com/alex3714/articles/5213184.html
                             
                                 <a class="fa Email" target="_blank" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" target="_blank" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -359,8 +356,7 @@ http://www.cnblogs.com/alex3714/articles/5213184.html
 <p><a href="http://www.cnblogs.com/alex3714/articles/5188179.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5188179.html</a></p>
 <p>day07</p>
 <p><a href="http://www.cnblogs.com/alex3714/articles/5213184.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5213184.html</a></p>
-<h2 id="一、类的多态、继承"><a href="#一、类的多态、继承" class="headerlink" title="一、类的多态、继承"></a>一、类的多态、继承</h2><p>类的多态：统一接口调用</p>
-<pre><code>#!/usr/bin/env python
+<h2 id="一、类的多态、继承"><a href="#一、类的多态、继承" class="headerlink" title="一、类的多态、继承"></a>一、类的多态、继承</h2><h3 id="类的多态：统一接口调用"><a href="#类的多态：统一接口调用" class="headerlink" title="类的多态：统一接口调用"></a>类的多态：统一接口调用</h3><pre><code>#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 class Animal:
     def __init__(self, name):    # Constructor of the class
@@ -380,8 +376,7 @@ animals = [Cat(&apos;Missy&apos;),
 
 for animal in animals:
     print(animal.name + &apos;: &apos; + animal.talk())
-</code></pre><p>类的方法：示例</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="类的方法：示例"><a href="#类的方法：示例" class="headerlink" title="类的方法：示例"></a>类的方法：示例</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -426,12 +421,10 @@ c = Animal(&quot;swht&quot;)
 c.walk = 3
 del c.walk
 print(&quot;OUT:&quot;,c._Animal__num)  #特例情况下可以通过这种方式访问私有变量
-</code></pre><p><strong>经典类与新式类</strong></p>
-<p>经典类和新式类区别：</p>
+</code></pre><h3 id="经典类与新式类"><a href="#经典类与新式类" class="headerlink" title="经典类与新式类"></a>经典类与新式类</h3><p>经典类和新式类区别：</p>
 <p>经典类：使用深度优先进行继承<br>新式类：使用广度优先进行继承</p>
 <p>另外：经典类和新式类在python-3.X平台上会默认使用广度优先进行继承，而在python-2.X中则体现上述区别</p>
-<p>示例代码：</p>
-<pre><code>#!/usr/local/env python3
+<h3 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -463,8 +456,7 @@ d.f2()
 &apos;&apos;&apos;
 广度优先算法继承。先将B类中的f2()注释掉，D自动继承C.f2()，如果再将C类中的f2()，D自动继承A.f2()
 &apos;&apos;&apos;
-</code></pre><p><strong>类的特殊成员</strong></p>
-<pre><code>__doc__:查看类的注释
+</code></pre><h3 id="类的特殊成员"><a href="#类的特殊成员" class="headerlink" title="类的特殊成员"></a>类的特殊成员</h3><pre><code>__doc__:查看类的注释
 __init__:构造方法，通过类创建对象时，自动触发执行。
 __module__:表示当前操作的对象在那个模块
 __class__:表示当前操作的对象的类是什么
@@ -475,8 +467,7 @@ __metaclass__：通过改写metaclass方法达到构建自己需要的类的目�
 __dict__:以字典的形式显示类对象中的成员。使用场景：查看类中有多少成员（只显示类变量，不显示实例变量）
 __str__:如果一个类中定义了__str__方法，那么在打印 对象 时，默认输出该方法的返回值。
 __iter__:用于迭代器，之所以列表、字典、元组可以进行for循环，是因为类型内部定义了 __iter__ 
-</code></pre><p>示例：</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -509,8 +500,7 @@ print(chinese.__dict__) #{&apos;age&apos;: 27, &apos;name&apos;: &apos;swht&apos
 print(chinese.__module__) #__main__
 #__class__:表示当前操作的对象的类是什么
 print(chinese.__class__) #&lt;class &apos;__main__.People&apos;&gt;
-</code></pre><p><strong>构造类的方法</strong></p>
-<p><a href="http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python" target="_blank" rel="external">http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python</a></p>
+</code></pre><h3 id="构造类的方法"><a href="#构造类的方法" class="headerlink" title="构造类的方法"></a>构造类的方法</h3><p><a href="http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python" target="_blank" rel="external">http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python</a></p>
 <p>一句话构建一个类</p>
 <pre><code>Foo = type(&apos;Foo&apos;,(object,), {&apos;func&apos;: func}) 
     #type第一个参数：类名
@@ -591,8 +581,7 @@ server.run()
 # delattr(server,&quot;host&quot;) #删除实例的变量
 # delattr(Webserver,&apos;start&apos;)
 # server.start() #AttributeError: &apos;Webserver&apos; object has no attribute &apos;start&apos;
-</code></pre><h2 id="二、socket网络编程"><a href="#二、socket网络编程" class="headerlink" title="二、socket网络编程"></a>二、socket网络编程</h2><p>简单实现C/S交互实例：</p>
-<p>示例代码：</p>
+</code></pre><h2 id="二、socket网络编程"><a href="#二、socket网络编程" class="headerlink" title="二、socket网络编程"></a>二、socket网络编程</h2><h3 id="简单实现C-S交互实例："><a href="#简单实现C-S交互实例：" class="headerlink" title="简单实现C/S交互实例："></a>简单实现C/S交互实例：</h3><p>示例代码：</p>
 <pre><code>实现简单的client与server端数据交互（一句话）
 </code></pre><p>socket_server</p>
 <pre><code>#!/usr/local/env python3
@@ -781,7 +770,7 @@ ssh_client.close()
         <p><span>本文标题:</span><a href="/2016/02/27/s12-20160227-day07/">python自动化开发 day07</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">南非波波</a></p>
         <p><span>发布时间:</span>2016-02-27, 15:30:00</p>
-        <p><span>最后更新:</span>2016-07-05, 18:30:28</p>
+        <p><span>最后更新:</span>2016-07-07, 11:08:46</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/02/27/s12-20160227-day07/" title="python自动化开发 day07">http://blog.songqingbo.cn/2016/02/27/s12-20160227-day07/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.songqingbo.cn/2016/02/27/s12-20160227-day07/　　作者: 南非波波" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -817,7 +806,7 @@ ssh_client.close()
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、类的多态、继承"><span class="toc-number">1.</span> <span class="toc-text">一、类的多态、继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#反射方法"><span class="toc-number">1.1.</span> <span class="toc-text">反射方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、socket网络编程"><span class="toc-number">2.</span> <span class="toc-text">二、socket网络编程</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、类的多态、继承"><span class="toc-text">一、类的多态、继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类的多态：统一接口调用"><span class="toc-text">类的多态：统一接口调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类的方法：示例"><span class="toc-text">类的方法：示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#经典类与新式类"><span class="toc-text">经典类与新式类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例代码："><span class="toc-text">示例代码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类的特殊成员"><span class="toc-text">类的特殊成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例："><span class="toc-text">示例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造类的方法"><span class="toc-text">构造类的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反射方法"><span class="toc-text">反射方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、socket网络编程"><span class="toc-text">二、socket网络编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单实现C-S交互实例："><span class="toc-text">简单实现C/S交互实例：</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -834,7 +823,7 @@ ssh_client.close()
     <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
     </script>
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html lang="zh-CN">
 <head>
 
     <!--[if lt IE 9]>
@@ -22,12 +22,8 @@ http://www.cnblogs.com/alex3714/articles/5248247.html
 day10
 http://www.cnblogs.com/alex3714/articles/5286889.html
 
-一、回顾
-队列
-
-队列的作业就是实现多个线程之间数据安全的交互
-队列类型：先进先出、后进先出、优先级
-queue的数据必">
+一、回顾1.    队列1.    队列的作业就是实现多个线程之间数据安全的交互
+2.    队列类型：先进先出、后进先">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python自动化开发 day10">
 <meta property="og:url" content="http://blog.songqingbo.cn/2016/03/19/s12-20160319-day10/index.html">
@@ -39,17 +35,12 @@ http://www.cnblogs.com/alex3714/articles/5248247.html
 day10
 http://www.cnblogs.com/alex3714/articles/5286889.html
 
-一、回顾
-队列
-
-队列的作业就是实现多个线程之间数据安全的交互
-队列类型：先进先出、后进先出、优先级
-queue的数据必">
+一、回顾1.    队列1.    队列的作业就是实现多个线程之间数据安全的交互
+2.    队列类型：先进先出、后进先">
 <meta property="og:image" content="http://i.imgur.com/SpEkQHr.png">
-<meta property="og:image" content="http://i.imgur.com/6brDszu.png">
 <meta property="og:image" content="http://i.imgur.com/qBwPkju.png">
 <meta property="og:image" content="http://i.imgur.com/MFX1LTo.png">
-<meta property="og:updated_time" content="2016-07-05T10:30:15.000Z">
+<meta property="og:updated_time" content="2016-07-07T02:55:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python自动化开发 day10">
 <meta name="twitter:description" content="Author:@南非波波
@@ -59,12 +50,8 @@ http://www.cnblogs.com/alex3714/articles/5248247.html
 day10
 http://www.cnblogs.com/alex3714/articles/5286889.html
 
-一、回顾
-队列
-
-队列的作业就是实现多个线程之间数据安全的交互
-队列类型：先进先出、后进先出、优先级
-queue的数据必">
+一、回顾1.    队列1.    队列的作业就是实现多个线程之间数据安全的交互
+2.    队列类型：先进先出、后进先">
 <meta name="twitter:image" content="http://i.imgur.com/SpEkQHr.png">
 
 <link rel="apple-touch-icon" href= "/南非波波.png">
@@ -216,7 +203,7 @@ queue的数据必">
                             
                                 <a class="fa Email" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -302,7 +289,7 @@ queue的数据必">
                             
                                 <a class="fa Email" target="_blank" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" target="_blank" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -375,312 +362,319 @@ queue的数据必">
 <p>day10</p>
 <p><a href="http://www.cnblogs.com/alex3714/articles/5286889.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5286889.html
 </a></p>
-<h3 id="一、回顾"><a href="#一、回顾" class="headerlink" title="一、回顾"></a>一、回顾</h3><ol>
-<li><p>队列</p>
-<ol>
-<li>队列的作业就是实现多个线程之间数据安全的交互</li>
-<li>队列类型：先进先出、后进先出、优先级</li>
-<li>queue的数据必须按照顺序进行取出–&gt;处理–&gt;放回。主要作用就是不同进程之间数据的交换，manager可以进行多个进程之间的数据的共享，而且是数据安全的。</li>
-<li>生产者-消费者模型：实现程序的松耦合</li>
-</ol>
-</li>
-<li><p>gevent模块：对Greenlet模块的一次封装</p>
-<ol>
-<li>gevent里面的socket本身可以实现IO阻塞变成非阻塞</li>
-<li>monkey.path_all()可以帮助我们实现阻塞变成非阻塞</li>
-</ol>
-</li>
-<li><p>协程</p>
-<ol>
-<li>实现单个线程里面的并发</li>
-<li>无需线程上下文切换的开销，无需原子操作锁定及同步的开销，方便切换控制流，高并发+高扩展性+低成本</li>
-<li>无法利用多核资源，但是可以实现单个进程下面起一个线程，然后一个线程下面实现多个协程并发</li>
-</ol>
-</li>
-<li><p>select</p>
-<p> <img src="http://i.imgur.com/SpEkQHr.png" alt=""></p>
-<ol>
-<li><p>select 与poll的区别</p>
-<pre><code>select有一个最大文件数的限制1024，文件扫描一个列表是非常低效的；poll没有这个限制
-内核态到用户态的数据copy；Epoll直接调用C语言进行内核态的数据nat到用户态
-</code></pre></li>
-<li><p>select代码注释</p>
-<p>  <strong>auther</strong> = ‘Victor’</p>
-<p>  import select<br>  import socket<br>  import sys<br>  import queue</p>
-<h1 id="创建一个TCP-IP-socket"><a href="#创建一个TCP-IP-socket" class="headerlink" title="创建一个TCP/IP socket"></a>创建一个TCP/IP socket</h1><p>  server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>  server.setblocking(False)</p>
-<h1 id="绑定socket到指定端口"><a href="#绑定socket到指定端口" class="headerlink" title="绑定socket到指定端口"></a>绑定socket到指定端口</h1><p>  server_address = (‘localhost’, 10000)<br>  print(sys.stderr, ‘starting up on %s port %s’ % server_address)<br>  server.bind(server_address)</p>
-<h1 id="监听连接的地址"><a href="#监听连接的地址" class="headerlink" title="监听连接的地址"></a>监听连接的地址</h1><p>  server.listen(5)<br>  inputs = [server]</p>
-<h1 id="Socket的读操作"><a href="#Socket的读操作" class="headerlink" title="Socket的读操作"></a>Socket的读操作</h1><p>  outputs = []</p>
-<h1 id="socket的写操作"><a href="#socket的写操作" class="headerlink" title="socket的写操作"></a>socket的写操作</h1><p>  message_queues = {}<br>  while inputs:</p>
-<pre><code># Wait for at least one of the sockets to be ready for processing
-print( &apos;\nwaiting for the next event&apos;)
-readable, writable, exceptional = select.select(inputs, outputs, inputs)
-# 监听句柄序列，如果某个发生变化，select的第一个rLest会拿到数据，output只要有数据wLest就能获取到，select的第三个参数inputs用来监测异常，并赋值给exceptional。
-# 监听inputs，outputs，inputs  如果他们的值有变化，就将分别赋值给readable，writable，exceptional。
-for s in readable:
+<h2 id="一、回顾"><a href="#一、回顾" class="headerlink" title="一、回顾"></a>一、回顾</h2><h3 id="1-队列"><a href="#1-队列" class="headerlink" title="1.    队列"></a>1.    队列</h3><pre><code>1.    队列的作业就是实现多个线程之间数据安全的交互
+2.    队列类型：先进先出、后进先出、优先级
+3.    queue的数据必须按照顺序进行取出--&gt;处理--&gt;放回。主要作用就是不同进程之间数据的交换，manager可以进行多个进程之间的数据的共享，而且是数据安全的。
+4.    生产者-消费者模型：实现程序的松耦合
+</code></pre><h3 id="2-gevent模块：对Greenlet模块的一次封装"><a href="#2-gevent模块：对Greenlet模块的一次封装" class="headerlink" title="2. gevent模块：对Greenlet模块的一次封装"></a>2. gevent模块：对Greenlet模块的一次封装</h3><pre><code>1. gevent里面的socket本身可以实现IO阻塞变成非阻塞
+2. monkey.path_all()可以帮助我们实现阻塞变成非阻塞
+</code></pre><h3 id="3-协程"><a href="#3-协程" class="headerlink" title="3. 协程"></a>3. 协程</h3><pre><code>1. 实现单个线程里面的并发
+2. 无需线程上下文切换的开销，无需原子操作锁定及同步的开销，方便切换控制流，高并发+高扩展性+低成本
+3. 无法利用多核资源，但是可以实现单个进程下面起一个线程，然后一个线程下面实现多个协程并发
+</code></pre><h3 id="4-select"><a href="#4-select" class="headerlink" title="4. select"></a>4. select</h3><p><img src="http://i.imgur.com/SpEkQHr.png" alt=""></p>
+<pre><code>1. select 与poll的区别
+
+    select有一个最大文件数的限制1024，文件扫描一个列表是非常低效的；poll没有这个限制
+    内核态到用户态的数据copy；Epoll直接调用C语言进行内核态的数据nat到用户态
+
+2.    select代码注释
+
+
+    __auther__ = &apos;Victor&apos;
+
+    import select
+    import socket
+    import sys
+    import queue
+
+    # 创建一个TCP/IP socket
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setblocking(False)
+    # 绑定socket到指定端口
+    server_address = (&apos;localhost&apos;, 10000)
+    print(sys.stderr, &apos;starting up on %s port %s&apos; % server_address)
+    server.bind(server_address)
+    # 监听连接的地址
+    server.listen(5)
+    inputs = [server]
+    # Socket的读操作
+    outputs = []
+    # socket的写操作
+    message_queues = {}
+    while inputs:
+    # Wait for at least one of the sockets to be ready for processing
+    print( &apos;\nwaiting for the next event&apos;)
+    readable, writable, exceptional = select.select(inputs, outputs, inputs)
+    # 监听句柄序列，如果某个发生变化，select的第一个rLest会拿到数据，output只要有数据wLest就能获取到，select的第三个参数inputs用来监测异常，并赋值给exceptional。
+    # 监听inputs，outputs，inputs  如果他们的值有变化，就将分别赋值给readable，writable，exceptional。
+    for s in readable:
     # 遍历readable的值。
     if s is server:
-        connection, client_address = s.accept()
-        # 如果s 是server，那么server socket将接收连接。
-        print(&apos;new connection from&apos;, client_address)
-        # 打印出连接客户端的地址。
-        connection.setblocking(False)
-        # 设置socket 为非阻塞模式。
-        inputs.append(connection)
-        # 因为有读操作发生，所以将此连接加入inputs
-        message_queues[connection] = queue.Queue()
-        # 为每个连接创建一个queue队列。使得每个连接接收到正确的数据。
+    connection, client_address = s.accept()
+    # 如果s 是server，那么server socket将接收连接。
+    print(&apos;new connection from&apos;, client_address)
+    # 打印出连接客户端的地址。
+    connection.setblocking(False)
+    # 设置socket 为非阻塞模式。
+    inputs.append(connection)
+    # 因为有读操作发生，所以将此连接加入inputs
+    message_queues[connection] = queue.Queue()
+    # 为每个连接创建一个queue队列。使得每个连接接收到正确的数据。
     else:
-        data = s.recv(1024)
-        # 如果s不是server，说明客户端连接来了，那么就接受客户端的数据。
-        if data:
-            # 如果接收到客户端的数据
-            print(sys.stderr, &apos;received &quot;%s&quot; from %s&apos; % (data, s.getpeername()) )
-            message_queues[s].put(data)
-            # 将收到的数据放入队列中
-            if s not in outputs:
-                outputs.append(s)
-                # 将socket客户端的连接加入select的output中，并且用来返回给客户端数据。
-        else:
-            print(&apos;closing&apos;, client_address, &apos;after reading no data&apos;)
-            # 如果没有收到客户端发来的空消息，则说明客户端已经断开连接。
-            if s in outputs:
-                outputs.remove(s)
-                # 既然客户端都断开了，我就不用再给它返回数据了，所以这时候如果这个客户端的连接对象还在outputs列表中，就把它删掉
-            inputs.remove(s)
-            # inputs中也删除掉
-            s.close()
-            # 把这个连接关闭掉
-            del message_queues[s]
-            # 删除此客户端的消息队列
+    data = s.recv(1024)
+    # 如果s不是server，说明客户端连接来了，那么就接受客户端的数据。
+    if data:
+    # 如果接收到客户端的数据
+    print(sys.stderr, &apos;received &quot;%s&quot; from %s&apos; % (data, s.getpeername()) )
+    message_queues[s].put(data)
+    # 将收到的数据放入队列中
+    if s not in outputs:
+    outputs.append(s)
+    # 将socket客户端的连接加入select的output中，并且用来返回给客户端数据。
+    else:
+    print(&apos;closing&apos;, client_address, &apos;after reading no data&apos;)
+    # 如果没有收到客户端发来的空消息，则说明客户端已经断开连接。
+    if s in outputs:
+    outputs.remove(s)
+    # 既然客户端都断开了，我就不用再给它返回数据了，所以这时候如果这个客户端的连接对象还在outputs列表中，就把它删掉
+    inputs.remove(s)
+    # inputs中也删除掉
+    s.close()
+    # 把这个连接关闭掉
+    del message_queues[s]
+    # 删除此客户端的消息队列
 
-for s in writable:
+    for s in writable:
     # 遍历output的数据
     try:
-        next_msg = message_queues[s].get_nowait()
+    next_msg = message_queues[s].get_nowait()
     except queue.Empty:
-        # 获取对应客户端消息队列中的数据，如果队列中的数据为空，从消息队列中移除此客户端连接。
-        print(&apos;output queue for&apos;, s.getpeername(), &apos;is empty&apos;)
-        outputs.remove(s)
+    # 获取对应客户端消息队列中的数据，如果队列中的数据为空，从消息队列中移除此客户端连接。
+    print(&apos;output queue for&apos;, s.getpeername(), &apos;is empty&apos;)
+    outputs.remove(s)
     else:
-        print( &apos;sending &quot;%s&quot; to %s&apos; % (next_msg, s.getpeername()))
-        s.send(next_msg)
-        # 如果消息队列有数据，则发送给客户端。
-for s in exceptional:
+    print( &apos;sending &quot;%s&quot; to %s&apos; % (next_msg, s.getpeername()))
+    s.send(next_msg)
+    # 如果消息队列有数据，则发送给客户端。
+    for s in exceptional:
     # 处理 &quot;exceptional conditions&quot;
     print(&apos;handling exceptional condition for&apos;, s.getpeername() )
     inputs.remove(s)
     # 取消对出现异常的客户端的监听
     if s in outputs:
-        outputs.remove(s)
-        # 移除客户端的连接对象。
+    outputs.remove(s)
+    # 移除客户端的连接对象。
     s.close()
     # 关闭此socket连接
     del message_queues[s]
     # 删除此消息队列。
-</code></pre><p>  ‘’’</p>
-<p>  在select/poll时代，服务器进程每次都把这100万个连接告诉操作系统(从用户态复制句柄数据结构到内核态)，让操作系统内核去查询这些套接字上是否有事件发生，</p>
-<p>  轮询完后，再将句柄数据复制到用户态，让服务器应用程序轮询处理已发生的网络事件，这一过程资源消耗较大，因此，select/poll一般只能处理几千的并发连接。</p>
-<p>  epoll的设计和实现与select完全不同。epoll通过在Linux内核中申请一个简易的文件系统(文件系统一般用什么数据结构实现？B+树)。把原先的select/poll调用分成了3个部分：</p>
-<p>  1）调用epoll_create()建立一个epoll对象(在epoll文件系统中为这个句柄对象分配资源)</p>
-<p>  2）调用epoll_ctl向epoll对象中添加这100万个连接的套接字</p>
-<p>  3）调用epoll_wait收集发生的事件的连接</p>
-<p>  ‘’’</p>
-</li>
-<li><p>epoll代码注释</p>
-<p>  <strong>auther</strong> = ‘Victor’</p>
-</li>
-</ol>
-</li>
-</ol>
-<pre><code>#--------------这是一个epoll的例子--------------
+
+    &apos;&apos;&apos;
+
+    在select/poll时代，服务器进程每次都把这100万个连接告诉操作系统(从用户态复制句柄数据结构到内核态)，让操作系统内核去查询这些套接字上是否有事件发生，
+
+    轮询完后，再将句柄数据复制到用户态，让服务器应用程序轮询处理已发生的网络事件，这一过程资源消耗较大，因此，select/poll一般只能处理几千的并发连接。
+
+    epoll的设计和实现与select完全不同。epoll通过在Linux内核中申请一个简易的文件系统(文件系统一般用什么数据结构实现？B+树)。把原先的select/poll调用分成了3个部分：
+
+    1）调用epoll_create()建立一个epoll对象(在epoll文件系统中为这个句柄对象分配资源)
+
+    2）调用epoll_ctl向epoll对象中添加这100万个连接的套接字
+
+    3）调用epoll_wait收集发生的事件的连接
+
+    &apos;&apos;&apos;
 
 
-import socket, select
-# &apos;windows&apos;下不支持&apos;epoll&apos;
+3.    epoll代码注释
 
-EOL1 = b&apos;\n\n&apos;
-EOL2 = b&apos;\n\r\n&apos;
-response = b&apos;HTTP/1.0 200 OK\r\nDate: Mon, 1 Jan 1996 01:01:01 GMT\r\n&apos;
-response += b&apos;Content-Type: text/plain\r\nContent-Length: 13\r\n\r\n&apos;
-response += b&apos;Hello, world!&apos;
-
-serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-serversocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-serversocket.bind((&apos;0.0.0.0&apos;, 8080))
-serversocket.listen(1)
-# 建立socket连接。
-serversocket.setblocking(0)
-# 因为socket本身是阻塞的，setblocking（0）使得socket不阻塞
-
-epoll = select.epoll()
-# 创建一个eopll对象
-epoll.register(serversocket.fileno(), select.EPOLLIN)
-# 在服务器端socket上面注册对读event的关注，一个读event随时会触发服务器端socket去接收一个socket连接。
-
-try:
-   connections = {}; requests = {}; responses = {}
-# 生成3个字典，connection字典是存储文件描述符映射到他们相应的网络连接对象
-   while True:
-      events = epoll.poll(1)
-# 查询epoll对象，看是否有任何关注的event被触发，参数‘1’表示，会等待一秒来看是否有event发生，如果有任何感兴趣的event发生在这次查询之前，这个查询就会带着这些event的列表立即返回
-      for fileno, event in events:
-        # event作为一个序列（fileno，event code）的元组返回，fileno是文件描述符的代名词，始终是一个整数。
-         if fileno == serversocket.fileno():
-            # 如果一个读event在服务器端socket发生，就会有一个新的socket连接可能被创建。
-            connection, address = serversocket.accept()
-            # 服务器端开始接收连接和客户端地址
-            connection.setblocking(0)
-            # 设置新的socket为非阻塞模式
-            epoll.register(connection.fileno(), select.EPOLLIN)
-            # 为新的socket注册对读（EPOLLIN）event的关注
-            connections[connection.fileno()] = connection
-            requests[connection.fileno()] = b&apos;&apos;
-            responses[connection.fileno()] = response
-         elif event &amp; select.EPOLLIN:
-            requests[fileno] += connections[fileno].recv(1024)
-            # 如果发生一个读event，就读取从客户端发过来的数据。
-            if EOL1 in requests[fileno] or EOL2 in requests[fileno]:
-               epoll.modify(fileno, select.EPOLLOUT)
-            # 一旦完成请求已经收到，就注销对读event的关注，注册对写（EPOLLOUT）event的关注，写event发生的时候，会回复数据给客户端。
-               print(&apos;-&apos;*40 + &apos;\n&apos; + requests[fileno].decode()[:-2])
-            # 打印完整的请求，证明虽然与客户端的通信是交错进行的，但是数据可以作为一个整体来组装和处理。
-         elif event &amp; select.EPOLLOUT:
-            # 如果一个写event在一个客户端socket上面发生，他会接受新的数据以便发送到客户端。
-            byteswritten = connections[fileno].send(responses[fileno])
-            responses[fileno] = responses[fileno][byteswritten:]
-            if len(responses[fileno]) == 0:
-                # 每次发送一部分响应数据，直到完整的响应数据都已经发送给操作系统等待传输给客户端。
-               epoll.modify(fileno, 0)
-            # 一旦完整的响应数据发送完成，就不再关注读或者写event。
-               connections[fileno].shutdown(socket.SHUT_RDWR)
-            # 如果一个连接显式关闭，那么socket shutdown是可选的，在这里这样使用，是为了让客户端首先关闭。
-            # shutdown调用会通知客户端socket没有更多的数据应该被发送或者接收，并会让功能正常的客户端关闭自己的socket连接。
-         elif event &amp; select.EPOLLHUP:
-            # HUP挂起event表明客户端socket已经断开（即关闭），所以服务器端也需要关闭，没有必要注册对HUP event的关注，在socket上面，他们总是会被epoll对象注册。
-            epoll.unregister(fileno)
-            # 注销对此socket连接的关注。
-            connections[fileno].close()
-            # 关闭socket连接。
-            del connections[fileno]
-finally:
-   epoll.unregister(serversocket.fileno())
-# 去掉已经注册的文件句柄
-   epoll.close()
-# 关闭epoll对象
-   serversocket.close()
-# 关闭服务器连接
-# 打开的socket连接不需要关闭，因为Python会在程序结束时关闭， 这里的显示关闭是个好的习惯。
+    __auther__ = &apos;Victor&apos;
 
 
+    #--------------这是一个epoll的例子--------------
 
-&apos;&apos;&apos;
 
-首先我们来定义流的概念，一个流可以是文件，socket，pipe等等可以进行I/O操作的内核对象。
+    import socket, select
+    # &apos;windows&apos;下不支持&apos;epoll&apos;
 
-    不管是文件，还是套接字，还是管道，我们都可以把他们看作流。
+    EOL1 = b&apos;\n\n&apos;
+    EOL2 = b&apos;\n\r\n&apos;
+    response = b&apos;HTTP/1.0 200 OK\r\nDate: Mon, 1 Jan 1996 01:01:01 GMT\r\n&apos;
+    response += b&apos;Content-Type: text/plain\r\nContent-Length: 13\r\n\r\n&apos;
+    response += b&apos;Hello, world!&apos;
 
-    之后我们来讨论I/O的操作，通过read，我们可以从流中读入数据；通过write，我们可以往流写入数据。现在假定一个情形，
-    我们需要从流中读数据，但是流中还没有数据，（典型的例子为，客户端要从socket读如数据，但是服务器还没有把数据传回来），
-    这时候该怎么办？
+    serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    serversocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    serversocket.bind((&apos;0.0.0.0&apos;, 8080))
+    serversocket.listen(1)
+    # 建立socket连接。
+    serversocket.setblocking(0)
+    # 因为socket本身是阻塞的，setblocking（0）使得socket不阻塞
 
-阻塞：阻塞是个什么概念呢？比如某个时候你在等快递，但是你不知道快递什么时候过来，而且你没有别的事可以干（或者说接下来的事要等快递来了才能做）；
-那么你可以去睡觉了，因为你知道快递把货送来时一定会给你打个电话（假定一定能叫醒你）。
+    epoll = select.epoll()
+    # 创建一个eopll对象
+    epoll.register(serversocket.fileno(), select.EPOLLIN)
+    # 在服务器端socket上面注册对读event的关注，一个读event随时会触发服务器端socket去接收一个socket连接。
 
-非阻塞忙轮询：接着上面等快递的例子，如果用忙轮询的方法，那么你需要知道快递员的手机号，然后每分钟给他挂个电话：“你到了没？”
+    try:
+       connections = {}; requests = {}; responses = {}
+    # 生成3个字典，connection字典是存储文件描述符映射到他们相应的网络连接对象
+       while True:
+          events = epoll.poll(1)
+    # 查询epoll对象，看是否有任何关注的event被触发，参数‘1’表示，会等待一秒来看是否有event发生，如果有任何感兴趣的event发生在这次查询之前，这个查询就会带着这些event的列表立即返回
+          for fileno, event in events:
+            # event作为一个序列（fileno，event code）的元组返回，fileno是文件描述符的代名词，始终是一个整数。
+             if fileno == serversocket.fileno():
+                # 如果一个读event在服务器端socket发生，就会有一个新的socket连接可能被创建。
+                connection, address = serversocket.accept()
+                # 服务器端开始接收连接和客户端地址
+                connection.setblocking(0)
+                # 设置新的socket为非阻塞模式
+                epoll.register(connection.fileno(), select.EPOLLIN)
+                # 为新的socket注册对读（EPOLLIN）event的关注
+                connections[connection.fileno()] = connection
+                requests[connection.fileno()] = b&apos;&apos;
+                responses[connection.fileno()] = response
+             elif event &amp; select.EPOLLIN:
+                requests[fileno] += connections[fileno].recv(1024)
+                # 如果发生一个读event，就读取从客户端发过来的数据。
+                if EOL1 in requests[fileno] or EOL2 in requests[fileno]:
+                   epoll.modify(fileno, select.EPOLLOUT)
+                # 一旦完成请求已经收到，就注销对读event的关注，注册对写（EPOLLOUT）event的关注，写event发生的时候，会回复数据给客户端。
+                   print(&apos;-&apos;*40 + &apos;\n&apos; + requests[fileno].decode()[:-2])
+                # 打印完整的请求，证明虽然与客户端的通信是交错进行的，但是数据可以作为一个整体来组装和处理。
+             elif event &amp; select.EPOLLOUT:
+                # 如果一个写event在一个客户端socket上面发生，他会接受新的数据以便发送到客户端。
+                byteswritten = connections[fileno].send(responses[fileno])
+                responses[fileno] = responses[fileno][byteswritten:]
+                if len(responses[fileno]) == 0:
+                    # 每次发送一部分响应数据，直到完整的响应数据都已经发送给操作系统等待传输给客户端。
+                   epoll.modify(fileno, 0)
+                # 一旦完整的响应数据发送完成，就不再关注读或者写event。
+                   connections[fileno].shutdown(socket.SHUT_RDWR)
+                # 如果一个连接显式关闭，那么socket shutdown是可选的，在这里这样使用，是为了让客户端首先关闭。
+                # shutdown调用会通知客户端socket没有更多的数据应该被发送或者接收，并会让功能正常的客户端关闭自己的socket连接。
+             elif event &amp; select.EPOLLHUP:
+                # HUP挂起event表明客户端socket已经断开（即关闭），所以服务器端也需要关闭，没有必要注册对HUP event的关注，在socket上面，他们总是会被epoll对象注册。
+                epoll.unregister(fileno)
+                # 注销对此socket连接的关注。
+                connections[fileno].close()
+                # 关闭socket连接。
+                del connections[fileno]
+    finally:
+       epoll.unregister(serversocket.fileno())
+    # 去掉已经注册的文件句柄
+       epoll.close()
+    # 关闭epoll对象
+       serversocket.close()
+    # 关闭服务器连接
+    # 打开的socket连接不需要关闭，因为Python会在程序结束时关闭， 这里的显示关闭是个好的习惯。
 
-    很明显一般人不会用第二种做法，不仅显很无脑，浪费话费不说，还占用了快递员大量的时间。
+    &apos;&apos;&apos;
 
-    大部分程序也不会用第二种做法，因为第一种方法经济而简单，经济是指消耗很少的CPU时间，如果线程睡眠了，就掉出了系统的调度队列，暂时不会去瓜分CPU宝贵的时间片了。
+    首先我们来定义流的概念，一个流可以是文件，socket，pipe等等可以进行I/O操作的内核对象。
 
-    为了了解阻塞是如何进行的，我们来讨论缓冲区，以及内核缓冲区，最终把I/O事件解释清楚。缓冲区的引入是为了减少频繁I/O操作而引起频繁的系统调用（你知道它很慢的），
-    当你操作一个流时，更多的是以缓冲区为单位进行操作，这是相对于用户空间而言。对于内核来说，也需要缓冲区。
+        不管是文件，还是套接字，还是管道，我们都可以把他们看作流。
 
-假设有一个管道，进程A为管道的写入方，Ｂ为管道的读出方。
+        之后我们来讨论I/O的操作，通过read，我们可以从流中读入数据；通过write，我们可以往流写入数据。现在假定一个情形，
+        我们需要从流中读数据，但是流中还没有数据，（典型的例子为，客户端要从socket读如数据，但是服务器还没有把数据传回来），
+        这时候该怎么办？
 
-假设一开始内核缓冲区是空的，B作为读出方，被阻塞着。然后首先A往管道写入，这时候内核缓冲区由空的状态变到非空状态，内核就会产生一个事件告诉Ｂ该醒来了，
-这个事件姑且称之为“缓冲区非空”。
+    阻塞：阻塞是个什么概念呢？比如某个时候你在等快递，但是你不知道快递什么时候过来，而且你没有别的事可以干（或者说接下来的事要等快递来了才能做）；
+    那么你可以去睡觉了，因为你知道快递把货送来时一定会给你打个电话（假定一定能叫醒你）。
 
-    但是“缓冲区非空”事件通知B后，B却还没有读出数据；且内核许诺了不能把写入管道中的数据丢掉这个时候，Ａ写入的数据会滞留在内核缓冲区中，如果内核也缓冲区满了，
-    B仍未开始读数据，最终内核缓冲区会被填满，这个时候会产生一个I/O事件，告诉进程A，你该等等（阻塞）了，我们把这个事件定义为“缓冲区满”。
+    非阻塞忙轮询：接着上面等快递的例子，如果用忙轮询的方法，那么你需要知道快递员的手机号，然后每分钟给他挂个电话：“你到了没？”
 
-假设后来Ｂ终于开始读数据了，于是内核的缓冲区空了出来，这时候内核会告诉A，内核缓冲区有空位了，你可以从长眠中醒来了，继续写数据了，我们把这个事件叫做“缓冲区非满”
+        很明显一般人不会用第二种做法，不仅显很无脑，浪费话费不说，还占用了快递员大量的时间。
 
-    也许事件Y1已经通知了A，但是A也没有数据写入了，而Ｂ继续读出数据，知道内核缓冲区空了。这个时候内核就告诉B，你需要阻塞了！，我们把这个时间定为“缓冲区空”。
+        大部分程序也不会用第二种做法，因为第一种方法经济而简单，经济是指消耗很少的CPU时间，如果线程睡眠了，就掉出了系统的调度队列，暂时不会去瓜分CPU宝贵的时间片了。
 
-这四个情形涵盖了四个I/O事件，缓冲区满，缓冲区空，缓冲区非空，缓冲区非满（注都是说的内核缓冲区，且这四个术语都是我生造的，仅为解释其原理而造）。
-这四个I/O事件是进行阻塞同步的根本。（如果不能理解“同步”是什么概念，请学习操作系统的锁，信号量，条件变量等任务同步方面的相关知识）。
+        为了了解阻塞是如何进行的，我们来讨论缓冲区，以及内核缓冲区，最终把I/O事件解释清楚。缓冲区的引入是为了减少频繁I/O操作而引起频繁的系统调用（你知道它很慢的），
+        当你操作一个流时，更多的是以缓冲区为单位进行操作，这是相对于用户空间而言。对于内核来说，也需要缓冲区。
 
-    然后我们来说说阻塞I/O的缺点。但是阻塞I/O模式下，一个线程只能处理一个流的I/O事件。如果想要同时处理多个流，要么多进程(fork)，要么多线程(pthread_create)，
-    很不幸这两种方法效率都不高。
+    假设有一个管道，进程A为管道的写入方，Ｂ为管道的读出方。
 
-    于是再来考虑非阻塞忙轮询的I/O方式，我们发现我们可以同时处理多个流了（把一个流从阻塞模式切换到非阻塞模式再此不予讨论）：
+    假设一开始内核缓冲区是空的，B作为读出方，被阻塞着。然后首先A往管道写入，这时候内核缓冲区由空的状态变到非空状态，内核就会产生一个事件告诉Ｂ该醒来了，
+    这个事件姑且称之为“缓冲区非空”。
 
-while true {
-    for i in stream[]; {
-        if i has data
-            read until unavailable
+        但是“缓冲区非空”事件通知B后，B却还没有读出数据；且内核许诺了不能把写入管道中的数据丢掉这个时候，Ａ写入的数据会滞留在内核缓冲区中，如果内核也缓冲区满了，
+        B仍未开始读数据，最终内核缓冲区会被填满，这个时候会产生一个I/O事件，告诉进程A，你该等等（阻塞）了，我们把这个事件定义为“缓冲区满”。
+
+    假设后来Ｂ终于开始读数据了，于是内核的缓冲区空了出来，这时候内核会告诉A，内核缓冲区有空位了，你可以从长眠中醒来了，继续写数据了，我们把这个事件叫做“缓冲区非满”
+
+        也许事件Y1已经通知了A，但是A也没有数据写入了，而Ｂ继续读出数据，知道内核缓冲区空了。这个时候内核就告诉B，你需要阻塞了！，我们把这个时间定为“缓冲区空”。
+
+    这四个情形涵盖了四个I/O事件，缓冲区满，缓冲区空，缓冲区非空，缓冲区非满（注都是说的内核缓冲区，且这四个术语都是我生造的，仅为解释其原理而造）。
+    这四个I/O事件是进行阻塞同步的根本。（如果不能理解“同步”是什么概念，请学习操作系统的锁，信号量，条件变量等任务同步方面的相关知识）。
+
+        然后我们来说说阻塞I/O的缺点。但是阻塞I/O模式下，一个线程只能处理一个流的I/O事件。如果想要同时处理多个流，要么多进程(fork)，要么多线程(pthread_create)，
+        很不幸这两种方法效率都不高。
+
+        于是再来考虑非阻塞忙轮询的I/O方式，我们发现我们可以同时处理多个流了（把一个流从阻塞模式切换到非阻塞模式再此不予讨论）：
+
+    while true {
+        for i in stream[]; {
+            if i has data
+                read until unavailable
+        }
     }
-}
 
-    我们只要不停的把所有流从头到尾问一遍，又从头开始。这样就可以处理多个流了，但这样的做法显然不好，因为如果所有的流都没有数据，那么只会白白浪费CPU。
-    这里要补充一点，阻塞模式下，内核对于I/O事件的处理是阻塞或者唤醒，而非阻塞模式下则把I/O事件交给其他对象（后文介绍的select以及epoll）处理甚至直接忽略。
+        我们只要不停的把所有流从头到尾问一遍，又从头开始。这样就可以处理多个流了，但这样的做法显然不好，因为如果所有的流都没有数据，那么只会白白浪费CPU。
+        这里要补充一点，阻塞模式下，内核对于I/O事件的处理是阻塞或者唤醒，而非阻塞模式下则把I/O事件交给其他对象（后文介绍的select以及epoll）处理甚至直接忽略。
 
-    为了避免CPU空转，可以引进了一个代理（一开始有一位叫做select的代理，后来又有一位叫做poll的代理，不过两者的本质是一样的）。这个代理比较厉害，
-    可以同时观察许多流的I/O事件，在空闲的时候，会把当前线程阻塞掉，当有一个或多个流有I/O事件时，就从阻塞态中醒来，于是我们的程序就会轮询一遍所有的流
-    （于是我们可以把“忙”字去掉了）。代码长这样:
+        为了避免CPU空转，可以引进了一个代理（一开始有一位叫做select的代理，后来又有一位叫做poll的代理，不过两者的本质是一样的）。这个代理比较厉害，
+        可以同时观察许多流的I/O事件，在空闲的时候，会把当前线程阻塞掉，当有一个或多个流有I/O事件时，就从阻塞态中醒来，于是我们的程序就会轮询一遍所有的流
+        （于是我们可以把“忙”字去掉了）。代码长这样:
 
-while true {
-    select(streams[])
-    for i in streams[] {
-        if i has data
-            read until unavailable
+    while true {
+        select(streams[])
+        for i in streams[] {
+            if i has data
+                read until unavailable
+        }
     }
-}
 
-    于是，如果没有I/O事件产生，我们的程序就会阻塞在select处。但是依然有个问题，我们从select那里仅仅知道了，有I/O事件发生了，但却并不知道是那几个流
-    （可能有一个，多个，甚至全部），我们只能无差别轮询所有流，找出能读出数据，或者写入数据的流，对他们进行操作。
+        于是，如果没有I/O事件产生，我们的程序就会阻塞在select处。但是依然有个问题，我们从select那里仅仅知道了，有I/O事件发生了，但却并不知道是那几个流
+        （可能有一个，多个，甚至全部），我们只能无差别轮询所有流，找出能读出数据，或者写入数据的流，对他们进行操作。
 
-    但是使用select，我们有O(n)的无差别轮询复杂度，同时处理的流越多，没一次无差别轮询时间就越长。再次
+        但是使用select，我们有O(n)的无差别轮询复杂度，同时处理的流越多，没一次无差别轮询时间就越长。再次
 
-说了这么多，终于能好好解释epoll了
+    说了这么多，终于能好好解释epoll了
 
-    epoll可以理解为event poll，不同于忙轮询和无差别轮询，epoll之会把哪个流发生了怎样的I/O事件通知我们。此时我们对这些流的操作都是有意义的。
-    （复杂度降低到了O(1)）
+        epoll可以理解为event poll，不同于忙轮询和无差别轮询，epoll之会把哪个流发生了怎样的I/O事件通知我们。此时我们对这些流的操作都是有意义的。
+        （复杂度降低到了O(1)）
 
-    在讨论epoll的实现细节之前，先把epoll的相关操作列出：
+        在讨论epoll的实现细节之前，先把epoll的相关操作列出：
 
-      epoll_create 创建一个epoll对象，一般epollfd = epoll_create()
+          epoll_create 创建一个epoll对象，一般epollfd = epoll_create()
 
-      epoll_ctl （epoll_add/epoll_del的合体），往epoll对象中增加/删除某一个流的某一个事件
+          epoll_ctl （epoll_add/epoll_del的合体），往epoll对象中增加/删除某一个流的某一个事件
 
-比如
+    比如
 
-epoll_ctl(epollfd, EPOLL_CTL_ADD, socket, EPOLLIN);//注册缓冲区非空事件，即有数据流入
+    epoll_ctl(epollfd, EPOLL_CTL_ADD, socket, EPOLLIN);//注册缓冲区非空事件，即有数据流入
 
-epoll_ctl(epollfd, EPOLL_CTL_DEL, socket, EPOLLOUT);//注册缓冲区非满事件，即流可以被写入
+    epoll_ctl(epollfd, EPOLL_CTL_DEL, socket, EPOLLOUT);//注册缓冲区非满事件，即流可以被写入
 
-epoll_wait(epollfd,...)等待直到注册的事件发生
+    epoll_wait(epollfd,...)等待直到注册的事件发生
 
-（注：当对一个非阻塞流的读写发生缓冲区满或缓冲区空，write/read会返回-1，并设置errno=EAGAIN。而epoll只关心缓冲区非满和缓冲区非空事件）。
+    （注：当对一个非阻塞流的读写发生缓冲区满或缓冲区空，write/read会返回-1，并设置errno=EAGAIN。而epoll只关心缓冲区非满和缓冲区非空事件）。
 
-一个epoll模式的代码大概的样子是：
-while true {
-    active_stream[] = epoll_wait(epollfd)
-    for i in active_stream[] {
-        read or write till
+    一个epoll模式的代码大概的样子是：
+    while true {
+        active_stream[] = epoll_wait(epollfd)
+        for i in active_stream[] {
+            read or write till
+        }
     }
-}
+    &apos;&apos;&apos;
+</code></pre><h2 id="二、Twsited异步网络框架"><a href="#二、Twsited异步网络框架" class="headerlink" title="二、Twsited异步网络框架"></a>二、Twsited异步网络框架</h2><h3 id="1-事件驱动"><a href="#1-事件驱动" class="headerlink" title="1.    事件驱动"></a>1.    事件驱动</h3><pre><code>将自定义的类和函数注册到事件列表中，事件驱动框架就会自行去列表中获取事件并执行。
 
-&apos;&apos;&apos;
-</code></pre><h3 id="二、Twsited异步网络框架"><a href="#二、Twsited异步网络框架" class="headerlink" title="二、Twsited异步网络框架"></a>二、Twsited异步网络框架</h3><ol>
-<li><p>事件驱动</p>
-<p>将自定义的类和函数注册到事件列表中，事件驱动框架就会自行去列表中获取事件并执行。</p>
-<p>第一，注册事件；第二，触发事件<br><img src="http://i.imgur.com/6brDszu.png" alt=""></p>
-</li>
-</ol>
-<p>示例代码：</p>
+第一，注册事件；第二，触发事件
+![](http://i.imgur.com/6brDszu.png)
+</code></pre><p>示例代码：</p>
 <pre><code>#event_drive.py
+
 #!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -707,7 +701,10 @@ class BaseHandler(object):
     def execute(self):
         raise Exception(&apos;you must overwrite execute&apos;)
 
+
 #event_run.py
+
+
 #!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -729,159 +726,182 @@ class YourHandler(event_drive.BaseHandler):
 
 event_drive.event_list.append(MyHandler) #将事件注册到事件列表中
 event_drive.event_list.append(YourHandler)
-event_drive.run()    
-</code></pre><ol>
-<li>Twisted框架</li>
-</ol>
-<p>Echo_server</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-from twisted.internet import protocol
-from twisted.internet import reactor
+event_drive.run()
+</code></pre><h3 id="2-Twisted框架"><a href="#2-Twisted框架" class="headerlink" title="2.    Twisted框架"></a>2.    Twisted框架</h3><pre><code>Echo_server
 
-class Echo(protocol.Protocol):
+    #!/usr/local/env python3
     &apos;&apos;&apos;
-    定义一个类，处理客户端传递的数据
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
     &apos;&apos;&apos;
-    def dataReceived(self, data):
+    from twisted.internet import protocol
+    from twisted.internet import reactor
+
+    class Echo(protocol.Protocol):
         &apos;&apos;&apos;
-        一旦接收到客户端传递的数据就要调用该方法
-        :param data: 客户端传递过来的数据，python3版本传递的数据需要转换成bytes
-        :return: 返回的数据是将客户端传递过来的数据返回给客户端
+        定义一个类，处理客户端传递的数据
         &apos;&apos;&apos;
-        print(&quot;Client said:&quot;,data)
-        self.transport.write(data)
+        def dataReceived(self, data):
+            &apos;&apos;&apos;
+            一旦接收到客户端传递的数据就要调用该方法
+            :param data: 客户端传递过来的数据，python3版本传递的数据需要转换成bytes
+            :return: 返回的数据是将客户端传递过来的数据返回给客户端
+            &apos;&apos;&apos;
+            print(&quot;Client said:&quot;,data)
+            self.transport.write(data)
 
-def main():
-    &apos;&apos;&apos;
-    主函数，程序执行时直接从该函数调用事件类
-    :return:
-    &apos;&apos;&apos;
-    factory = protocol.ServerFactory() #定义基础工厂类
-    factory.protocol = Echo #相当于socketserver中的Handler方法，工厂协议直接引用自定义的Echo类
-
-    reactor.listenTCP(5000,factory) #reactor自动重复去做一件事情。使用listenTCP监听端口
-    reactor.run() #运行
-
-if __name__ == &apos;__main__&apos;:
-    main()
-</code></pre><p>Echo_client:</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-from twisted.internet import reactor, protocol
-
-
-# a client protocol
-
-class EchoClient(protocol.Protocol):
-    &apos;&apos;&apos;
-    客户端Echo事件
-    &apos;&apos;&apos;
-    def connectionMade(self):
+    def main():
         &apos;&apos;&apos;
-        连接建立执行该方法，客户端发送数据
+        主函数，程序执行时直接从该函数调用事件类
         :return:
         &apos;&apos;&apos;
-        self.transport.write(b&quot;hello alex!&quot;)
+        factory = protocol.ServerFactory() #定义基础工厂类
+        factory.protocol = Echo #相当于socketserver中的Handler方法，工厂协议直接引用自定义的Echo类
 
-    def dataReceived(self, data):
-        &apos;&apos;&apos;
-        客户端接收服务端的数据
-        :param data:
-        :return:
-        &apos;&apos;&apos;
-        print(&quot;Server said:&quot;, data)
-        self.transport.loseConnection()
-    def connectionLost(self, reason):
-        &apos;&apos;&apos;
-        客户端接收完数据断开连接，主动执行该方法断开连接
-        :param reason:
-        :return:
-        &apos;&apos;&apos;
-        print(&quot;connection lost&quot;)
+        reactor.listenTCP(5000,factory) #reactor自动重复去做一件事情。使用listenTCP监听端口
+        reactor.run() #运行
 
-class EchoFactory(protocol.ClientFactory):
+    if __name__ == &apos;__main__&apos;:
+        main()
+
+
+Echo_client:
+
+    #!/usr/local/env python3
     &apos;&apos;&apos;
-    自定义工厂类，继承prorocol.ClientFactory类
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
     &apos;&apos;&apos;
-    protocol = EchoClient #hanld。自己重写了protocol类
-
-    def clientConnectionFailed(self, connector, reason):
-        print(&quot;Connection failed - goodbye!&quot;)
-        reactor.stop()
-
-    def clientConnectionLost(self, connector, reason):
-        print(&quot;Connection lost - goodbye!&quot;)
-        reactor.stop()
+    from twisted.internet import reactor, protocol
 
 
-# this connects the protocol to a server running on port 8000
-def main():
-    f = EchoFactory()
-    reactor.connectTCP(&quot;localhost&quot;, 5000, f)
-    reactor.run()
+    # a client protocol
 
-# this only runs if the module was *not* imported
-if __name__ == &apos;__main__&apos;:
-    main()
-</code></pre><ol>
-<li>升入学习</li>
-</ol>
-<p><a href="http://blog.csdn.net/hanhuili/article/details/9389433" target="_blank" rel="external">http://blog.csdn.net/hanhuili/article/details/9389433</a> </p>
+    class EchoClient(protocol.Protocol):
+        &apos;&apos;&apos;
+        客户端Echo事件
+        &apos;&apos;&apos;
+        def connectionMade(self):
+            &apos;&apos;&apos;
+            连接建立执行该方法，客户端发送数据
+            :return:
+            &apos;&apos;&apos;
+            self.transport.write(b&quot;hello alex!&quot;)
+
+        def dataReceived(self, data):
+            &apos;&apos;&apos;
+            客户端接收服务端的数据
+            :param data:
+            :return:
+            &apos;&apos;&apos;
+            print(&quot;Server said:&quot;, data)
+            self.transport.loseConnection()
+        def connectionLost(self, reason):
+            &apos;&apos;&apos;
+            客户端接收完数据断开连接，主动执行该方法断开连接
+            :param reason:
+            :return:
+            &apos;&apos;&apos;
+            print(&quot;connection lost&quot;)
+
+    class EchoFactory(protocol.ClientFactory):
+        &apos;&apos;&apos;
+        自定义工厂类，继承prorocol.ClientFactory类
+        &apos;&apos;&apos;
+        protocol = EchoClient #hanld。自己重写了protocol类
+
+        def clientConnectionFailed(self, connector, reason):
+            print(&quot;Connection failed - goodbye!&quot;)
+            reactor.stop()
+
+        def clientConnectionLost(self, connector, reason):
+            print(&quot;Connection lost - goodbye!&quot;)
+            reactor.stop()
+
+
+    # this connects the protocol to a server running on port 8000
+    def main():
+        f = EchoFactory()
+        reactor.connectTCP(&quot;localhost&quot;, 5000, f)
+        reactor.run()
+
+    # this only runs if the module was *not* imported
+    if __name__ == &apos;__main__&apos;:
+        main()
+</code></pre><h3 id="3-深入学习"><a href="#3-深入学习" class="headerlink" title="3.深入学习"></a>3.深入学习</h3><p><a href="http://blog.csdn.net/hanhuili/article/details/9389433" target="_blank" rel="external">http://blog.csdn.net/hanhuili/article/details/9389433</a> </p>
 <p><a href="http://krondo.com/an-introduction-to-asynchronous-programming-and-twisted/" target="_blank" rel="external">http://krondo.com/an-introduction-to-asynchronous-programming-and-twisted/</a> </p>
-<h3 id="三、非关系型数据库"><a href="#三、非关系型数据库" class="headerlink" title="三、非关系型数据库"></a>三、非关系型数据库</h3><ol>
-<li><p>Redis</p>
-<p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/5132791.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5132791.html</a></p>
-<p>数据（键值对）存储在内存中，一个独立的内存管理器，可以使多个程序共享数据    </p>
-<p>默认是非持久化的，但是可以在配置文件中进行设置</p>
-<ol>
-<li><p>redis基础使用</p>
-<p>   cli&gt;keys * #查看所有的键<br>   cli&gt;set name swht ex 5 #设置一个键值对，其有效时间为5秒<br>   cli&gt;get name #获取键值</p>
-</li>
-<li><p>redis连接</p>
-<p>   import redis<br>   redis_cli = redis.Redis(“localhost”)<br>   print(redis_cli.get(‘name’)) #b’swht’  get方法只能获取字符</p>
-</li>
-<li><p>redis连接池</p>
-<p>   import redis<br>   pool = redis.ConnectionPool(host = ‘localhost’,port = 6379)<br>   redis_cli = redis.Redis(connection_pool=pool)<br>   redis_cli.set(‘age’,56)<br>   print(redis_cli.get(‘age’)) #b’56’</p>
-</li>
-<li><p>操作</p>
-<p>set(name, value, ex=None, px=None, nx=False, xx=False)</p>
-<p>   在Redis中设置值，默认，不存在则创建，存在则修改<br>   参数：</p>
-<pre><code>ex，过期时间（秒）
-px，过期时间（毫秒）
-nx，如果设置为True，则只有name不存在时，当前set操作才执行
-xx，如果设置为True，则只有name存在时，岗前set操作才执行
-</code></pre><p>setnx(name, value)</p>
-<p>   设置值，只有name不存在时，执行设置操作（添加）<br>setex(name, value, time)</p>
-<h1 id="设置值"><a href="#设置值" class="headerlink" title="设置值"></a>设置值</h1><h1 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h1><pre><code># time，过期时间（数字秒 或 timedelta对象）
-</code></pre><p>psetex(name, time_ms, value)</p>
-<h1 id="设置值-1"><a href="#设置值-1" class="headerlink" title="设置值"></a>设置值</h1><h1 id="参数：-1"><a href="#参数：-1" class="headerlink" title="参数："></a>参数：</h1><pre><code># time_ms，过期时间（数字毫秒 或 timedelta对象）
-</code></pre><p>mset(<em>args, *</em>kwargs)</p>
-<p>   批量设置值<br>   如：</p>
-<pre><code>mset(k1=&apos;v1&apos;, k2=&apos;v2&apos;)
-或
-mget({&apos;k1&apos;: &apos;v1&apos;, &apos;k2&apos;: &apos;v2&apos;})
-</code></pre><p>get(name)</p>
-<p>   获取值<br>mget(keys, *args)</p>
-<p>   批量获取<br>   如：</p>
-<pre><code>mget(&apos;ylr&apos;, &apos;wupeiqi&apos;)
-或
-r.mget([&apos;ylr&apos;, &apos;wupeiqi&apos;])
-</code></pre><p>getset(name, value)</p>
-<p>   设置新值并获取原来的值<br>getrange(key, start, end)</p>
-</li>
-</ol>
-</li>
-</ol>
-<pre><code>        # 获取子序列（根据字节获取，非字符）
+<h3 id="三、非关系型数据库"><a href="#三、非关系型数据库" class="headerlink" title="三、非关系型数据库"></a>三、非关系型数据库</h3><h3 id="1-Redis"><a href="#1-Redis" class="headerlink" title="1.    Redis"></a>1.    Redis</h3><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/5132791.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5132791.html</a></p>
+<pre><code>数据（键值对）存储在内存中，一个独立的内存管理器，可以使多个程序共享数据    
+
+默认是非持久化的，但是可以在配置文件中进行设置
+
+1. redis基础使用
+
+        cli&gt;keys * #查看所有的键
+        cli&gt;set name swht ex 5 #设置一个键值对，其有效时间为5秒
+        cli&gt;get name #获取键值
+
+2. redis连接
+
+        import redis
+        redis_cli = redis.Redis(&quot;localhost&quot;)
+        print(redis_cli.get(&apos;name&apos;)) #b&apos;swht&apos;  get方法只能获取字符
+3. redis连接池
+
+        import redis
+        pool = redis.ConnectionPool(host = &apos;localhost&apos;,port = 6379)
+        redis_cli = redis.Redis(connection_pool=pool)
+        redis_cli.set(&apos;age&apos;,56)
+        print(redis_cli.get(&apos;age&apos;)) #b&apos;56&apos;
+4. 操作
+
+    set(name, value, ex=None, px=None, nx=False, xx=False)
+
+        在Redis中设置值，默认，不存在则创建，存在则修改
+        参数：
+             ex，过期时间（秒）
+             px，过期时间（毫秒）
+             nx，如果设置为True，则只有name不存在时，当前set操作才执行
+             xx，如果设置为True，则只有name存在时，岗前set操作才执行
+    setnx(name, value)
+
+        设置值，只有name不存在时，执行设置操作（添加）
+    setex(name, value, time)
+
+        # 设置值
+        # 参数：
+            # time，过期时间（数字秒 或 timedelta对象）
+    psetex(name, time_ms, value)
+
+        # 设置值
+        # 参数：
+            # time_ms，过期时间（数字毫秒 或 timedelta对象）
+    mset(*args, **kwargs)
+
+        批量设置值
+        如：
+            mset(k1=&apos;v1&apos;, k2=&apos;v2&apos;)
+            或
+            mget({&apos;k1&apos;: &apos;v1&apos;, &apos;k2&apos;: &apos;v2&apos;})
+    get(name)
+
+        获取值
+    mget(keys, *args)
+
+        批量获取
+        如：
+            mget(&apos;ylr&apos;, &apos;wupeiqi&apos;)
+            或
+            r.mget([&apos;ylr&apos;, &apos;wupeiqi&apos;])
+    getset(name, value)
+
+        设置新值并获取原来的值
+    getrange(key, start, end)
+
+
+        # 获取子序列（根据字节获取，非字符）
         # 参数：
             # name，Redis 的 name
             # start，起始位置（字节）
@@ -1350,8 +1370,10 @@ r.mget([&apos;ylr&apos;, &apos;wupeiqi&apos;])
     zscan_iter(name, match=None, count=None,score_cast_func=float)
 
         # 同字符串相似，相较于字符串新增score_cast_func，用来对分数进行操作
-</code></pre><p>　　9. redis的发布与订阅</p>
-<pre><code>基础类：
+
+　　9. redis的发布与订阅
+
+基础类：
 
     #!/usr/local/env python3
     &apos;&apos;&apos;
@@ -1408,78 +1430,73 @@ redis_pub.py
 
     obj = RedisHelper()
     obj.public(&apos;hello&apos;)
-</code></pre><ol>
-<li><p>memcached</p>
-<p>非持久化轻量级缓存，使用第三方工具可以实现数据的持久化存储</p>
-</li>
-<li><p>mongodb</p>
-<p>天生的数据持久化，默认将数据持久化存储在本地磁盘。</p>
-</li>
-</ol>
-<h3 id="四、消息队列rabbitmq"><a href="#四、消息队列rabbitmq" class="headerlink" title="四、消息队列rabbitmq"></a>四、消息队列rabbitmq</h3><p>通信模式：</p>
-<ol>
-<li><p>简单生产者消费者模型</p>
-<p> rabbit_send</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import pika
-#与消息队列建立一个连接
-connection = pika.BlockingConnection(pika.ConnectionParameters(
-               &apos;localhost&apos;))
-#创建一个管道
-channel = connection.channel()
+</code></pre><h3 id="2-memcached"><a href="#2-memcached" class="headerlink" title="2.    memcached"></a>2.    memcached</h3><pre><code>非持久化轻量级缓存，使用第三方工具可以实现数据的持久化存储
+</code></pre><h3 id="3-mongodb"><a href="#3-mongodb" class="headerlink" title="3.    mongodb"></a>3.    mongodb</h3><pre><code>天生的数据持久化，默认将数据持久化存储在本地磁盘。
+</code></pre><h2 id="四、消息队列rabbitmq"><a href="#四、消息队列rabbitmq" class="headerlink" title="四、消息队列rabbitmq"></a>四、消息队列rabbitmq</h2><p>通信模式：</p>
+<h3 id="1-简单生产者消费者模型"><a href="#1-简单生产者消费者模型" class="headerlink" title="1. 简单生产者消费者模型"></a>1. 简单生产者消费者模型</h3><pre><code>rabbit_send
 
-#在管道中声明一个名称为&apos;name&apos;的队列
-channel.queue_declare(queue=&apos;name&apos;)
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import pika
+    #与消息队列建立一个连接
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+                   &apos;localhost&apos;))
+    #创建一个管道
+    channel = connection.channel()
 
-#一个消息不能直接发送给消息队列，需要通过一个路由器进行转发，这个路由器就是由exchange进行设置
-channel.basic_publish(exchange=&apos;&apos;, #路由器
-                      routing_key=&apos;name&apos;, #队列名称
-                      body=&apos;swht&apos;) #消息
-print(&quot; [swht] Sent a message&quot;)
-connection.close()
-</code></pre><p> rabbit_recive</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import pika
+    #在管道中声明一个名称为&apos;name&apos;的队列
+    channel.queue_declare(queue=&apos;name&apos;)
 
-#与消息队列服务器建立连接
-connection = pika.BlockingConnection(pika.ConnectionParameters(
-               &apos;localhost&apos;))
-#创建一个管道
-channel = connection.channel()
-#消费者声明一个队列，为了防止生产者还没有启动没有完成创建队列时代码出错的问题。如果队列已存在，则忽略该操作，否则则创建队列
-channel.queue_declare(queue=&apos;name&apos;)
+    #一个消息不能直接发送给消息队列，需要通过一个路由器进行转发，这个路由器就是由exchange进行设置
+    channel.basic_publish(exchange=&apos;&apos;, #路由器
+                          routing_key=&apos;name&apos;, #队列名称
+                          body=&apos;swht&apos;) #消息
+    print(&quot; [swht] Sent a message&quot;)
+    connection.close()
 
-def callback(ch, method, properties, body):
-    print(&quot; [x] Received %r&quot; % body)
+rabbit_recive
 
-channel.basic_consume(callback,
-                      queue=&apos;name&apos;,
-                      no_ack=True) #接收消息不进行确认
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import pika
 
-print(&apos; [*] Waiting for messages. To exit press CTRL+C&apos;)
-channel.start_consuming()
-</code></pre></li>
-<li><p>消息持久化</p>
-<pre><code>channel.queue_declare(queue=&apos;name&apos;,durable=True)
-</code></pre><p> 已经存在的队列是不能再进行持久化设置的，所以在只有创建队列的时候设置持久化选项</p>
-<pre><code>basc_ack = (delivery_tag= method.delivry_tag)
-</code></pre><p> 查看当前所有的queue  XX</p>
-</li>
-<li><p>消息公平分发</p>
-<p> <img src="http://i.imgur.com/qBwPkju.png" alt=""></p>
-<p> 只在消费者添加<br> channel.basic_qos(prefetch_count=1)</p>
-<p> 示例代码：</p>
-<pre><code>rabbit_slb_send.py
+    #与消息队列服务器建立连接
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+                   &apos;localhost&apos;))
+    #创建一个管道
+    channel = connection.channel()
+    #消费者声明一个队列，为了防止生产者还没有启动没有完成创建队列时代码出错的问题。如果队列已存在，则忽略该操作，否则则创建队列
+    channel.queue_declare(queue=&apos;name&apos;)
+
+    def callback(ch, method, properties, body):
+        print(&quot; [x] Received %r&quot; % body)
+
+    channel.basic_consume(callback,
+                          queue=&apos;name&apos;,
+                          no_ack=True) #接收消息不进行确认
+
+    print(&apos; [*] Waiting for messages. To exit press CTRL+C&apos;)
+    channel.start_consuming()
+</code></pre><h3 id="2-消息持久化"><a href="#2-消息持久化" class="headerlink" title="2. 消息持久化"></a>2. 消息持久化</h3><pre><code>    channel.queue_declare(queue=&apos;name&apos;,durable=True)
+已经存在的队列是不能再进行持久化设置的，所以在只有创建队列的时候设置持久化选项
+    basc_ack = (delivery_tag= method.delivry_tag)
+
+查看当前所有的queue  XX
+</code></pre><h3 id="3-消息公平分发"><a href="#3-消息公平分发" class="headerlink" title="3. 消息公平分发"></a>3. 消息公平分发</h3><p><img src="http://i.imgur.com/qBwPkju.png" alt=""></p>
+<pre><code>只在消费者添加
+channel.basic_qos(prefetch_count=1)
+
+示例代码：
+
+rabbit_slb_send.py
     #!/usr/local/env python3
     &apos;&apos;&apos;
     Author:@南非波波
@@ -1507,12 +1524,8 @@ channel.start_consuming()
                           ))
     print(&quot; [x] Sent %r&quot; % message)
     connection.close()
-</code></pre></li>
-</ol>
-<ol>
-<li><p>exchange路由</p>
-<p> <img src="http://i.imgur.com/MFX1LTo.png" alt=""></p>
-<p> 代码：</p>
+</code></pre><h3 id="4-exchange路由"><a href="#4-exchange路由" class="headerlink" title="4. exchange路由"></a>4. exchange路由</h3><p><img src="http://i.imgur.com/MFX1LTo.png" alt=""></p>
+<p>代码：</p>
 <pre><code>publisher.py
 
     #!/usr/local/env python3
@@ -1565,9 +1578,7 @@ subscriber.py
                           no_ack=True)
 
     channel.start_consuming()
-</code></pre></li>
-</ol>
-
+</code></pre>
       
     </div>
     
@@ -1578,7 +1589,7 @@ subscriber.py
         <p><span>本文标题:</span><a href="/2016/03/19/s12-20160319-day10/">python自动化开发 day10</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">南非波波</a></p>
         <p><span>发布时间:</span>2016-03-19, 15:30:00</p>
-        <p><span>最后更新:</span>2016-07-05, 18:30:15</p>
+        <p><span>最后更新:</span>2016-07-07, 10:55:01</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/03/19/s12-20160319-day10/" title="python自动化开发 day10">http://blog.songqingbo.cn/2016/03/19/s12-20160319-day10/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.songqingbo.cn/2016/03/19/s12-20160319-day10/　　作者: 南非波波" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -1614,7 +1625,7 @@ subscriber.py
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、回顾"><span class="toc-number">1.</span> <span class="toc-text">一、回顾</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建一个TCP-IP-socket"><span class="toc-number"></span> <span class="toc-text">创建一个TCP/IP socket</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#绑定socket到指定端口"><span class="toc-number"></span> <span class="toc-text">绑定socket到指定端口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#监听连接的地址"><span class="toc-number"></span> <span class="toc-text">监听连接的地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Socket的读操作"><span class="toc-number"></span> <span class="toc-text">Socket的读操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#socket的写操作"><span class="toc-number"></span> <span class="toc-text">socket的写操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二、Twsited异步网络框架"><span class="toc-number">1.</span> <span class="toc-text">二、Twsited异步网络框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、非关系型数据库"><span class="toc-number">2.</span> <span class="toc-text">三、非关系型数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设置值"><span class="toc-number"></span> <span class="toc-text">设置值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参数："><span class="toc-number"></span> <span class="toc-text">参数：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设置值-1"><span class="toc-number"></span> <span class="toc-text">设置值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参数：-1"><span class="toc-number"></span> <span class="toc-text">参数：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#四、消息队列rabbitmq"><span class="toc-number">1.</span> <span class="toc-text">四、消息队列rabbitmq</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、回顾"><span class="toc-text">一、回顾</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-队列"><span class="toc-text">1.    队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-gevent模块：对Greenlet模块的一次封装"><span class="toc-text">2. gevent模块：对Greenlet模块的一次封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-协程"><span class="toc-text">3. 协程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-select"><span class="toc-text">4. select</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Twsited异步网络框架"><span class="toc-text">二、Twsited异步网络框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-事件驱动"><span class="toc-text">1.    事件驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Twisted框架"><span class="toc-text">2.    Twisted框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-深入学习"><span class="toc-text">3.深入学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、非关系型数据库"><span class="toc-text">三、非关系型数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Redis"><span class="toc-text">1.    Redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-memcached"><span class="toc-text">2.    memcached</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mongodb"><span class="toc-text">3.    mongodb</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、消息队列rabbitmq"><span class="toc-text">四、消息队列rabbitmq</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-简单生产者消费者模型"><span class="toc-text">1. 简单生产者消费者模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-消息持久化"><span class="toc-text">2. 消息持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-消息公平分发"><span class="toc-text">3. 消息公平分发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-exchange路由"><span class="toc-text">4. exchange路由</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -1631,7 +1642,7 @@ subscriber.py
     <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
     </script>
 
 

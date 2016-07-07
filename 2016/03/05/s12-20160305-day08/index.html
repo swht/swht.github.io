@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html lang="zh-CN">
 <head>
 
     <!--[if lt IE 9]>
@@ -37,7 +37,7 @@ http://www.cnblogs.com/alex3714/articles/5227251.html
 ###推荐电影###
 绝美之城  上帝之城 | 千与千寻  龙猫 卡尔的移动城堡
 通过实例私有变量，需要将在类中封装一个方">
-<meta property="og:updated_time" content="2016-07-05T10:30:23.000Z">
+<meta property="og:updated_time" content="2016-07-07T03:07:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python自动化开发 day08">
 <meta name="twitter:description" content="Author:@南非波波
@@ -199,7 +199,7 @@ http://www.cnblogs.com/alex3714/articles/5227251.html
                             
                                 <a class="fa Email" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -285,7 +285,7 @@ http://www.cnblogs.com/alex3714/articles/5227251.html
                             
                                 <a class="fa Email" target="_blank" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" target="_blank" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -360,21 +360,17 @@ http://www.cnblogs.com/alex3714/articles/5227251.html
 <p>###推荐电影###</p>
 <pre><code>绝美之城  上帝之城 | 千与千寻  龙猫 卡尔的移动城堡
 </code></pre><p>通过实例私有变量，需要将在类中封装一个方法，该方法返回私有变量的值</p>
-<h3 id="一、socket深入"><a href="#一、socket深入" class="headerlink" title="一、socket深入"></a>一、socket深入</h3><p>1.概念</p>
-<pre><code>Unix的进程通信机制。一个完整的socket有一个本地唯一的socket号，由操作系统分配。socket是面向客户/服务器模型而设计的，针对客户和服务器程序提供不同的socket系统调用。socket利用客户/服务器模式巧妙的解决了进程之间建立通信连接的问题。
+<h2 id="一、socket深入"><a href="#一、socket深入" class="headerlink" title="一、socket深入"></a>一、socket深入</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><pre><code>Unix的进程通信机制。一个完整的socket有一个本地唯一的socket号，由操作系统分配。socket是面向客户/服务器模型而设计的，针对客户和服务器程序提供不同的socket系统调用。socket利用客户/服务器模式巧妙的解决了进程之间建立通信连接的问题。
 
 套接字（socket）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元。它是网络通信过程中端点的抽象表示，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。
-</code></pre><p>2.地址簇</p>
-<pre><code>socket.AF_UNIX unix本机进程间通信 
+</code></pre><h3 id="2-地址簇"><a href="#2-地址簇" class="headerlink" title="2.地址簇"></a>2.地址簇</h3><pre><code>socket.AF_UNIX unix本机进程间通信 
 socket.AF_INET　使用IPV4地址协议进行进程间通信
 socket.AF_INET6  使用IPV6地址协议进行进程间通信
-</code></pre><p>3.套接字类型</p>
-<pre><code>socket.SOCK_STREAM  #使用tcp协议
+</code></pre><h3 id="3-套接字类型"><a href="#3-套接字类型" class="headerlink" title="3.套接字类型"></a>3.套接字类型</h3><pre><code>socket.SOCK_STREAM  #使用tcp协议
 socket.SOCK_DGRAM   #使用udp协议
 socket.SOCK_RAW     #原始套接字，普通的套接字无法处理ICMP、IFMP等网络报文，而SOCK_RAM可以。其次SOCK_RAM也可以处理特殊的IPV4报文,此外，利用原始套接字可以通过IP_HDRINCL套接字选项由用户构造IP头。
 socket.SOCK_RDM    #是一种可靠的UDP形式，即保证交付数据报但不保证顺序。SOCK_RAW用来提供对原始协议的低级访问，在需要执行某些特殊操作时使用，如发送ICMP报文。SOCK_RAW通常仅限于高级用户或管理员运行的程序使用。
-</code></pre><p>4.socket方法</p>
-<pre><code>1. socket.socket(family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None)
+</code></pre><h3 id="4-socket方法"><a href="#4-socket方法" class="headerlink" title="4.socket方法"></a>4.socket方法</h3><pre><code>1. socket.socket(family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None)
 2. socket.socketpair([family[, type[, proto]]])
 3. socket.create_connection(address[, timeout[, source_address]])
 4. socket.getaddrinfo(host, port, family=0, type=0, proto=0, flags=0) 
@@ -431,14 +427,11 @@ socket.SOCK_RDM    #是一种可靠的UDP形式，即保证交付数据报但不
     套接字的文件描述符
     socket.sendfile(file, offset=0, count=None)
     发送文件 ，但目前多数情况下并无什么卵用
-</code></pre><h3 id="二、socketserver"><a href="#二、socketserver" class="headerlink" title="二、socketserver"></a>二、socketserver</h3><p>参考链接：<a href="http://my.oschina.net/u/1433482/blog/190612" target="_blank" rel="external">http://my.oschina.net/u/1433482/blog/190612</a></p>
+</code></pre><h2 id="二、socketserver"><a href="#二、socketserver" class="headerlink" title="二、socketserver"></a>二、socketserver</h2><p>参考链接：<a href="http://my.oschina.net/u/1433482/blog/190612" target="_blank" rel="external">http://my.oschina.net/u/1433482/blog/190612</a></p>
 <p>SocketServer简化了网络服务器的编写。它有4个类：TCPServer，UDPServer，UnixStreamServer，UnixDatagramServer。这4个类是同步进行处理的，另外通过ForkingMixIn和ThreadingMixIn类来支持异步。</p>
-<p><strong>创建服务器的步骤</strong></p>
-<pre><code>首先，你必须创建一个请求处理类，它是BaseRequestHandler的子类并重载其handle()方法。其次，你必须实例化一个服务器类，传入服务器的地址和请求处理程序类。最后，调用handle_request()(一般是调用其他事件循环或者使用select())或serve_forever()。
-</code></pre><p><strong>服务器类型</strong></p>
-<pre><code>5种类型：BaseServer，TCPServer，UnixStreamServer，UDPServer，UnixDatagramServer。 注意：BaseServer不直接对外服务。
-</code></pre><p><strong>服务器对象</strong></p>
-<pre><code>class SocketServer.BaseServer：这是模块中的所有服务器对象的超类。它定义了接口，如下所述，但是大多数的方法不实现，在子类中进行细化。
+<h3 id="创建服务器的步骤"><a href="#创建服务器的步骤" class="headerlink" title="创建服务器的步骤"></a>创建服务器的步骤</h3><pre><code>首先，你必须创建一个请求处理类，它是BaseRequestHandler的子类并重载其handle()方法。其次，你必须实例化一个服务器类，传入服务器的地址和请求处理程序类。最后，调用handle_request()(一般是调用其他事件循环或者使用select())或serve_forever()。
+</code></pre><h3 id="服务器类型"><a href="#服务器类型" class="headerlink" title="服务器类型"></a>服务器类型</h3><pre><code>5种类型：BaseServer，TCPServer，UnixStreamServer，UDPServer，UnixDatagramServer。 注意：BaseServer不直接对外服务。
+</code></pre><h3 id="服务器对象"><a href="#服务器对象" class="headerlink" title="服务器对象"></a>服务器对象</h3><pre><code>class SocketServer.BaseServer：这是模块中的所有服务器对象的超类。它定义了接口，如下所述，但是大多数的方法不实现，在子类中进行细化。
 
 BaseServer.fileno()：返回服务器监听套接字的整数文件描述符。通常用来传递给select.select(), 以允许一个进程监视多个服务器。
 
@@ -485,8 +478,7 @@ BaseServer.server_activate()：通过服务器的构造函数来激活服务器�
 BaseServer.server_bind()：通过服务器的构造函数中调用绑定socket到所需的地址。可重载。
 
 BaseServer.verify_request(request, client_address)：返回一个布尔值，如果该值为True ，则该请求将被处理，反之请求将被拒绝。此功能可以重写来实现对服务器的访问控制。默认的实现始终返回True。client_address可以限定客户端，比如只处理指定ip区间的请求。 常用。
-</code></pre><p><strong>请求处理器</strong></p>
-<pre><code>处理器接收数据并决定如何操作。它负责在socket层之上实现协议（i.e., HTTP, XML-RPC, or AMQP)，读取数据，处理并写反应。可以重载的方法如下：
+</code></pre><h3 id="请求处理器"><a href="#请求处理器" class="headerlink" title="请求处理器"></a>请求处理器</h3><pre><code>处理器接收数据并决定如何操作。它负责在socket层之上实现协议（i.e., HTTP, XML-RPC, or AMQP)，读取数据，处理并写反应。可以重载的方法如下：
 
 setup(): 准备请求处理. 默认什么都不做，StreamRequestHandler中会创建文件类似的对象以读写socket.
 
@@ -495,127 +487,139 @@ handle(): 处理请求。解析传入的请求，处理数据，并发送响应�
 finish(): 环境清理。默认什么都不做，如果setup产生异常，不会执行finish。
 
 通常只需要重载handle。self.request的类型和数据报或流的服务不同。对于流服务，self.request是socket 对象；对于数据报服务，self.request是字符串和socket 。可以在子类StreamRequestHandler或DatagramRequestHandler中重载，重写setup()和finish() ，并提供self.rfile和self.wfile属性。 self.rfile和self.wfile可以读取或写入，以获得请求数据或将数据返回到客户端。
-</code></pre><p><strong>示例代码</strong></p>
-<ol>
-<li><p>server</p>
-<p>  #!/usr/local/env python3<br>  ‘’’<br>  Author:@南非波波<br>  Blog:<a href="http://www.cnblogs.com/songqingbo/" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/</a><br>  E-mail:qingbo.song@gmail.com<br>  ‘’’<br>  import socketserver</p>
-<p>  class MyHandleServer(socketserver.BaseRequestHandler):</p>
-<pre><code>&apos;&apos;&apos;
-定义一个测试socketserver类
-&apos;&apos;&apos;
-def handle(self):
+</code></pre><h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><pre><code>1.server
+
+    #!/usr/local/env python3
     &apos;&apos;&apos;
-    定义一个函数，用来处理每个客户端发来的请求
-    :return:
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
     &apos;&apos;&apos;
-    print(&quot;新建立一个连接：&quot;,self.client_address)
+    import socketserver
+
+    class MyHandleServer(socketserver.BaseRequestHandler):
+        &apos;&apos;&apos;
+        定义一个测试socketserver类
+        &apos;&apos;&apos;
+        def handle(self):
+            &apos;&apos;&apos;
+            定义一个函数，用来处理每个客户端发来的请求
+            :return:
+            &apos;&apos;&apos;
+            print(&quot;新建立一个连接：&quot;,self.client_address)
+            while True:
+                try:
+                    client_data = self.request.recv(1024)
+                    if not client_data:
+                        print(&quot;客户端发送的数据为空,主动断开!&quot;,self.client_address)
+                        break
+                    print(&quot;客户端发来的请求:&quot;,client_data.decode())
+                    self.request.send(client_data)
+                except ConnectionResetError:
+                    print(&quot;客户端主动断开!&quot;,self.client_address)
+                    break
+
+    if __name__ == &quot;__main__&quot;:
+        HOST,PORT = &quot;127.0.0.1&quot;,5000
+        server = socketserver.ThreadingTCPServer((HOST,PORT),MyHandleServer)
+        server.serve_forever()
+
+
+2.client
+
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import socket
+
+    ip_port = (&quot;127.0.0.1&quot;,5000)
+
+    sk = socket.socket()
+    sk.connect(ip_port)
     while True:
-        try:
-            client_data = self.request.recv(1024)
-            if not client_data:
-                print(&quot;客户端发送的数据为空,主动断开!&quot;,self.client_address)
-                break
-            print(&quot;客户端发来的请求:&quot;,client_data.decode())
-            self.request.send(client_data)
-        except ConnectionResetError:
-            print(&quot;客户端主动断开!&quot;,self.client_address)
+        msg = input(&quot;&gt;&gt;:&quot;).strip()
+        if not msg:
             break
-</code></pre><p>  if <strong>name</strong> == “<strong>main</strong>“:</p>
-<pre><code>HOST,PORT = &quot;127.0.0.1&quot;,5000
-server = socketserver.ThreadingTCPServer((HOST,PORT),MyHandleServer)
-server.serve_forever()
-</code></pre></li>
-</ol>
-<ol>
-<li><p>client</p>
-<p>  #!/usr/local/env python3<br>  ‘’’<br>  Author:@南非波波<br>  Blog:<a href="http://www.cnblogs.com/songqingbo/" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/</a><br>  E-mail:qingbo.song@gmail.com<br>  ‘’’<br>  import socket</p>
-<p>  ip_port = (“127.0.0.1”,5000)</p>
-<p>  sk = socket.socket()<br>  sk.connect(ip_port)<br>  while True:</p>
-<pre><code>msg = input(&quot;&gt;&gt;:&quot;).strip()
-if not msg:
-    break
-sk.sendall(bytes(msg,&quot;utf8&quot;))
-server_reply = sk.recv(1024)
-print(&quot;服务端返回:&quot;,str(server_reply,&quot;utf8&quot;))
-</code></pre><p>  sk.close()</p>
-</li>
-</ol>
-<h3 id="三、异常处理"><a href="#三、异常处理" class="headerlink" title="三、异常处理"></a>三、异常处理</h3><p><a href="http://www.cnblogs.com/wupeiqi/articles/5017742.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5017742.html</a></p>
-<ol>
-<li><p>异常基础(python3的写法)</p>
-<p> 在编程过程中为了增加友好性，在程序出现bug时一般不会将错误信息显示给用户，而是显示一个提示的页面，通俗来说就是不让用户看见代码出错的页面</p>
-<pre><code>try:
-    pass
-except Exception as ex:
-    pass
-</code></pre></li>
-<li><p>异常种类</p>
-<p> 常用异常：</p>
-<pre><code>AttributeError 试图访问一个对象没有的树形，比如foo.x，但是foo没有属性x
-IOError 输入/输出异常；基本上是无法打开文件
-ImportError 无法引入模块或包；基本上是路径问题或名称错误
-IndentationError 语法错误（的子类） ；代码没有正确对齐
-IndexError 下标索引超出序列边界，比如当x只有三个元素，却试图访问x[5]
-KeyError 试图访问字典里不存在的键
-KeyboardInterrupt Ctrl+C被按下
-NameError 使用一个还未被赋予对象的变量
-SyntaxError Python代码非法，代码不能编译(个人认为这是语法错误，写错了）
-TypeError 传入对象类型与要求的不符合
-UnboundLocalError 试图访问一个还未被设置的局部变量，基本上是由于另有一个同名的全局变量，
-导致你以为正在访问它
-ValueError 传入一个调用者不期望的值，即使值的类型是正确的
-</code></pre><p> 更多种类：</p>
-<pre><code>ArithmeticError
-AssertionError
-AttributeError
-BaseException
-BufferError
-BytesWarning
-DeprecationWarning
-EnvironmentError
-EOFError
-Exception  #捕获一般的所有异常
-FloatingPointError
-FutureWarning
-GeneratorExit
-ImportError  #捕获导入模块异常
-ImportWarning
-IndentationError
-IndexError  #捕获索引异常
-IOError  #捕获IO异常
-KeyboardInterrupt  #捕获键盘组合键异常
-KeyError
-LookupError
-MemoryError
-NameError
-NotImplementedError
-OSError
-OverflowError
-PendingDeprecationWarning
-ReferenceError
-RuntimeError
-RuntimeWarning
-StandardError
-StopIteration
-SyntaxError
-SyntaxWarning
-SystemError
-SystemExit
-TabError
-TypeError
-UnboundLocalError
-UnicodeDecodeError
-UnicodeEncodeError
-UnicodeError
-UnicodeTranslateError
-UnicodeWarning
-UserWarning
-ValueError
-Warning
-ZeroDivisionError
-</code></pre></li>
-<li><p>自定义异常类</p>
-<pre><code>#!/usr/local/env python3
+        sk.sendall(bytes(msg,&quot;utf8&quot;))
+        server_reply = sk.recv(1024)
+        print(&quot;服务端返回:&quot;,str(server_reply,&quot;utf8&quot;))
+    sk.close()
+</code></pre><h2 id="三、异常处理"><a href="#三、异常处理" class="headerlink" title="三、异常处理"></a>三、异常处理</h2><p><a href="http://www.cnblogs.com/wupeiqi/articles/5017742.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5017742.html</a></p>
+<h3 id="1-异常基础-python3的写法"><a href="#1-异常基础-python3的写法" class="headerlink" title="1.异常基础(python3的写法)"></a>1.异常基础(python3的写法)</h3><pre><code>在编程过程中为了增加友好性，在程序出现bug时一般不会将错误信息显示给用户，而是显示一个提示的页面，通俗来说就是不让用户看见代码出错的页面
+
+    try:
+        pass
+    except Exception as ex:
+        pass
+</code></pre><h3 id="2-异常种类"><a href="#2-异常种类" class="headerlink" title="2.异常种类"></a>2.异常种类</h3><pre><code>常用异常：
+
+    AttributeError 试图访问一个对象没有的树形，比如foo.x，但是foo没有属性x
+    IOError 输入/输出异常；基本上是无法打开文件
+    ImportError 无法引入模块或包；基本上是路径问题或名称错误
+    IndentationError 语法错误（的子类） ；代码没有正确对齐
+    IndexError 下标索引超出序列边界，比如当x只有三个元素，却试图访问x[5]
+    KeyError 试图访问字典里不存在的键
+    KeyboardInterrupt Ctrl+C被按下
+    NameError 使用一个还未被赋予对象的变量
+    SyntaxError Python代码非法，代码不能编译(个人认为这是语法错误，写错了）
+    TypeError 传入对象类型与要求的不符合
+    UnboundLocalError 试图访问一个还未被设置的局部变量，基本上是由于另有一个同名的全局变量，
+    导致你以为正在访问它
+    ValueError 传入一个调用者不期望的值，即使值的类型是正确的
+更多种类：
+
+    ArithmeticError
+    AssertionError
+    AttributeError
+    BaseException
+    BufferError
+    BytesWarning
+    DeprecationWarning
+    EnvironmentError
+    EOFError
+    Exception  #捕获一般的所有异常
+    FloatingPointError
+    FutureWarning
+    GeneratorExit
+    ImportError  #捕获导入模块异常
+    ImportWarning
+    IndentationError
+    IndexError  #捕获索引异常
+    IOError  #捕获IO异常
+    KeyboardInterrupt  #捕获键盘组合键异常
+    KeyError
+    LookupError
+    MemoryError
+    NameError
+    NotImplementedError
+    OSError
+    OverflowError
+    PendingDeprecationWarning
+    ReferenceError
+    RuntimeError
+    RuntimeWarning
+    StandardError
+    StopIteration
+    SyntaxError
+    SyntaxWarning
+    SystemError
+    SystemExit
+    TabError
+    TypeError
+    UnboundLocalError
+    UnicodeDecodeError
+    UnicodeEncodeError
+    UnicodeError
+    UnicodeTranslateError
+    UnicodeWarning
+    UserWarning
+    ValueError
+    Warning
+    ZeroDivisionError
+</code></pre><h3 id="3-自定义异常类"><a href="#3-自定义异常类" class="headerlink" title="3.自定义异常类"></a>3.自定义异常类</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -644,9 +648,7 @@ try:
     raise SwhtError(&quot;这是一个致命的错误！&quot;)
 except Exception as e:
     print(&quot;dsdsd&quot;,e)
-</code></pre></li>
-<li><p>示例代码：</p>
-<pre><code>dic = [&quot;swht&quot;, &apos;shen&apos;]
+</code></pre><h3 id="4-示例代码："><a href="#4-示例代码：" class="headerlink" title="4.示例代码："></a>4.示例代码：</h3><pre><code>dic = [&quot;swht&quot;, &apos;shen&apos;]
 try:
     dic[10]
 except IndexError as e:
@@ -663,12 +665,8 @@ try:
     int(s1)
 except ValueError as e:
     print(&quot;ValueError:&quot;,e)
-</code></pre></li>
-<li><p>特殊异常</p>
-<p> 虽然python自带的一个处理万能异常类Exception，但是并不是有一些异常都能被捕获的。如果要想捕获这些特殊的异常，就需要进行自定义异常类</p>
-</li>
-<li><p>异常其他架构</p>
-<pre><code>try:
+</code></pre><h3 id="5-特殊异常"><a href="#5-特殊异常" class="headerlink" title="5.特殊异常"></a>5.特殊异常</h3><pre><code>虽然python自带的一个处理万能异常类Exception，但是并不是有一些异常都能被捕获的。如果要想捕获这些特殊的异常，就需要进行自定义异常类
+</code></pre><h3 id="6-异常其他架构"><a href="#6-异常其他架构" class="headerlink" title="6.异常其他架构"></a>6.异常其他架构</h3><pre><code>try:
     # 主代码块
     pass
 except KeyError as e:
@@ -680,81 +678,65 @@ else:
 finally:
     # 无论异常与否，最终执行该块
     pass
-</code></pre></li>
-<li><p>主动触发异常</p>
-<pre><code>try:
+</code></pre><h3 id="7-主动触发异常"><a href="#7-主动触发异常" class="headerlink" title="7.主动触发异常"></a>7.主动触发异常</h3><pre><code>try:
     raise Exception(&apos;错误了。。。&apos;)
 except Exception as e:
     print(&quot;Error&quot;,e)
-</code></pre></li>
-<li><p>Asser断言：</p>
-<p> 至关重要的判断，强制判断前面的业务结果是否符合要求，否则就抛出异常</p>
-<pre><code>a = 1
-try:
-    assert a == 2
-    print(&quot;True&quot;)
-except Exception as e:
-    print(&quot;False&quot;,e)
-</code></pre></li>
-</ol>
-<h3 id="四、进程与线程"><a href="#四、进程与线程" class="headerlink" title="四、进程与线程"></a>四、进程与线程</h3><ol>
-<li><p>概念</p>
-<ol>
-<li><p>进程</p>
-<p>  一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是系统进行资源分配和调度运行的基本单位</p>
-</li>
-<li><p>线程</p>
-<p>  线程是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务</p>
-</li>
-<li><p>进程与线程的区别</p>
-<ol>
-<li><p>进程是一个动态的概念</p>
-<p>进程是程序的一次执行过程，是动态概念</p>
-<p>程序是一组有序的指令集和，是静态概念</p>
-</li>
-<li><p>不同的进程可以执行同一个程序</p>
-<p>区分进程的条件：所执行的程序和数据集合。</p>
-<p>两个进程即使执行在相同的程序上，只要他们运行在不同的数据集合上，他们也是两个进程。例如：多个用户同时调用同一个编译程序编译他们编写的C语言源程序，由于编译程序运行在不同的数据集合（不同的C语言源程序）上，于是产生了一个个不同的进程</p>
-</li>
-<li><p>每个进程都有自己的生命周期</p>
-<p>当操作系统要完成某个任务时，它会创建一个进程。当进程完成任务之后，系统就会撤销这个进程，收回它所占用的资源。从创建到撤销的时间段就是进程的生命期</p>
-</li>
-<li><p>进程之间存在并发性</p>
-<p>在一个系统中，同时会存在多个进程。他们轮流占用CPU和各种资源</p>
-</li>
-<li><p>进程间会相互制约</p>
-<p>进程是系统中资源分配和运行调度的单位，在对资源的共享和竞争中，必然相互制约，影响各自向前推进的速度</p>
-</li>
-<li><p>进程可以创建子进程，程序不能创建子程序</p>
-</li>
-<li><p>从结构上讲，每个进程都由程序、数据和一个进程控制块（Process Control Block, PCB）组成</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>进程锁</p>
-<p>Python threading模块</p>
-<ol>
-<li>线程的两种调用方式<ol>
-<li>直接调用</li>
-<li>继承式调用</li>
-</ol>
-</li>
-<li>join&amp;&amp;Demo</li>
-<li>线程锁<ol>
-<li>互斥锁：同时仅且只有一个线程在运行</li>
-<li>共享锁：同时可以有多个线程共同运行，可以实现一个线程池的效果</li>
-<li>递归锁</li>
-<li>Semaphore(信号量)</li>
-</ol>
-</li>
-<li></li>
-</ol>
-</li>
-</ol>
-<p>示例代码：</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="8-Asser断言："><a href="#8-Asser断言：" class="headerlink" title="8.Asser断言："></a>8.Asser断言：</h3><pre><code>至关重要的判断，强制判断前面的业务结果是否符合要求，否则就抛出异常
+
+    a = 1
+    try:
+        assert a == 2
+        print(&quot;True&quot;)
+    except Exception as e:
+        print(&quot;False&quot;,e)
+</code></pre><h2 id="四、进程与线程"><a href="#四、进程与线程" class="headerlink" title="四、进程与线程"></a>四、进程与线程</h2><h3 id="1-概念-1"><a href="#1-概念-1" class="headerlink" title="1.概念"></a>1.概念</h3><pre><code>1.进程
+
+        一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是系统进行资源分配和调度运行的基本单位
+2.线程
+
+        线程是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务
+
+3.进程与线程的区别
+
+        1. 进程是一个动态的概念
+
+        进程是程序的一次执行过程，是动态概念
+
+        程序是一组有序的指令集和，是静态概念
+
+        2. 不同的进程可以执行同一个程序
+
+        区分进程的条件：所执行的程序和数据集合。
+
+        两个进程即使执行在相同的程序上，只要他们运行在不同的数据集合上，他们也是两个进程。例如：多个用户同时调用同一个编译程序编译他们编写的C语言源程序，由于编译程序运行在不同的数据集合（不同的C语言源程序）上，于是产生了一个个不同的进程
+
+        3. 每个进程都有自己的生命周期
+
+        当操作系统要完成某个任务时，它会创建一个进程。当进程完成任务之后，系统就会撤销这个进程，收回它所占用的资源。从创建到撤销的时间段就是进程的生命期
+
+        4. 进程之间存在并发性
+
+        在一个系统中，同时会存在多个进程。他们轮流占用CPU和各种资源
+
+        5. 进程间会相互制约
+
+        进程是系统中资源分配和运行调度的单位，在对资源的共享和竞争中，必然相互制约，影响各自向前推进的速度
+
+        6. 进程可以创建子进程，程序不能创建子程序
+
+        7. 从结构上讲，每个进程都由程序、数据和一个进程控制块（Process Control Block, PCB）组成
+</code></pre><h3 id="2-进程锁"><a href="#2-进程锁" class="headerlink" title="2.进程锁"></a>2.进程锁</h3><p> Python threading模块</p>
+<pre><code>1.线程的两种调用方式
+    1.    直接调用
+    2.    继承式调用
+2.join&amp;&amp;Demo
+3.线程锁
+    1.    互斥锁：同时仅且只有一个线程在运行
+    2.    共享锁：同时可以有多个线程共同运行，可以实现一个线程池的效果
+    2.    递归锁
+    3.    Semaphore(信号量)
+</code></pre><h3 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h3><pre><code>#!/usr/local/env python3
 
 import threading,time
 
@@ -799,7 +781,7 @@ manager
         <p><span>本文标题:</span><a href="/2016/03/05/s12-20160305-day08/">python自动化开发 day08</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">南非波波</a></p>
         <p><span>发布时间:</span>2016-03-05, 15:30:00</p>
-        <p><span>最后更新:</span>2016-07-05, 18:30:23</p>
+        <p><span>最后更新:</span>2016-07-07, 11:07:16</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/03/05/s12-20160305-day08/" title="python自动化开发 day08">http://blog.songqingbo.cn/2016/03/05/s12-20160305-day08/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.songqingbo.cn/2016/03/05/s12-20160305-day08/　　作者: 南非波波" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -835,7 +817,7 @@ manager
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、socket深入"><span class="toc-number">1.</span> <span class="toc-text">一、socket深入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、socketserver"><span class="toc-number">2.</span> <span class="toc-text">二、socketserver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、异常处理"><span class="toc-number">3.</span> <span class="toc-text">三、异常处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、进程与线程"><span class="toc-number">4.</span> <span class="toc-text">四、进程与线程</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、socket深入"><span class="toc-text">一、socket深入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-概念"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-地址簇"><span class="toc-text">2.地址簇</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-套接字类型"><span class="toc-text">3.套接字类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-socket方法"><span class="toc-text">4.socket方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、socketserver"><span class="toc-text">二、socketserver</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建服务器的步骤"><span class="toc-text">创建服务器的步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器类型"><span class="toc-text">服务器类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器对象"><span class="toc-text">服务器对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#请求处理器"><span class="toc-text">请求处理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例代码"><span class="toc-text">示例代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、异常处理"><span class="toc-text">三、异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-异常基础-python3的写法"><span class="toc-text">1.异常基础(python3的写法)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-异常种类"><span class="toc-text">2.异常种类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-自定义异常类"><span class="toc-text">3.自定义异常类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-示例代码："><span class="toc-text">4.示例代码：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-特殊异常"><span class="toc-text">5.特殊异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-异常其他架构"><span class="toc-text">6.异常其他架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-主动触发异常"><span class="toc-text">7.主动触发异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Asser断言："><span class="toc-text">8.Asser断言：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、进程与线程"><span class="toc-text">四、进程与线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-概念-1"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-进程锁"><span class="toc-text">2.进程锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例代码："><span class="toc-text">示例代码：</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -852,7 +834,7 @@ manager
     <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
     </script>
 
 

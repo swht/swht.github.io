@@ -158,222 +158,99 @@ def select2(array):
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
 <p><a href="http://www.cnblogs.com/alex3714/articles/5457672.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5457672.html</a></p>
-<h2 id="一、Django起步"><a href="#一、Django起步" class="headerlink" title="一、Django起步"></a>一、Django起步</h2><p>1.创建Django项目</p>
-<pre><code>两种方式：使用pycharm工具进行创建
+<h2 id="一、Django起步"><a href="#一、Django起步" class="headerlink" title="一、Django起步"></a>一、Django起步</h2><h3 id="1-创建Django项目"><a href="#1-创建Django项目" class="headerlink" title="1.创建Django项目"></a>1.创建Django项目</h3><pre><code>两种方式：使用pycharm工具进行创建
          使用manage命令进行创建
 </code></pre><p><img src="http://i.imgur.com/UKdz7aG.png" alt=""></p>
-<p>2.url设计</p>
-<p><img src="http://i.imgur.com/2y2zgI4.png" alt=""></p>
-<p>3.views视图设计<br><img src="http://i.imgur.com/M1xkgkw.png" alt=""></p>
+<h3 id="2-url设计"><a href="#2-url设计" class="headerlink" title="2.url设计"></a>2.url设计</h3><p><img src="http://i.imgur.com/2y2zgI4.png" alt=""></p>
+<h3 id="3-views视图设计"><a href="#3-views视图设计" class="headerlink" title="3.views视图设计"></a>3.views视图设计</h3><p><img src="http://i.imgur.com/M1xkgkw.png" alt=""></p>
 <p><img src="http://i.imgur.com/UsZ5fay.png" alt=""></p>
-<p>4.Template版本设计<br><img src="http://i.imgur.com/LLavnYW.png" alt=""></p>
-<h2 id="二、Template模板渲染"><a href="#二、Template模板渲染" class="headerlink" title="二、Template模板渲染"></a>二、Template模板渲染</h2><p>1.调用后端传递的数据</p>
-<pre><code>&lt;h3&gt;username:{{user_obj.username}}&lt;/h3&gt;
-   &lt;h3&gt;E-mail:{{user_obj.email}}&lt;/h3&gt;
-</code></pre><p>2.使用for循环进行遍历数据</p>
-<pre><code>&lt;url&gt;
-    {% for user_info in user_obj %}
-        	<li style="">username:{{user_info.username}},E-mail:{{user_info.email}}</li>
-        {% endfor %}
-&lt;/url&gt;
-</code></pre><p>3.使用if进行相关条件判断</p>
-<pre><code>&lt;url&gt;
-    {% for user_info in user_obj %}
-		{#  {% if user_info.username == "swht" %}#} <!--可以直接判断某个字符串，然后进行处理-->
-	    	{% if forloop.counter0|divisibleby:"2" %} <!--使用forloop。counter参数获取遍历的当前数字。counter0是从0开始的索引值，divisibleby:"2"是指能够被2整除-->
-	        	<li style="background-color: aqua">username:{{user_info.username}},E-mail:{{user_info.email}}</li>
-	        {% else %}
-	            <li style="">username:{{user_info.username}},E-mail:{{user_info.email}}</li>
-	        {% endif %}
-	
-	   	{% endfor %}
-&lt;/url&gt;
-</code></pre><p>4.模板的继承与复用</p>
-<p>使用主页的头部进行继承，然后将主体进行重写</p>
+<h3 id="4-Template版本设计"><a href="#4-Template版本设计" class="headerlink" title="4.Template版本设计"></a>4.Template版本设计</h3><p><img src="http://i.imgur.com/LLavnYW.png" alt=""></p>
+<h2 id="二、Template模板渲染"><a href="#二、Template模板渲染" class="headerlink" title="二、Template模板渲染"></a>二、Template模板渲染</h2><h3 id="1-调用后端传递的数据"><a href="#1-调用后端传递的数据" class="headerlink" title="1.调用后端传递的数据"></a>1.调用后端传递的数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;username:&#123;&#123;user_obj.username&#125;&#125;&lt;/h3&gt;</div><div class="line">&lt;h3&gt;E-mail:&#123;&#123;user_obj.email&#125;&#125;&lt;/h3&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-使用for循环进行遍历数据"><a href="#2-使用for循环进行遍历数据" class="headerlink" title="2.使用for循环进行遍历数据"></a>2.使用for循环进行遍历数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;url&gt;</div><div class="line">    &#123;% for user_info in user_obj %&#125;</div><div class="line">    	&lt;li style=&quot;&quot;&gt;username:&#123;&#123;user_info.username&#125;&#125;,E-mail:&#123;&#123;user_info.email&#125;&#125;&lt;/li&gt;</div><div class="line">    &#123;% endfor %&#125;</div><div class="line">&lt;/url&gt;</div></pre></td></tr></table></figure>
+<h3 id="3-使用if进行相关条件判断"><a href="#3-使用if进行相关条件判断" class="headerlink" title="3.使用if进行相关条件判断"></a>3.使用if进行相关条件判断</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;url&gt;</div><div class="line">	&#123;% for user_info in user_obj %&#125;</div><div class="line">	&#123;#  &#123;% if user_info.username == &quot;swht&quot; %&#125;#&#125; &lt;!--可以直接判断某个字符串，然后进行处理--&gt;</div><div class="line">    	&#123;% if forloop.counter0|divisibleby:&quot;2&quot; %&#125; &lt;!--使用forloop。counter参数获取遍历的当前数字。counter0是从0开始的索引值，divisibleby:&quot;2&quot;是指能够被2整除--&gt;</div><div class="line">        	&lt;li style=&quot;background-color: aqua&quot;&gt;username:&#123;&#123;user_info.username&#125;&#125;,E-mail:&#123;&#123;user_info.email&#125;&#125;&lt;/li&gt;</div><div class="line">        &#123;% else %&#125;</div><div class="line">            &lt;li style=&quot;&quot;&gt;username:&#123;&#123;user_info.username&#125;&#125;,E-mail:&#123;&#123;user_info.email&#125;&#125;&lt;/li&gt;</div><div class="line">        &#123;% endif %&#125;</div><div class="line"></div><div class="line">   	&#123;% endfor %&#125;</div><div class="line">&lt;/url&gt;</div></pre></td></tr></table></figure>
+<h3 id="4-模板的继承与复用"><a href="#4-模板的继承与复用" class="headerlink" title="4.模板的继承与复用"></a>4.模板的继承与复用</h3><p>使用主页的头部进行继承，然后将主体进行重写</p>
 <pre><code>index.html
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&#123;% block header-menu %&#125;</div><div class="line">    &lt;ul &gt;</div><div class="line">        &lt;li style=&quot;display: inline-block&quot;&gt;Home&lt;/li&gt;</div><div class="line">        &lt;li style=&quot;display: inline-block&quot;&gt;page1&lt;/li&gt;</div><div class="line">        &lt;li style=&quot;display: inline-block&quot;&gt;page2&lt;/li&gt;</div><div class="line">        &lt;li style=&quot;display: inline-block&quot;&gt;page3&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    &#123;% endblock %&#125;</div><div class="line">    &#123;% block content-container %&#125;</div><div class="line">    &lt;h2&gt;这是文章的首页&lt;/h2&gt;</div><div class="line">    &lt;!--&lt;h3&gt;username:&#123;&#123;user_obj.username&#125;&#125;&lt;/h3&gt;--&gt;</div><div class="line">    &lt;!--&lt;h3&gt;E-mail:&#123;&#123;user_obj.email&#125;&#125;&lt;/h3&gt;--&gt;</div><div class="line">    &lt;url&gt;</div><div class="line">        &#123;% for user_info in user_obj %&#125;</div><div class="line">&#123;#            &#123;% if user_info.username == &quot;swht&quot; %&#125;#&#125; &lt;!--可以直接判断某个字符串，然后进行处理--&gt;</div><div class="line">            &#123;% if forloop.counter0|divisibleby:&quot;2&quot; %&#125; &lt;!--使用forloop。counter参数获取遍历的当前数字。counter0是从0开始的索引值，divisibleby:&quot;2&quot;是指能够被2整除--&gt;</div><div class="line">                &lt;li style=&quot;background-color: aqua&quot;&gt;username:&#123;&#123;user_info.username&#125;&#125;,E-mail:&#123;&#123;user_info.email&#125;&#125;&lt;/li&gt;</div><div class="line">            &#123;% else %&#125;</div><div class="line">                &lt;li style=&quot;&quot;&gt;username:&#123;&#123;user_info.username&#125;&#125;,E-mail:&#123;&#123;user_info.email&#125;&#125;&lt;/li&gt;</div><div class="line">            &#123;% endif %&#125;</div><div class="line"></div><div class="line">        &#123;% endfor %&#125;</div><div class="line">    &lt;/url&gt;</div><div class="line">    &#123;% endblock %&#125;</div></pre></td></tr></table></figure>
+<pre><code>year.html
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;% extends &apos;article/index.html&apos; %&#125;</div><div class="line">&#123;% block content-container %&#125;</div><div class="line">    &lt;h1&gt;这是&#123;&#123; year_obj.year &#125;&#125;年的文章&lt;/h1&gt;</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure>
+<p>说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% extends &apos;article/index.html&apos; %&#125; 语法是继承主页的所有属性</div><div class="line">&#123;% block content-container %&#125;</div><div class="line">&#123;% endblock%&#125;  语法说明该语块是可以被重写的</div></pre></td></tr></table></figure>
+<p>模板的继承和重写支持：子继承父、孙继承子</p>
+<h2 id="三、配置文件"><a href="#三、配置文件" class="headerlink" title="三、配置文件"></a>三、配置文件</h2><h3 id="1-setting文件说明"><a href="#1-setting文件说明" class="headerlink" title="1.setting文件说明"></a>1.setting文件说明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  指定了当前项目文件的基础路径</div><div class="line">SECRET_KEY = &apos;-i6p7t+w6@&amp;duki)8s88tf=_ms%@z8fz4_5g@vhvzp@tij36w$&apos; django通信KEY，我们一般不需要进行修改</div><div class="line"></div><div class="line">DEBUG = True  #选项为True时，属于开发环境，当遇到错误时会弹出默认的提示大黄页，当选项为False时，属于生产环境，需要下面的关键字进行配合设置</div><div class="line">ALLOWED_HOSTS = [] #当DEBUG = False时，ALLOWED_HOSTS = [*]，即允许所有主机访问，当访问的资源不存在时，默认会返回默认的404页面提示</div><div class="line">INSTALLED_APPS=[] #这里需要配置我们安装的应用的名称</div><div class="line">TEMPLATES = [] #这里指定项目模板的路径，一般不需要修改，但也可以自定义路径</div><div class="line">DATABASES = &#123;&#125; #这里默认使用sqlite3数据库进行存储，我们可以修改成支持的其他数据库类型</div><div class="line">TIME_ZONE = &apos;Asia/Shanghai&apos; #这里的时区参数需要选择上海时区</div></pre></td></tr></table></figure>
+<h3 id="2-设置mysql数据库配置"><a href="#2-设置mysql数据库配置" class="headerlink" title="2.设置mysql数据库配置"></a>2.设置mysql数据库配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    &apos;default&apos;:&#123;</div><div class="line">        &apos;ENGINE&apos;:&apos;django.db.backends.mysql&apos;,</div><div class="line">        &apos;NAME&apos;:&apos;blog&apos;,</div><div class="line">        &apos;HOST&apos;:&apos;127.0.0.1&apos;,</div><div class="line">        &apos;PORT&apos;:&apos;3306&apos;,</div><div class="line">        &apos;USER&apos;:&apos;root&apos;,</div><div class="line">        &apos;PASSWORD&apos;:&apos;&apos;,</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Windows下面安装mysql环境：http://www.cnblogs.com/songqingbo/p/5080847.html</div><div class="line"></div><div class="line">创建所需的数据库：</div><div class="line">	create database blog charset utf8;</div></pre></td></tr></table></figure>
+<h3 id="3-mysql数据库初始化"><a href="#3-mysql数据库初始化" class="headerlink" title="3.mysql数据库初始化"></a>3.mysql数据库初始化</h3><pre><code>models
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class Author(models.Model):</div><div class="line">    first_name = models.CharField(max_length=32)</div><div class="line">    last_name = models.CharField(max_length=32)</div><div class="line">    email = models.EmailField()</div><div class="line">    def __unicode__(self):</div><div class="line">        return &quot;&lt;%s %s&gt;&quot; %(self.first_name,self.last_name)</div><div class="line"></div><div class="line">    class Meta:</div><div class="line">        verbose_name_plural = u&quot;作者&quot;</div><div class="line">    #def __str__()</div><div class="line">class Publisher(models.Model):</div><div class="line">    name = models.CharField(max_length=64,unique=True)</div><div class="line">    address = models.CharField(max_length=128,null=True,blank=True)</div><div class="line">    city = models.CharField(max_length=64)</div><div class="line">    state_province = models.CharField(max_length=30,help_text=&quot;put your country code here..&quot;,verbose_name=u&quot;所属省&quot;)</div><div class="line">    country = models.CharField(max_length=50,editable=False)</div><div class="line">    website = models.URLField()</div><div class="line">    def __unicode__(self):</div><div class="line">        return &quot;&lt;%s&gt;&quot; %(self.name)</div><div class="line">class Book(models.Model):</div><div class="line">    name = models.CharField(max_length=128)</div><div class="line">    authors = models.ManyToManyField(Author)</div><div class="line">    publisher = models.ForeignKey(Publisher)</div><div class="line">    #publish_date = models.DateTimeField</div><div class="line">    publish_date = models.DateField()</div><div class="line">    def __unicode__(self):</div><div class="line">        return &quot;&lt;%s&gt;&quot; %(self.name)</div></pre></td></tr></table></figure>
+<p>由于django需要MySQLdb进行连接mysql数据库，需要安装MySQLdb模块和vc++ for python2.7环境包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">python2 manage.py makemigrations  #生成数据库创建表文件</div><div class="line">	Migrations for &apos;article&apos;:</div><div class="line">	  0001_initial.py:</div><div class="line">	    - Create model Author</div><div class="line">	    - Create model Book</div><div class="line">	    - Create model Publisher</div><div class="line">	    - Add field publisher to book</div><div class="line">python2 manage.py migrate #将表结构写入数据库</div><div class="line">	Operations to perform:</div><div class="line">	  Apply all migrations: admin, article, contenttypes, auth, sessions</div><div class="line">	Running migrations:</div><div class="line">	  Rendering model states... DONE</div><div class="line">	  Applying contenttypes.0001_initial... OK</div><div class="line">	  Applying auth.0001_initial... OK</div><div class="line">	  Applying admin.0001_initial... OK</div><div class="line">	  Applying admin.0002_logentry_remove_auto_add... OK</div><div class="line">	  Applying article.0001_initial... OK</div><div class="line">	  Applying contenttypes.0002_remove_content_type_name... OK</div><div class="line">	  Applying auth.0002_alter_permission_name_max_length... OK</div><div class="line">	  Applying auth.0003_alter_user_email_max_length... OK</div><div class="line">	  Applying auth.0004_alter_user_username_opts... OK</div><div class="line">	  Applying auth.0005_alter_user_last_login_null... OK</div><div class="line">	  Applying auth.0006_require_contenttypes_0002... OK</div><div class="line">	  Applying auth.0007_alter_validators_add_error_messages... OK</div></pre></td></tr></table></figure>
+<h3 id="4-创建后台用户"><a href="#4-创建后台用户" class="headerlink" title="4.创建后台用户"></a>4.创建后台用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">admin.py</div><div class="line">	#增加下面的语句作用是使用admin后台进行数据库的管理操作</div><div class="line">	import models</div><div class="line">	admin.site.register(models.Author)</div><div class="line">	admin.site.register(models.Book)</div><div class="line">	admin.site.register(models.Publisher)</div><div class="line">python2 manage.py createsuperuser #创建一个超级用户</div></pre></td></tr></table></figure>
+<p><img src="http://i.imgur.com/Foh6exY.png" alt="Django后台增加数据"></p>
+<h2 id="四、使用django命令对数据库进行基础操作"><a href="#四、使用django命令对数据库进行基础操作" class="headerlink" title="四、使用django命令对数据库进行基础操作"></a>四、使用django命令对数据库进行基础操作</h2><h3 id="1-进入python-django-shell"><a href="#1-进入python-django-shell" class="headerlink" title="1. 进入python django shell"></a>1. 进入python django shell</h3><pre><code>shell&gt;&gt;python2 manage.py shell
+</code></pre><h3 id="2-查询数据"><a href="#2-查询数据" class="headerlink" title="2. 查询数据"></a>2. 查询数据</h3><pre><code>\&gt;&gt;&gt;from article.models import Publisher
 
-{% block header-menu %}
-	    <ul>
-	        <li style="display: inline-block">Home</li>
-	        <li style="display: inline-block">page1</li>
-	        <li style="display: inline-block">page2</li>
-	        <li style="display: inline-block">page3</li>
-	    </ul>
-	    {% endblock %}
-    {% block content-container %}
-	    <h2>这是文章的首页</h2>
-	    <!--<h3>username:{{user_obj.username}}</h3>-->
-	    <!--<h3>E-mail:{{user_obj.email}}</h3>-->
-	    <url>
-	        {% for user_info in user_obj %}
-	{#            {% if user_info.username == "swht" %}#} <!--可以直接判断某个字符串，然后进行处理-->
-	            {% if forloop.counter0|divisibleby:"2" %} <!--使用forloop。counter参数获取遍历的当前数字。counter0是从0开始的索引值，divisibleby:"2"是指能够被2整除-->
-	                <li style="background-color: aqua">username:{{user_info.username}},E-mail:{{user_info.email}}</li>
-	            {% else %}
-	                <li style="">username:{{user_info.username}},E-mail:{{user_info.email}}</li>
-	            {% endif %}
-	
-	        {% endfor %}
-	    </url>
-	    {% endblock %}
+\&gt;&gt;&gt;publisher_list = Publisher.objects.all() #查询所有的出版社列表
 
-year.html
+\&gt;&gt;&gt;publisher_list[1].name  #查询第2个出版社的名称
 
-{% extends 'article/index.html' %}
-{% block content-container %}
-	    <h1>这是{{ year_obj.year }}年的文章</h1>
-	{% endblock %}
-</code></pre><p>说明：</p>
-<pre><code>{% extends 'article/index.html' %} 语法是继承主页的所有属性
-{% block content-container %}
-	{% endblock%}  语法说明该语块是可以被重写的
-</code></pre><p>模板的继承和重写支持：子继承父、孙继承子</p>
-<h2 id="三、配置文件"><a href="#三、配置文件" class="headerlink" title="三、配置文件"></a>三、配置文件</h2><p>1.setting文件说明</p>
-<pre><code>BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  指定了当前项目文件的基础路径
-SECRET_KEY = &apos;-i6p7t+w6@&amp;duki)8s88tf=_ms%@z8fz4_5g@vhvzp@tij36w$&apos; django通信KEY，我们一般不需要进行修改
+\&gt;&gt;&gt;publisher_list[1].id  #查询第2个出版社的id
+</code></pre><h3 id="3-增加一条数据"><a href="#3-增加一条数据" class="headerlink" title="3. 增加一条数据"></a>3. 增加一条数据</h3><pre><code>\&gt;&gt;&gt; p1 = Publisher.objects.create(name=&apos;SWht&apos;,address=&apos;haidian&apos;,city=&apos;beijing&apos;,state_province=&apos;CA&apos;,country=&apos;CN&apos;,website=&apos;http://www.songqingbo.cn&apos;)
 
-DEBUG = True  #选项为True时，属于开发环境，当遇到错误时会弹出默认的提示大黄页，当选项为False时，属于生产环境，需要下面的关键字进行配合设置
-ALLOWED_HOSTS = [] #当DEBUG = False时，ALLOWED_HOSTS = [*]，即允许所有主机访问，当访问的资源不存在时，默认会返回默认的404页面提示
-INSTALLED_APPS=[] #这里需要配置我们安装的应用的名称
-TEMPLATES = [] #这里指定项目模板的路径，一般不需要修改，但也可以自定义路径
-DATABASES = {} #这里默认使用sqlite3数据库进行存储，我们可以修改成支持的其他数据库类型
-TIME_ZONE = &apos;Asia/Shanghai&apos; #这里的时区参数需要选择上海时区
-</code></pre><p>2.设置mysql数据库配置</p>
-<pre><code>DATABASES = {
-    &apos;default&apos;:{
-        &apos;ENGINE&apos;:&apos;django.db.backends.mysql&apos;,
-        &apos;NAME&apos;:&apos;blog&apos;,
-        &apos;HOST&apos;:&apos;127.0.0.1&apos;,
-        &apos;PORT&apos;:&apos;3306&apos;,
-        &apos;USER&apos;:&apos;root&apos;,
-        &apos;PASSWORD&apos;:&apos;&apos;,
-    }
-}
+\&gt;&gt;&gt;p2 = Publisher(name=&apos;SWht2&apos;,address=&apos;haidian1&apos;,city=&apos;beijing&apos;,state_province=&apos;CA&apos;,country=&apos;CN&apos;,website=&apos;http://www.songqingbo.cn&apos;)
 
-Windows下面安装mysql环境：http://www.cnblogs.com/songqingbo/p/5080847.html
+\&gt;&gt;&gt;p2.save()  #增加数据两种方式，1.使用对象的objects的create方法进行数据的创建，2.使用对象的save方法进行数据的保存。
+</code></pre><h3 id="4-数据库过滤查询"><a href="#4-数据库过滤查询" class="headerlink" title="4. 数据库过滤查询"></a>4. 数据库过滤查询</h3><pre><code>\&gt;&gt;&gt; from article.models import Author
 
-创建所需的数据库：
-    create database blog charset utf8;
-</code></pre><p>3.mysql数据库初始化</p>
-<pre><code>models
+\&gt;&gt;&gt; author_list = Author.objects.all()
 
-class Author(models.Model):
-    first_name = models.CharField(max_length=32)
-    last_name = models.CharField(max_length=32)
-    email = models.EmailField()
-    def __unicode__(self):
-        return &quot;&lt;%s %s&gt;&quot; %(self.first_name,self.last_name)
+\&gt;&gt;&gt; author_list
 
-    class Meta:
-        verbose_name_plural = u&quot;作者&quot;
-    #def __str__()
-class Publisher(models.Model):
-    name = models.CharField(max_length=64,unique=True)
-    address = models.CharField(max_length=128,null=True,blank=True)
-    city = models.CharField(max_length=64)
-    state_province = models.CharField(max_length=30,help_text=&quot;put your country code here..&quot;,verbose_name=u&quot;所属省&quot;)
-    country = models.CharField(max_length=50,editable=False)
-    website = models.URLField()
-    def __unicode__(self):
-        return &quot;&lt;%s&gt;&quot; %(self.name)
-class Book(models.Model):
-    name = models.CharField(max_length=128)
-    authors = models.ManyToManyField(Author)
-    publisher = models.ForeignKey(Publisher)
-    #publish_date = models.DateTimeField
-    publish_date = models.DateField()
-    def __unicode__(self):
-        return &quot;&lt;%s&gt;&quot; %(self.name)
-</code></pre><p>由于django需要MySQLdb进行连接mysql数据库，需要安装MySQLdb模块和vc++ for python2.7环境包。</p>
-<pre><code>python2 manage.py makemigrations  #生成数据库创建表文件
-    Migrations for &apos;article&apos;:
-      0001_initial.py:
-        - Create model Author
-        - Create model Book
-        - Create model Publisher
-        - Add field publisher to book
-python2 manage.py migrate #将表结构写入数据库
-    Operations to perform:
-      Apply all migrations: admin, article, contenttypes, auth, sessions
-    Running migrations:
-      Rendering model states... DONE
-      Applying contenttypes.0001_initial... OK
-      Applying auth.0001_initial... OK
-      Applying admin.0001_initial... OK
-      Applying admin.0002_logentry_remove_auto_add... OK
-      Applying article.0001_initial... OK
-      Applying contenttypes.0002_remove_content_type_name... OK
-      Applying auth.0002_alter_permission_name_max_length... OK
-      Applying auth.0003_alter_user_email_max_length... OK
-      Applying auth.0004_alter_user_username_opts... OK
-      Applying auth.0005_alter_user_last_login_null... OK
-      Applying auth.0006_require_contenttypes_0002... OK
-      Applying auth.0007_alter_validators_add_error_messages... OK
-</code></pre><p>4.创建后台用户</p>
-<pre><code>admin.py
-    #增加下面的语句作用是使用admin后台进行数据库的管理操作
-    import models
-    admin.site.register(models.Author)
-    admin.site.register(models.Book)
-    admin.site.register(models.Publisher)
-python2 manage.py createsuperuser #创建一个超级用户
-</code></pre><p><img src="http://i.imgur.com/Foh6exY.png" alt="Django后台增加数据"></p>
-<h3 id="四、使用django命令对数据库进行基础操作"><a href="#四、使用django命令对数据库进行基础操作" class="headerlink" title="四、使用django命令对数据库进行基础操作"></a>四、使用django命令对数据库进行基础操作</h3><ol>
-<li><p>进入python django shell</p>
-<p> shell&gt;&gt;python2 manage.py shell</p>
-</li>
-<li><p>查询数据</p>
-<p> >&gt;&gt;from article.models import Publisher</p>
-<p> >&gt;&gt;publisher_list = Publisher.objects.all() #查询所有的出版社列表</p>
-<p> >&gt;&gt;publisher_list[1].name  #查询第2个出版社的名称</p>
-<p> >&gt;&gt;publisher_list[1].id  #查询第2个出版社的id</p>
-</li>
-<li><p>增加一条数据</p>
-<p> >&gt;&gt; p1 = Publisher.objects.create(name=’SWht’,address=’haidian’,city=’beijing’,state_province=’CA’,country=’CN’,website=’<a href="http://www.songqingbo.cn" target="_blank" rel="external">http://www.songqingbo.cn</a>‘)</p>
-<p> >&gt;&gt;p2 = Publisher(name=’SWht2’,address=’haidian1’,city=’beijing’,state_province=’CA’,country=’CN’,website=’<a href="http://www.songqingbo.cn" target="_blank" rel="external">http://www.songqingbo.cn</a>‘)</p>
-<p> >&gt;&gt;p2.save()  #增加数据两种方式，1.使用对象的objects的create方法进行数据的创建，2.使用对象的save方法进行数据的保存。</p>
-</li>
-<li><p>数据库过滤查询</p>
-<p> >&gt;&gt; from article.models import Author</p>
-<p> >&gt;&gt; author_list = Author.objects.all()</p>
-<p> >&gt;&gt; author_list</p>
-<p> [<author: <shen="" test="">&gt;, <author: <alix="" sds="">&gt;]</author:></author:></p>
-<p> >&gt;&gt; Author.objects.filter(first_name=’shen’)</p>
-<p> [<author: <shen="" test="">&gt;]</author:></p>
-</li>
-<li><p>获取单个对象</p>
-<p> >&gt;&gt; Author.objects.get(first_name=’shen’)</p>
-<p> <author: <shen="" test="">&gt;</author:></p>
-<p> >&gt;&gt; Author.objects.get(id=’1’)</p>
-<p> <author: <shen="" test="">&gt;</author:></p>
-<p> >&gt;&gt; Author.objects.get(id=’2’)</p>
-<p> <author: <alix="" sds="">&gt;</author:></p>
-<p> 注意：如果查询没有返回结果也会抛出异常</p>
-</li>
-<li><p>数据排序</p>
-<p> >&gt;&gt; Author.objects.order_by(“first_name”)</p>
-<p> [<author: <alix="" sds="">&gt;, <author: <shen="" test="">&gt;]</author:></author:></p>
-<p> >&gt;&gt; Author.objects.order_by(“id”)</p>
-<p> [<author: <shen="" test="">&gt;, <author: <alix="" sds="">&gt;]</author:></author:></p>
-</li>
-<li><p>数据更新</p>
-<p> >&gt;&gt; author = Author.objects.get(last_name=’test’)</p>
-<p> >&gt;&gt; author.last_name = ‘diaoxia’</p>
-<p> >&gt;&gt; author.save()</p>
-<p> >&gt;&gt; Author.objects.all()</p>
-<p> [<author: <shen="" diaoxia="">&gt;, <author: <alix="" sds="">&gt;]</author:></author:></p>
-</li>
-<li><p>删除对象</p>
-<p> >&gt;&gt; author = Author.objects.get(first_name=’alix’)</p>
-<p> >&gt;&gt; author</p>
-<p> <author: <alix="" sds="">&gt;</author:></p>
-<p> >&gt;&gt; author.delete()</p>
-<p> (2L, {u’article.Book_authors’: 1L, u’article.Author’: 1L})</p>
-<p> >&gt;&gt; Author.objects.all()</p>
-<p> [<author: <shen="" diaoxia="">&gt;]</author:></p>
-</li>
-</ol>
-]]></content>
+[&lt;Author: &lt;shen test&gt;&gt;, &lt;Author: &lt;alix sds&gt;&gt;]
+
+\&gt;&gt;&gt; Author.objects.filter(first_name=&apos;shen&apos;)
+
+[&lt;Author: &lt;shen test&gt;&gt;]
+</code></pre><h3 id="5-获取单个对象"><a href="#5-获取单个对象" class="headerlink" title="5. 获取单个对象"></a>5. 获取单个对象</h3><pre><code>\&gt;&gt;&gt; Author.objects.get(first_name=&apos;shen&apos;)
+
+&lt;Author: &lt;shen test&gt;&gt;
+
+\&gt;&gt;&gt; Author.objects.get(id=&apos;1&apos;)
+
+&lt;Author: &lt;shen test&gt;&gt;
+
+\&gt;&gt;&gt; Author.objects.get(id=&apos;2&apos;)
+
+&lt;Author: &lt;alix sds&gt;&gt;
+
+注意：如果查询没有返回结果也会抛出异常
+</code></pre><h3 id="6-数据排序"><a href="#6-数据排序" class="headerlink" title="6. 数据排序"></a>6. 数据排序</h3><pre><code>\&gt;&gt;&gt; Author.objects.order_by(&quot;first_name&quot;)
+
+[&lt;Author: &lt;alix sds&gt;&gt;, &lt;Author: &lt;shen test&gt;&gt;]
+
+\&gt;&gt;&gt; Author.objects.order_by(&quot;id&quot;)
+
+[&lt;Author: &lt;shen test&gt;&gt;, &lt;Author: &lt;alix sds&gt;&gt;]
+</code></pre><h3 id="7-数据更新"><a href="#7-数据更新" class="headerlink" title="7. 数据更新"></a>7. 数据更新</h3><pre><code>\&gt;&gt;&gt; author = Author.objects.get(last_name=&apos;test&apos;)
+
+\&gt;&gt;&gt; author.last_name = &apos;diaoxia&apos;
+
+\&gt;&gt;&gt; author.save()
+
+\&gt;&gt;&gt; Author.objects.all()
+
+[&lt;Author: &lt;shen diaoxia&gt;&gt;, &lt;Author: &lt;alix sds&gt;&gt;]
+</code></pre><h3 id="8-删除对象"><a href="#8-删除对象" class="headerlink" title="8. 删除对象"></a>8. 删除对象</h3><pre><code>\&gt;&gt;&gt; author = Author.objects.get(first_name=&apos;alix&apos;)
+
+\&gt;&gt;&gt; author
+
+&lt;Author: &lt;alix sds&gt;&gt;
+
+\&gt;&gt;&gt; author.delete()
+
+(2L, {u&apos;article.Book_authors&apos;: 1L, u&apos;article.Author&apos;: 1L})
+
+\&gt;&gt;&gt; Author.objects.all()
+
+[&lt;Author: &lt;shen diaoxia&gt;&gt;]
+</code></pre>]]></content>
     </entry>
     
     <entry>
@@ -382,30 +259,8 @@ python2 manage.py createsuperuser #创建一个超级用户
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>课程大纲：</p>
 <p><a href="http://www.cnblogs.com/wupeiqi/articles/4491246.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/4491246.html</a><br><a href="http://www.cnblogs.com/wupeiqi/articles/4508271.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/4508271.html</a></p>
-<h2 id="一、前端设计"><a href="#一、前端设计" class="headerlink" title="一、前端设计"></a>一、前端设计</h2><p>1.实现图片轮播</p>
-<pre><code>js下载地址：
-    http://bxslider.com/
-引入
-    &lt;!-- jQuery library (served from Google) --&gt;
-    &lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js&quot;&gt;&lt;/script&gt;
-    &lt;!-- bxSlider Javascript file --&gt;
-    &lt;script src=&quot;/js/jquery.bxslider.min.js&quot;&gt;&lt;/script&gt;
-    &lt;!-- bxSlider CSS file --&gt;
-    &lt;link href=&quot;/lib/jquery.bxslider.css&quot; rel=&quot;stylesheet&quot; /&gt;
-加载图片：
-    &lt;ul class=&quot;bxslider&quot;&gt;
-      &lt;li&gt;&lt;img src=&quot;/images/pic1.jpg&quot; /&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;img src=&quot;/images/pic2.jpg&quot; /&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;img src=&quot;/images/pic3.jpg&quot; /&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;img src=&quot;/images/pic4.jpg&quot; /&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-
-调用：    
-    $(document).ready(function(){
-      $(&apos;.bxslider&apos;).bxSlider();
-    });
-</code></pre><p>2.图标资源</p>
-<pre><code>Font Awesome
+<h2 id="一、前端设计"><a href="#一、前端设计" class="headerlink" title="一、前端设计"></a>一、前端设计</h2><h3 id="1-实现图片轮播"><a href="#1-实现图片轮播" class="headerlink" title="1.实现图片轮播"></a>1.实现图片轮播</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">js下载地址：</div><div class="line">	http://bxslider.com/</div><div class="line">引入</div><div class="line">	&lt;!-- jQuery library (served from Google) --&gt;</div><div class="line">	&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;!-- bxSlider Javascript file --&gt;</div><div class="line">	&lt;script src=&quot;/js/jquery.bxslider.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;!-- bxSlider CSS file --&gt;</div><div class="line">	&lt;link href=&quot;/lib/jquery.bxslider.css&quot; rel=&quot;stylesheet&quot; /&gt;</div><div class="line">加载图片：</div><div class="line">	&lt;ul class=&quot;bxslider&quot;&gt;</div><div class="line">	  &lt;li&gt;&lt;img src=&quot;/images/pic1.jpg&quot; /&gt;&lt;/li&gt;</div><div class="line">	  &lt;li&gt;&lt;img src=&quot;/images/pic2.jpg&quot; /&gt;&lt;/li&gt;</div><div class="line">	  &lt;li&gt;&lt;img src=&quot;/images/pic3.jpg&quot; /&gt;&lt;/li&gt;</div><div class="line">	  &lt;li&gt;&lt;img src=&quot;/images/pic4.jpg&quot; /&gt;&lt;/li&gt;</div><div class="line">	&lt;/ul&gt;</div><div class="line"></div><div class="line">调用：	</div><div class="line">	$(document).ready(function()&#123;</div><div class="line">	  $(&apos;.bxslider&apos;).bxSlider();</div><div class="line">	&#125;);</div></pre></td></tr></table></figure>
+<h3 id="2-图标资源"><a href="#2-图标资源" class="headerlink" title="2.图标资源"></a>2.图标资源</h3><pre><code>Font Awesome
    http://fontawesome.io/
    a、图片，自己找图片，挖洞
    b、现成的图标
@@ -423,49 +278,8 @@ python2 manage.py createsuperuser #创建一个超级用户
        字体文件
        样式
    =====》 大图片
-</code></pre><p>3.伪类</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;响应式&lt;/title&gt;
-    &lt;style&gt;
-        @media (min-width: 768px) {
-            .lead {
-                background-color: red;
-            }
-        }
-        .c1 {
-            background-color: green;
-            }
-        .clearfix:after {
-            content: &quot;.&quot;;
-            clear: both;
-            visibility: hidden;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-    &lt;dev class=&quot;lead&quot;&gt;
-        我们都是中国人
-    &lt;/dev&gt;
-
-    &lt;div class=&quot;c1 clearfix&quot;&gt;
-        &lt;div style=&quot;float: right;&quot;&gt;
-            你好
-        &lt;/div&gt;
-         &lt;div style=&quot;float: right;&quot;&gt;
-             china
-        &lt;/div&gt;
-         &lt;!--&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;--&gt;
-    &lt;/div&gt;
-
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><h2 id="二、web框架"><a href="#二、web框架" class="headerlink" title="二、web框架"></a>二、web框架</h2><p>1.python web框架分类</p>
-<pre><code>#!/usr/bin/env python
+</code></pre><h3 id="3-伪类"><a href="#3-伪类" class="headerlink" title="3.伪类"></a>3.伪类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;响应式&lt;/title&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">        @media (min-width: 768px) &#123;</div><div class="line">            .lead &#123;</div><div class="line">                background-color: red;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        .c1 &#123;</div><div class="line">            background-color: green;</div><div class="line">            &#125;</div><div class="line">        .clearfix:after &#123;</div><div class="line">            content: &quot;.&quot;;</div><div class="line">            clear: both;</div><div class="line">            visibility: hidden;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">    &lt;dev class=&quot;lead&quot;&gt;</div><div class="line">        我们都是中国人</div><div class="line">    &lt;/dev&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;c1 clearfix&quot;&gt;</div><div class="line">        &lt;div style=&quot;float: right;&quot;&gt;</div><div class="line">            你好</div><div class="line">        &lt;/div&gt;</div><div class="line">         &lt;div style=&quot;float: right;&quot;&gt;</div><div class="line">             china</div><div class="line">        &lt;/div&gt;</div><div class="line">         &lt;!--&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;--&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="二、web框架"><a href="#二、web框架" class="headerlink" title="二、web框架"></a>二、web框架</h2><h3 id="1-python-web框架分类"><a href="#1-python-web框架分类" class="headerlink" title="1.python web框架分类"></a>1.python web框架分类</h3><pre><code>#!/usr/bin/env python
 #coding:utf-8
 
 import socket
@@ -487,8 +301,7 @@ def main():
 
 if __name__ == &apos;__main__&apos;:
     main()
-</code></pre><p>2.MVC web框架</p>
-<pre><code>MVC：Models  Views Controllers
+</code></pre><h3 id="2-MVC-web框架"><a href="#2-MVC-web框架" class="headerlink" title="2.MVC web框架"></a>2.MVC web框架</h3><pre><code>MVC：Models  Views Controllers
 
         数据库操作 模板  处理请求的函数
 代码块的归类结构
@@ -496,29 +309,22 @@ if __name__ == &apos;__main__&apos;:
 MTV：Models Templates Views
 
     数据库操作 模板  处理请求的函数
-</code></pre><p>3.Django基础</p>
-<pre><code>Django框架属于MTV框架。程序需要的操作的：
+</code></pre><h3 id="3-Django基础"><a href="#3-Django基础" class="headerlink" title="3.Django基础"></a>3.Django基础</h3><pre><code>Django框架属于MTV框架。程序需要的操作的：
     1.models
     2.Templates
     3.Views
     4.urls
-</code></pre><h2 id="三、Django"><a href="#三、Django" class="headerlink" title="三、Django"></a>三、Django</h2><p>1.安装</p>
-<pre><code>pip install django 1.9.5
-</code></pre><p>2.创建Django程序框架</p>
-<pre><code>使用命令创建
+</code></pre><h2 id="三、Django"><a href="#三、Django" class="headerlink" title="三、Django"></a>三、Django</h2><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><pre><code>pip install django 1.9.5
+</code></pre><h3 id="2-创建Django程序框架"><a href="#2-创建Django程序框架" class="headerlink" title="2.创建Django程序框架"></a>2.创建Django程序框架</h3><pre><code>使用命令创建
     django-admin startproject demo 创建projects
     cd demo
     python manage.py startapp app0 创建应用
 使用pycharm进行创建项目和应用
-</code></pre><p>3.执行程序</p>
-<pre><code>进入项目， python manage.py runserver 127.0.0.1：8000
-</code></pre><p>4.创建数据表</p>
-<pre><code>python manage.py makemigrations #生成配置文件
+</code></pre><h3 id="3-执行程序"><a href="#3-执行程序" class="headerlink" title="3.执行程序"></a>3.执行程序</h3><pre><code>进入项目， python manage.py runserver 127.0.0.1：8000
+</code></pre><h3 id="4-创建数据表"><a href="#4-创建数据表" class="headerlink" title="4.创建数据表"></a>4.创建数据表</h3><pre><code>python manage.py makemigrations #生成配置文件
 python manage.py migrate       #根据配置文件创建数据库相关 表
-</code></pre><p>5.django默认后台管理</p>
-<pre><code>创建超级用户名 python manage.py createsuperuser
-</code></pre><p>6.路由系统</p>
-<pre><code>静态路由
+</code></pre><h3 id="5-django默认后台管理"><a href="#5-django默认后台管理" class="headerlink" title="5.django默认后台管理"></a>5.django默认后台管理</h3><pre><code>创建超级用户名 python manage.py createsuperuser
+</code></pre><h3 id="6-路由系统"><a href="#6-路由系统" class="headerlink" title="6.路由系统"></a>6.路由系统</h3><pre><code>静态路由
 动态路由
     安照顺序，第n个匹配的数据交给函数的第n个参数，严格按照顺序
         url(r&apos;^page/（\d+)/(\d+)&apos;,views.page)
@@ -530,8 +336,7 @@ python manage.py migrate       #根据配置文件创建数据库相关 表
     project name 
         URL：app01 -&gt;include（&quot;app01.urls&quot;）
 </code></pre><p><img src="http://i.imgur.com/QbaeTDM.png" alt=""></p>
-<p>7.基本数据库操作</p>
-<pre><code>ORM框架
+<h3 id="7-基本数据库操作"><a href="#7-基本数据库操作" class="headerlink" title="7.基本数据库操作"></a>7.基本数据库操作</h3><pre><code>ORM框架
     code first
         自己写类 --&gt;数据库表
     db first
@@ -898,7 +703,7 @@ dom
     提供一套api
 jQuery
     封装的JS和dom的类库
-</code></pre><h2 id="一、javaScript"><a href="#一、javaScript" class="headerlink" title="一、javaScript"></a>一、javaScript</h2><pre><code>1. 存在形式：
+</code></pre><h2 id="二、javaScript"><a href="#二、javaScript" class="headerlink" title="二、javaScript"></a>二、javaScript</h2><pre><code>1. 存在形式：
     文件
     标签
 2. 放置位置：
@@ -942,20 +747,8 @@ jQuery
     name.split(&quot;&quot;);  //将字符串转换成数组
     [&quot;s&quot;, &quot;w&quot;, &quot;h&quot;, &quot;t&quot;, &quot; &quot;, &quot; &quot;, &quot; &quot;]
 5. xx
-</code></pre><h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><pre><code>var li1 = [11,22,33,44];
-for (var index in li1){
-    console.log(index);
-}
-
-for (var i = 0;i &lt; li1.length;i++){
-    console.log(i,li1[i]);
-}
-
-var dict = {&quot;name&quot;:&quot;swht&quot;,&quot;age&quot;:18,&quot;work&quot;:&quot;运维&quot;}
-for (var item in dict){
-    console.log(item,dict[item]);
-}
-</code></pre><h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><pre><code>while(true){
+</code></pre><h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var li1 = [11,22,33,44];</div><div class="line">for (var index in li1)&#123;</div><div class="line">console.log(index);</div><div class="line">&#125;</div><div class="line"></div><div class="line">for (var i = 0;i &lt; li1.length;i++)&#123;</div><div class="line">console.log(i,li1[i]);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var dict = &#123;&quot;name&quot;:&quot;swht&quot;,&quot;age&quot;:18,&quot;work&quot;:&quot;运维&quot;&#125;</div><div class="line">for (var item in dict)&#123;</div><div class="line">console.log(item,dict[item]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><pre><code>while(true){
     countine;
     break;
 }
@@ -1018,14 +811,12 @@ console.log(obj.Name);
 console.log(obj.Age);
 var ret = obj.Func(&apos;haha&apos;);
 console.log(ret);
-</code></pre><h2 id="二、Dom"><a href="#二、Dom" class="headerlink" title="二、Dom"></a>二、Dom</h2><p>文档对象模型（Document Object Model，DOM）是一种用于HTML和XML文档的编程接口。它给文档提供了一种结构化的表示方法，可以改变文档的内容和呈现方式。我们最为关心的是，DOM把网页和脚本以及其他的编程语言联系了起来。DOM属于浏览器，而不是JavaScript语言规范里的规定的核心内容。</p>
+</code></pre><h2 id="三、Dom"><a href="#三、Dom" class="headerlink" title="三、Dom"></a>三、Dom</h2><p>文档对象模型（Document Object Model，DOM）是一种用于HTML和XML文档的编程接口。它给文档提供了一种结构化的表示方法，可以改变文档的内容和呈现方式。我们最为关心的是，DOM把网页和脚本以及其他的编程语言联系了起来。DOM属于浏览器，而不是JavaScript语言规范里的规定的核心内容。</p>
 <p>注：一般说的JS让页面动起来泛指JavaScript和Dom</p>
-<p>1、选择器</p>
-<pre><code>document.getElementById(&apos;id&apos;);
+<h3 id="1-选择器"><a href="#1-选择器" class="headerlink" title="1.选择器"></a>1.选择器</h3><pre><code>document.getElementById(&apos;id&apos;);
 document.getElementsByName(&apos;name&apos;);
 document.getElementsByTagName(&apos;tagname&apos;);
-</code></pre><p>2、内容</p>
-<pre><code>innerText
+</code></pre><h3 id="2-内容"><a href="#2-内容" class="headerlink" title="2.内容"></a>2.内容</h3><pre><code>innerText
 innerHTML
 
 var obj = document.getElementById(&apos;nid&apos;)
@@ -1041,8 +832,7 @@ obj.innerHTML = &quot;&lt;h1&gt;asd&lt;/h1&gt;&quot;      # 设置HTML内容
     select标签
 
     value属性操作用户输入和选择的值
-</code></pre><p>3、创建标签</p>
-<pre><code>方式一：
+</code></pre><h3 id="3-创建标签"><a href="#3-创建标签" class="headerlink" title="3.创建标签"></a>3.创建标签</h3><pre><code>方式一：
     var obj = document.createElement(&apos;a&apos;);
     obj.href = &quot;http://www.apicloud.com&quot;;
     obj.innerText = &quot;APICloud&quot;;
@@ -1058,8 +848,7 @@ obj.innerHTML = &quot;&lt;h1&gt;asd&lt;/h1&gt;&quot;      # 设置HTML内容
     container.innerHTML = obj;
     // &apos;beforeBegin&apos;, &apos;afterBegin&apos;, &apos;beforeEnd&apos;,  &apos;afterEnd&apos;
     //container.insertAdjacentHTML(&quot;beforeEnd&quot;,obj);
-</code></pre><p>4、标签属性</p>
-<pre><code>var obj = document.getElementById(&apos;container&apos;);
+</code></pre><h3 id="4-标签属性"><a href="#4-标签属性" class="headerlink" title="4.标签属性"></a>4.标签属性</h3><pre><code>var obj = document.getElementById(&apos;container&apos;);
 固定属性
     obj.id
     obj.id = &quot;nid&quot;
@@ -1070,12 +859,9 @@ obj.innerHTML = &quot;&lt;h1&gt;asd&lt;/h1&gt;&quot;      # 设置HTML内容
     obj.setAttribute(name,value)
     obj.getAttribute(name)
     obj.removeAttribute(name)
-</code></pre><p>5、提交表单</p>
-<pre><code>document.geElementById(&apos;form&apos;).submit()
-</code></pre><p>6、事件</p>
-<p><img src="http://i.imgur.com/aP6MTMY.png" alt=""></p>
-<p>7、其他功能</p>
-<pre><code>console.log()
+</code></pre><h3 id="5-提交表单"><a href="#5-提交表单" class="headerlink" title="5.提交表单"></a>5.提交表单</h3><pre><code>document.geElementById(&apos;form&apos;).submit()
+</code></pre><h3 id="6-事件"><a href="#6-事件" class="headerlink" title="6.事件"></a>6.事件</h3><p><img src="http://i.imgur.com/aP6MTMY.png" alt=""></p>
+<h3 id="7-其他功能"><a href="#7-其他功能" class="headerlink" title="7.其他功能"></a>7.其他功能</h3><pre><code>console.log()
 alert()
 confirm()
 
@@ -1136,8 +922,7 @@ clearTimeout(obj)
         }
     }
 &lt;/script&gt;
-</code></pre><h2 id="三、jQuery"><a href="#三、jQuery" class="headerlink" title="三、jQuery"></a>三、jQuery</h2><p>1、选择器：</p>
-<pre><code>#id
+</code></pre><h2 id="四、jQuery"><a href="#四、jQuery" class="headerlink" title="四、jQuery"></a>四、jQuery</h2><h3 id="1-选择器："><a href="#1-选择器：" class="headerlink" title="1.选择器："></a>1.选择器：</h3><pre><code>#id
 element
 .class
 *
@@ -1184,14 +969,10 @@ selector1,selector2,selectorN
         &lt;/script&gt;
     &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>2、 筛选器</p>
-<p><img src="http://i.imgur.com/x7Jqi96.jpg" alt=""></p>
-<p>3、属性、CSS</p>
-<p><img src="http://i.imgur.com/mPoLfMu.png" alt="">    </p>
-<p>4、文档处理</p>
-<p><img src="http://i.imgur.com/8YcX0EW.png" alt=""></p>
-<p>5、事件</p>
-<p><img src="http://i.imgur.com/p53Uf3n.png" alt=""></p>
+</code></pre><h3 id="2-筛选器"><a href="#2-筛选器" class="headerlink" title="2.筛选器"></a>2.筛选器</h3><p><img src="http://i.imgur.com/x7Jqi96.jpg" alt=""></p>
+<h3 id="3-属性、CSS"><a href="#3-属性、CSS" class="headerlink" title="3.属性、CSS"></a>3.属性、CSS</h3><p><img src="http://i.imgur.com/mPoLfMu.png" alt="">    </p>
+<h3 id="4-文档处理"><a href="#4-文档处理" class="headerlink" title="4.文档处理"></a>4.文档处理</h3><p><img src="http://i.imgur.com/8YcX0EW.png" alt=""></p>
+<h3 id="5-事件"><a href="#5-事件" class="headerlink" title="5.事件"></a>5.事件</h3><p><img src="http://i.imgur.com/p53Uf3n.png" alt=""></p>
 <p><strong>作业</strong></p>
 <ol>
 <li>jQuery API文档阅读</li>
@@ -1212,312 +993,319 @@ selector1,selector2,selectorN
 <p>day10</p>
 <p><a href="http://www.cnblogs.com/alex3714/articles/5286889.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5286889.html
 </a></p>
-<h3 id="一、回顾"><a href="#一、回顾" class="headerlink" title="一、回顾"></a>一、回顾</h3><ol>
-<li><p>队列</p>
-<ol>
-<li>队列的作业就是实现多个线程之间数据安全的交互</li>
-<li>队列类型：先进先出、后进先出、优先级</li>
-<li>queue的数据必须按照顺序进行取出–&gt;处理–&gt;放回。主要作用就是不同进程之间数据的交换，manager可以进行多个进程之间的数据的共享，而且是数据安全的。</li>
-<li>生产者-消费者模型：实现程序的松耦合</li>
-</ol>
-</li>
-<li><p>gevent模块：对Greenlet模块的一次封装</p>
-<ol>
-<li>gevent里面的socket本身可以实现IO阻塞变成非阻塞</li>
-<li>monkey.path_all()可以帮助我们实现阻塞变成非阻塞</li>
-</ol>
-</li>
-<li><p>协程</p>
-<ol>
-<li>实现单个线程里面的并发</li>
-<li>无需线程上下文切换的开销，无需原子操作锁定及同步的开销，方便切换控制流，高并发+高扩展性+低成本</li>
-<li>无法利用多核资源，但是可以实现单个进程下面起一个线程，然后一个线程下面实现多个协程并发</li>
-</ol>
-</li>
-<li><p>select</p>
-<p> <img src="http://i.imgur.com/SpEkQHr.png" alt=""></p>
-<ol>
-<li><p>select 与poll的区别</p>
-<pre><code>select有一个最大文件数的限制1024，文件扫描一个列表是非常低效的；poll没有这个限制
-内核态到用户态的数据copy；Epoll直接调用C语言进行内核态的数据nat到用户态
-</code></pre></li>
-<li><p>select代码注释</p>
-<p>  <strong>auther</strong> = ‘Victor’</p>
-<p>  import select<br>  import socket<br>  import sys<br>  import queue</p>
-<h1 id="创建一个TCP-IP-socket"><a href="#创建一个TCP-IP-socket" class="headerlink" title="创建一个TCP/IP socket"></a>创建一个TCP/IP socket</h1><p>  server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>  server.setblocking(False)</p>
-<h1 id="绑定socket到指定端口"><a href="#绑定socket到指定端口" class="headerlink" title="绑定socket到指定端口"></a>绑定socket到指定端口</h1><p>  server_address = (‘localhost’, 10000)<br>  print(sys.stderr, ‘starting up on %s port %s’ % server_address)<br>  server.bind(server_address)</p>
-<h1 id="监听连接的地址"><a href="#监听连接的地址" class="headerlink" title="监听连接的地址"></a>监听连接的地址</h1><p>  server.listen(5)<br>  inputs = [server]</p>
-<h1 id="Socket的读操作"><a href="#Socket的读操作" class="headerlink" title="Socket的读操作"></a>Socket的读操作</h1><p>  outputs = []</p>
-<h1 id="socket的写操作"><a href="#socket的写操作" class="headerlink" title="socket的写操作"></a>socket的写操作</h1><p>  message_queues = {}<br>  while inputs:</p>
-<pre><code># Wait for at least one of the sockets to be ready for processing
-print( &apos;\nwaiting for the next event&apos;)
-readable, writable, exceptional = select.select(inputs, outputs, inputs)
-# 监听句柄序列，如果某个发生变化，select的第一个rLest会拿到数据，output只要有数据wLest就能获取到，select的第三个参数inputs用来监测异常，并赋值给exceptional。
-# 监听inputs，outputs，inputs  如果他们的值有变化，就将分别赋值给readable，writable，exceptional。
-for s in readable:
+<h2 id="一、回顾"><a href="#一、回顾" class="headerlink" title="一、回顾"></a>一、回顾</h2><h3 id="1-队列"><a href="#1-队列" class="headerlink" title="1.    队列"></a>1.    队列</h3><pre><code>1.    队列的作业就是实现多个线程之间数据安全的交互
+2.    队列类型：先进先出、后进先出、优先级
+3.    queue的数据必须按照顺序进行取出--&gt;处理--&gt;放回。主要作用就是不同进程之间数据的交换，manager可以进行多个进程之间的数据的共享，而且是数据安全的。
+4.    生产者-消费者模型：实现程序的松耦合
+</code></pre><h3 id="2-gevent模块：对Greenlet模块的一次封装"><a href="#2-gevent模块：对Greenlet模块的一次封装" class="headerlink" title="2. gevent模块：对Greenlet模块的一次封装"></a>2. gevent模块：对Greenlet模块的一次封装</h3><pre><code>1. gevent里面的socket本身可以实现IO阻塞变成非阻塞
+2. monkey.path_all()可以帮助我们实现阻塞变成非阻塞
+</code></pre><h3 id="3-协程"><a href="#3-协程" class="headerlink" title="3. 协程"></a>3. 协程</h3><pre><code>1. 实现单个线程里面的并发
+2. 无需线程上下文切换的开销，无需原子操作锁定及同步的开销，方便切换控制流，高并发+高扩展性+低成本
+3. 无法利用多核资源，但是可以实现单个进程下面起一个线程，然后一个线程下面实现多个协程并发
+</code></pre><h3 id="4-select"><a href="#4-select" class="headerlink" title="4. select"></a>4. select</h3><p><img src="http://i.imgur.com/SpEkQHr.png" alt=""></p>
+<pre><code>1. select 与poll的区别
+
+    select有一个最大文件数的限制1024，文件扫描一个列表是非常低效的；poll没有这个限制
+    内核态到用户态的数据copy；Epoll直接调用C语言进行内核态的数据nat到用户态
+
+2.    select代码注释
+
+
+    __auther__ = &apos;Victor&apos;
+
+    import select
+    import socket
+    import sys
+    import queue
+
+    # 创建一个TCP/IP socket
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setblocking(False)
+    # 绑定socket到指定端口
+    server_address = (&apos;localhost&apos;, 10000)
+    print(sys.stderr, &apos;starting up on %s port %s&apos; % server_address)
+    server.bind(server_address)
+    # 监听连接的地址
+    server.listen(5)
+    inputs = [server]
+    # Socket的读操作
+    outputs = []
+    # socket的写操作
+    message_queues = {}
+    while inputs:
+    # Wait for at least one of the sockets to be ready for processing
+    print( &apos;\nwaiting for the next event&apos;)
+    readable, writable, exceptional = select.select(inputs, outputs, inputs)
+    # 监听句柄序列，如果某个发生变化，select的第一个rLest会拿到数据，output只要有数据wLest就能获取到，select的第三个参数inputs用来监测异常，并赋值给exceptional。
+    # 监听inputs，outputs，inputs  如果他们的值有变化，就将分别赋值给readable，writable，exceptional。
+    for s in readable:
     # 遍历readable的值。
     if s is server:
-        connection, client_address = s.accept()
-        # 如果s 是server，那么server socket将接收连接。
-        print(&apos;new connection from&apos;, client_address)
-        # 打印出连接客户端的地址。
-        connection.setblocking(False)
-        # 设置socket 为非阻塞模式。
-        inputs.append(connection)
-        # 因为有读操作发生，所以将此连接加入inputs
-        message_queues[connection] = queue.Queue()
-        # 为每个连接创建一个queue队列。使得每个连接接收到正确的数据。
+    connection, client_address = s.accept()
+    # 如果s 是server，那么server socket将接收连接。
+    print(&apos;new connection from&apos;, client_address)
+    # 打印出连接客户端的地址。
+    connection.setblocking(False)
+    # 设置socket 为非阻塞模式。
+    inputs.append(connection)
+    # 因为有读操作发生，所以将此连接加入inputs
+    message_queues[connection] = queue.Queue()
+    # 为每个连接创建一个queue队列。使得每个连接接收到正确的数据。
     else:
-        data = s.recv(1024)
-        # 如果s不是server，说明客户端连接来了，那么就接受客户端的数据。
-        if data:
-            # 如果接收到客户端的数据
-            print(sys.stderr, &apos;received &quot;%s&quot; from %s&apos; % (data, s.getpeername()) )
-            message_queues[s].put(data)
-            # 将收到的数据放入队列中
-            if s not in outputs:
-                outputs.append(s)
-                # 将socket客户端的连接加入select的output中，并且用来返回给客户端数据。
-        else:
-            print(&apos;closing&apos;, client_address, &apos;after reading no data&apos;)
-            # 如果没有收到客户端发来的空消息，则说明客户端已经断开连接。
-            if s in outputs:
-                outputs.remove(s)
-                # 既然客户端都断开了，我就不用再给它返回数据了，所以这时候如果这个客户端的连接对象还在outputs列表中，就把它删掉
-            inputs.remove(s)
-            # inputs中也删除掉
-            s.close()
-            # 把这个连接关闭掉
-            del message_queues[s]
-            # 删除此客户端的消息队列
+    data = s.recv(1024)
+    # 如果s不是server，说明客户端连接来了，那么就接受客户端的数据。
+    if data:
+    # 如果接收到客户端的数据
+    print(sys.stderr, &apos;received &quot;%s&quot; from %s&apos; % (data, s.getpeername()) )
+    message_queues[s].put(data)
+    # 将收到的数据放入队列中
+    if s not in outputs:
+    outputs.append(s)
+    # 将socket客户端的连接加入select的output中，并且用来返回给客户端数据。
+    else:
+    print(&apos;closing&apos;, client_address, &apos;after reading no data&apos;)
+    # 如果没有收到客户端发来的空消息，则说明客户端已经断开连接。
+    if s in outputs:
+    outputs.remove(s)
+    # 既然客户端都断开了，我就不用再给它返回数据了，所以这时候如果这个客户端的连接对象还在outputs列表中，就把它删掉
+    inputs.remove(s)
+    # inputs中也删除掉
+    s.close()
+    # 把这个连接关闭掉
+    del message_queues[s]
+    # 删除此客户端的消息队列
 
-for s in writable:
+    for s in writable:
     # 遍历output的数据
     try:
-        next_msg = message_queues[s].get_nowait()
+    next_msg = message_queues[s].get_nowait()
     except queue.Empty:
-        # 获取对应客户端消息队列中的数据，如果队列中的数据为空，从消息队列中移除此客户端连接。
-        print(&apos;output queue for&apos;, s.getpeername(), &apos;is empty&apos;)
-        outputs.remove(s)
+    # 获取对应客户端消息队列中的数据，如果队列中的数据为空，从消息队列中移除此客户端连接。
+    print(&apos;output queue for&apos;, s.getpeername(), &apos;is empty&apos;)
+    outputs.remove(s)
     else:
-        print( &apos;sending &quot;%s&quot; to %s&apos; % (next_msg, s.getpeername()))
-        s.send(next_msg)
-        # 如果消息队列有数据，则发送给客户端。
-for s in exceptional:
+    print( &apos;sending &quot;%s&quot; to %s&apos; % (next_msg, s.getpeername()))
+    s.send(next_msg)
+    # 如果消息队列有数据，则发送给客户端。
+    for s in exceptional:
     # 处理 &quot;exceptional conditions&quot;
     print(&apos;handling exceptional condition for&apos;, s.getpeername() )
     inputs.remove(s)
     # 取消对出现异常的客户端的监听
     if s in outputs:
-        outputs.remove(s)
-        # 移除客户端的连接对象。
+    outputs.remove(s)
+    # 移除客户端的连接对象。
     s.close()
     # 关闭此socket连接
     del message_queues[s]
     # 删除此消息队列。
-</code></pre><p>  ‘’’</p>
-<p>  在select/poll时代，服务器进程每次都把这100万个连接告诉操作系统(从用户态复制句柄数据结构到内核态)，让操作系统内核去查询这些套接字上是否有事件发生，</p>
-<p>  轮询完后，再将句柄数据复制到用户态，让服务器应用程序轮询处理已发生的网络事件，这一过程资源消耗较大，因此，select/poll一般只能处理几千的并发连接。</p>
-<p>  epoll的设计和实现与select完全不同。epoll通过在Linux内核中申请一个简易的文件系统(文件系统一般用什么数据结构实现？B+树)。把原先的select/poll调用分成了3个部分：</p>
-<p>  1）调用epoll_create()建立一个epoll对象(在epoll文件系统中为这个句柄对象分配资源)</p>
-<p>  2）调用epoll_ctl向epoll对象中添加这100万个连接的套接字</p>
-<p>  3）调用epoll_wait收集发生的事件的连接</p>
-<p>  ‘’’</p>
-</li>
-<li><p>epoll代码注释</p>
-<p>  <strong>auther</strong> = ‘Victor’</p>
-</li>
-</ol>
-</li>
-</ol>
-<pre><code>#--------------这是一个epoll的例子--------------
+
+    &apos;&apos;&apos;
+
+    在select/poll时代，服务器进程每次都把这100万个连接告诉操作系统(从用户态复制句柄数据结构到内核态)，让操作系统内核去查询这些套接字上是否有事件发生，
+
+    轮询完后，再将句柄数据复制到用户态，让服务器应用程序轮询处理已发生的网络事件，这一过程资源消耗较大，因此，select/poll一般只能处理几千的并发连接。
+
+    epoll的设计和实现与select完全不同。epoll通过在Linux内核中申请一个简易的文件系统(文件系统一般用什么数据结构实现？B+树)。把原先的select/poll调用分成了3个部分：
+
+    1）调用epoll_create()建立一个epoll对象(在epoll文件系统中为这个句柄对象分配资源)
+
+    2）调用epoll_ctl向epoll对象中添加这100万个连接的套接字
+
+    3）调用epoll_wait收集发生的事件的连接
+
+    &apos;&apos;&apos;
 
 
-import socket, select
-# &apos;windows&apos;下不支持&apos;epoll&apos;
+3.    epoll代码注释
 
-EOL1 = b&apos;\n\n&apos;
-EOL2 = b&apos;\n\r\n&apos;
-response = b&apos;HTTP/1.0 200 OK\r\nDate: Mon, 1 Jan 1996 01:01:01 GMT\r\n&apos;
-response += b&apos;Content-Type: text/plain\r\nContent-Length: 13\r\n\r\n&apos;
-response += b&apos;Hello, world!&apos;
-
-serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-serversocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-serversocket.bind((&apos;0.0.0.0&apos;, 8080))
-serversocket.listen(1)
-# 建立socket连接。
-serversocket.setblocking(0)
-# 因为socket本身是阻塞的，setblocking（0）使得socket不阻塞
-
-epoll = select.epoll()
-# 创建一个eopll对象
-epoll.register(serversocket.fileno(), select.EPOLLIN)
-# 在服务器端socket上面注册对读event的关注，一个读event随时会触发服务器端socket去接收一个socket连接。
-
-try:
-   connections = {}; requests = {}; responses = {}
-# 生成3个字典，connection字典是存储文件描述符映射到他们相应的网络连接对象
-   while True:
-      events = epoll.poll(1)
-# 查询epoll对象，看是否有任何关注的event被触发，参数‘1’表示，会等待一秒来看是否有event发生，如果有任何感兴趣的event发生在这次查询之前，这个查询就会带着这些event的列表立即返回
-      for fileno, event in events:
-        # event作为一个序列（fileno，event code）的元组返回，fileno是文件描述符的代名词，始终是一个整数。
-         if fileno == serversocket.fileno():
-            # 如果一个读event在服务器端socket发生，就会有一个新的socket连接可能被创建。
-            connection, address = serversocket.accept()
-            # 服务器端开始接收连接和客户端地址
-            connection.setblocking(0)
-            # 设置新的socket为非阻塞模式
-            epoll.register(connection.fileno(), select.EPOLLIN)
-            # 为新的socket注册对读（EPOLLIN）event的关注
-            connections[connection.fileno()] = connection
-            requests[connection.fileno()] = b&apos;&apos;
-            responses[connection.fileno()] = response
-         elif event &amp; select.EPOLLIN:
-            requests[fileno] += connections[fileno].recv(1024)
-            # 如果发生一个读event，就读取从客户端发过来的数据。
-            if EOL1 in requests[fileno] or EOL2 in requests[fileno]:
-               epoll.modify(fileno, select.EPOLLOUT)
-            # 一旦完成请求已经收到，就注销对读event的关注，注册对写（EPOLLOUT）event的关注，写event发生的时候，会回复数据给客户端。
-               print(&apos;-&apos;*40 + &apos;\n&apos; + requests[fileno].decode()[:-2])
-            # 打印完整的请求，证明虽然与客户端的通信是交错进行的，但是数据可以作为一个整体来组装和处理。
-         elif event &amp; select.EPOLLOUT:
-            # 如果一个写event在一个客户端socket上面发生，他会接受新的数据以便发送到客户端。
-            byteswritten = connections[fileno].send(responses[fileno])
-            responses[fileno] = responses[fileno][byteswritten:]
-            if len(responses[fileno]) == 0:
-                # 每次发送一部分响应数据，直到完整的响应数据都已经发送给操作系统等待传输给客户端。
-               epoll.modify(fileno, 0)
-            # 一旦完整的响应数据发送完成，就不再关注读或者写event。
-               connections[fileno].shutdown(socket.SHUT_RDWR)
-            # 如果一个连接显式关闭，那么socket shutdown是可选的，在这里这样使用，是为了让客户端首先关闭。
-            # shutdown调用会通知客户端socket没有更多的数据应该被发送或者接收，并会让功能正常的客户端关闭自己的socket连接。
-         elif event &amp; select.EPOLLHUP:
-            # HUP挂起event表明客户端socket已经断开（即关闭），所以服务器端也需要关闭，没有必要注册对HUP event的关注，在socket上面，他们总是会被epoll对象注册。
-            epoll.unregister(fileno)
-            # 注销对此socket连接的关注。
-            connections[fileno].close()
-            # 关闭socket连接。
-            del connections[fileno]
-finally:
-   epoll.unregister(serversocket.fileno())
-# 去掉已经注册的文件句柄
-   epoll.close()
-# 关闭epoll对象
-   serversocket.close()
-# 关闭服务器连接
-# 打开的socket连接不需要关闭，因为Python会在程序结束时关闭， 这里的显示关闭是个好的习惯。
+    __auther__ = &apos;Victor&apos;
 
 
+    #--------------这是一个epoll的例子--------------
 
-&apos;&apos;&apos;
 
-首先我们来定义流的概念，一个流可以是文件，socket，pipe等等可以进行I/O操作的内核对象。
+    import socket, select
+    # &apos;windows&apos;下不支持&apos;epoll&apos;
 
-    不管是文件，还是套接字，还是管道，我们都可以把他们看作流。
+    EOL1 = b&apos;\n\n&apos;
+    EOL2 = b&apos;\n\r\n&apos;
+    response = b&apos;HTTP/1.0 200 OK\r\nDate: Mon, 1 Jan 1996 01:01:01 GMT\r\n&apos;
+    response += b&apos;Content-Type: text/plain\r\nContent-Length: 13\r\n\r\n&apos;
+    response += b&apos;Hello, world!&apos;
 
-    之后我们来讨论I/O的操作，通过read，我们可以从流中读入数据；通过write，我们可以往流写入数据。现在假定一个情形，
-    我们需要从流中读数据，但是流中还没有数据，（典型的例子为，客户端要从socket读如数据，但是服务器还没有把数据传回来），
-    这时候该怎么办？
+    serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    serversocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    serversocket.bind((&apos;0.0.0.0&apos;, 8080))
+    serversocket.listen(1)
+    # 建立socket连接。
+    serversocket.setblocking(0)
+    # 因为socket本身是阻塞的，setblocking（0）使得socket不阻塞
 
-阻塞：阻塞是个什么概念呢？比如某个时候你在等快递，但是你不知道快递什么时候过来，而且你没有别的事可以干（或者说接下来的事要等快递来了才能做）；
-那么你可以去睡觉了，因为你知道快递把货送来时一定会给你打个电话（假定一定能叫醒你）。
+    epoll = select.epoll()
+    # 创建一个eopll对象
+    epoll.register(serversocket.fileno(), select.EPOLLIN)
+    # 在服务器端socket上面注册对读event的关注，一个读event随时会触发服务器端socket去接收一个socket连接。
 
-非阻塞忙轮询：接着上面等快递的例子，如果用忙轮询的方法，那么你需要知道快递员的手机号，然后每分钟给他挂个电话：“你到了没？”
+    try:
+       connections = {}; requests = {}; responses = {}
+    # 生成3个字典，connection字典是存储文件描述符映射到他们相应的网络连接对象
+       while True:
+          events = epoll.poll(1)
+    # 查询epoll对象，看是否有任何关注的event被触发，参数‘1’表示，会等待一秒来看是否有event发生，如果有任何感兴趣的event发生在这次查询之前，这个查询就会带着这些event的列表立即返回
+          for fileno, event in events:
+            # event作为一个序列（fileno，event code）的元组返回，fileno是文件描述符的代名词，始终是一个整数。
+             if fileno == serversocket.fileno():
+                # 如果一个读event在服务器端socket发生，就会有一个新的socket连接可能被创建。
+                connection, address = serversocket.accept()
+                # 服务器端开始接收连接和客户端地址
+                connection.setblocking(0)
+                # 设置新的socket为非阻塞模式
+                epoll.register(connection.fileno(), select.EPOLLIN)
+                # 为新的socket注册对读（EPOLLIN）event的关注
+                connections[connection.fileno()] = connection
+                requests[connection.fileno()] = b&apos;&apos;
+                responses[connection.fileno()] = response
+             elif event &amp; select.EPOLLIN:
+                requests[fileno] += connections[fileno].recv(1024)
+                # 如果发生一个读event，就读取从客户端发过来的数据。
+                if EOL1 in requests[fileno] or EOL2 in requests[fileno]:
+                   epoll.modify(fileno, select.EPOLLOUT)
+                # 一旦完成请求已经收到，就注销对读event的关注，注册对写（EPOLLOUT）event的关注，写event发生的时候，会回复数据给客户端。
+                   print(&apos;-&apos;*40 + &apos;\n&apos; + requests[fileno].decode()[:-2])
+                # 打印完整的请求，证明虽然与客户端的通信是交错进行的，但是数据可以作为一个整体来组装和处理。
+             elif event &amp; select.EPOLLOUT:
+                # 如果一个写event在一个客户端socket上面发生，他会接受新的数据以便发送到客户端。
+                byteswritten = connections[fileno].send(responses[fileno])
+                responses[fileno] = responses[fileno][byteswritten:]
+                if len(responses[fileno]) == 0:
+                    # 每次发送一部分响应数据，直到完整的响应数据都已经发送给操作系统等待传输给客户端。
+                   epoll.modify(fileno, 0)
+                # 一旦完整的响应数据发送完成，就不再关注读或者写event。
+                   connections[fileno].shutdown(socket.SHUT_RDWR)
+                # 如果一个连接显式关闭，那么socket shutdown是可选的，在这里这样使用，是为了让客户端首先关闭。
+                # shutdown调用会通知客户端socket没有更多的数据应该被发送或者接收，并会让功能正常的客户端关闭自己的socket连接。
+             elif event &amp; select.EPOLLHUP:
+                # HUP挂起event表明客户端socket已经断开（即关闭），所以服务器端也需要关闭，没有必要注册对HUP event的关注，在socket上面，他们总是会被epoll对象注册。
+                epoll.unregister(fileno)
+                # 注销对此socket连接的关注。
+                connections[fileno].close()
+                # 关闭socket连接。
+                del connections[fileno]
+    finally:
+       epoll.unregister(serversocket.fileno())
+    # 去掉已经注册的文件句柄
+       epoll.close()
+    # 关闭epoll对象
+       serversocket.close()
+    # 关闭服务器连接
+    # 打开的socket连接不需要关闭，因为Python会在程序结束时关闭， 这里的显示关闭是个好的习惯。
 
-    很明显一般人不会用第二种做法，不仅显很无脑，浪费话费不说，还占用了快递员大量的时间。
+    &apos;&apos;&apos;
 
-    大部分程序也不会用第二种做法，因为第一种方法经济而简单，经济是指消耗很少的CPU时间，如果线程睡眠了，就掉出了系统的调度队列，暂时不会去瓜分CPU宝贵的时间片了。
+    首先我们来定义流的概念，一个流可以是文件，socket，pipe等等可以进行I/O操作的内核对象。
 
-    为了了解阻塞是如何进行的，我们来讨论缓冲区，以及内核缓冲区，最终把I/O事件解释清楚。缓冲区的引入是为了减少频繁I/O操作而引起频繁的系统调用（你知道它很慢的），
-    当你操作一个流时，更多的是以缓冲区为单位进行操作，这是相对于用户空间而言。对于内核来说，也需要缓冲区。
+        不管是文件，还是套接字，还是管道，我们都可以把他们看作流。
 
-假设有一个管道，进程A为管道的写入方，Ｂ为管道的读出方。
+        之后我们来讨论I/O的操作，通过read，我们可以从流中读入数据；通过write，我们可以往流写入数据。现在假定一个情形，
+        我们需要从流中读数据，但是流中还没有数据，（典型的例子为，客户端要从socket读如数据，但是服务器还没有把数据传回来），
+        这时候该怎么办？
 
-假设一开始内核缓冲区是空的，B作为读出方，被阻塞着。然后首先A往管道写入，这时候内核缓冲区由空的状态变到非空状态，内核就会产生一个事件告诉Ｂ该醒来了，
-这个事件姑且称之为“缓冲区非空”。
+    阻塞：阻塞是个什么概念呢？比如某个时候你在等快递，但是你不知道快递什么时候过来，而且你没有别的事可以干（或者说接下来的事要等快递来了才能做）；
+    那么你可以去睡觉了，因为你知道快递把货送来时一定会给你打个电话（假定一定能叫醒你）。
 
-    但是“缓冲区非空”事件通知B后，B却还没有读出数据；且内核许诺了不能把写入管道中的数据丢掉这个时候，Ａ写入的数据会滞留在内核缓冲区中，如果内核也缓冲区满了，
-    B仍未开始读数据，最终内核缓冲区会被填满，这个时候会产生一个I/O事件，告诉进程A，你该等等（阻塞）了，我们把这个事件定义为“缓冲区满”。
+    非阻塞忙轮询：接着上面等快递的例子，如果用忙轮询的方法，那么你需要知道快递员的手机号，然后每分钟给他挂个电话：“你到了没？”
 
-假设后来Ｂ终于开始读数据了，于是内核的缓冲区空了出来，这时候内核会告诉A，内核缓冲区有空位了，你可以从长眠中醒来了，继续写数据了，我们把这个事件叫做“缓冲区非满”
+        很明显一般人不会用第二种做法，不仅显很无脑，浪费话费不说，还占用了快递员大量的时间。
 
-    也许事件Y1已经通知了A，但是A也没有数据写入了，而Ｂ继续读出数据，知道内核缓冲区空了。这个时候内核就告诉B，你需要阻塞了！，我们把这个时间定为“缓冲区空”。
+        大部分程序也不会用第二种做法，因为第一种方法经济而简单，经济是指消耗很少的CPU时间，如果线程睡眠了，就掉出了系统的调度队列，暂时不会去瓜分CPU宝贵的时间片了。
 
-这四个情形涵盖了四个I/O事件，缓冲区满，缓冲区空，缓冲区非空，缓冲区非满（注都是说的内核缓冲区，且这四个术语都是我生造的，仅为解释其原理而造）。
-这四个I/O事件是进行阻塞同步的根本。（如果不能理解“同步”是什么概念，请学习操作系统的锁，信号量，条件变量等任务同步方面的相关知识）。
+        为了了解阻塞是如何进行的，我们来讨论缓冲区，以及内核缓冲区，最终把I/O事件解释清楚。缓冲区的引入是为了减少频繁I/O操作而引起频繁的系统调用（你知道它很慢的），
+        当你操作一个流时，更多的是以缓冲区为单位进行操作，这是相对于用户空间而言。对于内核来说，也需要缓冲区。
 
-    然后我们来说说阻塞I/O的缺点。但是阻塞I/O模式下，一个线程只能处理一个流的I/O事件。如果想要同时处理多个流，要么多进程(fork)，要么多线程(pthread_create)，
-    很不幸这两种方法效率都不高。
+    假设有一个管道，进程A为管道的写入方，Ｂ为管道的读出方。
 
-    于是再来考虑非阻塞忙轮询的I/O方式，我们发现我们可以同时处理多个流了（把一个流从阻塞模式切换到非阻塞模式再此不予讨论）：
+    假设一开始内核缓冲区是空的，B作为读出方，被阻塞着。然后首先A往管道写入，这时候内核缓冲区由空的状态变到非空状态，内核就会产生一个事件告诉Ｂ该醒来了，
+    这个事件姑且称之为“缓冲区非空”。
 
-while true {
-    for i in stream[]; {
-        if i has data
-            read until unavailable
+        但是“缓冲区非空”事件通知B后，B却还没有读出数据；且内核许诺了不能把写入管道中的数据丢掉这个时候，Ａ写入的数据会滞留在内核缓冲区中，如果内核也缓冲区满了，
+        B仍未开始读数据，最终内核缓冲区会被填满，这个时候会产生一个I/O事件，告诉进程A，你该等等（阻塞）了，我们把这个事件定义为“缓冲区满”。
+
+    假设后来Ｂ终于开始读数据了，于是内核的缓冲区空了出来，这时候内核会告诉A，内核缓冲区有空位了，你可以从长眠中醒来了，继续写数据了，我们把这个事件叫做“缓冲区非满”
+
+        也许事件Y1已经通知了A，但是A也没有数据写入了，而Ｂ继续读出数据，知道内核缓冲区空了。这个时候内核就告诉B，你需要阻塞了！，我们把这个时间定为“缓冲区空”。
+
+    这四个情形涵盖了四个I/O事件，缓冲区满，缓冲区空，缓冲区非空，缓冲区非满（注都是说的内核缓冲区，且这四个术语都是我生造的，仅为解释其原理而造）。
+    这四个I/O事件是进行阻塞同步的根本。（如果不能理解“同步”是什么概念，请学习操作系统的锁，信号量，条件变量等任务同步方面的相关知识）。
+
+        然后我们来说说阻塞I/O的缺点。但是阻塞I/O模式下，一个线程只能处理一个流的I/O事件。如果想要同时处理多个流，要么多进程(fork)，要么多线程(pthread_create)，
+        很不幸这两种方法效率都不高。
+
+        于是再来考虑非阻塞忙轮询的I/O方式，我们发现我们可以同时处理多个流了（把一个流从阻塞模式切换到非阻塞模式再此不予讨论）：
+
+    while true {
+        for i in stream[]; {
+            if i has data
+                read until unavailable
+        }
     }
-}
 
-    我们只要不停的把所有流从头到尾问一遍，又从头开始。这样就可以处理多个流了，但这样的做法显然不好，因为如果所有的流都没有数据，那么只会白白浪费CPU。
-    这里要补充一点，阻塞模式下，内核对于I/O事件的处理是阻塞或者唤醒，而非阻塞模式下则把I/O事件交给其他对象（后文介绍的select以及epoll）处理甚至直接忽略。
+        我们只要不停的把所有流从头到尾问一遍，又从头开始。这样就可以处理多个流了，但这样的做法显然不好，因为如果所有的流都没有数据，那么只会白白浪费CPU。
+        这里要补充一点，阻塞模式下，内核对于I/O事件的处理是阻塞或者唤醒，而非阻塞模式下则把I/O事件交给其他对象（后文介绍的select以及epoll）处理甚至直接忽略。
 
-    为了避免CPU空转，可以引进了一个代理（一开始有一位叫做select的代理，后来又有一位叫做poll的代理，不过两者的本质是一样的）。这个代理比较厉害，
-    可以同时观察许多流的I/O事件，在空闲的时候，会把当前线程阻塞掉，当有一个或多个流有I/O事件时，就从阻塞态中醒来，于是我们的程序就会轮询一遍所有的流
-    （于是我们可以把“忙”字去掉了）。代码长这样:
+        为了避免CPU空转，可以引进了一个代理（一开始有一位叫做select的代理，后来又有一位叫做poll的代理，不过两者的本质是一样的）。这个代理比较厉害，
+        可以同时观察许多流的I/O事件，在空闲的时候，会把当前线程阻塞掉，当有一个或多个流有I/O事件时，就从阻塞态中醒来，于是我们的程序就会轮询一遍所有的流
+        （于是我们可以把“忙”字去掉了）。代码长这样:
 
-while true {
-    select(streams[])
-    for i in streams[] {
-        if i has data
-            read until unavailable
+    while true {
+        select(streams[])
+        for i in streams[] {
+            if i has data
+                read until unavailable
+        }
     }
-}
 
-    于是，如果没有I/O事件产生，我们的程序就会阻塞在select处。但是依然有个问题，我们从select那里仅仅知道了，有I/O事件发生了，但却并不知道是那几个流
-    （可能有一个，多个，甚至全部），我们只能无差别轮询所有流，找出能读出数据，或者写入数据的流，对他们进行操作。
+        于是，如果没有I/O事件产生，我们的程序就会阻塞在select处。但是依然有个问题，我们从select那里仅仅知道了，有I/O事件发生了，但却并不知道是那几个流
+        （可能有一个，多个，甚至全部），我们只能无差别轮询所有流，找出能读出数据，或者写入数据的流，对他们进行操作。
 
-    但是使用select，我们有O(n)的无差别轮询复杂度，同时处理的流越多，没一次无差别轮询时间就越长。再次
+        但是使用select，我们有O(n)的无差别轮询复杂度，同时处理的流越多，没一次无差别轮询时间就越长。再次
 
-说了这么多，终于能好好解释epoll了
+    说了这么多，终于能好好解释epoll了
 
-    epoll可以理解为event poll，不同于忙轮询和无差别轮询，epoll之会把哪个流发生了怎样的I/O事件通知我们。此时我们对这些流的操作都是有意义的。
-    （复杂度降低到了O(1)）
+        epoll可以理解为event poll，不同于忙轮询和无差别轮询，epoll之会把哪个流发生了怎样的I/O事件通知我们。此时我们对这些流的操作都是有意义的。
+        （复杂度降低到了O(1)）
 
-    在讨论epoll的实现细节之前，先把epoll的相关操作列出：
+        在讨论epoll的实现细节之前，先把epoll的相关操作列出：
 
-      epoll_create 创建一个epoll对象，一般epollfd = epoll_create()
+          epoll_create 创建一个epoll对象，一般epollfd = epoll_create()
 
-      epoll_ctl （epoll_add/epoll_del的合体），往epoll对象中增加/删除某一个流的某一个事件
+          epoll_ctl （epoll_add/epoll_del的合体），往epoll对象中增加/删除某一个流的某一个事件
 
-比如
+    比如
 
-epoll_ctl(epollfd, EPOLL_CTL_ADD, socket, EPOLLIN);//注册缓冲区非空事件，即有数据流入
+    epoll_ctl(epollfd, EPOLL_CTL_ADD, socket, EPOLLIN);//注册缓冲区非空事件，即有数据流入
 
-epoll_ctl(epollfd, EPOLL_CTL_DEL, socket, EPOLLOUT);//注册缓冲区非满事件，即流可以被写入
+    epoll_ctl(epollfd, EPOLL_CTL_DEL, socket, EPOLLOUT);//注册缓冲区非满事件，即流可以被写入
 
-epoll_wait(epollfd,...)等待直到注册的事件发生
+    epoll_wait(epollfd,...)等待直到注册的事件发生
 
-（注：当对一个非阻塞流的读写发生缓冲区满或缓冲区空，write/read会返回-1，并设置errno=EAGAIN。而epoll只关心缓冲区非满和缓冲区非空事件）。
+    （注：当对一个非阻塞流的读写发生缓冲区满或缓冲区空，write/read会返回-1，并设置errno=EAGAIN。而epoll只关心缓冲区非满和缓冲区非空事件）。
 
-一个epoll模式的代码大概的样子是：
-while true {
-    active_stream[] = epoll_wait(epollfd)
-    for i in active_stream[] {
-        read or write till
+    一个epoll模式的代码大概的样子是：
+    while true {
+        active_stream[] = epoll_wait(epollfd)
+        for i in active_stream[] {
+            read or write till
+        }
     }
-}
+    &apos;&apos;&apos;
+</code></pre><h2 id="二、Twsited异步网络框架"><a href="#二、Twsited异步网络框架" class="headerlink" title="二、Twsited异步网络框架"></a>二、Twsited异步网络框架</h2><h3 id="1-事件驱动"><a href="#1-事件驱动" class="headerlink" title="1.    事件驱动"></a>1.    事件驱动</h3><pre><code>将自定义的类和函数注册到事件列表中，事件驱动框架就会自行去列表中获取事件并执行。
 
-&apos;&apos;&apos;
-</code></pre><h3 id="二、Twsited异步网络框架"><a href="#二、Twsited异步网络框架" class="headerlink" title="二、Twsited异步网络框架"></a>二、Twsited异步网络框架</h3><ol>
-<li><p>事件驱动</p>
-<p>将自定义的类和函数注册到事件列表中，事件驱动框架就会自行去列表中获取事件并执行。</p>
-<p>第一，注册事件；第二，触发事件<br><img src="http://i.imgur.com/6brDszu.png" alt=""></p>
-</li>
-</ol>
-<p>示例代码：</p>
+第一，注册事件；第二，触发事件
+![](http://i.imgur.com/6brDszu.png)
+</code></pre><p>示例代码：</p>
 <pre><code>#event_drive.py
+
 #!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -1544,7 +1332,10 @@ class BaseHandler(object):
     def execute(self):
         raise Exception(&apos;you must overwrite execute&apos;)
 
+
 #event_run.py
+
+
 #!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -1566,159 +1357,182 @@ class YourHandler(event_drive.BaseHandler):
 
 event_drive.event_list.append(MyHandler) #将事件注册到事件列表中
 event_drive.event_list.append(YourHandler)
-event_drive.run()    
-</code></pre><ol>
-<li>Twisted框架</li>
-</ol>
-<p>Echo_server</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-from twisted.internet import protocol
-from twisted.internet import reactor
+event_drive.run()
+</code></pre><h3 id="2-Twisted框架"><a href="#2-Twisted框架" class="headerlink" title="2.    Twisted框架"></a>2.    Twisted框架</h3><pre><code>Echo_server
 
-class Echo(protocol.Protocol):
+    #!/usr/local/env python3
     &apos;&apos;&apos;
-    定义一个类，处理客户端传递的数据
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
     &apos;&apos;&apos;
-    def dataReceived(self, data):
+    from twisted.internet import protocol
+    from twisted.internet import reactor
+
+    class Echo(protocol.Protocol):
         &apos;&apos;&apos;
-        一旦接收到客户端传递的数据就要调用该方法
-        :param data: 客户端传递过来的数据，python3版本传递的数据需要转换成bytes
-        :return: 返回的数据是将客户端传递过来的数据返回给客户端
+        定义一个类，处理客户端传递的数据
         &apos;&apos;&apos;
-        print(&quot;Client said:&quot;,data)
-        self.transport.write(data)
+        def dataReceived(self, data):
+            &apos;&apos;&apos;
+            一旦接收到客户端传递的数据就要调用该方法
+            :param data: 客户端传递过来的数据，python3版本传递的数据需要转换成bytes
+            :return: 返回的数据是将客户端传递过来的数据返回给客户端
+            &apos;&apos;&apos;
+            print(&quot;Client said:&quot;,data)
+            self.transport.write(data)
 
-def main():
-    &apos;&apos;&apos;
-    主函数，程序执行时直接从该函数调用事件类
-    :return:
-    &apos;&apos;&apos;
-    factory = protocol.ServerFactory() #定义基础工厂类
-    factory.protocol = Echo #相当于socketserver中的Handler方法，工厂协议直接引用自定义的Echo类
-
-    reactor.listenTCP(5000,factory) #reactor自动重复去做一件事情。使用listenTCP监听端口
-    reactor.run() #运行
-
-if __name__ == &apos;__main__&apos;:
-    main()
-</code></pre><p>Echo_client:</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-from twisted.internet import reactor, protocol
-
-
-# a client protocol
-
-class EchoClient(protocol.Protocol):
-    &apos;&apos;&apos;
-    客户端Echo事件
-    &apos;&apos;&apos;
-    def connectionMade(self):
+    def main():
         &apos;&apos;&apos;
-        连接建立执行该方法，客户端发送数据
+        主函数，程序执行时直接从该函数调用事件类
         :return:
         &apos;&apos;&apos;
-        self.transport.write(b&quot;hello alex!&quot;)
+        factory = protocol.ServerFactory() #定义基础工厂类
+        factory.protocol = Echo #相当于socketserver中的Handler方法，工厂协议直接引用自定义的Echo类
 
-    def dataReceived(self, data):
-        &apos;&apos;&apos;
-        客户端接收服务端的数据
-        :param data:
-        :return:
-        &apos;&apos;&apos;
-        print(&quot;Server said:&quot;, data)
-        self.transport.loseConnection()
-    def connectionLost(self, reason):
-        &apos;&apos;&apos;
-        客户端接收完数据断开连接，主动执行该方法断开连接
-        :param reason:
-        :return:
-        &apos;&apos;&apos;
-        print(&quot;connection lost&quot;)
+        reactor.listenTCP(5000,factory) #reactor自动重复去做一件事情。使用listenTCP监听端口
+        reactor.run() #运行
 
-class EchoFactory(protocol.ClientFactory):
+    if __name__ == &apos;__main__&apos;:
+        main()
+
+
+Echo_client:
+
+    #!/usr/local/env python3
     &apos;&apos;&apos;
-    自定义工厂类，继承prorocol.ClientFactory类
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
     &apos;&apos;&apos;
-    protocol = EchoClient #hanld。自己重写了protocol类
-
-    def clientConnectionFailed(self, connector, reason):
-        print(&quot;Connection failed - goodbye!&quot;)
-        reactor.stop()
-
-    def clientConnectionLost(self, connector, reason):
-        print(&quot;Connection lost - goodbye!&quot;)
-        reactor.stop()
+    from twisted.internet import reactor, protocol
 
 
-# this connects the protocol to a server running on port 8000
-def main():
-    f = EchoFactory()
-    reactor.connectTCP(&quot;localhost&quot;, 5000, f)
-    reactor.run()
+    # a client protocol
 
-# this only runs if the module was *not* imported
-if __name__ == &apos;__main__&apos;:
-    main()
-</code></pre><ol>
-<li>升入学习</li>
-</ol>
-<p><a href="http://blog.csdn.net/hanhuili/article/details/9389433" target="_blank" rel="external">http://blog.csdn.net/hanhuili/article/details/9389433</a> </p>
+    class EchoClient(protocol.Protocol):
+        &apos;&apos;&apos;
+        客户端Echo事件
+        &apos;&apos;&apos;
+        def connectionMade(self):
+            &apos;&apos;&apos;
+            连接建立执行该方法，客户端发送数据
+            :return:
+            &apos;&apos;&apos;
+            self.transport.write(b&quot;hello alex!&quot;)
+
+        def dataReceived(self, data):
+            &apos;&apos;&apos;
+            客户端接收服务端的数据
+            :param data:
+            :return:
+            &apos;&apos;&apos;
+            print(&quot;Server said:&quot;, data)
+            self.transport.loseConnection()
+        def connectionLost(self, reason):
+            &apos;&apos;&apos;
+            客户端接收完数据断开连接，主动执行该方法断开连接
+            :param reason:
+            :return:
+            &apos;&apos;&apos;
+            print(&quot;connection lost&quot;)
+
+    class EchoFactory(protocol.ClientFactory):
+        &apos;&apos;&apos;
+        自定义工厂类，继承prorocol.ClientFactory类
+        &apos;&apos;&apos;
+        protocol = EchoClient #hanld。自己重写了protocol类
+
+        def clientConnectionFailed(self, connector, reason):
+            print(&quot;Connection failed - goodbye!&quot;)
+            reactor.stop()
+
+        def clientConnectionLost(self, connector, reason):
+            print(&quot;Connection lost - goodbye!&quot;)
+            reactor.stop()
+
+
+    # this connects the protocol to a server running on port 8000
+    def main():
+        f = EchoFactory()
+        reactor.connectTCP(&quot;localhost&quot;, 5000, f)
+        reactor.run()
+
+    # this only runs if the module was *not* imported
+    if __name__ == &apos;__main__&apos;:
+        main()
+</code></pre><h3 id="3-深入学习"><a href="#3-深入学习" class="headerlink" title="3.深入学习"></a>3.深入学习</h3><p><a href="http://blog.csdn.net/hanhuili/article/details/9389433" target="_blank" rel="external">http://blog.csdn.net/hanhuili/article/details/9389433</a> </p>
 <p><a href="http://krondo.com/an-introduction-to-asynchronous-programming-and-twisted/" target="_blank" rel="external">http://krondo.com/an-introduction-to-asynchronous-programming-and-twisted/</a> </p>
-<h3 id="三、非关系型数据库"><a href="#三、非关系型数据库" class="headerlink" title="三、非关系型数据库"></a>三、非关系型数据库</h3><ol>
-<li><p>Redis</p>
-<p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/5132791.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5132791.html</a></p>
-<p>数据（键值对）存储在内存中，一个独立的内存管理器，可以使多个程序共享数据    </p>
-<p>默认是非持久化的，但是可以在配置文件中进行设置</p>
-<ol>
-<li><p>redis基础使用</p>
-<p>   cli&gt;keys * #查看所有的键<br>   cli&gt;set name swht ex 5 #设置一个键值对，其有效时间为5秒<br>   cli&gt;get name #获取键值</p>
-</li>
-<li><p>redis连接</p>
-<p>   import redis<br>   redis_cli = redis.Redis(“localhost”)<br>   print(redis_cli.get(‘name’)) #b’swht’  get方法只能获取字符</p>
-</li>
-<li><p>redis连接池</p>
-<p>   import redis<br>   pool = redis.ConnectionPool(host = ‘localhost’,port = 6379)<br>   redis_cli = redis.Redis(connection_pool=pool)<br>   redis_cli.set(‘age’,56)<br>   print(redis_cli.get(‘age’)) #b’56’</p>
-</li>
-<li><p>操作</p>
-<p>set(name, value, ex=None, px=None, nx=False, xx=False)</p>
-<p>   在Redis中设置值，默认，不存在则创建，存在则修改<br>   参数：</p>
-<pre><code>ex，过期时间（秒）
-px，过期时间（毫秒）
-nx，如果设置为True，则只有name不存在时，当前set操作才执行
-xx，如果设置为True，则只有name存在时，岗前set操作才执行
-</code></pre><p>setnx(name, value)</p>
-<p>   设置值，只有name不存在时，执行设置操作（添加）<br>setex(name, value, time)</p>
-<h1 id="设置值"><a href="#设置值" class="headerlink" title="设置值"></a>设置值</h1><h1 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h1><pre><code># time，过期时间（数字秒 或 timedelta对象）
-</code></pre><p>psetex(name, time_ms, value)</p>
-<h1 id="设置值-1"><a href="#设置值-1" class="headerlink" title="设置值"></a>设置值</h1><h1 id="参数：-1"><a href="#参数：-1" class="headerlink" title="参数："></a>参数：</h1><pre><code># time_ms，过期时间（数字毫秒 或 timedelta对象）
-</code></pre><p>mset(<em>args, *</em>kwargs)</p>
-<p>   批量设置值<br>   如：</p>
-<pre><code>mset(k1=&apos;v1&apos;, k2=&apos;v2&apos;)
-或
-mget({&apos;k1&apos;: &apos;v1&apos;, &apos;k2&apos;: &apos;v2&apos;})
-</code></pre><p>get(name)</p>
-<p>   获取值<br>mget(keys, *args)</p>
-<p>   批量获取<br>   如：</p>
-<pre><code>mget(&apos;ylr&apos;, &apos;wupeiqi&apos;)
-或
-r.mget([&apos;ylr&apos;, &apos;wupeiqi&apos;])
-</code></pre><p>getset(name, value)</p>
-<p>   设置新值并获取原来的值<br>getrange(key, start, end)</p>
-</li>
-</ol>
-</li>
-</ol>
-<pre><code>        # 获取子序列（根据字节获取，非字符）
+<h3 id="三、非关系型数据库"><a href="#三、非关系型数据库" class="headerlink" title="三、非关系型数据库"></a>三、非关系型数据库</h3><h3 id="1-Redis"><a href="#1-Redis" class="headerlink" title="1.    Redis"></a>1.    Redis</h3><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/5132791.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5132791.html</a></p>
+<pre><code>数据（键值对）存储在内存中，一个独立的内存管理器，可以使多个程序共享数据    
+
+默认是非持久化的，但是可以在配置文件中进行设置
+
+1. redis基础使用
+
+        cli&gt;keys * #查看所有的键
+        cli&gt;set name swht ex 5 #设置一个键值对，其有效时间为5秒
+        cli&gt;get name #获取键值
+
+2. redis连接
+
+        import redis
+        redis_cli = redis.Redis(&quot;localhost&quot;)
+        print(redis_cli.get(&apos;name&apos;)) #b&apos;swht&apos;  get方法只能获取字符
+3. redis连接池
+
+        import redis
+        pool = redis.ConnectionPool(host = &apos;localhost&apos;,port = 6379)
+        redis_cli = redis.Redis(connection_pool=pool)
+        redis_cli.set(&apos;age&apos;,56)
+        print(redis_cli.get(&apos;age&apos;)) #b&apos;56&apos;
+4. 操作
+
+    set(name, value, ex=None, px=None, nx=False, xx=False)
+
+        在Redis中设置值，默认，不存在则创建，存在则修改
+        参数：
+             ex，过期时间（秒）
+             px，过期时间（毫秒）
+             nx，如果设置为True，则只有name不存在时，当前set操作才执行
+             xx，如果设置为True，则只有name存在时，岗前set操作才执行
+    setnx(name, value)
+
+        设置值，只有name不存在时，执行设置操作（添加）
+    setex(name, value, time)
+
+        # 设置值
+        # 参数：
+            # time，过期时间（数字秒 或 timedelta对象）
+    psetex(name, time_ms, value)
+
+        # 设置值
+        # 参数：
+            # time_ms，过期时间（数字毫秒 或 timedelta对象）
+    mset(*args, **kwargs)
+
+        批量设置值
+        如：
+            mset(k1=&apos;v1&apos;, k2=&apos;v2&apos;)
+            或
+            mget({&apos;k1&apos;: &apos;v1&apos;, &apos;k2&apos;: &apos;v2&apos;})
+    get(name)
+
+        获取值
+    mget(keys, *args)
+
+        批量获取
+        如：
+            mget(&apos;ylr&apos;, &apos;wupeiqi&apos;)
+            或
+            r.mget([&apos;ylr&apos;, &apos;wupeiqi&apos;])
+    getset(name, value)
+
+        设置新值并获取原来的值
+    getrange(key, start, end)
+
+
+        # 获取子序列（根据字节获取，非字符）
         # 参数：
             # name，Redis 的 name
             # start，起始位置（字节）
@@ -2187,8 +2001,10 @@ r.mget([&apos;ylr&apos;, &apos;wupeiqi&apos;])
     zscan_iter(name, match=None, count=None,score_cast_func=float)
 
         # 同字符串相似，相较于字符串新增score_cast_func，用来对分数进行操作
-</code></pre><p>　　9. redis的发布与订阅</p>
-<pre><code>基础类：
+
+　　9. redis的发布与订阅
+
+基础类：
 
     #!/usr/local/env python3
     &apos;&apos;&apos;
@@ -2245,78 +2061,73 @@ redis_pub.py
 
     obj = RedisHelper()
     obj.public(&apos;hello&apos;)
-</code></pre><ol>
-<li><p>memcached</p>
-<p>非持久化轻量级缓存，使用第三方工具可以实现数据的持久化存储</p>
-</li>
-<li><p>mongodb</p>
-<p>天生的数据持久化，默认将数据持久化存储在本地磁盘。</p>
-</li>
-</ol>
-<h3 id="四、消息队列rabbitmq"><a href="#四、消息队列rabbitmq" class="headerlink" title="四、消息队列rabbitmq"></a>四、消息队列rabbitmq</h3><p>通信模式：</p>
-<ol>
-<li><p>简单生产者消费者模型</p>
-<p> rabbit_send</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import pika
-#与消息队列建立一个连接
-connection = pika.BlockingConnection(pika.ConnectionParameters(
-               &apos;localhost&apos;))
-#创建一个管道
-channel = connection.channel()
+</code></pre><h3 id="2-memcached"><a href="#2-memcached" class="headerlink" title="2.    memcached"></a>2.    memcached</h3><pre><code>非持久化轻量级缓存，使用第三方工具可以实现数据的持久化存储
+</code></pre><h3 id="3-mongodb"><a href="#3-mongodb" class="headerlink" title="3.    mongodb"></a>3.    mongodb</h3><pre><code>天生的数据持久化，默认将数据持久化存储在本地磁盘。
+</code></pre><h2 id="四、消息队列rabbitmq"><a href="#四、消息队列rabbitmq" class="headerlink" title="四、消息队列rabbitmq"></a>四、消息队列rabbitmq</h2><p>通信模式：</p>
+<h3 id="1-简单生产者消费者模型"><a href="#1-简单生产者消费者模型" class="headerlink" title="1. 简单生产者消费者模型"></a>1. 简单生产者消费者模型</h3><pre><code>rabbit_send
 
-#在管道中声明一个名称为&apos;name&apos;的队列
-channel.queue_declare(queue=&apos;name&apos;)
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import pika
+    #与消息队列建立一个连接
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+                   &apos;localhost&apos;))
+    #创建一个管道
+    channel = connection.channel()
 
-#一个消息不能直接发送给消息队列，需要通过一个路由器进行转发，这个路由器就是由exchange进行设置
-channel.basic_publish(exchange=&apos;&apos;, #路由器
-                      routing_key=&apos;name&apos;, #队列名称
-                      body=&apos;swht&apos;) #消息
-print(&quot; [swht] Sent a message&quot;)
-connection.close()
-</code></pre><p> rabbit_recive</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import pika
+    #在管道中声明一个名称为&apos;name&apos;的队列
+    channel.queue_declare(queue=&apos;name&apos;)
 
-#与消息队列服务器建立连接
-connection = pika.BlockingConnection(pika.ConnectionParameters(
-               &apos;localhost&apos;))
-#创建一个管道
-channel = connection.channel()
-#消费者声明一个队列，为了防止生产者还没有启动没有完成创建队列时代码出错的问题。如果队列已存在，则忽略该操作，否则则创建队列
-channel.queue_declare(queue=&apos;name&apos;)
+    #一个消息不能直接发送给消息队列，需要通过一个路由器进行转发，这个路由器就是由exchange进行设置
+    channel.basic_publish(exchange=&apos;&apos;, #路由器
+                          routing_key=&apos;name&apos;, #队列名称
+                          body=&apos;swht&apos;) #消息
+    print(&quot; [swht] Sent a message&quot;)
+    connection.close()
 
-def callback(ch, method, properties, body):
-    print(&quot; [x] Received %r&quot; % body)
+rabbit_recive
 
-channel.basic_consume(callback,
-                      queue=&apos;name&apos;,
-                      no_ack=True) #接收消息不进行确认
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import pika
 
-print(&apos; [*] Waiting for messages. To exit press CTRL+C&apos;)
-channel.start_consuming()
-</code></pre></li>
-<li><p>消息持久化</p>
-<pre><code>channel.queue_declare(queue=&apos;name&apos;,durable=True)
-</code></pre><p> 已经存在的队列是不能再进行持久化设置的，所以在只有创建队列的时候设置持久化选项</p>
-<pre><code>basc_ack = (delivery_tag= method.delivry_tag)
-</code></pre><p> 查看当前所有的queue  XX</p>
-</li>
-<li><p>消息公平分发</p>
-<p> <img src="http://i.imgur.com/qBwPkju.png" alt=""></p>
-<p> 只在消费者添加<br> channel.basic_qos(prefetch_count=1)</p>
-<p> 示例代码：</p>
-<pre><code>rabbit_slb_send.py
+    #与消息队列服务器建立连接
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+                   &apos;localhost&apos;))
+    #创建一个管道
+    channel = connection.channel()
+    #消费者声明一个队列，为了防止生产者还没有启动没有完成创建队列时代码出错的问题。如果队列已存在，则忽略该操作，否则则创建队列
+    channel.queue_declare(queue=&apos;name&apos;)
+
+    def callback(ch, method, properties, body):
+        print(&quot; [x] Received %r&quot; % body)
+
+    channel.basic_consume(callback,
+                          queue=&apos;name&apos;,
+                          no_ack=True) #接收消息不进行确认
+
+    print(&apos; [*] Waiting for messages. To exit press CTRL+C&apos;)
+    channel.start_consuming()
+</code></pre><h3 id="2-消息持久化"><a href="#2-消息持久化" class="headerlink" title="2. 消息持久化"></a>2. 消息持久化</h3><pre><code>    channel.queue_declare(queue=&apos;name&apos;,durable=True)
+已经存在的队列是不能再进行持久化设置的，所以在只有创建队列的时候设置持久化选项
+    basc_ack = (delivery_tag= method.delivry_tag)
+
+查看当前所有的queue  XX
+</code></pre><h3 id="3-消息公平分发"><a href="#3-消息公平分发" class="headerlink" title="3. 消息公平分发"></a>3. 消息公平分发</h3><p><img src="http://i.imgur.com/qBwPkju.png" alt=""></p>
+<pre><code>只在消费者添加
+channel.basic_qos(prefetch_count=1)
+
+示例代码：
+
+rabbit_slb_send.py
     #!/usr/local/env python3
     &apos;&apos;&apos;
     Author:@南非波波
@@ -2344,12 +2155,8 @@ channel.start_consuming()
                           ))
     print(&quot; [x] Sent %r&quot; % message)
     connection.close()
-</code></pre></li>
-</ol>
-<ol>
-<li><p>exchange路由</p>
-<p> <img src="http://i.imgur.com/MFX1LTo.png" alt=""></p>
-<p> 代码：</p>
+</code></pre><h3 id="4-exchange路由"><a href="#4-exchange路由" class="headerlink" title="4. exchange路由"></a>4. exchange路由</h3><p><img src="http://i.imgur.com/MFX1LTo.png" alt=""></p>
+<p>代码：</p>
 <pre><code>publisher.py
 
     #!/usr/local/env python3
@@ -2402,9 +2209,7 @@ subscriber.py
                           no_ack=True)
 
     channel.start_consuming()
-</code></pre></li>
-</ol>
-]]></content>
+</code></pre>]]></content>
     </entry>
     
     <entry>
@@ -2419,7 +2224,7 @@ subscriber.py
 <p>###推荐电影###</p>
 <pre><code>&lt;权利的游戏:冰与火之歌&gt;  &lt;纸牌屋&gt; &lt;绝命毒师&gt;
 《林大看美国》
-</code></pre><h3 id="一、回顾进程、线程"><a href="#一、回顾进程、线程" class="headerlink" title="一、回顾进程、线程"></a>一、回顾进程、线程</h3><pre><code>python调用C的原生线程
+</code></pre><h2 id="一、回顾进程、线程"><a href="#一、回顾进程、线程" class="headerlink" title="一、回顾进程、线程"></a>一、回顾进程、线程</h2><pre><code>python调用C的原生线程
 GIL(全局解释器)防止数据被修改异常。使用线程锁控制同时仅有一个线程对数据有操作权限
 全局解释器限制的是原生C线程，
 python同一时刻只有一个线程
@@ -2448,141 +2253,247 @@ t = threading.Thread(target=run,args=[8,])
 t.start()
 t.join() #起阻塞作用，让主进程等待线程执行完再执行主进程  默认无限期的等待，添加一个超时时间timeout=3.在守护线程下面是不好使的
 print(data)
-</code></pre><h3 id="二、-队列"><a href="#二、-队列" class="headerlink" title="二、 队列"></a>二、 队列</h3><ol>
-<li><p>先进先出</p>
-<p>  python队列queue默认的是先进先出。<br>  import queue<br>  Queue = queue.Queue(maxsize=5)<br>  Queue.put((2,[“swht”,”shen”]))<br>  Queue.put((5,{“name”:”swht”}))<br>  Queue.put((1,”sdsd”),timeout=2)<br>  for i in range(Queue._qsize()):</p>
-<pre><code>print(&quot;data%s:%s&quot; % (i,Queue.get()))
-</code></pre><p>  返回结果：<br>  data0:(2, [‘swht’, ‘shen’])<br>  data1:(5, {‘name’: ‘swht’})<br>  data2:(1, ‘sdsd’)    </p>
-</li>
-<li><p>后进先出</p>
-<p>  python队列支持后面进去的消息最先被取出。</p>
-<pre><code>python队列queue默认的是先进先出。
-</code></pre><p>  import queue<br>  Queue = queue.LifoQueue(maxsize=5)<br>  Queue.put((2,[“swht”,”shen”]))<br>  Queue.put((5,{“name”:”swht”}))<br>  Queue.put((1,”sdsd”),timeout=2)<br>  for i in range(Queue._qsize()):</p>
-<pre><code>print(&quot;data%s:%s&quot; % (i,Queue.get()))
-</code></pre><p>  返回结果：<br>  data0:(1, ‘sdsd’)<br>  data1:(5, {‘name’: ‘swht’})<br>  data2:(2, [‘swht’, ‘shen’])</p>
-</li>
-<li><p>按照优先级</p>
-<p>  python queue支持设置优先级，取消息可以安装优先级顺序取出消息<br>  import queue<br>  Queue = queue.PriorityQueue(maxsize=5)<br>  Queue.put((2,[“swht”,”shen”]))<br>  Queue.put((5,{“name”:”swht”}))<br>  Queue.put((1,”sdsd”),timeout=2)<br>  for i in range(Queue._qsize()):</p>
-<pre><code>print(&quot;data%s:%s&quot; % (i,Queue.get()))
-</code></pre><p>  返回结果：<br>  data0:(1, ‘sdsd’)<br>  data1:(2, [‘swht’, ‘shen’])<br>  data2:(5, {‘name’: ‘swht’})</p>
-</li>
-</ol>
-<p>生产者-消费者模型：</p>
-<ol>
-<li><p>一对一：</p>
-<p>  import threading,queue,time<br>  def consumer(n):</p>
-<pre><code>&apos;&apos;&apos;
+</code></pre><h2 id="二、-队列"><a href="#二、-队列" class="headerlink" title="二、 队列"></a>二、 队列</h2><h3 id="1-先进先出"><a href="#1-先进先出" class="headerlink" title="1.    先进先出"></a>1.    先进先出</h3><pre><code>python队列queue默认的是先进先出。
+import queue
+Queue = queue.Queue(maxsize=5)
+Queue.put((2,[&quot;swht&quot;,&quot;shen&quot;]))
+Queue.put((5,{&quot;name&quot;:&quot;swht&quot;}))
+Queue.put((1,&quot;sdsd&quot;),timeout=2)
+for i in range(Queue._qsize()):
+    print(&quot;data%s:%s&quot; % (i,Queue.get()))
+返回结果：
+data0:(2, [&apos;swht&apos;, &apos;shen&apos;])
+data1:(5, {&apos;name&apos;: &apos;swht&apos;})
+data2:(1, &apos;sdsd&apos;)    
+</code></pre><h3 id="2-后进先出"><a href="#2-后进先出" class="headerlink" title="2.    后进先出"></a>2.    后进先出</h3><pre><code>python队列支持后面进去的消息最先被取出。
+    python队列queue默认的是先进先出。
+import queue
+Queue = queue.LifoQueue(maxsize=5)
+Queue.put((2,[&quot;swht&quot;,&quot;shen&quot;]))
+Queue.put((5,{&quot;name&quot;:&quot;swht&quot;}))
+Queue.put((1,&quot;sdsd&quot;),timeout=2)
+for i in range(Queue._qsize()):
+    print(&quot;data%s:%s&quot; % (i,Queue.get()))
+返回结果：
+data0:(1, &apos;sdsd&apos;)
+data1:(5, {&apos;name&apos;: &apos;swht&apos;})
+data2:(2, [&apos;swht&apos;, &apos;shen&apos;])
+</code></pre><h3 id="3-按照优先级"><a href="#3-按照优先级" class="headerlink" title="3.    按照优先级"></a>3.    按照优先级</h3><pre><code>python queue支持设置优先级，取消息可以安装优先级顺序取出消息
+import queue
+Queue = queue.PriorityQueue(maxsize=5)
+Queue.put((2,[&quot;swht&quot;,&quot;shen&quot;]))
+Queue.put((5,{&quot;name&quot;:&quot;swht&quot;}))
+Queue.put((1,&quot;sdsd&quot;),timeout=2)
+for i in range(Queue._qsize()):
+    print(&quot;data%s:%s&quot; % (i,Queue.get()))
+返回结果：
+data0:(1, &apos;sdsd&apos;)
+data1:(2, [&apos;swht&apos;, &apos;shen&apos;])
+data2:(5, {&apos;name&apos;: &apos;swht&apos;})
+</code></pre><h3 id="生产者-消费者模型："><a href="#生产者-消费者模型：" class="headerlink" title="生产者-消费者模型："></a>生产者-消费者模型：</h3><h4 id="1-一对一："><a href="#1-一对一：" class="headerlink" title="1.一对一："></a>1.一对一：</h4><pre><code>import threading,queue,time
+def consumer(n):
+&apos;&apos;&apos;
 消费者，消费生产者产生的消息、数据
 :param n: 消费者标志
 :return:
 &apos;&apos;&apos;
 while True:
-    print(&quot;\033[32;1m消费者[%s]\033[0m 获取消息 %s&quot; % (n,q.get()))
-    time.sleep(1)
-    q.task_done() #消费者等待生产者生产消息
-</code></pre><p>  def prodeucer(n):</p>
-<pre><code>&apos;&apos;&apos;
+print(&quot;\033[32;1m消费者[%s]\033[0m 获取消息 %s&quot; % (n,q.get()))
+time.sleep(1)
+q.task_done() #消费者等待生产者生产消息
+
+def prodeucer(n):
+&apos;&apos;&apos;
 生产者，生产消息、数据
 :param n: 生产者标志
 :return:
 &apos;&apos;&apos;
 count = 1
 while True:
-    print(&quot;\033[31;1m生产者[%s]\033[0m 生产消息 %s&quot; % (n,count))
-    q.put(count)
-    count += 1
-    q.join() #生产者阻塞
-    print(&quot;==================&quot;) #发出信号：消息已经生产
-</code></pre><p>  q = queue.Queue()<br>  c1 = threading.Thread(target=consumer,args=[1,])</p>
-<p>  p1 = threading.Thread(target=prodeucer,args=[“swht”,])</p>
-<p>  c1.start()<br>  p1.start()</p>
-<p>  结果：</p>
-<p>  生产者[swht] 生产消息 1</p>
-<h1 id="消费者-1-获取消息-1"><a href="#消费者-1-获取消息-1" class="headerlink" title="  消费者[1] 获取消息 1"></a>  消费者[1] 获取消息 1</h1><p>  生产者[swht] 生产消息 2</p>
-<h1 id="消费者-1-获取消息-2"><a href="#消费者-1-获取消息-2" class="headerlink" title="  消费者[1] 获取消息 2"></a>  消费者[1] 获取消息 2</h1><p>  生产者[swht] 生产消息 3</p>
-<h1 id="消费者-1-获取消息-3"><a href="#消费者-1-获取消息-3" class="headerlink" title="  消费者[1] 获取消息 3"></a>  消费者[1] 获取消息 3</h1><p>  生产者[swht] 生产消息 4</p>
-<h1 id="消费者-1-获取消息-4"><a href="#消费者-1-获取消息-4" class="headerlink" title="  消费者[1] 获取消息 4"></a>  消费者[1] 获取消息 4</h1><p>  生产者[swht] 生产消息 5</p>
-<h1 id="消费者-1-获取消息-5"><a href="#消费者-1-获取消息-5" class="headerlink" title="  消费者[1] 获取消息 5"></a>  消费者[1] 获取消息 5</h1><p>  生产者[swht] 生产消息 6</p>
-<h1 id="消费者-1-获取消息-6"><a href="#消费者-1-获取消息-6" class="headerlink" title="  消费者[1] 获取消息 6"></a>  消费者[1] 获取消息 6</h1><p>  生产者[swht] 生产消息 7</p>
-<h1 id="消费者-1-获取消息-7"><a href="#消费者-1-获取消息-7" class="headerlink" title="  消费者[1] 获取消息 7"></a>  消费者[1] 获取消息 7</h1></li>
-<li><p>一对多：</p>
-<p>  import threading,queue,time<br>  def consumer(n):</p>
-<pre><code>&apos;&apos;&apos;
-消费者，消费生产者产生的消息、数据
-:param n: 消费者标志
-:return:
-&apos;&apos;&apos;
-while True:
-    print(&quot;\033[32;1m消费者[%s]\033[0m 获取消息 %s&quot; % (n,q.get()))
-    time.sleep(1)
-    q.task_done() #消费者等待生产者生产消息
-</code></pre><p>  def prodeucer(n):</p>
-<pre><code>&apos;&apos;&apos;
-生产者，生产消息、数据
-:param n: 生产者标志
-:return:
-&apos;&apos;&apos;
-count = 1
-while True:
-    print(&quot;\033[31;1m生产者[%s]\033[0m 生产消息 %s&quot; % (n,count))
-    q.put(count)
-    count += 1
-    q.join() #生产者阻塞
-    print(&quot;==================&quot;) #发出信号：消息已经生产
-</code></pre><p>  q = queue.Queue()<br>  c1 = threading.Thread(target=consumer,args=[1,])<br>  c2 = threading.Thread(target=consumer,args=[2,])<br>  c3 = threading.Thread(target=consumer,args=[3,])<br>  p1 = threading.Thread(target=prodeucer,args=[“swht”,])</p>
-<p>  c1.start()<br>  c2.start()<br>  c3.start()<br>  p1.start()</p>
-<p>  结果：</p>
-<p>  生产者[swht] 生产消息 1</p>
-<h1 id="消费者-1-获取消息-1-1"><a href="#消费者-1-获取消息-1-1" class="headerlink" title="  消费者[1] 获取消息 1"></a>  消费者[1] 获取消息 1</h1><p>  生产者[swht] 生产消息 2</p>
-<h1 id="消费者-2-获取消息-2"><a href="#消费者-2-获取消息-2" class="headerlink" title="  消费者[2] 获取消息 2"></a>  消费者[2] 获取消息 2</h1><p>  生产者[swht] 生产消息 3</p>
-<h1 id="消费者-3-获取消息-3"><a href="#消费者-3-获取消息-3" class="headerlink" title="  消费者[3] 获取消息 3"></a>  消费者[3] 获取消息 3</h1><p>  生产者[swht] 生产消息 4</p>
-<h1 id="消费者-1-获取消息-4-1"><a href="#消费者-1-获取消息-4-1" class="headerlink" title="  消费者[1] 获取消息 4"></a>  消费者[1] 获取消息 4</h1><p>  生产者[swht] 生产消息 5</p>
-<h1 id="消费者-2-获取消息-5"><a href="#消费者-2-获取消息-5" class="headerlink" title="  消费者[2] 获取消息 5"></a>  消费者[2] 获取消息 5</h1><p>  生产者[swht] 生产消息 6</p>
-<h1 id="消费者-3-获取消息-6"><a href="#消费者-3-获取消息-6" class="headerlink" title="  消费者[3] 获取消息 6"></a>  消费者[3] 获取消息 6</h1><p>  生产者[swht] 生产消息 7</p>
-<h1 id="消费者-1-获取消息-7-1"><a href="#消费者-1-获取消息-7-1" class="headerlink" title="  消费者[1] 获取消息 7"></a>  消费者[1] 获取消息 7</h1></li>
-</ol>
-<ol>
-<li><p>多对多：</p>
-<p>  import threading,queue,time<br>  def consumer(n):</p>
-<pre><code>&apos;&apos;&apos;
-消费者，消费生产者产生的消息、数据
-:param n: 消费者标志
-:return:
-&apos;&apos;&apos;
-while True:
-    print(&quot;\033[32;1m消费者[%s]\033[0m 获取消息 %s&quot; % (n,q.get()))
-    time.sleep(1)
-    q.task_done() #消费者等待生产者生产消息
-</code></pre><p>  def prodeucer(n):</p>
-<pre><code>&apos;&apos;&apos;
-生产者，生产消息、数据
-:param n: 生产者标志
-:return:
-&apos;&apos;&apos;
-count = 1
-while True:
-    print(&quot;\033[31;1m生产者[%s]\033[0m 生产消息 %s&quot; % (n,count))
-    q.put(count)
-    count += 1
-    q.join() #生产者阻塞
-    print(&quot;==================&quot;) #发出信号：消息已经生产
-</code></pre><p>  q = queue.Queue()<br>  c1 = threading.Thread(target=consumer,args=[1,])<br>  c2 = threading.Thread(target=consumer,args=[2,])<br>  c3 = threading.Thread(target=consumer,args=[3,])<br>  p1 = threading.Thread(target=prodeucer,args=[“swht”,])<br>  p2 = threading.Thread(target=prodeucer,args=[“shen”,])<br>  p3 = threading.Thread(target=prodeucer,args=[“alex”,])</p>
-<p>  c1.start()<br>  c2.start()<br>  c3.start()<br>  p1.start()<br>  p2.start()<br>  p3.start()</p>
-<p>  结果：</p>
-<p>  生产者[swht] 生产消息 1<br>  生产者[shen] 生产消息 1<br>  消费者[1] 获取消息 1<br>  生产者[alex] 生产消息 1<br>  消费者[2] 获取消息 1</p>
-<h1 id="消费者-3-获取消息-1"><a href="#消费者-3-获取消息-1" class="headerlink" title="  消费者[3] 获取消息 1"></a>  消费者[3] 获取消息 1</h1><p>  生产者[swht] 生产消息 2</p>
-<h1 id="消费者-1-获取消息-2-1"><a href="#消费者-1-获取消息-2-1" class="headerlink" title="  消费者[1] 获取消息 2"></a>  消费者[1] 获取消息 2</h1><p>  生产者[swht] 生产消息 3</p>
-<h1 id="消费者-2-获取消息-3"><a href="#消费者-2-获取消息-3" class="headerlink" title="  消费者[2] 获取消息 3"></a>  消费者[2] 获取消息 3</h1><p>  生产者[swht] 生产消息 4</p>
-<h1 id="消费者-3-获取消息-4"><a href="#消费者-3-获取消息-4" class="headerlink" title="  消费者[3] 获取消息 4"></a>  消费者[3] 获取消息 4</h1><p>  生产者[alex] 生产消息 2</p>
-<h1 id="消费者-1-获取消息-2-2"><a href="#消费者-1-获取消息-2-2" class="headerlink" title="  消费者[1] 获取消息 2"></a>  消费者[1] 获取消息 2</h1><h1 id="生产者-swht-生产消息-5"><a href="#生产者-swht-生产消息-5" class="headerlink" title="  生产者[swht] 生产消息 5"></a>  生产者[swht] 生产消息 5</h1><p>  生产者[shen] 生产消息 2<br>  消费者[2] 获取消息 2</p>
-<h1 id="消费者-3-获取消息-5"><a href="#消费者-3-获取消息-5" class="headerlink" title="  消费者[3] 获取消息 5"></a>  消费者[3] 获取消息 5</h1><h1 id="生产者-swht-生产消息-6"><a href="#生产者-swht-生产消息-6" class="headerlink" title="  生产者[swht] 生产消息 6"></a>  生产者[swht] 生产消息 6</h1><p>  生产者[shen] 生产消息 3<br>  消费者[1] 获取消息 3</p>
-<h1 id="消费者-3-获取消息-6-1"><a href="#消费者-3-获取消息-6-1" class="headerlink" title="  消费者[3] 获取消息 6"></a>  消费者[3] 获取消息 6</h1><p>  生产者[shen] 生产消息 4</p>
-<h1 id="消费者-2-获取消息-4"><a href="#消费者-2-获取消息-4" class="headerlink" title="  消费者[2] 获取消息 4"></a>  消费者[2] 获取消息 4</h1><p>  生产者[shen] 生产消息 5</p>
-<h1 id="消费者-1-获取消息-5-1"><a href="#消费者-1-获取消息-5-1" class="headerlink" title="  消费者[1] 获取消息 5"></a>  消费者[1] 获取消息 5</h1><p>  生产者[shen] 生产消息 6</p>
-<h1 id="消费者-3-获取消息-6-2"><a href="#消费者-3-获取消息-6-2" class="headerlink" title="  消费者[3] 获取消息 6"></a>  消费者[3] 获取消息 6</h1><p>  生产者[shen] 生产消息 7</p>
-<h1 id="消费者-2-获取消息-7"><a href="#消费者-2-获取消息-7" class="headerlink" title="  消费者[2] 获取消息 7"></a>  消费者[2] 获取消息 7</h1></li>
-</ol>
-<h3 id="三、协程"><a href="#三、协程" class="headerlink" title="三、协程"></a>三、协程</h3><p>协程是一种用户态的轻量级线程。协程拥有自己的寄存器上下文和栈。协程调度切换时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈。因此：协程能保留上一次调用时的状态（即所有局部状态的一个特定组合），每次过程重入时，就相当于进入上一次调用的状态，换种说法：进入上一次离开时所处逻辑流的位置。</p>
+print(&quot;\033[31;1m生产者[%s]\033[0m 生产消息 %s&quot; % (n,count))
+q.put(count)
+count += 1
+q.join() #生产者阻塞
+print(&quot;==================&quot;) #发出信号：消息已经生产
+
+q = queue.Queue()
+c1 = threading.Thread(target=consumer,args=[1,])
+
+p1 = threading.Thread(target=prodeucer,args=[&quot;swht&quot;,])
+
+c1.start()
+p1.start()
+
+结果：
+
+生产者[swht] 生产消息 1
+消费者[1] 获取消息 1
+==================
+生产者[swht] 生产消息 2
+消费者[1] 获取消息 2
+==================
+生产者[swht] 生产消息 3
+消费者[1] 获取消息 3
+==================
+生产者[swht] 生产消息 4
+消费者[1] 获取消息 4
+==================
+生产者[swht] 生产消息 5
+消费者[1] 获取消息 5
+==================
+生产者[swht] 生产消息 6
+消费者[1] 获取消息 6
+==================
+生产者[swht] 生产消息 7
+消费者[1] 获取消息 7
+==================
+</code></pre><h4 id="2-一对多："><a href="#2-一对多：" class="headerlink" title="2.一对多："></a>2.一对多：</h4><pre><code>import threading,queue,time
+def consumer(n):
+    &apos;&apos;&apos;
+    消费者，消费生产者产生的消息、数据
+    :param n: 消费者标志
+    :return:
+    &apos;&apos;&apos;
+    while True:
+        print(&quot;\033[32;1m消费者[%s]\033[0m 获取消息 %s&quot; % (n,q.get()))
+        time.sleep(1)
+        q.task_done() #消费者等待生产者生产消息
+
+def prodeucer(n):
+    &apos;&apos;&apos;
+    生产者，生产消息、数据
+    :param n: 生产者标志
+    :return:
+    &apos;&apos;&apos;
+    count = 1
+    while True:
+        print(&quot;\033[31;1m生产者[%s]\033[0m 生产消息 %s&quot; % (n,count))
+        q.put(count)
+        count += 1
+        q.join() #生产者阻塞
+        print(&quot;==================&quot;) #发出信号：消息已经生产
+
+q = queue.Queue()
+c1 = threading.Thread(target=consumer,args=[1,])
+c2 = threading.Thread(target=consumer,args=[2,])
+c3 = threading.Thread(target=consumer,args=[3,])
+p1 = threading.Thread(target=prodeucer,args=[&quot;swht&quot;,])
+
+c1.start()
+c2.start()
+c3.start()
+p1.start()
+
+结果：
+
+生产者[swht] 生产消息 1
+消费者[1] 获取消息 1
+==================
+生产者[swht] 生产消息 2
+消费者[2] 获取消息 2
+==================
+生产者[swht] 生产消息 3
+消费者[3] 获取消息 3
+==================
+生产者[swht] 生产消息 4
+消费者[1] 获取消息 4
+==================
+生产者[swht] 生产消息 5
+消费者[2] 获取消息 5
+==================
+生产者[swht] 生产消息 6
+消费者[3] 获取消息 6
+==================
+生产者[swht] 生产消息 7
+消费者[1] 获取消息 7
+==================
+</code></pre><h4 id="3-多对多："><a href="#3-多对多：" class="headerlink" title="3.多对多："></a>3.多对多：</h4><pre><code>import threading,queue,time
+def consumer(n):
+    &apos;&apos;&apos;
+    消费者，消费生产者产生的消息、数据
+    :param n: 消费者标志
+    :return:
+    &apos;&apos;&apos;
+    while True:
+        print(&quot;\033[32;1m消费者[%s]\033[0m 获取消息 %s&quot; % (n,q.get()))
+        time.sleep(1)
+        q.task_done() #消费者等待生产者生产消息
+
+def prodeucer(n):
+    &apos;&apos;&apos;
+    生产者，生产消息、数据
+    :param n: 生产者标志
+    :return:
+    &apos;&apos;&apos;
+    count = 1
+    while True:
+        print(&quot;\033[31;1m生产者[%s]\033[0m 生产消息 %s&quot; % (n,count))
+        q.put(count)
+        count += 1
+        q.join() #生产者阻塞
+        print(&quot;==================&quot;) #发出信号：消息已经生产
+
+q = queue.Queue()
+c1 = threading.Thread(target=consumer,args=[1,])
+c2 = threading.Thread(target=consumer,args=[2,])
+c3 = threading.Thread(target=consumer,args=[3,])
+p1 = threading.Thread(target=prodeucer,args=[&quot;swht&quot;,])
+p2 = threading.Thread(target=prodeucer,args=[&quot;shen&quot;,])
+p3 = threading.Thread(target=prodeucer,args=[&quot;alex&quot;,])
+
+c1.start()
+c2.start()
+c3.start()
+p1.start()
+p2.start()
+p3.start()
+
+结果：
+
+生产者[swht] 生产消息 1
+生产者[shen] 生产消息 1
+消费者[1] 获取消息 1
+生产者[alex] 生产消息 1
+消费者[2] 获取消息 1
+消费者[3] 获取消息 1
+==================
+生产者[swht] 生产消息 2
+消费者[1] 获取消息 2
+==================
+生产者[swht] 生产消息 3
+消费者[2] 获取消息 3
+==================
+生产者[swht] 生产消息 4
+消费者[3] 获取消息 4
+==================
+生产者[alex] 生产消息 2
+消费者[1] 获取消息 2
+==================
+生产者[swht] 生产消息 5
+==================
+生产者[shen] 生产消息 2
+消费者[2] 获取消息 2
+消费者[3] 获取消息 5
+==================
+生产者[swht] 生产消息 6
+==================
+生产者[shen] 生产消息 3
+消费者[1] 获取消息 3
+消费者[3] 获取消息 6
+==================
+生产者[shen] 生产消息 4
+消费者[2] 获取消息 4
+==================
+生产者[shen] 生产消息 5
+消费者[1] 获取消息 5
+==================
+生产者[shen] 生产消息 6
+消费者[3] 获取消息 6
+==================
+生产者[shen] 生产消息 7
+消费者[2] 获取消息 7
+==================
+</code></pre><h2 id="三、协程"><a href="#三、协程" class="headerlink" title="三、协程"></a>三、协程</h2><p>协程是一种用户态的轻量级线程。协程拥有自己的寄存器上下文和栈。协程调度切换时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈。因此：协程能保留上一次调用时的状态（即所有局部状态的一个特定组合），每次过程重入时，就相当于进入上一次调用的状态，换种说法：进入上一次离开时所处逻辑流的位置。</p>
 <p>通过协程进行线程内切换，虽然还是串行的执行，但是因为切换速度快，可以达到一种并发的效果。用户自行控制</p>
 <p>协程的好处：</p>
 <pre><code>无需线程上下文切换的开销
@@ -2700,24 +2611,20 @@ gevent.joinall([
     使用pip进行安装：pip2 install gevent 
                       pip3 install gevent
     使用源码包编译安装：
-</code></pre><h3 id="四、select、poll、epoll多路IO阻塞"><a href="#四、select、poll、epoll多路IO阻塞" class="headerlink" title="四、select、poll、epoll多路IO阻塞"></a>四、select、poll、epoll多路IO阻塞</h3><ol>
-<li><p>select</p>
-<p> select目前几乎在所有的平台上支持，其良好跨平台支持也是它的一个优点，事实上从现在看来，这也是它所剩不多的优点之一。</p>
-<p> select的一个缺点在于单个进程能够监视的文件描述符的数量存在最大限制，在Linux上一般为1024，不过可以通过修改宏定义甚至重新编译内核的方式提升这一限制。</p>
-<p> select()所维护的存储大量文件描述符的数据结构，随着文件描述符数量的增大，其复制的开销也线性增长。同时，由于网络响应时间的延迟使得大量TCP连接处于非活跃状态，但调用select()会对所有socket进行一次线性扫描，所以这也浪费了一定的开销。</p>
-</li>
-<li><p>poll</p>
-<p> poll和select同样存在一个缺点就是，包含大量文件描述符的数组被整体复制于用户态和内核的地址空间之间，而不论这些文件描述符是否就绪，它的开销随着文件描述符数量的增加而线性增大。</p>
-<p> select()和poll()将就绪的文件描述符告诉进程后，如果进程没有对其进行IO操作，那么下次调用select()和poll()的时候将再次报告这些文件描述符，所以它们一般不会丢失就绪的消息，这种方式称为水平触发（Level Triggered）。    </p>
-</li>
-<li><p>epoll</p>
-<p> epoll可以同时支持水平触发和边缘触发（Edge Triggered，只告诉进程哪些文件描述符刚刚变为就绪状态，它只说一遍，如果我们没有采取行动，那么它将不会再次告知，这种方式称为边缘触发），理论上边缘触发的性能要更高一些，但是代码实现相当复杂。</p>
-<p> epoll同样只告知那些就绪的文件描述符，而且当我们调用epoll_wait()获得就绪文件描述符时，返回的不是实际的描述符，而是一个代表就绪描述符数量的值，你只需要去epoll指定的一个数组中依次取得相应数量的文件描述符即可，这里也使用了内存映射（mmap）技术，这样便彻底省掉了这些文件描述符在系统调用时复制的开销。</p>
-<p> 另一个本质的改进在于epoll采用基于事件的就绪通知方式。在select/poll中，进程只有在调用一定的方法后，内核才对所有监视的文件描述符进行扫描，而epoll事先通过epoll_ctl()来注册一个文件描述符，一旦基于某个文件描述符就绪时，内核会采用类似callback的回调机制，迅速激活这个文件描述符，当进程调用epoll_wait()时便得到通知。</p>
-</li>
-</ol>
-<p>select示例：</p>
-<pre><code>server端
+</code></pre><h2 id="四、select、poll、epoll多路IO阻塞"><a href="#四、select、poll、epoll多路IO阻塞" class="headerlink" title="四、select、poll、epoll多路IO阻塞"></a>四、select、poll、epoll多路IO阻塞</h2><h3 id="1-select"><a href="#1-select" class="headerlink" title="1.select"></a>1.select</h3><pre><code>select目前几乎在所有的平台上支持，其良好跨平台支持也是它的一个优点，事实上从现在看来，这也是它所剩不多的优点之一。
+
+select的一个缺点在于单个进程能够监视的文件描述符的数量存在最大限制，在Linux上一般为1024，不过可以通过修改宏定义甚至重新编译内核的方式提升这一限制。
+
+select()所维护的存储大量文件描述符的数据结构，随着文件描述符数量的增大，其复制的开销也线性增长。同时，由于网络响应时间的延迟使得大量TCP连接处于非活跃状态，但调用select()会对所有socket进行一次线性扫描，所以这也浪费了一定的开销。
+</code></pre><h3 id="2-poll"><a href="#2-poll" class="headerlink" title="2.poll"></a>2.poll</h3><pre><code>poll和select同样存在一个缺点就是，包含大量文件描述符的数组被整体复制于用户态和内核的地址空间之间，而不论这些文件描述符是否就绪，它的开销随着文件描述符数量的增加而线性增大。
+
+select()和poll()将就绪的文件描述符告诉进程后，如果进程没有对其进行IO操作，那么下次调用select()和poll()的时候将再次报告这些文件描述符，所以它们一般不会丢失就绪的消息，这种方式称为水平触发（Level Triggered）。    
+</code></pre><h3 id="3-epoll"><a href="#3-epoll" class="headerlink" title="3.epoll"></a>3.epoll</h3><pre><code>epoll可以同时支持水平触发和边缘触发（Edge Triggered，只告诉进程哪些文件描述符刚刚变为就绪状态，它只说一遍，如果我们没有采取行动，那么它将不会再次告知，这种方式称为边缘触发），理论上边缘触发的性能要更高一些，但是代码实现相当复杂。
+
+epoll同样只告知那些就绪的文件描述符，而且当我们调用epoll_wait()获得就绪文件描述符时，返回的不是实际的描述符，而是一个代表就绪描述符数量的值，你只需要去epoll指定的一个数组中依次取得相应数量的文件描述符即可，这里也使用了内存映射（mmap）技术，这样便彻底省掉了这些文件描述符在系统调用时复制的开销。
+
+另一个本质的改进在于epoll采用基于事件的就绪通知方式。在select/poll中，进程只有在调用一定的方法后，内核才对所有监视的文件描述符进行扫描，而epoll事先通过epoll_ctl()来注册一个文件描述符，一旦基于某个文件描述符就绪时，内核会采用类似callback的回调机制，迅速激活这个文件描述符，当进程调用epoll_wait()时便得到通知。
+</code></pre><h3 id="select示例："><a href="#select示例：" class="headerlink" title="select示例："></a>select示例：</h3><pre><code>server端
 
 #!/usr/local/env python3
 &apos;&apos;&apos;
@@ -2870,49 +2777,74 @@ for message in messages:
         if not data:
             print(sys.stderr, &apos;closing socket&apos;, s.getsockname())
             s.close()
-</code></pre><h3 id="五、堡垒机模块"><a href="#五、堡垒机模块" class="headerlink" title="五、堡垒机模块"></a>五、堡垒机模块</h3><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/5095821.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5095821.html</a></p>
-<ol>
-<li><p>模块安装：</p>
-<p>pip2 install paramiko</p>
-<p>pip3 install paramiko<br>#win下python3安装paramiko模块涉及到编译工具的问题没有安装成功，在Linux环境下面测试下面的代码正常。</p>
-</li>
-<li><p>示例代码</p>
-<p>  #!/usr/local/env python3<br>  ‘’’<br>  Author:@南非波波<br>  Blog:<a href="http://www.cnblogs.com/songqingbo/" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/</a><br>  E-mail:qingbo.song@gmail.com<br>  ‘’’<br>  import paramiko<br>  ‘’’<br>  基于用户名密码连接<br>  ‘’’</p>
-<h1 id="创建SSH对象"><a href="#创建SSH对象" class="headerlink" title="创建SSH对象"></a>创建SSH对象</h1><p>  ssh = paramiko.SSHClient()</p>
-<h1 id="允许连接不在know-hosts文件中的主机"><a href="#允许连接不在know-hosts文件中的主机" class="headerlink" title="允许连接不在know_hosts文件中的主机"></a>允许连接不在know_hosts文件中的主机</h1><p>  ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())</p>
-<h1 id="连接服务器"><a href="#连接服务器" class="headerlink" title="连接服务器"></a>连接服务器</h1><p>  ssh.connect(hostname=’192.168.137.5’, port=22, username=’root’, password=’shen1234’)</p>
-<h1 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h1><p>  stdin, stdout, stderr = ssh.exec_command(‘df -h’)</p>
-<h1 id="获取命令结果"><a href="#获取命令结果" class="headerlink" title="获取命令结果"></a>获取命令结果</h1><p>  result = stdout.read()<br>  #打印结果<br>  print(result.decode())</p>
-<h1 id="关闭连接"><a href="#关闭连接" class="headerlink" title="关闭连接"></a>关闭连接</h1><p>  ssh.close()</p>
-<p>  import paramiko</p>
-<p>  transport = paramiko.Transport((‘192.168.137.5’, 22))<br>  transport.connect(username=’root’, password=’shen1234’)</p>
-<p>  ssh = paramiko.SSHClient()<br>  ssh._transport = transport</p>
-<p>  stdin, stdout, stderr = ssh.exec_command(‘ifconfig’)<br>  print(stdout.read().decode())</p>
-<p>  transport.close()</p>
-<p>  import paramiko</p>
-<p>  def ssh_connet(host,user,shell):</p>
-<pre><code>&apos;&apos;&apos;
-实现ssh远程登录服务器进行相关操作
-:param host: 远程服务器地址和端口号 host_ip:port
-:param user: 远程服务器用户名密码 user:passwd
-:parm shell: 需要执行的shell命令
-:return: 返回用户执行shell命令的
+</code></pre><h2 id="五、堡垒机模块"><a href="#五、堡垒机模块" class="headerlink" title="五、堡垒机模块"></a>五、堡垒机模块</h2><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/5095821.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5095821.html</a></p>
+<h3 id="1-模块安装："><a href="#1-模块安装：" class="headerlink" title="1.模块安装："></a>1.模块安装：</h3><pre><code>pip2 install paramiko
+
+pip3 install paramiko  
+ #win下python3安装paramiko模块涉及到编译工具的问题没有安装成功，在Linux环境下面测试下面的代码正常。
+</code></pre><h3 id="2-示例代码"><a href="#2-示例代码" class="headerlink" title="2.示例代码"></a>2.示例代码</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
-host = host.split(&quot;:&quot;)
-user = user.split(&quot;:&quot;)
-transport = paramiko.Transport((host[0], int(host[1])))
-transport.connect(username=user[0], password=user[1])
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import paramiko
+&apos;&apos;&apos;
+基于用户名密码连接
+&apos;&apos;&apos;
+# 创建SSH对象
+ssh = paramiko.SSHClient()
+# 允许连接不在know_hosts文件中的主机
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+# 连接服务器
+ssh.connect(hostname=&apos;192.168.137.5&apos;, port=22, username=&apos;root&apos;, password=&apos;shen1234&apos;)
+
+# 执行命令
+stdin, stdout, stderr = ssh.exec_command(&apos;df -h&apos;)
+# 获取命令结果
+result = stdout.read()
+#打印结果
+print(result.decode())
+# 关闭连接
+ssh.close()
+
+import paramiko
+
+transport = paramiko.Transport((&apos;192.168.137.5&apos;, 22))
+transport.connect(username=&apos;root&apos;, password=&apos;shen1234&apos;)
+
 ssh = paramiko.SSHClient()
 ssh._transport = transport
-stdin, stdout, stderr = ssh.exec_command(shell)
-reaults = stdout.read().decode()
+
+stdin, stdout, stderr = ssh.exec_command(&apos;ifconfig&apos;)
+print(stdout.read().decode())
+
 transport.close()
-return reaults
-</code></pre><p>  print(ssh_connet(“192.168.137.5:22”,”root:shen1234”,”df -h”))</p>
-</li>
-</ol>
-<p>基于公钥密钥连接：<br>    import paramiko</p>
-<pre><code>def ssh_connet(host,user,private_key,shell):
+
+import paramiko
+
+def ssh_connet(host,user,shell):
+    &apos;&apos;&apos;
+    实现ssh远程登录服务器进行相关操作
+    :param host: 远程服务器地址和端口号 host_ip:port
+    :param user: 远程服务器用户名密码 user:passwd
+    :parm shell: 需要执行的shell命令
+    :return: 返回用户执行shell命令的
+    &apos;&apos;&apos;
+    host = host.split(&quot;:&quot;)
+    user = user.split(&quot;:&quot;)
+    transport = paramiko.Transport((host[0], int(host[1])))
+    transport.connect(username=user[0], password=user[1])
+    ssh = paramiko.SSHClient()
+    ssh._transport = transport
+    stdin, stdout, stderr = ssh.exec_command(shell)
+    reaults = stdout.read().decode()
+    transport.close()
+    return reaults
+print(ssh_connet(&quot;192.168.137.5:22&quot;,&quot;root:shen1234&quot;,&quot;df -h&quot;))
+</code></pre><h3 id="基于公钥密钥连接："><a href="#基于公钥密钥连接：" class="headerlink" title="基于公钥密钥连接："></a>基于公钥密钥连接：</h3><pre><code>import paramiko
+
+def ssh_connet(host,user,private_key,shell):
     &apos;&apos;&apos;
     实现ssh远程登录服务器进行相关操作
     :param host: 远程服务器地址和端口号 host_ip:port
@@ -2932,8 +2864,9 @@ return reaults
     return reaults
 private_key = paramiko.RSAKey.from_private_key_file(&apos;/home/auto/.ssh/id_rsa&apos;)
 print(ssh_connet(&quot;192.168.137.5:22&quot;,&quot;root&quot;,private_key,&quot;df -h&quot;))
-</code></pre><h3 id="六、mysql操作模块"><a href="#六、mysql操作模块" class="headerlink" title="六、mysql操作模块"></a>六、mysql操作模块</h3><p>rollback()事务回滚<br>excutemany()</p>
-<p>作业：</p>
+</code></pre><h2 id="六、mysql操作模块"><a href="#六、mysql操作模块" class="headerlink" title="六、mysql操作模块"></a>六、mysql操作模块</h2><pre><code>rollback()事务回滚
+excutemany()
+</code></pre><p><strong>作业：</strong></p>
 <pre><code>1.    select（）代码，注释
 2.    主机批量管理工具
     1.    saltstack文档阅读（常用架构弄清楚）
@@ -2953,21 +2886,17 @@ print(ssh_connet(&quot;192.168.137.5:22&quot;,&quot;root&quot;,private_key,&quot
 <p>###推荐电影###</p>
 <pre><code>绝美之城  上帝之城 | 千与千寻  龙猫 卡尔的移动城堡
 </code></pre><p>通过实例私有变量，需要将在类中封装一个方法，该方法返回私有变量的值</p>
-<h3 id="一、socket深入"><a href="#一、socket深入" class="headerlink" title="一、socket深入"></a>一、socket深入</h3><p>1.概念</p>
-<pre><code>Unix的进程通信机制。一个完整的socket有一个本地唯一的socket号，由操作系统分配。socket是面向客户/服务器模型而设计的，针对客户和服务器程序提供不同的socket系统调用。socket利用客户/服务器模式巧妙的解决了进程之间建立通信连接的问题。
+<h2 id="一、socket深入"><a href="#一、socket深入" class="headerlink" title="一、socket深入"></a>一、socket深入</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><pre><code>Unix的进程通信机制。一个完整的socket有一个本地唯一的socket号，由操作系统分配。socket是面向客户/服务器模型而设计的，针对客户和服务器程序提供不同的socket系统调用。socket利用客户/服务器模式巧妙的解决了进程之间建立通信连接的问题。
 
 套接字（socket）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元。它是网络通信过程中端点的抽象表示，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。
-</code></pre><p>2.地址簇</p>
-<pre><code>socket.AF_UNIX unix本机进程间通信 
+</code></pre><h3 id="2-地址簇"><a href="#2-地址簇" class="headerlink" title="2.地址簇"></a>2.地址簇</h3><pre><code>socket.AF_UNIX unix本机进程间通信 
 socket.AF_INET　使用IPV4地址协议进行进程间通信
 socket.AF_INET6  使用IPV6地址协议进行进程间通信
-</code></pre><p>3.套接字类型</p>
-<pre><code>socket.SOCK_STREAM  #使用tcp协议
+</code></pre><h3 id="3-套接字类型"><a href="#3-套接字类型" class="headerlink" title="3.套接字类型"></a>3.套接字类型</h3><pre><code>socket.SOCK_STREAM  #使用tcp协议
 socket.SOCK_DGRAM   #使用udp协议
 socket.SOCK_RAW     #原始套接字，普通的套接字无法处理ICMP、IFMP等网络报文，而SOCK_RAM可以。其次SOCK_RAM也可以处理特殊的IPV4报文,此外，利用原始套接字可以通过IP_HDRINCL套接字选项由用户构造IP头。
 socket.SOCK_RDM    #是一种可靠的UDP形式，即保证交付数据报但不保证顺序。SOCK_RAW用来提供对原始协议的低级访问，在需要执行某些特殊操作时使用，如发送ICMP报文。SOCK_RAW通常仅限于高级用户或管理员运行的程序使用。
-</code></pre><p>4.socket方法</p>
-<pre><code>1. socket.socket(family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None)
+</code></pre><h3 id="4-socket方法"><a href="#4-socket方法" class="headerlink" title="4.socket方法"></a>4.socket方法</h3><pre><code>1. socket.socket(family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None)
 2. socket.socketpair([family[, type[, proto]]])
 3. socket.create_connection(address[, timeout[, source_address]])
 4. socket.getaddrinfo(host, port, family=0, type=0, proto=0, flags=0) 
@@ -3024,14 +2953,11 @@ socket.SOCK_RDM    #是一种可靠的UDP形式，即保证交付数据报但不
     套接字的文件描述符
     socket.sendfile(file, offset=0, count=None)
     发送文件 ，但目前多数情况下并无什么卵用
-</code></pre><h3 id="二、socketserver"><a href="#二、socketserver" class="headerlink" title="二、socketserver"></a>二、socketserver</h3><p>参考链接：<a href="http://my.oschina.net/u/1433482/blog/190612" target="_blank" rel="external">http://my.oschina.net/u/1433482/blog/190612</a></p>
+</code></pre><h2 id="二、socketserver"><a href="#二、socketserver" class="headerlink" title="二、socketserver"></a>二、socketserver</h2><p>参考链接：<a href="http://my.oschina.net/u/1433482/blog/190612" target="_blank" rel="external">http://my.oschina.net/u/1433482/blog/190612</a></p>
 <p>SocketServer简化了网络服务器的编写。它有4个类：TCPServer，UDPServer，UnixStreamServer，UnixDatagramServer。这4个类是同步进行处理的，另外通过ForkingMixIn和ThreadingMixIn类来支持异步。</p>
-<p><strong>创建服务器的步骤</strong></p>
-<pre><code>首先，你必须创建一个请求处理类，它是BaseRequestHandler的子类并重载其handle()方法。其次，你必须实例化一个服务器类，传入服务器的地址和请求处理程序类。最后，调用handle_request()(一般是调用其他事件循环或者使用select())或serve_forever()。
-</code></pre><p><strong>服务器类型</strong></p>
-<pre><code>5种类型：BaseServer，TCPServer，UnixStreamServer，UDPServer，UnixDatagramServer。 注意：BaseServer不直接对外服务。
-</code></pre><p><strong>服务器对象</strong></p>
-<pre><code>class SocketServer.BaseServer：这是模块中的所有服务器对象的超类。它定义了接口，如下所述，但是大多数的方法不实现，在子类中进行细化。
+<h3 id="创建服务器的步骤"><a href="#创建服务器的步骤" class="headerlink" title="创建服务器的步骤"></a>创建服务器的步骤</h3><pre><code>首先，你必须创建一个请求处理类，它是BaseRequestHandler的子类并重载其handle()方法。其次，你必须实例化一个服务器类，传入服务器的地址和请求处理程序类。最后，调用handle_request()(一般是调用其他事件循环或者使用select())或serve_forever()。
+</code></pre><h3 id="服务器类型"><a href="#服务器类型" class="headerlink" title="服务器类型"></a>服务器类型</h3><pre><code>5种类型：BaseServer，TCPServer，UnixStreamServer，UDPServer，UnixDatagramServer。 注意：BaseServer不直接对外服务。
+</code></pre><h3 id="服务器对象"><a href="#服务器对象" class="headerlink" title="服务器对象"></a>服务器对象</h3><pre><code>class SocketServer.BaseServer：这是模块中的所有服务器对象的超类。它定义了接口，如下所述，但是大多数的方法不实现，在子类中进行细化。
 
 BaseServer.fileno()：返回服务器监听套接字的整数文件描述符。通常用来传递给select.select(), 以允许一个进程监视多个服务器。
 
@@ -3078,8 +3004,7 @@ BaseServer.server_activate()：通过服务器的构造函数来激活服务器�
 BaseServer.server_bind()：通过服务器的构造函数中调用绑定socket到所需的地址。可重载。
 
 BaseServer.verify_request(request, client_address)：返回一个布尔值，如果该值为True ，则该请求将被处理，反之请求将被拒绝。此功能可以重写来实现对服务器的访问控制。默认的实现始终返回True。client_address可以限定客户端，比如只处理指定ip区间的请求。 常用。
-</code></pre><p><strong>请求处理器</strong></p>
-<pre><code>处理器接收数据并决定如何操作。它负责在socket层之上实现协议（i.e., HTTP, XML-RPC, or AMQP)，读取数据，处理并写反应。可以重载的方法如下：
+</code></pre><h3 id="请求处理器"><a href="#请求处理器" class="headerlink" title="请求处理器"></a>请求处理器</h3><pre><code>处理器接收数据并决定如何操作。它负责在socket层之上实现协议（i.e., HTTP, XML-RPC, or AMQP)，读取数据，处理并写反应。可以重载的方法如下：
 
 setup(): 准备请求处理. 默认什么都不做，StreamRequestHandler中会创建文件类似的对象以读写socket.
 
@@ -3088,127 +3013,139 @@ handle(): 处理请求。解析传入的请求，处理数据，并发送响应�
 finish(): 环境清理。默认什么都不做，如果setup产生异常，不会执行finish。
 
 通常只需要重载handle。self.request的类型和数据报或流的服务不同。对于流服务，self.request是socket 对象；对于数据报服务，self.request是字符串和socket 。可以在子类StreamRequestHandler或DatagramRequestHandler中重载，重写setup()和finish() ，并提供self.rfile和self.wfile属性。 self.rfile和self.wfile可以读取或写入，以获得请求数据或将数据返回到客户端。
-</code></pre><p><strong>示例代码</strong></p>
-<ol>
-<li><p>server</p>
-<p>  #!/usr/local/env python3<br>  ‘’’<br>  Author:@南非波波<br>  Blog:<a href="http://www.cnblogs.com/songqingbo/" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/</a><br>  E-mail:qingbo.song@gmail.com<br>  ‘’’<br>  import socketserver</p>
-<p>  class MyHandleServer(socketserver.BaseRequestHandler):</p>
-<pre><code>&apos;&apos;&apos;
-定义一个测试socketserver类
-&apos;&apos;&apos;
-def handle(self):
+</code></pre><h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><pre><code>1.server
+
+    #!/usr/local/env python3
     &apos;&apos;&apos;
-    定义一个函数，用来处理每个客户端发来的请求
-    :return:
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
     &apos;&apos;&apos;
-    print(&quot;新建立一个连接：&quot;,self.client_address)
+    import socketserver
+
+    class MyHandleServer(socketserver.BaseRequestHandler):
+        &apos;&apos;&apos;
+        定义一个测试socketserver类
+        &apos;&apos;&apos;
+        def handle(self):
+            &apos;&apos;&apos;
+            定义一个函数，用来处理每个客户端发来的请求
+            :return:
+            &apos;&apos;&apos;
+            print(&quot;新建立一个连接：&quot;,self.client_address)
+            while True:
+                try:
+                    client_data = self.request.recv(1024)
+                    if not client_data:
+                        print(&quot;客户端发送的数据为空,主动断开!&quot;,self.client_address)
+                        break
+                    print(&quot;客户端发来的请求:&quot;,client_data.decode())
+                    self.request.send(client_data)
+                except ConnectionResetError:
+                    print(&quot;客户端主动断开!&quot;,self.client_address)
+                    break
+
+    if __name__ == &quot;__main__&quot;:
+        HOST,PORT = &quot;127.0.0.1&quot;,5000
+        server = socketserver.ThreadingTCPServer((HOST,PORT),MyHandleServer)
+        server.serve_forever()
+
+
+2.client
+
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import socket
+
+    ip_port = (&quot;127.0.0.1&quot;,5000)
+
+    sk = socket.socket()
+    sk.connect(ip_port)
     while True:
-        try:
-            client_data = self.request.recv(1024)
-            if not client_data:
-                print(&quot;客户端发送的数据为空,主动断开!&quot;,self.client_address)
-                break
-            print(&quot;客户端发来的请求:&quot;,client_data.decode())
-            self.request.send(client_data)
-        except ConnectionResetError:
-            print(&quot;客户端主动断开!&quot;,self.client_address)
+        msg = input(&quot;&gt;&gt;:&quot;).strip()
+        if not msg:
             break
-</code></pre><p>  if <strong>name</strong> == “<strong>main</strong>“:</p>
-<pre><code>HOST,PORT = &quot;127.0.0.1&quot;,5000
-server = socketserver.ThreadingTCPServer((HOST,PORT),MyHandleServer)
-server.serve_forever()
-</code></pre></li>
-</ol>
-<ol>
-<li><p>client</p>
-<p>  #!/usr/local/env python3<br>  ‘’’<br>  Author:@南非波波<br>  Blog:<a href="http://www.cnblogs.com/songqingbo/" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/</a><br>  E-mail:qingbo.song@gmail.com<br>  ‘’’<br>  import socket</p>
-<p>  ip_port = (“127.0.0.1”,5000)</p>
-<p>  sk = socket.socket()<br>  sk.connect(ip_port)<br>  while True:</p>
-<pre><code>msg = input(&quot;&gt;&gt;:&quot;).strip()
-if not msg:
-    break
-sk.sendall(bytes(msg,&quot;utf8&quot;))
-server_reply = sk.recv(1024)
-print(&quot;服务端返回:&quot;,str(server_reply,&quot;utf8&quot;))
-</code></pre><p>  sk.close()</p>
-</li>
-</ol>
-<h3 id="三、异常处理"><a href="#三、异常处理" class="headerlink" title="三、异常处理"></a>三、异常处理</h3><p><a href="http://www.cnblogs.com/wupeiqi/articles/5017742.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5017742.html</a></p>
-<ol>
-<li><p>异常基础(python3的写法)</p>
-<p> 在编程过程中为了增加友好性，在程序出现bug时一般不会将错误信息显示给用户，而是显示一个提示的页面，通俗来说就是不让用户看见代码出错的页面</p>
-<pre><code>try:
-    pass
-except Exception as ex:
-    pass
-</code></pre></li>
-<li><p>异常种类</p>
-<p> 常用异常：</p>
-<pre><code>AttributeError 试图访问一个对象没有的树形，比如foo.x，但是foo没有属性x
-IOError 输入/输出异常；基本上是无法打开文件
-ImportError 无法引入模块或包；基本上是路径问题或名称错误
-IndentationError 语法错误（的子类） ；代码没有正确对齐
-IndexError 下标索引超出序列边界，比如当x只有三个元素，却试图访问x[5]
-KeyError 试图访问字典里不存在的键
-KeyboardInterrupt Ctrl+C被按下
-NameError 使用一个还未被赋予对象的变量
-SyntaxError Python代码非法，代码不能编译(个人认为这是语法错误，写错了）
-TypeError 传入对象类型与要求的不符合
-UnboundLocalError 试图访问一个还未被设置的局部变量，基本上是由于另有一个同名的全局变量，
-导致你以为正在访问它
-ValueError 传入一个调用者不期望的值，即使值的类型是正确的
-</code></pre><p> 更多种类：</p>
-<pre><code>ArithmeticError
-AssertionError
-AttributeError
-BaseException
-BufferError
-BytesWarning
-DeprecationWarning
-EnvironmentError
-EOFError
-Exception  #捕获一般的所有异常
-FloatingPointError
-FutureWarning
-GeneratorExit
-ImportError  #捕获导入模块异常
-ImportWarning
-IndentationError
-IndexError  #捕获索引异常
-IOError  #捕获IO异常
-KeyboardInterrupt  #捕获键盘组合键异常
-KeyError
-LookupError
-MemoryError
-NameError
-NotImplementedError
-OSError
-OverflowError
-PendingDeprecationWarning
-ReferenceError
-RuntimeError
-RuntimeWarning
-StandardError
-StopIteration
-SyntaxError
-SyntaxWarning
-SystemError
-SystemExit
-TabError
-TypeError
-UnboundLocalError
-UnicodeDecodeError
-UnicodeEncodeError
-UnicodeError
-UnicodeTranslateError
-UnicodeWarning
-UserWarning
-ValueError
-Warning
-ZeroDivisionError
-</code></pre></li>
-<li><p>自定义异常类</p>
-<pre><code>#!/usr/local/env python3
+        sk.sendall(bytes(msg,&quot;utf8&quot;))
+        server_reply = sk.recv(1024)
+        print(&quot;服务端返回:&quot;,str(server_reply,&quot;utf8&quot;))
+    sk.close()
+</code></pre><h2 id="三、异常处理"><a href="#三、异常处理" class="headerlink" title="三、异常处理"></a>三、异常处理</h2><p><a href="http://www.cnblogs.com/wupeiqi/articles/5017742.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5017742.html</a></p>
+<h3 id="1-异常基础-python3的写法"><a href="#1-异常基础-python3的写法" class="headerlink" title="1.异常基础(python3的写法)"></a>1.异常基础(python3的写法)</h3><pre><code>在编程过程中为了增加友好性，在程序出现bug时一般不会将错误信息显示给用户，而是显示一个提示的页面，通俗来说就是不让用户看见代码出错的页面
+
+    try:
+        pass
+    except Exception as ex:
+        pass
+</code></pre><h3 id="2-异常种类"><a href="#2-异常种类" class="headerlink" title="2.异常种类"></a>2.异常种类</h3><pre><code>常用异常：
+
+    AttributeError 试图访问一个对象没有的树形，比如foo.x，但是foo没有属性x
+    IOError 输入/输出异常；基本上是无法打开文件
+    ImportError 无法引入模块或包；基本上是路径问题或名称错误
+    IndentationError 语法错误（的子类） ；代码没有正确对齐
+    IndexError 下标索引超出序列边界，比如当x只有三个元素，却试图访问x[5]
+    KeyError 试图访问字典里不存在的键
+    KeyboardInterrupt Ctrl+C被按下
+    NameError 使用一个还未被赋予对象的变量
+    SyntaxError Python代码非法，代码不能编译(个人认为这是语法错误，写错了）
+    TypeError 传入对象类型与要求的不符合
+    UnboundLocalError 试图访问一个还未被设置的局部变量，基本上是由于另有一个同名的全局变量，
+    导致你以为正在访问它
+    ValueError 传入一个调用者不期望的值，即使值的类型是正确的
+更多种类：
+
+    ArithmeticError
+    AssertionError
+    AttributeError
+    BaseException
+    BufferError
+    BytesWarning
+    DeprecationWarning
+    EnvironmentError
+    EOFError
+    Exception  #捕获一般的所有异常
+    FloatingPointError
+    FutureWarning
+    GeneratorExit
+    ImportError  #捕获导入模块异常
+    ImportWarning
+    IndentationError
+    IndexError  #捕获索引异常
+    IOError  #捕获IO异常
+    KeyboardInterrupt  #捕获键盘组合键异常
+    KeyError
+    LookupError
+    MemoryError
+    NameError
+    NotImplementedError
+    OSError
+    OverflowError
+    PendingDeprecationWarning
+    ReferenceError
+    RuntimeError
+    RuntimeWarning
+    StandardError
+    StopIteration
+    SyntaxError
+    SyntaxWarning
+    SystemError
+    SystemExit
+    TabError
+    TypeError
+    UnboundLocalError
+    UnicodeDecodeError
+    UnicodeEncodeError
+    UnicodeError
+    UnicodeTranslateError
+    UnicodeWarning
+    UserWarning
+    ValueError
+    Warning
+    ZeroDivisionError
+</code></pre><h3 id="3-自定义异常类"><a href="#3-自定义异常类" class="headerlink" title="3.自定义异常类"></a>3.自定义异常类</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -3237,9 +3174,7 @@ try:
     raise SwhtError(&quot;这是一个致命的错误！&quot;)
 except Exception as e:
     print(&quot;dsdsd&quot;,e)
-</code></pre></li>
-<li><p>示例代码：</p>
-<pre><code>dic = [&quot;swht&quot;, &apos;shen&apos;]
+</code></pre><h3 id="4-示例代码："><a href="#4-示例代码：" class="headerlink" title="4.示例代码："></a>4.示例代码：</h3><pre><code>dic = [&quot;swht&quot;, &apos;shen&apos;]
 try:
     dic[10]
 except IndexError as e:
@@ -3256,12 +3191,8 @@ try:
     int(s1)
 except ValueError as e:
     print(&quot;ValueError:&quot;,e)
-</code></pre></li>
-<li><p>特殊异常</p>
-<p> 虽然python自带的一个处理万能异常类Exception，但是并不是有一些异常都能被捕获的。如果要想捕获这些特殊的异常，就需要进行自定义异常类</p>
-</li>
-<li><p>异常其他架构</p>
-<pre><code>try:
+</code></pre><h3 id="5-特殊异常"><a href="#5-特殊异常" class="headerlink" title="5.特殊异常"></a>5.特殊异常</h3><pre><code>虽然python自带的一个处理万能异常类Exception，但是并不是有一些异常都能被捕获的。如果要想捕获这些特殊的异常，就需要进行自定义异常类
+</code></pre><h3 id="6-异常其他架构"><a href="#6-异常其他架构" class="headerlink" title="6.异常其他架构"></a>6.异常其他架构</h3><pre><code>try:
     # 主代码块
     pass
 except KeyError as e:
@@ -3273,81 +3204,65 @@ else:
 finally:
     # 无论异常与否，最终执行该块
     pass
-</code></pre></li>
-<li><p>主动触发异常</p>
-<pre><code>try:
+</code></pre><h3 id="7-主动触发异常"><a href="#7-主动触发异常" class="headerlink" title="7.主动触发异常"></a>7.主动触发异常</h3><pre><code>try:
     raise Exception(&apos;错误了。。。&apos;)
 except Exception as e:
     print(&quot;Error&quot;,e)
-</code></pre></li>
-<li><p>Asser断言：</p>
-<p> 至关重要的判断，强制判断前面的业务结果是否符合要求，否则就抛出异常</p>
-<pre><code>a = 1
-try:
-    assert a == 2
-    print(&quot;True&quot;)
-except Exception as e:
-    print(&quot;False&quot;,e)
-</code></pre></li>
-</ol>
-<h3 id="四、进程与线程"><a href="#四、进程与线程" class="headerlink" title="四、进程与线程"></a>四、进程与线程</h3><ol>
-<li><p>概念</p>
-<ol>
-<li><p>进程</p>
-<p>  一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是系统进行资源分配和调度运行的基本单位</p>
-</li>
-<li><p>线程</p>
-<p>  线程是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务</p>
-</li>
-<li><p>进程与线程的区别</p>
-<ol>
-<li><p>进程是一个动态的概念</p>
-<p>进程是程序的一次执行过程，是动态概念</p>
-<p>程序是一组有序的指令集和，是静态概念</p>
-</li>
-<li><p>不同的进程可以执行同一个程序</p>
-<p>区分进程的条件：所执行的程序和数据集合。</p>
-<p>两个进程即使执行在相同的程序上，只要他们运行在不同的数据集合上，他们也是两个进程。例如：多个用户同时调用同一个编译程序编译他们编写的C语言源程序，由于编译程序运行在不同的数据集合（不同的C语言源程序）上，于是产生了一个个不同的进程</p>
-</li>
-<li><p>每个进程都有自己的生命周期</p>
-<p>当操作系统要完成某个任务时，它会创建一个进程。当进程完成任务之后，系统就会撤销这个进程，收回它所占用的资源。从创建到撤销的时间段就是进程的生命期</p>
-</li>
-<li><p>进程之间存在并发性</p>
-<p>在一个系统中，同时会存在多个进程。他们轮流占用CPU和各种资源</p>
-</li>
-<li><p>进程间会相互制约</p>
-<p>进程是系统中资源分配和运行调度的单位，在对资源的共享和竞争中，必然相互制约，影响各自向前推进的速度</p>
-</li>
-<li><p>进程可以创建子进程，程序不能创建子程序</p>
-</li>
-<li><p>从结构上讲，每个进程都由程序、数据和一个进程控制块（Process Control Block, PCB）组成</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>进程锁</p>
-<p>Python threading模块</p>
-<ol>
-<li>线程的两种调用方式<ol>
-<li>直接调用</li>
-<li>继承式调用</li>
-</ol>
-</li>
-<li>join&amp;&amp;Demo</li>
-<li>线程锁<ol>
-<li>互斥锁：同时仅且只有一个线程在运行</li>
-<li>共享锁：同时可以有多个线程共同运行，可以实现一个线程池的效果</li>
-<li>递归锁</li>
-<li>Semaphore(信号量)</li>
-</ol>
-</li>
-<li></li>
-</ol>
-</li>
-</ol>
-<p>示例代码：</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="8-Asser断言："><a href="#8-Asser断言：" class="headerlink" title="8.Asser断言："></a>8.Asser断言：</h3><pre><code>至关重要的判断，强制判断前面的业务结果是否符合要求，否则就抛出异常
+
+    a = 1
+    try:
+        assert a == 2
+        print(&quot;True&quot;)
+    except Exception as e:
+        print(&quot;False&quot;,e)
+</code></pre><h2 id="四、进程与线程"><a href="#四、进程与线程" class="headerlink" title="四、进程与线程"></a>四、进程与线程</h2><h3 id="1-概念-1"><a href="#1-概念-1" class="headerlink" title="1.概念"></a>1.概念</h3><pre><code>1.进程
+
+        一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是系统进行资源分配和调度运行的基本单位
+2.线程
+
+        线程是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务
+
+3.进程与线程的区别
+
+        1. 进程是一个动态的概念
+
+        进程是程序的一次执行过程，是动态概念
+
+        程序是一组有序的指令集和，是静态概念
+
+        2. 不同的进程可以执行同一个程序
+
+        区分进程的条件：所执行的程序和数据集合。
+
+        两个进程即使执行在相同的程序上，只要他们运行在不同的数据集合上，他们也是两个进程。例如：多个用户同时调用同一个编译程序编译他们编写的C语言源程序，由于编译程序运行在不同的数据集合（不同的C语言源程序）上，于是产生了一个个不同的进程
+
+        3. 每个进程都有自己的生命周期
+
+        当操作系统要完成某个任务时，它会创建一个进程。当进程完成任务之后，系统就会撤销这个进程，收回它所占用的资源。从创建到撤销的时间段就是进程的生命期
+
+        4. 进程之间存在并发性
+
+        在一个系统中，同时会存在多个进程。他们轮流占用CPU和各种资源
+
+        5. 进程间会相互制约
+
+        进程是系统中资源分配和运行调度的单位，在对资源的共享和竞争中，必然相互制约，影响各自向前推进的速度
+
+        6. 进程可以创建子进程，程序不能创建子程序
+
+        7. 从结构上讲，每个进程都由程序、数据和一个进程控制块（Process Control Block, PCB）组成
+</code></pre><h3 id="2-进程锁"><a href="#2-进程锁" class="headerlink" title="2.进程锁"></a>2.进程锁</h3><p> Python threading模块</p>
+<pre><code>1.线程的两种调用方式
+    1.    直接调用
+    2.    继承式调用
+2.join&amp;&amp;Demo
+3.线程锁
+    1.    互斥锁：同时仅且只有一个线程在运行
+    2.    共享锁：同时可以有多个线程共同运行，可以实现一个线程池的效果
+    2.    递归锁
+    3.    Semaphore(信号量)
+</code></pre><h3 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h3><pre><code>#!/usr/local/env python3
 
 import threading,time
 
@@ -3393,8 +3308,7 @@ manager
 <p><a href="http://www.cnblogs.com/alex3714/articles/5188179.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5188179.html</a></p>
 <p>day07</p>
 <p><a href="http://www.cnblogs.com/alex3714/articles/5213184.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5213184.html</a></p>
-<h2 id="一、类的多态、继承"><a href="#一、类的多态、继承" class="headerlink" title="一、类的多态、继承"></a>一、类的多态、继承</h2><p>类的多态：统一接口调用</p>
-<pre><code>#!/usr/bin/env python
+<h2 id="一、类的多态、继承"><a href="#一、类的多态、继承" class="headerlink" title="一、类的多态、继承"></a>一、类的多态、继承</h2><h3 id="类的多态：统一接口调用"><a href="#类的多态：统一接口调用" class="headerlink" title="类的多态：统一接口调用"></a>类的多态：统一接口调用</h3><pre><code>#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 class Animal:
     def __init__(self, name):    # Constructor of the class
@@ -3414,8 +3328,7 @@ animals = [Cat(&apos;Missy&apos;),
 
 for animal in animals:
     print(animal.name + &apos;: &apos; + animal.talk())
-</code></pre><p>类的方法：示例</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="类的方法：示例"><a href="#类的方法：示例" class="headerlink" title="类的方法：示例"></a>类的方法：示例</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -3460,12 +3373,10 @@ c = Animal(&quot;swht&quot;)
 c.walk = 3
 del c.walk
 print(&quot;OUT:&quot;,c._Animal__num)  #特例情况下可以通过这种方式访问私有变量
-</code></pre><p><strong>经典类与新式类</strong></p>
-<p>经典类和新式类区别：</p>
+</code></pre><h3 id="经典类与新式类"><a href="#经典类与新式类" class="headerlink" title="经典类与新式类"></a>经典类与新式类</h3><p>经典类和新式类区别：</p>
 <p>经典类：使用深度优先进行继承<br>新式类：使用广度优先进行继承</p>
 <p>另外：经典类和新式类在python-3.X平台上会默认使用广度优先进行继承，而在python-2.X中则体现上述区别</p>
-<p>示例代码：</p>
-<pre><code>#!/usr/local/env python3
+<h3 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -3497,8 +3408,7 @@ d.f2()
 &apos;&apos;&apos;
 广度优先算法继承。先将B类中的f2()注释掉，D自动继承C.f2()，如果再将C类中的f2()，D自动继承A.f2()
 &apos;&apos;&apos;
-</code></pre><p><strong>类的特殊成员</strong></p>
-<pre><code>__doc__:查看类的注释
+</code></pre><h3 id="类的特殊成员"><a href="#类的特殊成员" class="headerlink" title="类的特殊成员"></a>类的特殊成员</h3><pre><code>__doc__:查看类的注释
 __init__:构造方法，通过类创建对象时，自动触发执行。
 __module__:表示当前操作的对象在那个模块
 __class__:表示当前操作的对象的类是什么
@@ -3509,8 +3419,7 @@ __metaclass__：通过改写metaclass方法达到构建自己需要的类的目�
 __dict__:以字典的形式显示类对象中的成员。使用场景：查看类中有多少成员（只显示类变量，不显示实例变量）
 __str__:如果一个类中定义了__str__方法，那么在打印 对象 时，默认输出该方法的返回值。
 __iter__:用于迭代器，之所以列表、字典、元组可以进行for循环，是因为类型内部定义了 __iter__ 
-</code></pre><p>示例：</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -3543,8 +3452,7 @@ print(chinese.__dict__) #{&apos;age&apos;: 27, &apos;name&apos;: &apos;swht&apos
 print(chinese.__module__) #__main__
 #__class__:表示当前操作的对象的类是什么
 print(chinese.__class__) #&lt;class &apos;__main__.People&apos;&gt;
-</code></pre><p><strong>构造类的方法</strong></p>
-<p><a href="http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python" target="_blank" rel="external">http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python</a></p>
+</code></pre><h3 id="构造类的方法"><a href="#构造类的方法" class="headerlink" title="构造类的方法"></a>构造类的方法</h3><p><a href="http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python" target="_blank" rel="external">http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python</a></p>
 <p>一句话构建一个类</p>
 <pre><code>Foo = type(&apos;Foo&apos;,(object,), {&apos;func&apos;: func}) 
     #type第一个参数：类名
@@ -3625,8 +3533,7 @@ server.run()
 # delattr(server,&quot;host&quot;) #删除实例的变量
 # delattr(Webserver,&apos;start&apos;)
 # server.start() #AttributeError: &apos;Webserver&apos; object has no attribute &apos;start&apos;
-</code></pre><h2 id="二、socket网络编程"><a href="#二、socket网络编程" class="headerlink" title="二、socket网络编程"></a>二、socket网络编程</h2><p>简单实现C/S交互实例：</p>
-<p>示例代码：</p>
+</code></pre><h2 id="二、socket网络编程"><a href="#二、socket网络编程" class="headerlink" title="二、socket网络编程"></a>二、socket网络编程</h2><h3 id="简单实现C-S交互实例："><a href="#简单实现C-S交互实例：" class="headerlink" title="简单实现C/S交互实例："></a>简单实现C/S交互实例：</h3><p>示例代码：</p>
 <pre><code>实现简单的client与server端数据交互（一句话）
 </code></pre><p>socket_server</p>
 <pre><code>#!/usr/local/env python3
@@ -3816,7 +3723,7 @@ ssh_client.close()
 <p><a href="http://www.cnblogs.com/alex3714/articles/5161349.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5161349.html</a></p>
 <p>day06</p>
 <p><a href="http://www.cnblogs.com/alex3714/articles/5188179.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5188179.html</a></p>
-<h3 id="一、模块回顾"><a href="#一、模块回顾" class="headerlink" title="一、模块回顾"></a>一、模块回顾</h3><h4 id="1-os模块"><a href="#1-os模块" class="headerlink" title="1. os模块"></a>1. os模块</h4><h4 id="2-sys模块"><a href="#2-sys模块" class="headerlink" title="2. sys模块"></a>2. sys模块</h4><h4 id="3-shutil模块"><a href="#3-shutil模块" class="headerlink" title="3. shutil模块"></a>3. shutil模块</h4><p>高级的 文件、文件夹、压缩包 处理模块</p>
+<h2 id="一、模块回顾"><a href="#一、模块回顾" class="headerlink" title="一、模块回顾"></a>一、模块回顾</h2><h3 id="1-os模块"><a href="#1-os模块" class="headerlink" title="1. os模块"></a>1. os模块</h3><h3 id="2-sys模块"><a href="#2-sys模块" class="headerlink" title="2. sys模块"></a>2. sys模块</h3><h3 id="3-shutil模块"><a href="#3-shutil模块" class="headerlink" title="3. shutil模块"></a>3. shutil模块</h3><p>高级的 文件、文件夹、压缩包 处理模块</p>
 <p>shutil.copyfileobj(fsrc, fdst[, length])</p>
 <pre><code>功能：将文件内容拷贝到另一个文件中，可以部分内容
 </code></pre><p>shutil.copyfile(src, dst)</p>
@@ -3834,7 +3741,7 @@ ssh_client.close()
 
 
 2. tarfile
-</code></pre><h4 id="4-shelve模块"><a href="#4-shelve模块" class="headerlink" title="4. shelve模块"></a>4. shelve模块</h4><p>二次封装pickle模块功能，对比pickle而言，shelve实现了按照‘键’来取值</p>
+</code></pre><h3 id="4-shelve模块"><a href="#4-shelve模块" class="headerlink" title="4. shelve模块"></a>4. shelve模块</h3><p>二次封装pickle模块功能，对比pickle而言，shelve实现了按照‘键’来取值</p>
 <p>示例：</p>
 <pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
@@ -3867,7 +3774,7 @@ print(b.n)
 c = shelve_load.get(&apos;t2&apos;)
 print(c.n)
 shelve_load.close()
-</code></pre><h4 id="5-configparser模块"><a href="#5-configparser模块" class="headerlink" title="5.configparser模块"></a>5.configparser模块</h4><p>示例：</p>
+</code></pre><h3 id="5-configparser模块"><a href="#5-configparser模块" class="headerlink" title="5.configparser模块"></a>5.configparser模块</h3><p>示例：</p>
 <pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -3936,7 +3843,7 @@ config.read(&apos;example.ini&apos;)
 # sec = config.has_section(&apos;swht&apos;)
 # sec = config.add_section(&apos;swht&apos;)
 # config.write(open(&apos;example_new1.ini&apos;, &quot;w&quot;))
-</code></pre><h4 id="6-hashlib模块"><a href="#6-hashlib模块" class="headerlink" title="6. hashlib模块"></a>6. hashlib模块</h4><p>该模块提供了多个算法对字符串进行加密操作。</p>
+</code></pre><h3 id="6-hashlib模块"><a href="#6-hashlib模块" class="headerlink" title="6. hashlib模块"></a>6. hashlib模块</h3><p>该模块提供了多个算法对字符串进行加密操作。</p>
 <p>示例代码：</p>
 <pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
@@ -4000,7 +3907,7 @@ hash.update(b&quot;swht&quot;)
 print(hash.hexdigest()) #c65d9bc3f37d6cfb9a9c959a18463bf4
 
 &apos;&apos;&apos;
-</code></pre><h4 id="7-subprocess模块"><a href="#7-subprocess模块" class="headerlink" title="7. subprocess模块"></a>7. subprocess模块</h4><pre><code>1. python2.7
+</code></pre><h3 id="7-subprocess模块"><a href="#7-subprocess模块" class="headerlink" title="7. subprocess模块"></a>7. subprocess模块</h3><pre><code>1. python2.7
 
     import subprocess
     #默认状态shell = False，必须使用一个列表的方式将shell命令传递进去
@@ -4058,17 +3965,16 @@ logger.critical(&apos;critical message&apos;)
 2016-02-20 16:53:27 [Test-Log] ERROR error message
 2016-02-20 16:53:27 [Test-Log] CRITICAL critical message
 &apos;&apos;&apos;
-</code></pre><h3 id="二、面向对象编程"><a href="#二、面向对象编程" class="headerlink" title="二、面向对象编程"></a>二、面向对象编程</h3><h4 id="1-面向对象的介绍"><a href="#1-面向对象的介绍" class="headerlink" title="1. 面向对象的介绍"></a>1. 面向对象的介绍</h4><pre><code>1.    不要写重复的代码
+</code></pre><h2 id="二、面向对象编程"><a href="#二、面向对象编程" class="headerlink" title="二、面向对象编程"></a>二、面向对象编程</h2><h3 id="1-面向对象的介绍"><a href="#1-面向对象的介绍" class="headerlink" title="1. 面向对象的介绍"></a>1. 面向对象的介绍</h3><pre><code>1.    不要写重复的代码
 2.    代码易扩展，程序遵循易读、易改的原则
-</code></pre><h4 id="2-面向对象的特性"><a href="#2-面向对象的特性" class="headerlink" title="2. 面向对象的特性"></a>2. 面向对象的特性</h4><pre><code>1.    封装
+</code></pre><h3 id="2-面向对象的特性"><a href="#2-面向对象的特性" class="headerlink" title="2. 面向对象的特性"></a>2. 面向对象的特性</h3><pre><code>1.    封装
 2.    继承
     1.    基类或父类或超类
     2.    子类或派生类
     一般情况下，一个子类只能有一个基类，但在python中，一个子类是可以继承多个基类，实现多重继承，可以通过多级继承来实现；继承的过程就是从一般到特殊的过程
 3.    多态
     实现接口的重用
-</code></pre><h4 id="3-类、方法"><a href="#3-类、方法" class="headerlink" title="3. 类、方法"></a>3. 类、方法</h4><p><strong>类 class</strong></p>
-<p>示例：</p>
+</code></pre><h3 id="3-类、方法"><a href="#3-类、方法" class="headerlink" title="3. 类、方法"></a>3. 类、方法</h3><h4 id="类-class"><a href="#类-class" class="headerlink" title="类 class"></a>类 class</h4><p>示例：</p>
 <pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -4116,8 +4022,7 @@ print(&quot;t1[weapon]当前值:&quot;,t1.weapon)
 <p><a href="http://www.cnblogs.com/alex3714/articles/5143440.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5143440.html</a></p>
 <p>day05</p>
 <p><a href="http://www.cnblogs.com/alex3714/articles/5161349.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5161349.html</a></p>
-<h3 id="一、正则深入"><a href="#一、正则深入" class="headerlink" title="一、正则深入"></a>一、正则深入</h3><p>re</p>
-<p>匹配数字开头</p>
+<h2 id="一、正则深入"><a href="#一、正则深入" class="headerlink" title="一、正则深入"></a>一、正则深入</h2><h3 id="re"><a href="#re" class="headerlink" title="re"></a>re</h3><p>匹配数字开头</p>
 <pre><code>import re
 #匹配以数字开头
 p = re.compile(&quot;^[0-9]&quot;) #使用compile进行编译正则表达式，在大量匹配处理的时候非常有效
@@ -4176,18 +4081,15 @@ print(type(m)) #&lt;class &apos;str&apos;&gt;
 string = &quot;swht&quot;
 m = re.search(&quot;[A-Z]&quot;,string,flags = re.I)
 print(m.group()) #s
-</code></pre><p>匹配手机号：</p>
-<pre><code>import re
+</code></pre><h4 id="匹配手机号："><a href="#匹配手机号：" class="headerlink" title="匹配手机号："></a>匹配手机号：</h4><pre><code>import re
 string = &quot;sdssaawa15865921165sdsdscf&quot;
 m = re.search(&quot;(1)([358]\d{9})&quot;,string)
 print(m.group())
-</code></pre><p>匹配IP地址:</p>
-<pre><code>import re
+</code></pre><h4 id="匹配IP地址"><a href="#匹配IP地址" class="headerlink" title="匹配IP地址:"></a>匹配IP地址:</h4><pre><code>import re
 ip_addr = &quot;inet 192.168.60.223 netmask 0xffffff00 broadcast 192.168.60.255&quot;
 IP = re.search(&quot;(([1-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-5][0-5])\.){3}[0-9]{1,3}&quot;,ip_addr)
 print(IP.group()) #192.168.60.223
-</code></pre><p>匹配邮箱地址：</p>
-<pre><code>import re
+</code></pre><h4 id="匹配邮箱地址："><a href="#匹配邮箱地址：" class="headerlink" title="匹配邮箱地址："></a>匹配邮箱地址：</h4><pre><code>import re
 emailstr = &quot;qingbo.song@gmail.com www.baidu.com&quot;
 email = re.search(&quot;^[a-z]([0-9a-z]|\.){4,20}@[0-9a-z]{0,10}\.[0-9a-z]{0,8}&quot;,emailstr)
 print(email.group()) #qingbo.song@gmail.com
@@ -4200,7 +4102,7 @@ if email:
     print(email.group()) #qingbo.song@gmail.com
 else:
     print(&quot;系统只接受gamil邮箱注册,感谢你的支持!&quot;)
-</code></pre><h3 id="二、冒泡排序算法"><a href="#二、冒泡排序算法" class="headerlink" title="二、冒泡排序算法"></a>二、冒泡排序算法</h3><pre><code>示例代码：
+</code></pre><h2 id="二、冒泡排序算法"><a href="#二、冒泡排序算法" class="headerlink" title="二、冒泡排序算法"></a>二、冒泡排序算法</h2><pre><code>示例代码：
 #!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -4241,8 +4143,7 @@ for i in range(1,len(data)):
             data[j+1] = data[j]
             data[j] = tmp
 print(data)
-</code></pre><h3 id="三、模块"><a href="#三、模块" class="headerlink" title="三、模块"></a>三、模块</h3><p><strong>模块介绍</strong></p>
-<pre><code>模块：用一坨代码实现了某个功能的代码集合。
+</code></pre><h2 id="三、模块"><a href="#三、模块" class="headerlink" title="三、模块"></a>三、模块</h2><h3 id="模块介绍"><a href="#模块介绍" class="headerlink" title="模块介绍"></a>模块介绍</h3><pre><code>模块：用一坨代码实现了某个功能的代码集合。
 类似于函数式编程和面向过程编程，函数式编程则完成一个功能，其他代码用来处理和代码间的耦合。可能需要多个.py的文件组成。
 
 模块类型：
@@ -4255,14 +4156,12 @@ print(data)
             3. pip
             4. easy_install
             5. 源码编译安装 python stup.py install
-</code></pre><p><strong>导入模块</strong></p>
-<pre><code>import module
+</code></pre><h3 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h3><pre><code>import module
 from module.xx.xx import xx
 from module.xx.xx import xx as rename  
 #不推荐下面的导入方式，如果被导入的模块中含有与当前文件中相同名称的函数，容易产生调用混乱。
 from module.xx.xx import * 
-</code></pre><h4 id="四、自定义模块"><a href="#四、自定义模块" class="headerlink" title="四、自定义模块"></a>四、自定义模块</h4><p> 模块框架</p>
-<pre><code>1. backend
+</code></pre><h2 id="四、自定义模块"><a href="#四、自定义模块" class="headerlink" title="四、自定义模块"></a>四、自定义模块</h2><h3 id="模块框架"><a href="#模块框架" class="headerlink" title="模块框架"></a>模块框架</h3><pre><code>1. backend
     1. logic
         handle.py
             #!/usr/local/env python3
@@ -4355,9 +4254,8 @@ from module.xx.xx import *
     from backend.logic import handle
 
     handle.home()
-</code></pre><h4 id="五、标准模块"><a href="#五、标准模块" class="headerlink" title="五、标准模块"></a>五、标准模块</h4><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/4963027.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/4963027.html</a></p>
-<p><strong>time &amp; datetime模块</strong></p>
-<pre><code>import time
+</code></pre><h2 id="五、标准模块"><a href="#五、标准模块" class="headerlink" title="五、标准模块"></a>五、标准模块</h2><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/4963027.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/4963027.html</a></p>
+<h3 id="time-amp-datetime模块"><a href="#time-amp-datetime模块" class="headerlink" title="time &amp; datetime模块"></a>time &amp; datetime模块</h3><pre><code>import time
 import datetime
 
 #作用：计算一个程序从执行到结束用的时间 
@@ -4405,9 +4303,7 @@ new_date = datetime.datetime.now() + datetime.timedelta(days=-10) #比现在减1
 new_date = datetime.datetime.now() + datetime.timedelta(hours=-10) #比现在减10小时
 new_date = datetime.datetime.now() + datetime.timedelta(seconds=120) #比现在+120s
 print(new_date)
-</code></pre><p><strong>random模块</strong></p>
-<p>产生随机数</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="random模块"><a href="#random模块" class="headerlink" title="random模块"></a>random模块</h3><h4 id="产生随机数"><a href="#产生随机数" class="headerlink" title="产生随机数"></a>产生随机数</h4><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -4429,8 +4325,7 @@ print(random.randrange(1,10))
 1
 9
 &apos;&apos;&apos;
-</code></pre><p>生成随机验证码</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h4 id="生成随机验证码"><a href="#生成随机验证码" class="headerlink" title="生成随机验证码"></a>生成随机验证码</h4><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -4452,8 +4347,7 @@ def checkcode(n):
     return checkcode
 
 print(checkcode(6))
-</code></pre><p><strong>os模块</strong></p>
-<p>提供对操作系统进行调用的接口</p>
+</code></pre><h3 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h3><p>提供对操作系统进行调用的接口</p>
 <pre><code>os.getcwd() 获取当前工作目录，即当前python脚本工作的目录路径
 os.chdir(&quot;dirname&quot;)  改变当前脚本工作目录；相当于shell下cd
 os.curdir  返回当前目录: (&apos;.&apos;)
@@ -4483,8 +4377,7 @@ os.path.isdir(path)  如果path是一个存在的目录，则返回True。否则
 os.path.join(path1[, path2[, ...]])  将多个路径组合后返回，第一个绝对路径之前的参数将被忽略
 os.path.getatime(path)  返回path所指向的文件或者目录的最后存取时间
 os.path.getmtime(path)  返回path所指向的文件或者目录的最后修改时间
-</code></pre><p><strong>sys模块</strong></p>
-<pre><code>sys.argv           命令行参数List，第一个元素是程序本身路径
+</code></pre><h3 id="sys模块"><a href="#sys模块" class="headerlink" title="sys模块"></a>sys模块</h3><pre><code>sys.argv           命令行参数List，第一个元素是程序本身路径
 sys.exit(n)        退出程序，正常退出时exit(0)
 sys.version        获取Python解释程序的版本信息
 sys.maxint         最大的Int值
@@ -4492,8 +4385,7 @@ sys.path           返回模块的搜索路径，初始化时使用PYTHONPATH环
 sys.platform       返回操作系统平台名称
 sys.stdout.write(&apos;please:&apos;)
 val = sys.stdin.readline()[:-1] #输入一行内容，减去后面的最后一个\n
-</code></pre><p>使用sys和time模块生成进度条</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h4 id="使用sys和time模块生成进度条"><a href="#使用sys和time模块生成进度条" class="headerlink" title="使用sys和time模块生成进度条"></a>使用sys和time模块生成进度条</h4><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -4516,23 +4408,16 @@ def processbar(rangenum):
             time.sleep(0.5)
 
 processbar(16)
-</code></pre><p><strong>json 和 pickle</strong> </p>
-<p>json和pickle是用于序列化的两个模块：</p>
-<pre><code>json：用于处理字符串和python数据类型间的转换
+</code></pre><h3 id="json-和-pickle"><a href="#json-和-pickle" class="headerlink" title="json 和 pickle"></a>json 和 pickle</h3><h4 id="json和pickle是用于序列化的两个模块："><a href="#json和pickle是用于序列化的两个模块：" class="headerlink" title="json和pickle是用于序列化的两个模块："></a>json和pickle是用于序列化的两个模块：</h4><pre><code>json：用于处理字符串和python数据类型间的转换
 pickle：用于处理python特有类型和python数据类型间的转换
-</code></pre><p>json</p>
-<pre><code>json模块提供了四个功能：dumps、dump、loads、load
+</code></pre><h4 id="json"><a href="#json" class="headerlink" title="json"></a>json</h4><pre><code>json模块提供了四个功能：dumps、dump、loads、load
 json在所有的语言中都通用，存取的直接字符
-</code></pre><p>pickle</p>
-<pre><code>pickle模块提供了四个功能：dumps、dump、loads、load
+</code></pre><h4 id="pickle"><a href="#pickle" class="headerlink" title="pickle"></a>pickle</h4><pre><code>pickle模块提供了四个功能：dumps、dump、loads、load
 在python中独有一个模块，存取二进制字符
 不仅仅可以序列化简单的字符、列表、字典，还能序列化函数、类以至于整个程序
-</code></pre><p>关于dump和dumps的区别</p>
-<pre><code>dump直接将序列化后的字符写到文件中，dumps是将序列化后的字符先赋给一个变量，然后再有write方法将其写入到文件中
-</code></pre><p>关于load和loads的区别</p>
-<pre><code>load直接从文件中读取内容，loads是从内存中获取文件的内容
-</code></pre><p><strong>shutil模块</strong></p>
-<p>高级的 文件、文件夹、压缩包 处理模块</p>
+</code></pre><h4 id="关于dump和dumps的区别"><a href="#关于dump和dumps的区别" class="headerlink" title="关于dump和dumps的区别"></a>关于dump和dumps的区别</h4><pre><code>dump直接将序列化后的字符写到文件中，dumps是将序列化后的字符先赋给一个变量，然后再有write方法将其写入到文件中
+</code></pre><h4 id="关于load和loads的区别"><a href="#关于load和loads的区别" class="headerlink" title="关于load和loads的区别"></a>关于load和loads的区别</h4><pre><code>load直接从文件中读取内容，loads是从内存中获取文件的内容
+</code></pre><h3 id="shutil模块"><a href="#shutil模块" class="headerlink" title="shutil模块"></a>shutil模块</h3><p>高级的 文件、文件夹、压缩包 处理模块</p>
 <p>shutil.copyfileobj(fsrc, fdst[, length])</p>
 <pre><code>功能：将文件内容拷贝到另一个文件中，可以部分内容
 </code></pre><p>shutil.copyfile(src, dst)</p>
@@ -4545,7 +4430,7 @@ json在所有的语言中都通用，存取的直接字符
 <pre><code>功能：拷贝文件和权限
 </code></pre><p>shutil.copy2(src, dst)</p>
 <pre><code>功能：拷贝文件和状态信息
-</code></pre><h4 id="作业需求："><a href="#作业需求：" class="headerlink" title="作业需求："></a>作业需求：</h4><pre><code>模拟实现一个ATM + 购物商城程序
+</code></pre><h3 id="作业需求："><a href="#作业需求：" class="headerlink" title="作业需求："></a>作业需求：</h3><pre><code>模拟实现一个ATM + 购物商城程序
 
 额度 15000或自定义
 实现购物商城，买东西加入 购物车，调用信用卡接口结账
@@ -4569,10 +4454,9 @@ ATM记录操作日志
 <p><a href="http://www.cnblogs.com/wupeiqi/articles/5133343.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5133343.html</a></p>
 <p>day04</p>
 <p><a href="http://www.cnblogs.com/alex3714/articles/5143440.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5143440.html</a></p>
-<h3 id="一、迭代器-amp-amp-生成器"><a href="#一、迭代器-amp-amp-生成器" class="headerlink" title="一、迭代器 &amp;&amp; 生成器"></a>一、迭代器 &amp;&amp; 生成器</h3><h4 id="1-迭代器"><a href="#1-迭代器" class="headerlink" title="1.迭代器"></a>1.迭代器</h4><pre><code>迭代器是访问集合元素的一种方式。迭代器只能往前不能往后。迭代器对象从集合的第一个集合开始访问，直到所有的元素被访问完。
+<h2 id="一、迭代器-amp-amp-生成器"><a href="#一、迭代器-amp-amp-生成器" class="headerlink" title="一、迭代器 &amp;&amp; 生成器"></a>一、迭代器 &amp;&amp; 生成器</h2><h3 id="1-迭代器"><a href="#1-迭代器" class="headerlink" title="1.迭代器"></a>1.迭代器</h3><pre><code>迭代器是访问集合元素的一种方式。迭代器只能往前不能往后。迭代器对象从集合的第一个集合开始访问，直到所有的元素被访问完。
 优点：不需要事先准备整个迭代过程中的所有元素
-</code></pre><p>测试代码</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h4 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h4><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -4590,12 +4474,11 @@ print(names.__next__())
     swht
     shen
     jack
-</code></pre><h4 id="2-生成器"><a href="#2-生成器" class="headerlink" title="2.生成器"></a>2.生成器</h4><pre><code>定义：generator，一个函数调用时返回一个迭代器，那这个函数就叫做生成器。
+</code></pre><h3 id="2-生成器"><a href="#2-生成器" class="headerlink" title="2.生成器"></a>2.生成器</h3><pre><code>定义：generator，一个函数调用时返回一个迭代器，那这个函数就叫做生成器。
 
 作用：yield实现函数中断，并保存函数中断时的状态。中断后，程序可以继续执行下面的代码，而且可以随时可以回头再执行之前中断的函数。
     可以通过yield实现在单线程的情况下实现并发运算的效果
-</code></pre><p>测试代码</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h4 id="测试代码-1"><a href="#测试代码-1" class="headerlink" title="测试代码"></a>测试代码</h4><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -4631,8 +4514,7 @@ print(ATM.__next__())
     你当前还有200元
     取款100元!
     100
-</code></pre><p>实现异步：【生产者-消费者模型】</p>
-<p>yield参数可以实现返回参数和接收参数，使用send方法可以将值传递到生成器中去</p>
+</code></pre><h3 id="实现异步：【生产者-消费者模型】"><a href="#实现异步：【生产者-消费者模型】" class="headerlink" title="实现异步：【生产者-消费者模型】"></a>实现异步：【生产者-消费者模型】</h3><p>yield参数可以实现返回参数和接收参数，使用send方法可以将值传递到生成器中去</p>
 <pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -4694,9 +4576,8 @@ shen 开始准备吃包子!
 **alex做了两个包子!**
 第[9]波包子来了,被[swht]吃了!
 第[9]波包子来了,被[shen]吃了!
-</code></pre><h3 id="二、装饰器"><a href="#二、装饰器" class="headerlink" title="二、装饰器"></a>二、装饰器</h3><pre><code>装饰器又叫语法塘
-</code></pre><p>装饰器调用原理</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h2 id="二、装饰器"><a href="#二、装饰器" class="headerlink" title="二、装饰器"></a>二、装饰器</h2><pre><code>装饰器又叫语法塘
+</code></pre><h3 id="装饰器调用原理"><a href="#装饰器调用原理" class="headerlink" title="装饰器调用原理"></a>装饰器调用原理</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -4717,8 +4598,7 @@ def moive(name):
 
 tv = login(tv)  #将tv函数的内存地址传递到login()函数中，然后将tv的内存地址返回并赋给变量tv
 tv(&quot;swht&quot;) #变量调用相当于函数的调用
-</code></pre><p>装饰器实现</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="装饰器实现"><a href="#装饰器实现" class="headerlink" title="装饰器实现"></a>装饰器实现</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -4743,8 +4623,7 @@ tv(&quot;swht&quot;)
 </code></pre><p>返回结果：</p>
 <pre><code>To passed!
 Welcome [swht] to TV page!
-</code></pre><p>多参数装饰器</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="多参数装饰器"><a href="#多参数装饰器" class="headerlink" title="多参数装饰器"></a>多参数装饰器</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -4782,8 +4661,7 @@ def Index(request,kargs):
     print(&apos;index&apos;)
 
 Index(&quot;swht&quot;,&quot;123&quot;)
-</code></pre><p>实现流程</p>
-<pre><code>&apos;&apos;&apos;
+</code></pre><h3 id="实现流程"><a href="#实现流程" class="headerlink" title="实现流程"></a>实现流程</h3><pre><code>&apos;&apos;&apos;
 1.程序运行，读取顺序 @Filter --&gt; Index()
 2.@Filter运行机制：
     1）将Before, After传递给Filter()，执行outer()；
@@ -4794,8 +4672,7 @@ Index(&quot;swht&quot;,&quot;123&quot;)
         3）执行after_func()即After()并判断返回值，打印after
 3.程序结束
 &apos;&apos;&apos;
-</code></pre><h3 id="三、递归"><a href="#三、递归" class="headerlink" title="三、递归"></a>三、递归</h3><p>演示递归进出过程：【栈的实现：后进先出】</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h2 id="三、递归"><a href="#三、递归" class="headerlink" title="三、递归"></a>三、递归</h2><h3 id="演示递归进出过程：【栈的实现：后进先出】"><a href="#演示递归进出过程：【栈的实现：后进先出】" class="headerlink" title="演示递归进出过程：【栈的实现：后进先出】"></a>演示递归进出过程：【栈的实现：后进先出】</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -4825,8 +4702,7 @@ res: 2.5
 n: 5.0
 res: 5.0
 n: 10
-</code></pre><p>斐波那契数列</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -4858,7 +4734,7 @@ sum(0,1,500)
 233
 377
 610
-</code></pre><h3 id="四、二分查找"><a href="#四、二分查找" class="headerlink" title="四、二分查找"></a>四、二分查找</h3><pre><code>#!/usr/local/env python3
+</code></pre><h2 id="四、二分查找"><a href="#四、二分查找" class="headerlink" title="四、二分查找"></a>四、二分查找</h2><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -4881,7 +4757,7 @@ def binary_search(data_source,find_num):
 if __name__ == &quot;__main__&quot;:
     data = list(range(1,90000))
     binary_search(data,65535)
-</code></pre><h3 id="五、二维数组"><a href="#五、二维数组" class="headerlink" title="五、二维数组"></a>五、二维数组</h3><p>二维数组的概念是在c、c++等语言中出现并定义，在python没有数组概念，对应的则是列表。所以我们这里称为二维数组则是对二维列表的称谓。</p>
+</code></pre><h2 id="五、二维数组"><a href="#五、二维数组" class="headerlink" title="五、二维数组"></a>五、二维数组</h2><p>二维数组的概念是在c、c++等语言中出现并定义，在python没有数组概念，对应的则是列表。所以我们这里称为二维数组则是对二维列表的称谓。</p>
 <p>需求：</p>
 <pre><code>转换二维数组
 初始列表：
@@ -4918,7 +4794,7 @@ for col in range(len(data)):
         data[col][row],data[row][col] = data[row][col],data[col][row]
 for i in data:
     print(i)
-</code></pre><h3 id="六、正则表达式"><a href="#六、正则表达式" class="headerlink" title="六、正则表达式"></a>六、正则表达式</h3><pre><code>熟悉Linux环境的朋友肯定熟悉，用来操作字符或者文本文件时操作的快速匹配语言。正则表达式是用于处理字符串的强大工具，拥有自己独特的语法以及一个独立的处理引擎，效率上可能不如str自带的方法，但功能十分强大。
+</code></pre><h2 id="六、正则表达式"><a href="#六、正则表达式" class="headerlink" title="六、正则表达式"></a>六、正则表达式</h2><pre><code>熟悉Linux环境的朋友肯定熟悉，用来操作字符或者文本文件时操作的快速匹配语言。正则表达式是用于处理字符串的强大工具，拥有自己独特的语法以及一个独立的处理引擎，效率上可能不如str自带的方法，但功能十分强大。
 </code></pre><p>语法：</p>
 <p><strong>一般字符</strong></p>
 <pre><code>匹配自身
@@ -4965,8 +4841,7 @@ if test12:
 #the same as top
 m = re.match(r&apos;hello&apos;, &apos;hello world!&apos;)
 print(m.group())
-</code></pre><p><strong>match</strong></p>
-<pre><code>match(string[,pos[endpos]])|re.match(patern,string[,flags]):
+</code></pre><h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><pre><code>match(string[,pos[endpos]])|re.match(patern,string[,flags]):
 从string的pos下标处起尝试匹配pattern；如果pattern结束时仍可匹配，则返回一个Match对象；如果匹配过程中pattern无法匹配，或者匹配未结束就已到达endpos，则返回None。 
 pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。
 （re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none.）
@@ -4999,8 +4874,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     matchObj.group() :  Cats are smarter than dogs
     matchObj.group(1) :  Cats
     matchObj.group(2) :  smarter
-</code></pre><p><strong>search</strong></p>
-<pre><code>功能：re.search 扫描整个字符串并返回第一个成功的匹配
+</code></pre><h3 id="search"><a href="#search" class="headerlink" title="search"></a>search</h3><pre><code>功能：re.search 扫描整个字符串并返回第一个成功的匹配
 语法：re.search(pattern, string, flags=0)
 参数：pattern 匹配的正则表达式
      string  要匹配的字符串
@@ -5028,8 +4902,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     # searchObj.group() :  Cats are smarter than dogs
     # searchObj.group(1) :  Cats
     # searchObj.group(2) :  smarter
-</code></pre><p><strong>对比match和search</strong></p>
-<pre><code>re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None；而re.search匹配整个字符串，直到找到一个匹配。
+</code></pre><h3 id="对比match和search"><a href="#对比match和search" class="headerlink" title="对比match和search"></a>对比match和search</h3><pre><code>re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None；而re.search匹配整个字符串，直到找到一个匹配。
 示例代码：
     import re
     line = &quot;Cats are smarter than dogs&quot;
@@ -5063,8 +4936,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     # Remove anything other than digits
     num3 = re.sub(r&apos;\D&apos;, &quot;&quot;, phone) #匹配非数字字符，然后删除
     print(&quot;Phone Num : &quot;, num3) #Phone Num :  2004959559
-</code></pre><p>作业：</p>
-<pre><code>计算器开发
+</code></pre><h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><pre><code>计算器开发
 
 1. 实现加减乘除及拓号优先级解析
 2. 用户输入 1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2) )等类似公式后，必须自己解析里面的(),+,-,*,/符号和公式，运算后得出结果，结果必须与真实的计算器所得出的结果一致
@@ -5080,7 +4952,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
 <p>课程大纲：</p>
 <p>day2<br><a href="http://www.cnblogs.com/wupeiqi/articles/5115190.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5115190.html</a></p>
 <p>day3<br><a href="http://www.cnblogs.com/wupeiqi/articles/5133343.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5133343.html</a></p>
-<h3 id="一、set集合"><a href="#一、set集合" class="headerlink" title="一、set集合"></a>一、set集合</h3><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5128066.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5128066.html</a></p>
+<h2 id="一、set集合"><a href="#一、set集合" class="headerlink" title="一、set集合"></a>一、set集合</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5128066.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5128066.html</a></p>
 <pre><code>优点：访问速度快；
      自带一套解决元素重复的解决方案
 </code></pre><p><strong>测试程序</strong></p>
@@ -5145,10 +5017,10 @@ new_dict = {
     for i in add_set:
         add_list.append({i:new_dict[i]})
         print(&quot;需要增加的列表:%s&quot; % add_list)
-</code></pre><h4 id="二、collection系列"><a href="#二、collection系列" class="headerlink" title="二、collection系列"></a>二、collection系列</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5137785.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5137785.html</a></p>
+</code></pre><h2 id="二、collection系列"><a href="#二、collection系列" class="headerlink" title="二、collection系列"></a>二、collection系列</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5137785.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5137785.html</a></p>
 <pre><code>不常用功能，需要进行模块功能导入:
     import collection
-</code></pre><h4 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h4><p>常用方法测试：</p>
+</code></pre><h3 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h3><p>常用方法测试：</p>
 <pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -5289,7 +5161,7 @@ Counter({&apos;h&apos;: 2, &apos;c&apos;: 1, &apos;i&apos;: 1, &apos;w&apos;: 1}
 <p><strong>常用操作</strong></p>
 <pre><code>说明：Counter继承dict的所有方法，常用的操作列在下面，仅供参考
 </code></pre><p><img src="http://i.imgur.com/5EmjmX2.png" alt=""></p>
-<h4 id="有序字典orderedDict"><a href="#有序字典orderedDict" class="headerlink" title="有序字典orderedDict"></a>有序字典orderedDict</h4><pre><code>有序字典继承字典的一切属性，只是在顺序上是有序的。
+<h3 id="有序字典orderedDict"><a href="#有序字典orderedDict" class="headerlink" title="有序字典orderedDict"></a>有序字典orderedDict</h3><pre><code>有序字典继承字典的一切属性，只是在顺序上是有序的。
 d = collections.OrderedDict({&apos;name&apos;:&apos;swht&apos;,&apos;age&apos;:18})
 print(d)
 返回结果：OrderedDict([(&apos;name&apos;, &apos;swht&apos;), (&apos;age&apos;, 18)])
@@ -5321,9 +5193,9 @@ l2 = d.values()
 l3 = d.items()
 print(l1,l2，l3)
 返回结果：odict_keys([&apos;address&apos;, &apos;age&apos;, &apos;name&apos;]) odict_values([&apos;shandong&apos;, 18, &apos;swht&apos;]) odict_items([(&apos;age&apos;, 18), (&apos;name&apos;, &apos;swht&apos;), (&apos;address&apos;, &apos;shandong&apos;)])
-</code></pre><h4 id="默认字典defaultdict"><a href="#默认字典defaultdict" class="headerlink" title="默认字典defaultdict"></a>默认字典defaultdict</h4><pre><code>defaultdict是对字典的类型的补充，他默认给字典的值设置了一个类型。创建一个默认字典，value值类型为列表.
+</code></pre><h3 id="默认字典defaultdict"><a href="#默认字典defaultdict" class="headerlink" title="默认字典defaultdict"></a>默认字典defaultdict</h3><pre><code>defaultdict是对字典的类型的补充，他默认给字典的值设置了一个类型。创建一个默认字典，value值类型为列表.
 dic = collections.defaultdict(list)
-</code></pre><h4 id="可命名元组nametuple"><a href="#可命名元组nametuple" class="headerlink" title="可命名元组nametuple"></a>可命名元组nametuple</h4><pre><code>没有现成的类，用户需要自行创建相应的类
+</code></pre><h3 id="可命名元组nametuple"><a href="#可命名元组nametuple" class="headerlink" title="可命名元组nametuple"></a>可命名元组nametuple</h3><pre><code>没有现成的类，用户需要自行创建相应的类
 </code></pre><p>测试代码</p>
 <pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
@@ -5337,7 +5209,7 @@ obj = MytupleClass(11,22,33)
 print(obj.x,obj.y,obj.z)
 返回结果：11 22 33
 总结：相当于在元组的基础上增加一个key，使其成为一个类字典的样子
-</code></pre><h4 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h4><p><img src="http://i.imgur.com/DnEPoMR.png" alt=""></p>
+</code></pre><h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p><img src="http://i.imgur.com/DnEPoMR.png" alt=""></p>
 <p>双向队列</p>
 <pre><code>下面两种方法都可以创建双向列表，虽然在最初的引用的类不同，但最后创建的类型 都是collections.deque
 #创建双向队列
@@ -5356,7 +5228,7 @@ import queue
 q = queue.Queue()
 print(type(q))
 #&lt;class &apos;queue.Queue&apos;&gt;
-</code></pre><h3 id="三、深浅拷贝"><a href="#三、深浅拷贝" class="headerlink" title="三、深浅拷贝"></a>三、深浅拷贝</h3><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5139015.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5139015.html</a></p>
+</code></pre><h2 id="三、深浅拷贝"><a href="#三、深浅拷贝" class="headerlink" title="三、深浅拷贝"></a>三、深浅拷贝</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5139015.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5139015.html</a></p>
 <pre><code>#对于 数字 和 字符串 而言，赋值、浅拷贝和深拷贝无意义，因为其永远指向同一个内存地址
     import copy
     a1 = 22255
@@ -5472,7 +5344,7 @@ print(type(q))
     #返回结果
     # old: {&apos;mem&apos;: [80], &apos;cpu&apos;: [50], &apos;disk&apos;: [80]}
     # 深拷贝: {&apos;mem&apos;: [80], &apos;cpu&apos;: [60], &apos;disk&apos;: [80]}
-</code></pre><h3 id="四、函数"><a href="#四、函数" class="headerlink" title="四、函数"></a>四、函数</h3><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5142957.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5142957.html</a></p>
+</code></pre><h2 id="四、函数"><a href="#四、函数" class="headerlink" title="四、函数"></a>四、函数</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5142957.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5142957.html</a></p>
 <pre><code>定义：
 
     #!/usr/local/env python3
@@ -5493,7 +5365,7 @@ print(type(q))
     #将f变量指向函数num_print，然后调用f()相当于调用num_print()
     f = num_print
     f()
-</code></pre><h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><pre><code>形参：函数中一个变量，在函数执行前无意义，在函数调用时必须指定实际参数。
+</code></pre><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><pre><code>形参：函数中一个变量，在函数执行前无意义，在函数调用时必须指定实际参数。
 实参：实际参数用户传递给所调用的函数的一个变量，其值赋值到函数中的形式参数，然后在函数中       作为变量参与函数执行
 默认参数：必须放在最后
     def show(a1,a2,a3 = 5):
@@ -5574,7 +5446,7 @@ d = {&apos;name&apos;:&apos;swht&apos;,&apos;acter&apos;:&apos;teacher&apos;}
 reault = show.format(**d)
 print(reault)
 #返回结果：swht is a teacher!
-</code></pre><h4 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h4><p><img src="http://i.imgur.com/ICv89lK.jpg" alt=""></p>
+</code></pre><h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p><img src="http://i.imgur.com/ICv89lK.jpg" alt=""></p>
 <pre><code>    功能：简单函数的表示方式
     func = lambda a:a+1
     函数名  关键字 形参：函数体
@@ -5583,7 +5455,7 @@ print(reault)
     f = lambda x:x + 1
     ret = f(4)
     print(ret)
-</code></pre><h4 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h4><p><img src="http://i.imgur.com/5so1j4e.png" alt=""></p>
+</code></pre><h3 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h3><p><img src="http://i.imgur.com/5so1j4e.png" alt=""></p>
 <p><strong>abs()</strong></p>
 <pre><code>功能：取绝对值
 &gt;&gt;&gt; abs(5)
@@ -6079,7 +5951,7 @@ random.randint(1,99) #从1-99中产生随机数
 <pre><code>功能：查看模块所在的位置
  __import__(&apos;random&apos;) #参数为一个字符串
 &lt;module &apos;random&apos; from &apos;D:\\Program Files\\Python\\Python35\\python35.zip\\random.pyc&apos;&gt;
-</code></pre><h4 id="open-函数"><a href="#open-函数" class="headerlink" title="open()函数"></a>open()函数</h4><p>博客参考：<a href="http://www.cnblogs.com/songqingbo/p/5102618.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5102618.html</a></p>
+</code></pre><h3 id="open-函数"><a href="#open-函数" class="headerlink" title="open()函数"></a>open()函数</h3><p>博客参考：<a href="http://www.cnblogs.com/songqingbo/p/5102618.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5102618.html</a></p>
 <p><strong>read()</strong></p>
 <pre><code>功能：读取文件中的所有内容，返回的类型是字节
 </code></pre><p><strong>readline()</strong></p>
@@ -6138,8 +6010,7 @@ files.close()
 写入多行：
 
     f.writeline(list_of_text_string)
-</code></pre><p>作业：</p>
-<pre><code>作业连接：http://www.cnblogs.com/wupeiqi/articles/4950799.html
+</code></pre><h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><pre><code>作业连接：http://www.cnblogs.com/wupeiqi/articles/4950799.html
 1. 用户输入一个字符串，将其转换成字典 使用json
 2. 增加一条记录
 3. （可选）删除一条
@@ -6221,16 +6092,16 @@ backend buy.oldboy.org
 <p>课程大纲地址： <a href="http://www.cnblogs.com/wupeiqi/articles/5115190.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5115190.html</a></p>
 <h3 id="python知识拾忆："><a href="#python知识拾忆：" class="headerlink" title="python知识拾忆："></a>python知识拾忆：</h3><p>Python2.x与Python3.x关于dict.keys()返回值的类型对比：</p>
 <p><img src="http://i.imgur.com/tieH6Vh.png" alt=""></p>
-<h4 id="一、python种类"><a href="#一、python种类" class="headerlink" title="一、python种类"></a>一、python种类</h4><p>关于Python的一些版本内部执行的一些原理。从原理上来看待执行快慢的类型，从而选择自己需要的去学习。目前而言，最火的就是cpython了，这也是官方版本的Python。后面出现的pypy渐渐崭露头角，用银角大王的话讲：这货日后指定会火…</p>
+<h2 id="一、python种类"><a href="#一、python种类" class="headerlink" title="一、python种类"></a>一、python种类</h2><p>关于Python的一些版本内部执行的一些原理。从原理上来看待执行快慢的类型，从而选择自己需要的去学习。目前而言，最火的就是cpython了，这也是官方版本的Python。后面出现的pypy渐渐崭露头角，用银角大王的话讲：这货日后指定会火…</p>
 <pre><code>1. cpython  使用c解释器生产.pyc(字节码)，然后转换成机器码，最后到cpu
 2. javapython java解释器--&gt;字节码--&gt;机器码--&gt;cpu
 3. IronPython C#解释器--&gt;字节码 --&gt; 机器码--&gt; cpu
 4. pypy  内部使用自己的解释器编译成字节码--&gt;机器码.最后在外部执行的时候直接是机器码，速度要快
 </code></pre><p>银角大王推荐阅读书：<strong>《python源码剖析》</strong></p>
-<h4 id="二、字节码"><a href="#二、字节码" class="headerlink" title="二、字节码"></a>二、字节码</h4><p>在Python内部字节码直接的转换过程如图：</p>
+<h2 id="二、字节码"><a href="#二、字节码" class="headerlink" title="二、字节码"></a>二、字节码</h2><p>在Python内部字节码直接的转换过程如图：</p>
 <p><img src="http://i.imgur.com/U6KPbcR.png" alt=""></p>
 <pre><code>python中进行字节码之间的转换流程大概是这样的：字节码类型转换从utf-8转换成gbk类型，首先需要执行解码变成Unicode类型，然后再由Unicode类型编码成gbk类型。[图片来源：银角大王课堂笔记]
-</code></pre><h4 id="三、字符串"><a href="#三、字符串" class="headerlink" title="三、字符串"></a>三、字符串</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126957.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126957.html</a></p>
+</code></pre><h2 id="三、字符串"><a href="#三、字符串" class="headerlink" title="三、字符串"></a>三、字符串</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126957.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126957.html</a></p>
 <p>字符串的常用操作包括但不限于以下操作：</p>
 <pre><code>字符串的替换、删除、截取、复制、连接、比较、查找、分割等
 </code></pre><p>这里将对字符串的内置操作方法进行总结归纳，重点是以示例的方式进行展示。</p>
@@ -6551,7 +6422,7 @@ print str.zfill(40)
 print str.zfill(50)
 返回结果：00000000this is string example....wow!!!
          000000000000000000this is string example....wow!!!
-</code></pre><h4 id="四、列表"><a href="#四、列表" class="headerlink" title="四、列表"></a>四、列表</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126943.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126943.html</a></p>
+</code></pre><h2 id="四、列表"><a href="#四、列表" class="headerlink" title="四、列表"></a>四、列表</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126943.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126943.html</a></p>
 <p>列表的基本操作示例展示：</p>
 <p><strong>append</strong></p>
 <pre><code>功能：列表追加元素
@@ -6644,7 +6515,7 @@ name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,[&apos;sddss&apos;,&apo
 name.sort() #报错的
 Traceback (most recent call last):
   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-</code></pre><h4 id="五、元组"><a href="#五、元组" class="headerlink" title="五、元组"></a>五、元组</h4><p>关于元组的常用操作，请参考：<a href="http://www.runoob.com/python/python-tuples.html" target="_blank" rel="external">http://www.runoob.com/python/python-tuples.html</a></p>
+</code></pre><h2 id="五、元组"><a href="#五、元组" class="headerlink" title="五、元组"></a>五、元组</h2><p>关于元组的常用操作，请参考：<a href="http://www.runoob.com/python/python-tuples.html" target="_blank" rel="external">http://www.runoob.com/python/python-tuples.html</a></p>
 <p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126947.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126947.html</a></p>
 <p>元组的元素不可修改    ，元组的元素的元素可修改</p>
 <p><strong>count(self,value)</strong></p>
@@ -6767,7 +6638,7 @@ tup.__repr__()
 tup = (55,77,85,55,96,99,22,55,)
 tup.__rmul__(2)
 返回结果：(55, 77, 85, 55, 96, 99, 22, 55, 55, 77, 85, 55, 96, 99, 22, 55)
-</code></pre><h4 id="六、字典"><a href="#六、字典" class="headerlink" title="六、字典"></a>六、字典</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5127044.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5127044.html</a></p>
+</code></pre><h2 id="六、字典"><a href="#六、字典" class="headerlink" title="六、字典"></a>六、字典</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5127044.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5127044.html</a></p>
 <p>字典的常用操作：</p>
 <p><strong>clear</strong></p>
 <pre><code>功能：清空字典
@@ -6838,7 +6709,7 @@ dict_li
 dict_li = {&apos;age&apos;: &apos;18&apos;, &apos;users&apos;: &apos;swht&apos;, &apos;address&apos;: &apos;山东&apos;}
 dict_li.values()
 返回结果：dict_values([&apos;18&apos;, &apos;swht&apos;, &apos;山东&apos;])
-</code></pre><h3 id="七、set集合"><a href="#七、set集合" class="headerlink" title="七、set集合"></a>七、set集合</h3><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5128066.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5128066.html</a></p>
+</code></pre><h2 id="七、set集合"><a href="#七、set集合" class="headerlink" title="七、set集合"></a>七、set集合</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5128066.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5128066.html</a></p>
 <pre><code>set集合是一个无序且不重复的集合。
 创建一个set集合：
     name = set(&apos;sdd&apos;)
@@ -6956,7 +6827,7 @@ name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
 name.update(&apos;df&apos;)
 name
 返回结果：{&apos;sd&apos;, &apos;d&apos;, &apos;f&apos;, &apos;s&apos;}
-</code></pre><h4 id="八、类与对象"><a href="#八、类与对象" class="headerlink" title="八、类与对象"></a>八、类与对象</h4><p><img src="http://i.imgur.com/O2wZsUd.png" alt=""></p>
+</code></pre><h2 id="八、类与对象"><a href="#八、类与对象" class="headerlink" title="八、类与对象"></a>八、类与对象</h2><p><img src="http://i.imgur.com/O2wZsUd.png" alt=""></p>
 <p>对象</p>
 <pre><code>python中一切事物皆对象,对象是一开始就有的,只是我们无法访问它。访问对象需要以变量的形式去访问（即创建变量指向到对象的，变量即对对象的引用）
 在python中，一个对象的特征也称为属性（attribute）。它所具有的行为也称为方法（method）
@@ -6966,7 +6837,7 @@ name
 比如人类，动物，植物等等，这些都是类的概念。 
 类是对象的模板或蓝图，类是对象的抽象化，对象是类的实例化。类不代表具体的事物，而对象表示具体的事物。
 类包含描述对象的方法。
-</code></pre><h4 id="int"><a href="#int" class="headerlink" title="int"></a>int</h4><pre><code>取绝对值：
+</code></pre><h3 id="int"><a href="#int" class="headerlink" title="int"></a>int</h3><pre><code>取绝对值：
     age = -19
     age.__abs__() #int类函数调用
     abs(-19) #内置函数方式操作
@@ -6977,8 +6848,7 @@ name
     a = 5，b=6
     a.__add__(b) #调用int的类函数add，相当于a + b  --&gt;11
     a + b #内置函数方式操作
-</code></pre><p>作业：</p>
-<pre><code>1. 博客整理
+</code></pre><h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><pre><code>1. 博客整理
 2. 购物商城实现
     1. 商品展示，价格
     2. 购物车添加商品（进行差异商品，同一种商品应该只存在一条数据）
@@ -6994,16 +6864,14 @@ name
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
 <p>作者注：</p>
 <p>　　python学习旅程正式开启，这一天将是一个新的开始。希望我们在python开发的道路上多多积累、多分享！</p>
-<p> 一、python简介</p>
-<pre><code>python应用 
+<h2 id="一、python简介"><a href="#一、python简介" class="headerlink" title="一、python简介"></a>一、python简介</h2><pre><code>python应用 
     Disgus Voitze Yelip Mozilla Quora  Redit
     豆瓣、知乎、sohu、腾讯、网易、金山、雅虎、Facebook、 Instagram（图片分享）
 python2与python3比较
     经过多年的发展，python3已经得到更多的第三方优秀函数库兼容，对比python2来说，python3表现出来的精简高效特性让开发者们跃跃欲试。
     另外，python2.7.11作为python2版本的最后一个版本，不再有新版本推出，这样官方更多的引导开发者快速的向python3版本上进行转移。
     在本次学习的过程中，我们会穿插在python2和python3两个版本之间进行学习，后续的测试代码在开头会明确标记python的使用版本。相关注释都会对python2和python3的差异进行描述。
-</code></pre><p>二、python安装</p>
-<pre><code>1.windows端安装
+</code></pre><h2 id="二、python安装"><a href="#二、python安装" class="headerlink" title="二、python安装"></a>二、python安装</h2><pre><code>1.windows端安装
     安装包下载地址：
         python2.7版本：
             https://www.python.org/ftp/python/2.7.11/python-2.7.11.amd64.msi
@@ -7030,8 +6898,7 @@ python2与python3比较
         sudo apt-get update
         # 安装python3
         sudo apt-get install python3.5
-</code></pre><p>三、基础概念</p>
-<pre><code>变量：Python 是动态类型语言， 也就是说不需要预先声明变量的类型。变量是对象的引用，变量只是将指针指向了对象所在的内存地址。变量的类型和值在赋值那一刻被初始化。
+</code></pre><h2 id="三、基础概念"><a href="#三、基础概念" class="headerlink" title="三、基础概念"></a>三、基础概念</h2><pre><code>变量：Python 是动态类型语言， 也就是说不需要预先声明变量的类型。变量是对象的引用，变量只是将指针指向了对象所在的内存地址。变量的类型和值在赋值那一刻被初始化。
 变量起名：
     1.显式--&gt;通俗易懂
     2.nums_of_alex_gf = 19 
@@ -7041,8 +6908,7 @@ python2与python3比较
     6.特殊字符不能作为变量名的组成部分
     7.不能使用空格
     8.关键字不能声明为变量
-</code></pre><p>四、运算符</p>
-<pre><code>算术运算符
+</code></pre><h2 id="四、运算符"><a href="#四、运算符" class="headerlink" title="四、运算符"></a>四、运算符</h2><pre><code>算术运算符
     +  -  *  /   //  %  **
     /:传统除法，将执行地板除法，
     //:浮点除法，即去尾法除法，保留位数与除数和被除数的小数位数有关 （取整除，返回商的部分）
@@ -7078,8 +6944,7 @@ python2与python3比较
     is  判断两个标识符是不是引用自同一个对象
         type(names) is list 判断某个变量值的类型（list、int、dic）
     is not 判断两个标识符是不是引用自不同对象
-</code></pre><p>五、字符编码</p>
-<pre><code>python2 中在输入中文字符的时候会报字符编码的错误，在python3中已经引入了Unicode（万国码、统一码、），它为每种语言中的每个字符设定了统一并且唯一的二进制编码，规定所有的字符和符号最少由16位二进制来表示（2个字节），即2 ** 16 = 65536
+</code></pre><h2 id="五、字符编码"><a href="#五、字符编码" class="headerlink" title="五、字符编码"></a>五、字符编码</h2><pre><code>python2 中在输入中文字符的时候会报字符编码的错误，在python3中已经引入了Unicode（万国码、统一码、），它为每种语言中的每个字符设定了统一并且唯一的二进制编码，规定所有的字符和符号最少由16位二进制来表示（2个字节），即2 ** 16 = 65536
 UTF-8，是对Unicode编码的压缩和优化，它不再使用最少2个字节，而是将所有的字符和符号进行分类：ascii码中的内容用1个字节保存，欧洲的字符用2个字节保存，东亚的字符用3个字节保存
 
 示例
@@ -7099,8 +6964,7 @@ python3
     print (&quot;你好！&quot;)
 
 总结：在python3中完全不用考虑字符编码的问题，python解释器会自行处理字符类型的问题
-</code></pre><p>六、python流程控制</p>
-<pre><code>流程控制分为两大类：条件判断和循环
+</code></pre><h2 id="六、python流程控制"><a href="#六、python流程控制" class="headerlink" title="六、python流程控制"></a>六、python流程控制</h2><pre><code>流程控制分为两大类：条件判断和循环
 其中循环又分为两类：for循环和while循环
 条件判断和循环可以单独存在，也可以嵌套使用，以处理更为复杂的逻辑问题。
 </code></pre><p>下面会从<em>if条件判断</em>、<em>for循环</em>和<em>while循环</em>进行代码示例：</p>
@@ -7150,8 +7014,7 @@ for count in range(3):
         break
 else:
     print(&quot;你输入的次数已达到3次,程序即将退出!&quot;)
-</code></pre><p>对比break和countnue</p>
-<pre><code>break是结束整个循环体，continue是结束单次循环
+</code></pre><h3 id="对比break和countnue"><a href="#对比break和countnue" class="headerlink" title="对比break和countnue"></a>对比break和countnue</h3><pre><code>break是结束整个循环体，continue是结束单次循环
 
 示例
     #!/usr/local/env python3
@@ -7168,8 +7031,7 @@ else:
                 x=2
                 x=3
     直接退出了整个while循环
-</code></pre><p>七、格式化输出</p>
-<pre><code>使用&apos;&apos;&apos;string&apos;&apos;&apos;可以很方便的将多行内容进行注释，另外这个符号还有一个功能，那就是文档描述的功能。一般而言，在程序的前面后有一个文档说明，包括作者信息，版本信息，功能等
+</code></pre><h2 id="七、格式化输出"><a href="#七、格式化输出" class="headerlink" title="七、格式化输出"></a>七、格式化输出</h2><pre><code>使用&apos;&apos;&apos;string&apos;&apos;&apos;可以很方便的将多行内容进行注释，另外这个符号还有一个功能，那就是文档描述的功能。一般而言，在程序的前面后有一个文档说明，包括作者信息，版本信息，功能等
 
 #!/usr/bin/env python
 &apos;&apos;&apos;
@@ -7188,8 +7050,7 @@ print(&apos;&apos;&apos;
               age:%s
               job:%s
     &apos;&apos;&apos; % (name,name,age,job))
-</code></pre><p>八、数据类型：</p>
-<p><em>列表转换成元组：tuple(name_list)</em></p>
+</code></pre><h2 id="八、数据类型："><a href="#八、数据类型：" class="headerlink" title="八、数据类型："></a>八、数据类型：</h2><p><em>列表转换成元组：tuple(name_list)</em></p>
 <p><em>元组转换成列表：list(元组_name)</em></p>
 <pre><code>1.数字
     int     整型
@@ -7300,15 +7161,13 @@ print(&apos;&apos;&apos;
         &gt;&gt;&gt; dict
         {}
     删除字典：del dict
-</code></pre><p>九、文件操作</p>
-<pre><code>简单操作：
+</code></pre><h2 id="九、文件操作"><a href="#九、文件操作" class="headerlink" title="九、文件操作"></a>九、文件操作</h2><pre><code>简单操作：
     filename = open(&quot;文件路径&quot;,&quot;模式&quot;)    #打开文件
     filename.write(&apos;内容&apos;)    #往文件中写入内容
     filename.read()        #一次性加载文件中的内容到内存
     filename.readlines()    #一次性加载所有的内容到内存，并根据行分割成字符串
     filename.close()    #关闭文件句柄
-</code></pre><p>十、作业</p>
-<pre><code>作业一：编写登录接口
+</code></pre><h2 id="十、作业"><a href="#十、作业" class="headerlink" title="十、作业"></a>十、作业</h2><pre><code>作业一：编写登录接口
 </code></pre><p>，</p>
 <pre><code>作业二：多级菜单    
 </code></pre>]]></content>

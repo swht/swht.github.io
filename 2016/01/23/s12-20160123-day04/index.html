@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html lang="zh-CN">
 <head>
 
     <!--[if lt IE 9]>
@@ -37,7 +37,7 @@ http://www.cnblogs.com/alex3714/articles/5143440.html
 <meta property="og:image" content="http://i.imgur.com/DDsI4dU.png">
 <meta property="og:image" content="http://i.imgur.com/Ga3Fdf1.png">
 <meta property="og:image" content="http://i.imgur.com/1qVGb25.png">
-<meta property="og:updated_time" content="2016-07-05T10:30:40.000Z">
+<meta property="og:updated_time" content="2016-07-07T03:14:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python自动化开发 day04">
 <meta name="twitter:description" content="Author:@南非波波
@@ -198,7 +198,7 @@ http://www.cnblogs.com/alex3714/articles/5143440.html
                             
                                 <a class="fa Email" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -284,7 +284,7 @@ http://www.cnblogs.com/alex3714/articles/5143440.html
                             
                                 <a class="fa Email" target="_blank" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" target="_blank" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -356,10 +356,9 @@ http://www.cnblogs.com/alex3714/articles/5143440.html
 <p><a href="http://www.cnblogs.com/wupeiqi/articles/5133343.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5133343.html</a></p>
 <p>day04</p>
 <p><a href="http://www.cnblogs.com/alex3714/articles/5143440.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5143440.html</a></p>
-<h3 id="一、迭代器-amp-amp-生成器"><a href="#一、迭代器-amp-amp-生成器" class="headerlink" title="一、迭代器 &amp;&amp; 生成器"></a>一、迭代器 &amp;&amp; 生成器</h3><h4 id="1-迭代器"><a href="#1-迭代器" class="headerlink" title="1.迭代器"></a>1.迭代器</h4><pre><code>迭代器是访问集合元素的一种方式。迭代器只能往前不能往后。迭代器对象从集合的第一个集合开始访问，直到所有的元素被访问完。
+<h2 id="一、迭代器-amp-amp-生成器"><a href="#一、迭代器-amp-amp-生成器" class="headerlink" title="一、迭代器 &amp;&amp; 生成器"></a>一、迭代器 &amp;&amp; 生成器</h2><h3 id="1-迭代器"><a href="#1-迭代器" class="headerlink" title="1.迭代器"></a>1.迭代器</h3><pre><code>迭代器是访问集合元素的一种方式。迭代器只能往前不能往后。迭代器对象从集合的第一个集合开始访问，直到所有的元素被访问完。
 优点：不需要事先准备整个迭代过程中的所有元素
-</code></pre><p>测试代码</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h4 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h4><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -377,12 +376,11 @@ print(names.__next__())
     swht
     shen
     jack
-</code></pre><h4 id="2-生成器"><a href="#2-生成器" class="headerlink" title="2.生成器"></a>2.生成器</h4><pre><code>定义：generator，一个函数调用时返回一个迭代器，那这个函数就叫做生成器。
+</code></pre><h3 id="2-生成器"><a href="#2-生成器" class="headerlink" title="2.生成器"></a>2.生成器</h3><pre><code>定义：generator，一个函数调用时返回一个迭代器，那这个函数就叫做生成器。
 
 作用：yield实现函数中断，并保存函数中断时的状态。中断后，程序可以继续执行下面的代码，而且可以随时可以回头再执行之前中断的函数。
     可以通过yield实现在单线程的情况下实现并发运算的效果
-</code></pre><p>测试代码</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h4 id="测试代码-1"><a href="#测试代码-1" class="headerlink" title="测试代码"></a>测试代码</h4><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -418,8 +416,7 @@ print(ATM.__next__())
     你当前还有200元
     取款100元!
     100
-</code></pre><p>实现异步：【生产者-消费者模型】</p>
-<p>yield参数可以实现返回参数和接收参数，使用send方法可以将值传递到生成器中去</p>
+</code></pre><h3 id="实现异步：【生产者-消费者模型】"><a href="#实现异步：【生产者-消费者模型】" class="headerlink" title="实现异步：【生产者-消费者模型】"></a>实现异步：【生产者-消费者模型】</h3><p>yield参数可以实现返回参数和接收参数，使用send方法可以将值传递到生成器中去</p>
 <pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -481,9 +478,8 @@ shen 开始准备吃包子!
 **alex做了两个包子!**
 第[9]波包子来了,被[swht]吃了!
 第[9]波包子来了,被[shen]吃了!
-</code></pre><h3 id="二、装饰器"><a href="#二、装饰器" class="headerlink" title="二、装饰器"></a>二、装饰器</h3><pre><code>装饰器又叫语法塘
-</code></pre><p>装饰器调用原理</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h2 id="二、装饰器"><a href="#二、装饰器" class="headerlink" title="二、装饰器"></a>二、装饰器</h2><pre><code>装饰器又叫语法塘
+</code></pre><h3 id="装饰器调用原理"><a href="#装饰器调用原理" class="headerlink" title="装饰器调用原理"></a>装饰器调用原理</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -504,8 +500,7 @@ def moive(name):
 
 tv = login(tv)  #将tv函数的内存地址传递到login()函数中，然后将tv的内存地址返回并赋给变量tv
 tv(&quot;swht&quot;) #变量调用相当于函数的调用
-</code></pre><p>装饰器实现</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="装饰器实现"><a href="#装饰器实现" class="headerlink" title="装饰器实现"></a>装饰器实现</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -530,8 +525,7 @@ tv(&quot;swht&quot;)
 </code></pre><p>返回结果：</p>
 <pre><code>To passed!
 Welcome [swht] to TV page!
-</code></pre><p>多参数装饰器</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="多参数装饰器"><a href="#多参数装饰器" class="headerlink" title="多参数装饰器"></a>多参数装饰器</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -569,8 +563,7 @@ def Index(request,kargs):
     print(&apos;index&apos;)
 
 Index(&quot;swht&quot;,&quot;123&quot;)
-</code></pre><p>实现流程</p>
-<pre><code>&apos;&apos;&apos;
+</code></pre><h3 id="实现流程"><a href="#实现流程" class="headerlink" title="实现流程"></a>实现流程</h3><pre><code>&apos;&apos;&apos;
 1.程序运行，读取顺序 @Filter --&gt; Index()
 2.@Filter运行机制：
     1）将Before, After传递给Filter()，执行outer()；
@@ -581,8 +574,7 @@ Index(&quot;swht&quot;,&quot;123&quot;)
         3）执行after_func()即After()并判断返回值，打印after
 3.程序结束
 &apos;&apos;&apos;
-</code></pre><h3 id="三、递归"><a href="#三、递归" class="headerlink" title="三、递归"></a>三、递归</h3><p>演示递归进出过程：【栈的实现：后进先出】</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h2 id="三、递归"><a href="#三、递归" class="headerlink" title="三、递归"></a>三、递归</h2><h3 id="演示递归进出过程：【栈的实现：后进先出】"><a href="#演示递归进出过程：【栈的实现：后进先出】" class="headerlink" title="演示递归进出过程：【栈的实现：后进先出】"></a>演示递归进出过程：【栈的实现：后进先出】</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -612,8 +604,7 @@ res: 2.5
 n: 5.0
 res: 5.0
 n: 10
-</code></pre><p>斐波那契数列</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -645,7 +636,7 @@ sum(0,1,500)
 233
 377
 610
-</code></pre><h3 id="四、二分查找"><a href="#四、二分查找" class="headerlink" title="四、二分查找"></a>四、二分查找</h3><pre><code>#!/usr/local/env python3
+</code></pre><h2 id="四、二分查找"><a href="#四、二分查找" class="headerlink" title="四、二分查找"></a>四、二分查找</h2><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -668,7 +659,7 @@ def binary_search(data_source,find_num):
 if __name__ == &quot;__main__&quot;:
     data = list(range(1,90000))
     binary_search(data,65535)
-</code></pre><h3 id="五、二维数组"><a href="#五、二维数组" class="headerlink" title="五、二维数组"></a>五、二维数组</h3><p>二维数组的概念是在c、c++等语言中出现并定义，在python没有数组概念，对应的则是列表。所以我们这里称为二维数组则是对二维列表的称谓。</p>
+</code></pre><h2 id="五、二维数组"><a href="#五、二维数组" class="headerlink" title="五、二维数组"></a>五、二维数组</h2><p>二维数组的概念是在c、c++等语言中出现并定义，在python没有数组概念，对应的则是列表。所以我们这里称为二维数组则是对二维列表的称谓。</p>
 <p>需求：</p>
 <pre><code>转换二维数组
 初始列表：
@@ -705,7 +696,7 @@ for col in range(len(data)):
         data[col][row],data[row][col] = data[row][col],data[col][row]
 for i in data:
     print(i)
-</code></pre><h3 id="六、正则表达式"><a href="#六、正则表达式" class="headerlink" title="六、正则表达式"></a>六、正则表达式</h3><pre><code>熟悉Linux环境的朋友肯定熟悉，用来操作字符或者文本文件时操作的快速匹配语言。正则表达式是用于处理字符串的强大工具，拥有自己独特的语法以及一个独立的处理引擎，效率上可能不如str自带的方法，但功能十分强大。
+</code></pre><h2 id="六、正则表达式"><a href="#六、正则表达式" class="headerlink" title="六、正则表达式"></a>六、正则表达式</h2><pre><code>熟悉Linux环境的朋友肯定熟悉，用来操作字符或者文本文件时操作的快速匹配语言。正则表达式是用于处理字符串的强大工具，拥有自己独特的语法以及一个独立的处理引擎，效率上可能不如str自带的方法，但功能十分强大。
 </code></pre><p>语法：</p>
 <p><strong>一般字符</strong></p>
 <pre><code>匹配自身
@@ -752,8 +743,7 @@ if test12:
 #the same as top
 m = re.match(r&apos;hello&apos;, &apos;hello world!&apos;)
 print(m.group())
-</code></pre><p><strong>match</strong></p>
-<pre><code>match(string[,pos[endpos]])|re.match(patern,string[,flags]):
+</code></pre><h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><pre><code>match(string[,pos[endpos]])|re.match(patern,string[,flags]):
 从string的pos下标处起尝试匹配pattern；如果pattern结束时仍可匹配，则返回一个Match对象；如果匹配过程中pattern无法匹配，或者匹配未结束就已到达endpos，则返回None。 
 pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。
 （re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none.）
@@ -786,8 +776,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     matchObj.group() :  Cats are smarter than dogs
     matchObj.group(1) :  Cats
     matchObj.group(2) :  smarter
-</code></pre><p><strong>search</strong></p>
-<pre><code>功能：re.search 扫描整个字符串并返回第一个成功的匹配
+</code></pre><h3 id="search"><a href="#search" class="headerlink" title="search"></a>search</h3><pre><code>功能：re.search 扫描整个字符串并返回第一个成功的匹配
 语法：re.search(pattern, string, flags=0)
 参数：pattern 匹配的正则表达式
      string  要匹配的字符串
@@ -815,8 +804,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     # searchObj.group() :  Cats are smarter than dogs
     # searchObj.group(1) :  Cats
     # searchObj.group(2) :  smarter
-</code></pre><p><strong>对比match和search</strong></p>
-<pre><code>re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None；而re.search匹配整个字符串，直到找到一个匹配。
+</code></pre><h3 id="对比match和search"><a href="#对比match和search" class="headerlink" title="对比match和search"></a>对比match和search</h3><pre><code>re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None；而re.search匹配整个字符串，直到找到一个匹配。
 示例代码：
     import re
     line = &quot;Cats are smarter than dogs&quot;
@@ -850,8 +838,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     # Remove anything other than digits
     num3 = re.sub(r&apos;\D&apos;, &quot;&quot;, phone) #匹配非数字字符，然后删除
     print(&quot;Phone Num : &quot;, num3) #Phone Num :  2004959559
-</code></pre><p>作业：</p>
-<pre><code>计算器开发
+</code></pre><h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><pre><code>计算器开发
 
 1. 实现加减乘除及拓号优先级解析
 2. 用户输入 1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2) )等类似公式后，必须自己解析里面的(),+,-,*,/符号和公式，运算后得出结果，结果必须与真实的计算器所得出的结果一致
@@ -868,7 +855,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
         <p><span>本文标题:</span><a href="/2016/01/23/s12-20160123-day04/">python自动化开发 day04</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">南非波波</a></p>
         <p><span>发布时间:</span>2016-01-23, 15:30:00</p>
-        <p><span>最后更新:</span>2016-07-05, 18:30:40</p>
+        <p><span>最后更新:</span>2016-07-07, 11:14:56</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/01/23/s12-20160123-day04/" title="python自动化开发 day04">http://blog.songqingbo.cn/2016/01/23/s12-20160123-day04/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.songqingbo.cn/2016/01/23/s12-20160123-day04/　　作者: 南非波波" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -904,7 +891,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、迭代器-amp-amp-生成器"><span class="toc-number">1.</span> <span class="toc-text">一、迭代器 && 生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-迭代器"><span class="toc-number">1.1.</span> <span class="toc-text">1.迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-生成器"><span class="toc-number">1.2.</span> <span class="toc-text">2.生成器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、装饰器"><span class="toc-number">2.</span> <span class="toc-text">二、装饰器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、递归"><span class="toc-number">3.</span> <span class="toc-text">三、递归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、二分查找"><span class="toc-number">4.</span> <span class="toc-text">四、二分查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、二维数组"><span class="toc-number">5.</span> <span class="toc-text">五、二维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、正则表达式"><span class="toc-number">6.</span> <span class="toc-text">六、正则表达式</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、迭代器-amp-amp-生成器"><span class="toc-text">一、迭代器 && 生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-迭代器"><span class="toc-text">1.迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#测试代码"><span class="toc-text">测试代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-生成器"><span class="toc-text">2.生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#测试代码-1"><span class="toc-text">测试代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现异步：【生产者-消费者模型】"><span class="toc-text">实现异步：【生产者-消费者模型】</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、装饰器"><span class="toc-text">二、装饰器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#装饰器调用原理"><span class="toc-text">装饰器调用原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#装饰器实现"><span class="toc-text">装饰器实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多参数装饰器"><span class="toc-text">多参数装饰器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现流程"><span class="toc-text">实现流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、递归"><span class="toc-text">三、递归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#演示递归进出过程：【栈的实现：后进先出】"><span class="toc-text">演示递归进出过程：【栈的实现：后进先出】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#斐波那契数列"><span class="toc-text">斐波那契数列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、二分查找"><span class="toc-text">四、二分查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、二维数组"><span class="toc-text">五、二维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、正则表达式"><span class="toc-text">六、正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#match"><span class="toc-text">match</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#search"><span class="toc-text">search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对比match和search"><span class="toc-text">对比match和search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作业："><span class="toc-text">作业：</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -921,7 +908,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
     </script>
 
 

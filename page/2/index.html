@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html lang="zh-CN">
 <head>
 
     <!--[if lt IE 9]>
@@ -179,7 +179,7 @@
                             
                                 <a class="fa Email" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -265,7 +265,7 @@
                             
                                 <a class="fa Email" target="_blank" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" target="_blank" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -328,8 +328,7 @@
 <p><a href="http://www.cnblogs.com/alex3714/articles/5143440.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5143440.html</a></p>
 <p>day05</p>
 <p><a href="http://www.cnblogs.com/alex3714/articles/5161349.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5161349.html</a></p>
-<h3 id="一、正则深入"><a href="#一、正则深入" class="headerlink" title="一、正则深入"></a>一、正则深入</h3><p>re</p>
-<p>匹配数字开头</p>
+<h2 id="一、正则深入"><a href="#一、正则深入" class="headerlink" title="一、正则深入"></a>一、正则深入</h2><h3 id="re"><a href="#re" class="headerlink" title="re"></a>re</h3><p>匹配数字开头</p>
 <pre><code>import re
 #匹配以数字开头
 p = re.compile(&quot;^[0-9]&quot;) #使用compile进行编译正则表达式，在大量匹配处理的时候非常有效
@@ -388,18 +387,15 @@ print(type(m)) #&lt;class &apos;str&apos;&gt;
 string = &quot;swht&quot;
 m = re.search(&quot;[A-Z]&quot;,string,flags = re.I)
 print(m.group()) #s
-</code></pre><p>匹配手机号：</p>
-<pre><code>import re
+</code></pre><h4 id="匹配手机号："><a href="#匹配手机号：" class="headerlink" title="匹配手机号："></a>匹配手机号：</h4><pre><code>import re
 string = &quot;sdssaawa15865921165sdsdscf&quot;
 m = re.search(&quot;(1)([358]\d{9})&quot;,string)
 print(m.group())
-</code></pre><p>匹配IP地址:</p>
-<pre><code>import re
+</code></pre><h4 id="匹配IP地址"><a href="#匹配IP地址" class="headerlink" title="匹配IP地址:"></a>匹配IP地址:</h4><pre><code>import re
 ip_addr = &quot;inet 192.168.60.223 netmask 0xffffff00 broadcast 192.168.60.255&quot;
 IP = re.search(&quot;(([1-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-5][0-5])\.){3}[0-9]{1,3}&quot;,ip_addr)
 print(IP.group()) #192.168.60.223
-</code></pre><p>匹配邮箱地址：</p>
-<pre><code>import re
+</code></pre><h4 id="匹配邮箱地址："><a href="#匹配邮箱地址：" class="headerlink" title="匹配邮箱地址："></a>匹配邮箱地址：</h4><pre><code>import re
 emailstr = &quot;qingbo.song@gmail.com www.baidu.com&quot;
 email = re.search(&quot;^[a-z]([0-9a-z]|\.){4,20}@[0-9a-z]{0,10}\.[0-9a-z]{0,8}&quot;,emailstr)
 print(email.group()) #qingbo.song@gmail.com
@@ -412,7 +408,7 @@ if email:
     print(email.group()) #qingbo.song@gmail.com
 else:
     print(&quot;系统只接受gamil邮箱注册,感谢你的支持!&quot;)
-</code></pre><h3 id="二、冒泡排序算法"><a href="#二、冒泡排序算法" class="headerlink" title="二、冒泡排序算法"></a>二、冒泡排序算法</h3><pre><code>示例代码：
+</code></pre><h2 id="二、冒泡排序算法"><a href="#二、冒泡排序算法" class="headerlink" title="二、冒泡排序算法"></a>二、冒泡排序算法</h2><pre><code>示例代码：
 #!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -453,8 +449,7 @@ for i in range(1,len(data)):
             data[j+1] = data[j]
             data[j] = tmp
 print(data)
-</code></pre><h3 id="三、模块"><a href="#三、模块" class="headerlink" title="三、模块"></a>三、模块</h3><p><strong>模块介绍</strong></p>
-<pre><code>模块：用一坨代码实现了某个功能的代码集合。
+</code></pre><h2 id="三、模块"><a href="#三、模块" class="headerlink" title="三、模块"></a>三、模块</h2><h3 id="模块介绍"><a href="#模块介绍" class="headerlink" title="模块介绍"></a>模块介绍</h3><pre><code>模块：用一坨代码实现了某个功能的代码集合。
 类似于函数式编程和面向过程编程，函数式编程则完成一个功能，其他代码用来处理和代码间的耦合。可能需要多个.py的文件组成。
 
 模块类型：
@@ -467,14 +462,12 @@ print(data)
             3. pip
             4. easy_install
             5. 源码编译安装 python stup.py install
-</code></pre><p><strong>导入模块</strong></p>
-<pre><code>import module
+</code></pre><h3 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h3><pre><code>import module
 from module.xx.xx import xx
 from module.xx.xx import xx as rename  
 #不推荐下面的导入方式，如果被导入的模块中含有与当前文件中相同名称的函数，容易产生调用混乱。
 from module.xx.xx import * 
-</code></pre><h4 id="四、自定义模块"><a href="#四、自定义模块" class="headerlink" title="四、自定义模块"></a>四、自定义模块</h4><p> 模块框架</p>
-<pre><code>1. backend
+</code></pre><h2 id="四、自定义模块"><a href="#四、自定义模块" class="headerlink" title="四、自定义模块"></a>四、自定义模块</h2><h3 id="模块框架"><a href="#模块框架" class="headerlink" title="模块框架"></a>模块框架</h3><pre><code>1. backend
     1. logic
         handle.py
             #!/usr/local/env python3
@@ -567,9 +560,8 @@ from module.xx.xx import *
     from backend.logic import handle
 
     handle.home()
-</code></pre><h4 id="五、标准模块"><a href="#五、标准模块" class="headerlink" title="五、标准模块"></a>五、标准模块</h4><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/4963027.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/4963027.html</a></p>
-<p><strong>time &amp; datetime模块</strong></p>
-<pre><code>import time
+</code></pre><h2 id="五、标准模块"><a href="#五、标准模块" class="headerlink" title="五、标准模块"></a>五、标准模块</h2><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/4963027.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/4963027.html</a></p>
+<h3 id="time-amp-datetime模块"><a href="#time-amp-datetime模块" class="headerlink" title="time &amp; datetime模块"></a>time &amp; datetime模块</h3><pre><code>import time
 import datetime
 
 #作用：计算一个程序从执行到结束用的时间 
@@ -617,9 +609,7 @@ new_date = datetime.datetime.now() + datetime.timedelta(days=-10) #比现在减1
 new_date = datetime.datetime.now() + datetime.timedelta(hours=-10) #比现在减10小时
 new_date = datetime.datetime.now() + datetime.timedelta(seconds=120) #比现在+120s
 print(new_date)
-</code></pre><p><strong>random模块</strong></p>
-<p>产生随机数</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="random模块"><a href="#random模块" class="headerlink" title="random模块"></a>random模块</h3><h4 id="产生随机数"><a href="#产生随机数" class="headerlink" title="产生随机数"></a>产生随机数</h4><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -641,8 +631,7 @@ print(random.randrange(1,10))
 1
 9
 &apos;&apos;&apos;
-</code></pre><p>生成随机验证码</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h4 id="生成随机验证码"><a href="#生成随机验证码" class="headerlink" title="生成随机验证码"></a>生成随机验证码</h4><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -664,8 +653,7 @@ def checkcode(n):
     return checkcode
 
 print(checkcode(6))
-</code></pre><p><strong>os模块</strong></p>
-<p>提供对操作系统进行调用的接口</p>
+</code></pre><h3 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h3><p>提供对操作系统进行调用的接口</p>
 <pre><code>os.getcwd() 获取当前工作目录，即当前python脚本工作的目录路径
 os.chdir(&quot;dirname&quot;)  改变当前脚本工作目录；相当于shell下cd
 os.curdir  返回当前目录: (&apos;.&apos;)
@@ -695,8 +683,7 @@ os.path.isdir(path)  如果path是一个存在的目录，则返回True。否则
 os.path.join(path1[, path2[, ...]])  将多个路径组合后返回，第一个绝对路径之前的参数将被忽略
 os.path.getatime(path)  返回path所指向的文件或者目录的最后存取时间
 os.path.getmtime(path)  返回path所指向的文件或者目录的最后修改时间
-</code></pre><p><strong>sys模块</strong></p>
-<pre><code>sys.argv           命令行参数List，第一个元素是程序本身路径
+</code></pre><h3 id="sys模块"><a href="#sys模块" class="headerlink" title="sys模块"></a>sys模块</h3><pre><code>sys.argv           命令行参数List，第一个元素是程序本身路径
 sys.exit(n)        退出程序，正常退出时exit(0)
 sys.version        获取Python解释程序的版本信息
 sys.maxint         最大的Int值
@@ -704,8 +691,7 @@ sys.path           返回模块的搜索路径，初始化时使用PYTHONPATH环
 sys.platform       返回操作系统平台名称
 sys.stdout.write(&apos;please:&apos;)
 val = sys.stdin.readline()[:-1] #输入一行内容，减去后面的最后一个\n
-</code></pre><p>使用sys和time模块生成进度条</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h4 id="使用sys和time模块生成进度条"><a href="#使用sys和time模块生成进度条" class="headerlink" title="使用sys和time模块生成进度条"></a>使用sys和time模块生成进度条</h4><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -728,23 +714,16 @@ def processbar(rangenum):
             time.sleep(0.5)
 
 processbar(16)
-</code></pre><p><strong>json 和 pickle</strong> </p>
-<p>json和pickle是用于序列化的两个模块：</p>
-<pre><code>json：用于处理字符串和python数据类型间的转换
+</code></pre><h3 id="json-和-pickle"><a href="#json-和-pickle" class="headerlink" title="json 和 pickle"></a>json 和 pickle</h3><h4 id="json和pickle是用于序列化的两个模块："><a href="#json和pickle是用于序列化的两个模块：" class="headerlink" title="json和pickle是用于序列化的两个模块："></a>json和pickle是用于序列化的两个模块：</h4><pre><code>json：用于处理字符串和python数据类型间的转换
 pickle：用于处理python特有类型和python数据类型间的转换
-</code></pre><p>json</p>
-<pre><code>json模块提供了四个功能：dumps、dump、loads、load
+</code></pre><h4 id="json"><a href="#json" class="headerlink" title="json"></a>json</h4><pre><code>json模块提供了四个功能：dumps、dump、loads、load
 json在所有的语言中都通用，存取的直接字符
-</code></pre><p>pickle</p>
-<pre><code>pickle模块提供了四个功能：dumps、dump、loads、load
+</code></pre><h4 id="pickle"><a href="#pickle" class="headerlink" title="pickle"></a>pickle</h4><pre><code>pickle模块提供了四个功能：dumps、dump、loads、load
 在python中独有一个模块，存取二进制字符
 不仅仅可以序列化简单的字符、列表、字典，还能序列化函数、类以至于整个程序
-</code></pre><p>关于dump和dumps的区别</p>
-<pre><code>dump直接将序列化后的字符写到文件中，dumps是将序列化后的字符先赋给一个变量，然后再有write方法将其写入到文件中
-</code></pre><p>关于load和loads的区别</p>
-<pre><code>load直接从文件中读取内容，loads是从内存中获取文件的内容
-</code></pre><p><strong>shutil模块</strong></p>
-<p>高级的 文件、文件夹、压缩包 处理模块</p>
+</code></pre><h4 id="关于dump和dumps的区别"><a href="#关于dump和dumps的区别" class="headerlink" title="关于dump和dumps的区别"></a>关于dump和dumps的区别</h4><pre><code>dump直接将序列化后的字符写到文件中，dumps是将序列化后的字符先赋给一个变量，然后再有write方法将其写入到文件中
+</code></pre><h4 id="关于load和loads的区别"><a href="#关于load和loads的区别" class="headerlink" title="关于load和loads的区别"></a>关于load和loads的区别</h4><pre><code>load直接从文件中读取内容，loads是从内存中获取文件的内容
+</code></pre><h3 id="shutil模块"><a href="#shutil模块" class="headerlink" title="shutil模块"></a>shutil模块</h3><p>高级的 文件、文件夹、压缩包 处理模块</p>
 <p>shutil.copyfileobj(fsrc, fdst[, length])</p>
 <pre><code>功能：将文件内容拷贝到另一个文件中，可以部分内容
 </code></pre><p>shutil.copyfile(src, dst)</p>
@@ -757,7 +736,7 @@ json在所有的语言中都通用，存取的直接字符
 <pre><code>功能：拷贝文件和权限
 </code></pre><p>shutil.copy2(src, dst)</p>
 <pre><code>功能：拷贝文件和状态信息
-</code></pre><h4 id="作业需求："><a href="#作业需求：" class="headerlink" title="作业需求："></a>作业需求：</h4><pre><code>模拟实现一个ATM + 购物商城程序
+</code></pre><h3 id="作业需求："><a href="#作业需求：" class="headerlink" title="作业需求："></a>作业需求：</h3><pre><code>模拟实现一个ATM + 购物商城程序
 
 额度 15000或自定义
 实现购物商城，买东西加入 购物车，调用信用卡接口结账
@@ -834,10 +813,9 @@ ATM记录操作日志
 <p><a href="http://www.cnblogs.com/wupeiqi/articles/5133343.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5133343.html</a></p>
 <p>day04</p>
 <p><a href="http://www.cnblogs.com/alex3714/articles/5143440.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5143440.html</a></p>
-<h3 id="一、迭代器-amp-amp-生成器"><a href="#一、迭代器-amp-amp-生成器" class="headerlink" title="一、迭代器 &amp;&amp; 生成器"></a>一、迭代器 &amp;&amp; 生成器</h3><h4 id="1-迭代器"><a href="#1-迭代器" class="headerlink" title="1.迭代器"></a>1.迭代器</h4><pre><code>迭代器是访问集合元素的一种方式。迭代器只能往前不能往后。迭代器对象从集合的第一个集合开始访问，直到所有的元素被访问完。
+<h2 id="一、迭代器-amp-amp-生成器"><a href="#一、迭代器-amp-amp-生成器" class="headerlink" title="一、迭代器 &amp;&amp; 生成器"></a>一、迭代器 &amp;&amp; 生成器</h2><h3 id="1-迭代器"><a href="#1-迭代器" class="headerlink" title="1.迭代器"></a>1.迭代器</h3><pre><code>迭代器是访问集合元素的一种方式。迭代器只能往前不能往后。迭代器对象从集合的第一个集合开始访问，直到所有的元素被访问完。
 优点：不需要事先准备整个迭代过程中的所有元素
-</code></pre><p>测试代码</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h4 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h4><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -855,12 +833,11 @@ print(names.__next__())
     swht
     shen
     jack
-</code></pre><h4 id="2-生成器"><a href="#2-生成器" class="headerlink" title="2.生成器"></a>2.生成器</h4><pre><code>定义：generator，一个函数调用时返回一个迭代器，那这个函数就叫做生成器。
+</code></pre><h3 id="2-生成器"><a href="#2-生成器" class="headerlink" title="2.生成器"></a>2.生成器</h3><pre><code>定义：generator，一个函数调用时返回一个迭代器，那这个函数就叫做生成器。
 
 作用：yield实现函数中断，并保存函数中断时的状态。中断后，程序可以继续执行下面的代码，而且可以随时可以回头再执行之前中断的函数。
     可以通过yield实现在单线程的情况下实现并发运算的效果
-</code></pre><p>测试代码</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h4 id="测试代码-1"><a href="#测试代码-1" class="headerlink" title="测试代码"></a>测试代码</h4><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -896,8 +873,7 @@ print(ATM.__next__())
     你当前还有200元
     取款100元!
     100
-</code></pre><p>实现异步：【生产者-消费者模型】</p>
-<p>yield参数可以实现返回参数和接收参数，使用send方法可以将值传递到生成器中去</p>
+</code></pre><h3 id="实现异步：【生产者-消费者模型】"><a href="#实现异步：【生产者-消费者模型】" class="headerlink" title="实现异步：【生产者-消费者模型】"></a>实现异步：【生产者-消费者模型】</h3><p>yield参数可以实现返回参数和接收参数，使用send方法可以将值传递到生成器中去</p>
 <pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -959,9 +935,8 @@ shen 开始准备吃包子!
 **alex做了两个包子!**
 第[9]波包子来了,被[swht]吃了!
 第[9]波包子来了,被[shen]吃了!
-</code></pre><h3 id="二、装饰器"><a href="#二、装饰器" class="headerlink" title="二、装饰器"></a>二、装饰器</h3><pre><code>装饰器又叫语法塘
-</code></pre><p>装饰器调用原理</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h2 id="二、装饰器"><a href="#二、装饰器" class="headerlink" title="二、装饰器"></a>二、装饰器</h2><pre><code>装饰器又叫语法塘
+</code></pre><h3 id="装饰器调用原理"><a href="#装饰器调用原理" class="headerlink" title="装饰器调用原理"></a>装饰器调用原理</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -982,8 +957,7 @@ def moive(name):
 
 tv = login(tv)  #将tv函数的内存地址传递到login()函数中，然后将tv的内存地址返回并赋给变量tv
 tv(&quot;swht&quot;) #变量调用相当于函数的调用
-</code></pre><p>装饰器实现</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="装饰器实现"><a href="#装饰器实现" class="headerlink" title="装饰器实现"></a>装饰器实现</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -1008,8 +982,7 @@ tv(&quot;swht&quot;)
 </code></pre><p>返回结果：</p>
 <pre><code>To passed!
 Welcome [swht] to TV page!
-</code></pre><p>多参数装饰器</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="多参数装饰器"><a href="#多参数装饰器" class="headerlink" title="多参数装饰器"></a>多参数装饰器</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -1047,8 +1020,7 @@ def Index(request,kargs):
     print(&apos;index&apos;)
 
 Index(&quot;swht&quot;,&quot;123&quot;)
-</code></pre><p>实现流程</p>
-<pre><code>&apos;&apos;&apos;
+</code></pre><h3 id="实现流程"><a href="#实现流程" class="headerlink" title="实现流程"></a>实现流程</h3><pre><code>&apos;&apos;&apos;
 1.程序运行，读取顺序 @Filter --&gt; Index()
 2.@Filter运行机制：
     1）将Before, After传递给Filter()，执行outer()；
@@ -1059,8 +1031,7 @@ Index(&quot;swht&quot;,&quot;123&quot;)
         3）执行after_func()即After()并判断返回值，打印after
 3.程序结束
 &apos;&apos;&apos;
-</code></pre><h3 id="三、递归"><a href="#三、递归" class="headerlink" title="三、递归"></a>三、递归</h3><p>演示递归进出过程：【栈的实现：后进先出】</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h2 id="三、递归"><a href="#三、递归" class="headerlink" title="三、递归"></a>三、递归</h2><h3 id="演示递归进出过程：【栈的实现：后进先出】"><a href="#演示递归进出过程：【栈的实现：后进先出】" class="headerlink" title="演示递归进出过程：【栈的实现：后进先出】"></a>演示递归进出过程：【栈的实现：后进先出】</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -1090,8 +1061,7 @@ res: 2.5
 n: 5.0
 res: 5.0
 n: 10
-</code></pre><p>斐波那契数列</p>
-<pre><code>#!/usr/local/env python3
+</code></pre><h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -1123,7 +1093,7 @@ sum(0,1,500)
 233
 377
 610
-</code></pre><h3 id="四、二分查找"><a href="#四、二分查找" class="headerlink" title="四、二分查找"></a>四、二分查找</h3><pre><code>#!/usr/local/env python3
+</code></pre><h2 id="四、二分查找"><a href="#四、二分查找" class="headerlink" title="四、二分查找"></a>四、二分查找</h2><pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
 Blog:http://www.cnblogs.com/songqingbo/
@@ -1146,7 +1116,7 @@ def binary_search(data_source,find_num):
 if __name__ == &quot;__main__&quot;:
     data = list(range(1,90000))
     binary_search(data,65535)
-</code></pre><h3 id="五、二维数组"><a href="#五、二维数组" class="headerlink" title="五、二维数组"></a>五、二维数组</h3><p>二维数组的概念是在c、c++等语言中出现并定义，在python没有数组概念，对应的则是列表。所以我们这里称为二维数组则是对二维列表的称谓。</p>
+</code></pre><h2 id="五、二维数组"><a href="#五、二维数组" class="headerlink" title="五、二维数组"></a>五、二维数组</h2><p>二维数组的概念是在c、c++等语言中出现并定义，在python没有数组概念，对应的则是列表。所以我们这里称为二维数组则是对二维列表的称谓。</p>
 <p>需求：</p>
 <pre><code>转换二维数组
 初始列表：
@@ -1183,7 +1153,7 @@ for col in range(len(data)):
         data[col][row],data[row][col] = data[row][col],data[col][row]
 for i in data:
     print(i)
-</code></pre><h3 id="六、正则表达式"><a href="#六、正则表达式" class="headerlink" title="六、正则表达式"></a>六、正则表达式</h3><pre><code>熟悉Linux环境的朋友肯定熟悉，用来操作字符或者文本文件时操作的快速匹配语言。正则表达式是用于处理字符串的强大工具，拥有自己独特的语法以及一个独立的处理引擎，效率上可能不如str自带的方法，但功能十分强大。
+</code></pre><h2 id="六、正则表达式"><a href="#六、正则表达式" class="headerlink" title="六、正则表达式"></a>六、正则表达式</h2><pre><code>熟悉Linux环境的朋友肯定熟悉，用来操作字符或者文本文件时操作的快速匹配语言。正则表达式是用于处理字符串的强大工具，拥有自己独特的语法以及一个独立的处理引擎，效率上可能不如str自带的方法，但功能十分强大。
 </code></pre><p>语法：</p>
 <p><strong>一般字符</strong></p>
 <pre><code>匹配自身
@@ -1230,8 +1200,7 @@ if test12:
 #the same as top
 m = re.match(r&apos;hello&apos;, &apos;hello world!&apos;)
 print(m.group())
-</code></pre><p><strong>match</strong></p>
-<pre><code>match(string[,pos[endpos]])|re.match(patern,string[,flags]):
+</code></pre><h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><pre><code>match(string[,pos[endpos]])|re.match(patern,string[,flags]):
 从string的pos下标处起尝试匹配pattern；如果pattern结束时仍可匹配，则返回一个Match对象；如果匹配过程中pattern无法匹配，或者匹配未结束就已到达endpos，则返回None。 
 pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。
 （re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none.）
@@ -1264,8 +1233,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     matchObj.group() :  Cats are smarter than dogs
     matchObj.group(1) :  Cats
     matchObj.group(2) :  smarter
-</code></pre><p><strong>search</strong></p>
-<pre><code>功能：re.search 扫描整个字符串并返回第一个成功的匹配
+</code></pre><h3 id="search"><a href="#search" class="headerlink" title="search"></a>search</h3><pre><code>功能：re.search 扫描整个字符串并返回第一个成功的匹配
 语法：re.search(pattern, string, flags=0)
 参数：pattern 匹配的正则表达式
      string  要匹配的字符串
@@ -1293,8 +1261,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     # searchObj.group() :  Cats are smarter than dogs
     # searchObj.group(1) :  Cats
     # searchObj.group(2) :  smarter
-</code></pre><p><strong>对比match和search</strong></p>
-<pre><code>re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None；而re.search匹配整个字符串，直到找到一个匹配。
+</code></pre><h3 id="对比match和search"><a href="#对比match和search" class="headerlink" title="对比match和search"></a>对比match和search</h3><pre><code>re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None；而re.search匹配整个字符串，直到找到一个匹配。
 示例代码：
     import re
     line = &quot;Cats are smarter than dogs&quot;
@@ -1328,8 +1295,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     # Remove anything other than digits
     num3 = re.sub(r&apos;\D&apos;, &quot;&quot;, phone) #匹配非数字字符，然后删除
     print(&quot;Phone Num : &quot;, num3) #Phone Num :  2004959559
-</code></pre><p>作业：</p>
-<pre><code>计算器开发
+</code></pre><h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><pre><code>计算器开发
 
 1. 实现加减乘除及拓号优先级解析
 2. 用户输入 1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2) )等类似公式后，必须自己解析里面的(),+,-,*,/符号和公式，运算后得出结果，结果必须与真实的计算器所得出的结果一致
@@ -1398,7 +1364,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
 <p>课程大纲：</p>
 <p>day2<br><a href="http://www.cnblogs.com/wupeiqi/articles/5115190.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5115190.html</a></p>
 <p>day3<br><a href="http://www.cnblogs.com/wupeiqi/articles/5133343.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5133343.html</a></p>
-<h3 id="一、set集合"><a href="#一、set集合" class="headerlink" title="一、set集合"></a>一、set集合</h3><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5128066.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5128066.html</a></p>
+<h2 id="一、set集合"><a href="#一、set集合" class="headerlink" title="一、set集合"></a>一、set集合</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5128066.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5128066.html</a></p>
 <pre><code>优点：访问速度快；
      自带一套解决元素重复的解决方案
 </code></pre><p><strong>测试程序</strong></p>
@@ -1463,10 +1429,10 @@ new_dict = {
     for i in add_set:
         add_list.append({i:new_dict[i]})
         print(&quot;需要增加的列表:%s&quot; % add_list)
-</code></pre><h4 id="二、collection系列"><a href="#二、collection系列" class="headerlink" title="二、collection系列"></a>二、collection系列</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5137785.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5137785.html</a></p>
+</code></pre><h2 id="二、collection系列"><a href="#二、collection系列" class="headerlink" title="二、collection系列"></a>二、collection系列</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5137785.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5137785.html</a></p>
 <pre><code>不常用功能，需要进行模块功能导入:
     import collection
-</code></pre><h4 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h4><p>常用方法测试：</p>
+</code></pre><h3 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h3><p>常用方法测试：</p>
 <pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
 Author:@南非波波
@@ -1607,7 +1573,7 @@ Counter({&apos;h&apos;: 2, &apos;c&apos;: 1, &apos;i&apos;: 1, &apos;w&apos;: 1}
 <p><strong>常用操作</strong></p>
 <pre><code>说明：Counter继承dict的所有方法，常用的操作列在下面，仅供参考
 </code></pre><p><img src="http://i.imgur.com/5EmjmX2.png" alt=""></p>
-<h4 id="有序字典orderedDict"><a href="#有序字典orderedDict" class="headerlink" title="有序字典orderedDict"></a>有序字典orderedDict</h4><pre><code>有序字典继承字典的一切属性，只是在顺序上是有序的。
+<h3 id="有序字典orderedDict"><a href="#有序字典orderedDict" class="headerlink" title="有序字典orderedDict"></a>有序字典orderedDict</h3><pre><code>有序字典继承字典的一切属性，只是在顺序上是有序的。
 d = collections.OrderedDict({&apos;name&apos;:&apos;swht&apos;,&apos;age&apos;:18})
 print(d)
 返回结果：OrderedDict([(&apos;name&apos;, &apos;swht&apos;), (&apos;age&apos;, 18)])
@@ -1639,9 +1605,9 @@ l2 = d.values()
 l3 = d.items()
 print(l1,l2，l3)
 返回结果：odict_keys([&apos;address&apos;, &apos;age&apos;, &apos;name&apos;]) odict_values([&apos;shandong&apos;, 18, &apos;swht&apos;]) odict_items([(&apos;age&apos;, 18), (&apos;name&apos;, &apos;swht&apos;), (&apos;address&apos;, &apos;shandong&apos;)])
-</code></pre><h4 id="默认字典defaultdict"><a href="#默认字典defaultdict" class="headerlink" title="默认字典defaultdict"></a>默认字典defaultdict</h4><pre><code>defaultdict是对字典的类型的补充，他默认给字典的值设置了一个类型。创建一个默认字典，value值类型为列表.
+</code></pre><h3 id="默认字典defaultdict"><a href="#默认字典defaultdict" class="headerlink" title="默认字典defaultdict"></a>默认字典defaultdict</h3><pre><code>defaultdict是对字典的类型的补充，他默认给字典的值设置了一个类型。创建一个默认字典，value值类型为列表.
 dic = collections.defaultdict(list)
-</code></pre><h4 id="可命名元组nametuple"><a href="#可命名元组nametuple" class="headerlink" title="可命名元组nametuple"></a>可命名元组nametuple</h4><pre><code>没有现成的类，用户需要自行创建相应的类
+</code></pre><h3 id="可命名元组nametuple"><a href="#可命名元组nametuple" class="headerlink" title="可命名元组nametuple"></a>可命名元组nametuple</h3><pre><code>没有现成的类，用户需要自行创建相应的类
 </code></pre><p>测试代码</p>
 <pre><code>#!/usr/local/env python3
 &apos;&apos;&apos;
@@ -1655,7 +1621,7 @@ obj = MytupleClass(11,22,33)
 print(obj.x,obj.y,obj.z)
 返回结果：11 22 33
 总结：相当于在元组的基础上增加一个key，使其成为一个类字典的样子
-</code></pre><h4 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h4><p><img src="http://i.imgur.com/DnEPoMR.png" alt=""></p>
+</code></pre><h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p><img src="http://i.imgur.com/DnEPoMR.png" alt=""></p>
 <p>双向队列</p>
 <pre><code>下面两种方法都可以创建双向列表，虽然在最初的引用的类不同，但最后创建的类型 都是collections.deque
 #创建双向队列
@@ -1674,7 +1640,7 @@ import queue
 q = queue.Queue()
 print(type(q))
 #&lt;class &apos;queue.Queue&apos;&gt;
-</code></pre><h3 id="三、深浅拷贝"><a href="#三、深浅拷贝" class="headerlink" title="三、深浅拷贝"></a>三、深浅拷贝</h3><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5139015.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5139015.html</a></p>
+</code></pre><h2 id="三、深浅拷贝"><a href="#三、深浅拷贝" class="headerlink" title="三、深浅拷贝"></a>三、深浅拷贝</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5139015.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5139015.html</a></p>
 <pre><code>#对于 数字 和 字符串 而言，赋值、浅拷贝和深拷贝无意义，因为其永远指向同一个内存地址
     import copy
     a1 = 22255
@@ -1790,7 +1756,7 @@ print(type(q))
     #返回结果
     # old: {&apos;mem&apos;: [80], &apos;cpu&apos;: [50], &apos;disk&apos;: [80]}
     # 深拷贝: {&apos;mem&apos;: [80], &apos;cpu&apos;: [60], &apos;disk&apos;: [80]}
-</code></pre><h3 id="四、函数"><a href="#四、函数" class="headerlink" title="四、函数"></a>四、函数</h3><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5142957.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5142957.html</a></p>
+</code></pre><h2 id="四、函数"><a href="#四、函数" class="headerlink" title="四、函数"></a>四、函数</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5142957.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5142957.html</a></p>
 <pre><code>定义：
 
     #!/usr/local/env python3
@@ -1811,7 +1777,7 @@ print(type(q))
     #将f变量指向函数num_print，然后调用f()相当于调用num_print()
     f = num_print
     f()
-</code></pre><h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><pre><code>形参：函数中一个变量，在函数执行前无意义，在函数调用时必须指定实际参数。
+</code></pre><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><pre><code>形参：函数中一个变量，在函数执行前无意义，在函数调用时必须指定实际参数。
 实参：实际参数用户传递给所调用的函数的一个变量，其值赋值到函数中的形式参数，然后在函数中       作为变量参与函数执行
 默认参数：必须放在最后
     def show(a1,a2,a3 = 5):
@@ -1892,7 +1858,7 @@ d = {&apos;name&apos;:&apos;swht&apos;,&apos;acter&apos;:&apos;teacher&apos;}
 reault = show.format(**d)
 print(reault)
 #返回结果：swht is a teacher!
-</code></pre><h4 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h4><p><img src="http://i.imgur.com/ICv89lK.jpg" alt=""></p>
+</code></pre><h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p><img src="http://i.imgur.com/ICv89lK.jpg" alt=""></p>
 <pre><code>    功能：简单函数的表示方式
     func = lambda a:a+1
     函数名  关键字 形参：函数体
@@ -1901,7 +1867,7 @@ print(reault)
     f = lambda x:x + 1
     ret = f(4)
     print(ret)
-</code></pre><h4 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h4><p><img src="http://i.imgur.com/5so1j4e.png" alt=""></p>
+</code></pre><h3 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h3><p><img src="http://i.imgur.com/5so1j4e.png" alt=""></p>
 <p><strong>abs()</strong></p>
 <pre><code>功能：取绝对值
 &gt;&gt;&gt; abs(5)
@@ -2397,7 +2363,7 @@ random.randint(1,99) #从1-99中产生随机数
 <pre><code>功能：查看模块所在的位置
  __import__(&apos;random&apos;) #参数为一个字符串
 &lt;module &apos;random&apos; from &apos;D:\\Program Files\\Python\\Python35\\python35.zip\\random.pyc&apos;&gt;
-</code></pre><h4 id="open-函数"><a href="#open-函数" class="headerlink" title="open()函数"></a>open()函数</h4><p>博客参考：<a href="http://www.cnblogs.com/songqingbo/p/5102618.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5102618.html</a></p>
+</code></pre><h3 id="open-函数"><a href="#open-函数" class="headerlink" title="open()函数"></a>open()函数</h3><p>博客参考：<a href="http://www.cnblogs.com/songqingbo/p/5102618.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5102618.html</a></p>
 <p><strong>read()</strong></p>
 <pre><code>功能：读取文件中的所有内容，返回的类型是字节
 </code></pre><p><strong>readline()</strong></p>
@@ -2456,8 +2422,7 @@ files.close()
 写入多行：
 
     f.writeline(list_of_text_string)
-</code></pre><p>作业：</p>
-<pre><code>作业连接：http://www.cnblogs.com/wupeiqi/articles/4950799.html
+</code></pre><h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><pre><code>作业连接：http://www.cnblogs.com/wupeiqi/articles/4950799.html
 1. 用户输入一个字符串，将其转换成字典 使用json
 2. 增加一条记录
 3. （可选）删除一条
@@ -2592,16 +2557,16 @@ backend buy.oldboy.org
 <p>课程大纲地址： <a href="http://www.cnblogs.com/wupeiqi/articles/5115190.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5115190.html</a></p>
 <h3 id="python知识拾忆："><a href="#python知识拾忆：" class="headerlink" title="python知识拾忆："></a>python知识拾忆：</h3><p>Python2.x与Python3.x关于dict.keys()返回值的类型对比：</p>
 <p><img src="http://i.imgur.com/tieH6Vh.png" alt=""></p>
-<h4 id="一、python种类"><a href="#一、python种类" class="headerlink" title="一、python种类"></a>一、python种类</h4><p>关于Python的一些版本内部执行的一些原理。从原理上来看待执行快慢的类型，从而选择自己需要的去学习。目前而言，最火的就是cpython了，这也是官方版本的Python。后面出现的pypy渐渐崭露头角，用银角大王的话讲：这货日后指定会火…</p>
+<h2 id="一、python种类"><a href="#一、python种类" class="headerlink" title="一、python种类"></a>一、python种类</h2><p>关于Python的一些版本内部执行的一些原理。从原理上来看待执行快慢的类型，从而选择自己需要的去学习。目前而言，最火的就是cpython了，这也是官方版本的Python。后面出现的pypy渐渐崭露头角，用银角大王的话讲：这货日后指定会火…</p>
 <pre><code>1. cpython  使用c解释器生产.pyc(字节码)，然后转换成机器码，最后到cpu
 2. javapython java解释器--&gt;字节码--&gt;机器码--&gt;cpu
 3. IronPython C#解释器--&gt;字节码 --&gt; 机器码--&gt; cpu
 4. pypy  内部使用自己的解释器编译成字节码--&gt;机器码.最后在外部执行的时候直接是机器码，速度要快
 </code></pre><p>银角大王推荐阅读书：<strong>《python源码剖析》</strong></p>
-<h4 id="二、字节码"><a href="#二、字节码" class="headerlink" title="二、字节码"></a>二、字节码</h4><p>在Python内部字节码直接的转换过程如图：</p>
+<h2 id="二、字节码"><a href="#二、字节码" class="headerlink" title="二、字节码"></a>二、字节码</h2><p>在Python内部字节码直接的转换过程如图：</p>
 <p><img src="http://i.imgur.com/U6KPbcR.png" alt=""></p>
 <pre><code>python中进行字节码之间的转换流程大概是这样的：字节码类型转换从utf-8转换成gbk类型，首先需要执行解码变成Unicode类型，然后再由Unicode类型编码成gbk类型。[图片来源：银角大王课堂笔记]
-</code></pre><h4 id="三、字符串"><a href="#三、字符串" class="headerlink" title="三、字符串"></a>三、字符串</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126957.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126957.html</a></p>
+</code></pre><h2 id="三、字符串"><a href="#三、字符串" class="headerlink" title="三、字符串"></a>三、字符串</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126957.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126957.html</a></p>
 <p>字符串的常用操作包括但不限于以下操作：</p>
 <pre><code>字符串的替换、删除、截取、复制、连接、比较、查找、分割等
 </code></pre><p>这里将对字符串的内置操作方法进行总结归纳，重点是以示例的方式进行展示。</p>
@@ -2922,7 +2887,7 @@ print str.zfill(40)
 print str.zfill(50)
 返回结果：00000000this is string example....wow!!!
          000000000000000000this is string example....wow!!!
-</code></pre><h4 id="四、列表"><a href="#四、列表" class="headerlink" title="四、列表"></a>四、列表</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126943.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126943.html</a></p>
+</code></pre><h2 id="四、列表"><a href="#四、列表" class="headerlink" title="四、列表"></a>四、列表</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126943.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126943.html</a></p>
 <p>列表的基本操作示例展示：</p>
 <p><strong>append</strong></p>
 <pre><code>功能：列表追加元素
@@ -3015,7 +2980,7 @@ name = [&apos;sd&apos;,&apos;dfdf&apos;,&apos;drer&apos;,[&apos;sddss&apos;,&apo
 name.sort() #报错的
 Traceback (most recent call last):
   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-</code></pre><h4 id="五、元组"><a href="#五、元组" class="headerlink" title="五、元组"></a>五、元组</h4><p>关于元组的常用操作，请参考：<a href="http://www.runoob.com/python/python-tuples.html" target="_blank" rel="external">http://www.runoob.com/python/python-tuples.html</a></p>
+</code></pre><h2 id="五、元组"><a href="#五、元组" class="headerlink" title="五、元组"></a>五、元组</h2><p>关于元组的常用操作，请参考：<a href="http://www.runoob.com/python/python-tuples.html" target="_blank" rel="external">http://www.runoob.com/python/python-tuples.html</a></p>
 <p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5126947.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5126947.html</a></p>
 <p>元组的元素不可修改    ，元组的元素的元素可修改</p>
 <p><strong>count(self,value)</strong></p>
@@ -3138,7 +3103,7 @@ tup.__repr__()
 tup = (55,77,85,55,96,99,22,55,)
 tup.__rmul__(2)
 返回结果：(55, 77, 85, 55, 96, 99, 22, 55, 55, 77, 85, 55, 96, 99, 22, 55)
-</code></pre><h4 id="六、字典"><a href="#六、字典" class="headerlink" title="六、字典"></a>六、字典</h4><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5127044.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5127044.html</a></p>
+</code></pre><h2 id="六、字典"><a href="#六、字典" class="headerlink" title="六、字典"></a>六、字典</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5127044.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5127044.html</a></p>
 <p>字典的常用操作：</p>
 <p><strong>clear</strong></p>
 <pre><code>功能：清空字典
@@ -3209,7 +3174,7 @@ dict_li
 dict_li = {&apos;age&apos;: &apos;18&apos;, &apos;users&apos;: &apos;swht&apos;, &apos;address&apos;: &apos;山东&apos;}
 dict_li.values()
 返回结果：dict_values([&apos;18&apos;, &apos;swht&apos;, &apos;山东&apos;])
-</code></pre><h3 id="七、set集合"><a href="#七、set集合" class="headerlink" title="七、set集合"></a>七、set集合</h3><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5128066.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5128066.html</a></p>
+</code></pre><h2 id="七、set集合"><a href="#七、set集合" class="headerlink" title="七、set集合"></a>七、set集合</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5128066.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5128066.html</a></p>
 <pre><code>set集合是一个无序且不重复的集合。
 创建一个set集合：
     name = set(&apos;sdd&apos;)
@@ -3327,7 +3292,7 @@ name = {&apos;sd&apos;, &apos;d&apos;, &apos;s&apos;}
 name.update(&apos;df&apos;)
 name
 返回结果：{&apos;sd&apos;, &apos;d&apos;, &apos;f&apos;, &apos;s&apos;}
-</code></pre><h4 id="八、类与对象"><a href="#八、类与对象" class="headerlink" title="八、类与对象"></a>八、类与对象</h4><p><img src="http://i.imgur.com/O2wZsUd.png" alt=""></p>
+</code></pre><h2 id="八、类与对象"><a href="#八、类与对象" class="headerlink" title="八、类与对象"></a>八、类与对象</h2><p><img src="http://i.imgur.com/O2wZsUd.png" alt=""></p>
 <p>对象</p>
 <pre><code>python中一切事物皆对象,对象是一开始就有的,只是我们无法访问它。访问对象需要以变量的形式去访问（即创建变量指向到对象的，变量即对对象的引用）
 在python中，一个对象的特征也称为属性（attribute）。它所具有的行为也称为方法（method）
@@ -3337,7 +3302,7 @@ name
 比如人类，动物，植物等等，这些都是类的概念。 
 类是对象的模板或蓝图，类是对象的抽象化，对象是类的实例化。类不代表具体的事物，而对象表示具体的事物。
 类包含描述对象的方法。
-</code></pre><h4 id="int"><a href="#int" class="headerlink" title="int"></a>int</h4><pre><code>取绝对值：
+</code></pre><h3 id="int"><a href="#int" class="headerlink" title="int"></a>int</h3><pre><code>取绝对值：
     age = -19
     age.__abs__() #int类函数调用
     abs(-19) #内置函数方式操作
@@ -3348,8 +3313,7 @@ name
     a = 5，b=6
     a.__add__(b) #调用int的类函数add，相当于a + b  --&gt;11
     a + b #内置函数方式操作
-</code></pre><p>作业：</p>
-<pre><code>1. 博客整理
+</code></pre><h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><pre><code>1. 博客整理
 2. 购物商城实现
     1. 商品展示，价格
     2. 购物车添加商品（进行差异商品，同一种商品应该只存在一条数据）
@@ -3418,16 +3382,14 @@ name
         <p>Author:@南非波波</p>
 <p>作者注：</p>
 <p>　　python学习旅程正式开启，这一天将是一个新的开始。希望我们在python开发的道路上多多积累、多分享！</p>
-<p> 一、python简介</p>
-<pre><code>python应用 
+<h2 id="一、python简介"><a href="#一、python简介" class="headerlink" title="一、python简介"></a>一、python简介</h2><pre><code>python应用 
     Disgus Voitze Yelip Mozilla Quora  Redit
     豆瓣、知乎、sohu、腾讯、网易、金山、雅虎、Facebook、 Instagram（图片分享）
 python2与python3比较
     经过多年的发展，python3已经得到更多的第三方优秀函数库兼容，对比python2来说，python3表现出来的精简高效特性让开发者们跃跃欲试。
     另外，python2.7.11作为python2版本的最后一个版本，不再有新版本推出，这样官方更多的引导开发者快速的向python3版本上进行转移。
     在本次学习的过程中，我们会穿插在python2和python3两个版本之间进行学习，后续的测试代码在开头会明确标记python的使用版本。相关注释都会对python2和python3的差异进行描述。
-</code></pre><p>二、python安装</p>
-<pre><code>1.windows端安装
+</code></pre><h2 id="二、python安装"><a href="#二、python安装" class="headerlink" title="二、python安装"></a>二、python安装</h2><pre><code>1.windows端安装
     安装包下载地址：
         python2.7版本：
             https://www.python.org/ftp/python/2.7.11/python-2.7.11.amd64.msi
@@ -3454,8 +3416,7 @@ python2与python3比较
         sudo apt-get update
         # 安装python3
         sudo apt-get install python3.5
-</code></pre><p>三、基础概念</p>
-<pre><code>变量：Python 是动态类型语言， 也就是说不需要预先声明变量的类型。变量是对象的引用，变量只是将指针指向了对象所在的内存地址。变量的类型和值在赋值那一刻被初始化。
+</code></pre><h2 id="三、基础概念"><a href="#三、基础概念" class="headerlink" title="三、基础概念"></a>三、基础概念</h2><pre><code>变量：Python 是动态类型语言， 也就是说不需要预先声明变量的类型。变量是对象的引用，变量只是将指针指向了对象所在的内存地址。变量的类型和值在赋值那一刻被初始化。
 变量起名：
     1.显式--&gt;通俗易懂
     2.nums_of_alex_gf = 19 
@@ -3465,8 +3426,7 @@ python2与python3比较
     6.特殊字符不能作为变量名的组成部分
     7.不能使用空格
     8.关键字不能声明为变量
-</code></pre><p>四、运算符</p>
-<pre><code>算术运算符
+</code></pre><h2 id="四、运算符"><a href="#四、运算符" class="headerlink" title="四、运算符"></a>四、运算符</h2><pre><code>算术运算符
     +  -  *  /   //  %  **
     /:传统除法，将执行地板除法，
     //:浮点除法，即去尾法除法，保留位数与除数和被除数的小数位数有关 （取整除，返回商的部分）
@@ -3502,8 +3462,7 @@ python2与python3比较
     is  判断两个标识符是不是引用自同一个对象
         type(names) is list 判断某个变量值的类型（list、int、dic）
     is not 判断两个标识符是不是引用自不同对象
-</code></pre><p>五、字符编码</p>
-<pre><code>python2 中在输入中文字符的时候会报字符编码的错误，在python3中已经引入了Unicode（万国码、统一码、），它为每种语言中的每个字符设定了统一并且唯一的二进制编码，规定所有的字符和符号最少由16位二进制来表示（2个字节），即2 ** 16 = 65536
+</code></pre><h2 id="五、字符编码"><a href="#五、字符编码" class="headerlink" title="五、字符编码"></a>五、字符编码</h2><pre><code>python2 中在输入中文字符的时候会报字符编码的错误，在python3中已经引入了Unicode（万国码、统一码、），它为每种语言中的每个字符设定了统一并且唯一的二进制编码，规定所有的字符和符号最少由16位二进制来表示（2个字节），即2 ** 16 = 65536
 UTF-8，是对Unicode编码的压缩和优化，它不再使用最少2个字节，而是将所有的字符和符号进行分类：ascii码中的内容用1个字节保存，欧洲的字符用2个字节保存，东亚的字符用3个字节保存
 
 示例
@@ -3523,8 +3482,7 @@ python3
     print (&quot;你好！&quot;)
 
 总结：在python3中完全不用考虑字符编码的问题，python解释器会自行处理字符类型的问题
-</code></pre><p>六、python流程控制</p>
-<pre><code>流程控制分为两大类：条件判断和循环
+</code></pre><h2 id="六、python流程控制"><a href="#六、python流程控制" class="headerlink" title="六、python流程控制"></a>六、python流程控制</h2><pre><code>流程控制分为两大类：条件判断和循环
 其中循环又分为两类：for循环和while循环
 条件判断和循环可以单独存在，也可以嵌套使用，以处理更为复杂的逻辑问题。
 </code></pre><p>下面会从<em>if条件判断</em>、<em>for循环</em>和<em>while循环</em>进行代码示例：</p>
@@ -3574,8 +3532,7 @@ for count in range(3):
         break
 else:
     print(&quot;你输入的次数已达到3次,程序即将退出!&quot;)
-</code></pre><p>对比break和countnue</p>
-<pre><code>break是结束整个循环体，continue是结束单次循环
+</code></pre><h3 id="对比break和countnue"><a href="#对比break和countnue" class="headerlink" title="对比break和countnue"></a>对比break和countnue</h3><pre><code>break是结束整个循环体，continue是结束单次循环
 
 示例
     #!/usr/local/env python3
@@ -3592,8 +3549,7 @@ else:
                 x=2
                 x=3
     直接退出了整个while循环
-</code></pre><p>七、格式化输出</p>
-<pre><code>使用&apos;&apos;&apos;string&apos;&apos;&apos;可以很方便的将多行内容进行注释，另外这个符号还有一个功能，那就是文档描述的功能。一般而言，在程序的前面后有一个文档说明，包括作者信息，版本信息，功能等
+</code></pre><h2 id="七、格式化输出"><a href="#七、格式化输出" class="headerlink" title="七、格式化输出"></a>七、格式化输出</h2><pre><code>使用&apos;&apos;&apos;string&apos;&apos;&apos;可以很方便的将多行内容进行注释，另外这个符号还有一个功能，那就是文档描述的功能。一般而言，在程序的前面后有一个文档说明，包括作者信息，版本信息，功能等
 
 #!/usr/bin/env python
 &apos;&apos;&apos;
@@ -3612,8 +3568,7 @@ print(&apos;&apos;&apos;
               age:%s
               job:%s
     &apos;&apos;&apos; % (name,name,age,job))
-</code></pre><p>八、数据类型：</p>
-<p><em>列表转换成元组：tuple(name_list)</em></p>
+</code></pre><h2 id="八、数据类型："><a href="#八、数据类型：" class="headerlink" title="八、数据类型："></a>八、数据类型：</h2><p><em>列表转换成元组：tuple(name_list)</em></p>
 <p><em>元组转换成列表：list(元组_name)</em></p>
 <pre><code>1.数字
     int     整型
@@ -3724,15 +3679,13 @@ print(&apos;&apos;&apos;
         &gt;&gt;&gt; dict
         {}
     删除字典：del dict
-</code></pre><p>九、文件操作</p>
-<pre><code>简单操作：
+</code></pre><h2 id="九、文件操作"><a href="#九、文件操作" class="headerlink" title="九、文件操作"></a>九、文件操作</h2><pre><code>简单操作：
     filename = open(&quot;文件路径&quot;,&quot;模式&quot;)    #打开文件
     filename.write(&apos;内容&apos;)    #往文件中写入内容
     filename.read()        #一次性加载文件中的内容到内存
     filename.readlines()    #一次性加载所有的内容到内存，并根据行分割成字符串
     filename.close()    #关闭文件句柄
-</code></pre><p>十、作业</p>
-<pre><code>作业一：编写登录接口
+</code></pre><h2 id="十、作业"><a href="#十、作业" class="headerlink" title="十、作业"></a>十、作业</h2><pre><code>作业一：编写登录接口
 </code></pre><p>，</p>
 <pre><code>作业二：多级菜单    
 </code></pre>

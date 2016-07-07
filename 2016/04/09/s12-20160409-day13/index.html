@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html lang="zh-CN">
 <head>
 
     <!--[if lt IE 9]>
@@ -25,7 +25,7 @@ dom
     提供一套api
 jQuery
     封装的JS和dom的类库
-一、javaScript1. 存在形式：
+二、javaScript1. 存在形式：
     文件
     标签
 2. 放置位置：">
@@ -43,7 +43,7 @@ dom
     提供一套api
 jQuery
     封装的JS和dom的类库
-一、javaScript1. 存在形式：
+二、javaScript1. 存在形式：
     文件
     标签
 2. 放置位置：">
@@ -53,7 +53,7 @@ jQuery
 <meta property="og:image" content="http://i.imgur.com/mPoLfMu.png">
 <meta property="og:image" content="http://i.imgur.com/8YcX0EW.png">
 <meta property="og:image" content="http://i.imgur.com/p53Uf3n.png">
-<meta property="og:updated_time" content="2016-07-05T10:30:10.000Z">
+<meta property="og:updated_time" content="2016-07-07T03:02:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python自动化开发 day13">
 <meta name="twitter:description" content="Author:@南非波波
@@ -66,7 +66,7 @@ dom
     提供一套api
 jQuery
     封装的JS和dom的类库
-一、javaScript1. 存在形式：
+二、javaScript1. 存在形式：
     文件
     标签
 2. 放置位置：">
@@ -221,7 +221,7 @@ jQuery
                             
                                 <a class="fa Email" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -307,7 +307,7 @@ jQuery
                             
                                 <a class="fa Email" target="_blank" href="mailto:qingbo.song@gmail.com" title="Email"></a>
                             
-                                <a class="fa 新浪微博" target="_blank" href="/sina weibo" title="新浪微博"></a>
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/swzty" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/swht" title="GitHub"></a>
                             
@@ -383,7 +383,7 @@ dom
     提供一套api
 jQuery
     封装的JS和dom的类库
-</code></pre><h2 id="一、javaScript"><a href="#一、javaScript" class="headerlink" title="一、javaScript"></a>一、javaScript</h2><pre><code>1. 存在形式：
+</code></pre><h2 id="二、javaScript"><a href="#二、javaScript" class="headerlink" title="二、javaScript"></a>二、javaScript</h2><pre><code>1. 存在形式：
     文件
     标签
 2. 放置位置：
@@ -427,20 +427,8 @@ jQuery
     name.split(&quot;&quot;);  //将字符串转换成数组
     [&quot;s&quot;, &quot;w&quot;, &quot;h&quot;, &quot;t&quot;, &quot; &quot;, &quot; &quot;, &quot; &quot;]
 5. xx
-</code></pre><h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><pre><code>var li1 = [11,22,33,44];
-for (var index in li1){
-    console.log(index);
-}
-
-for (var i = 0;i &lt; li1.length;i++){
-    console.log(i,li1[i]);
-}
-
-var dict = {&quot;name&quot;:&quot;swht&quot;,&quot;age&quot;:18,&quot;work&quot;:&quot;运维&quot;}
-for (var item in dict){
-    console.log(item,dict[item]);
-}
-</code></pre><h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><pre><code>while(true){
+</code></pre><h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var li1 = [11,22,33,44];</div><div class="line">for (var index in li1)&#123;</div><div class="line">console.log(index);</div><div class="line">&#125;</div><div class="line"></div><div class="line">for (var i = 0;i &lt; li1.length;i++)&#123;</div><div class="line">console.log(i,li1[i]);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var dict = &#123;&quot;name&quot;:&quot;swht&quot;,&quot;age&quot;:18,&quot;work&quot;:&quot;运维&quot;&#125;</div><div class="line">for (var item in dict)&#123;</div><div class="line">console.log(item,dict[item]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><pre><code>while(true){
     countine;
     break;
 }
@@ -503,14 +491,12 @@ console.log(obj.Name);
 console.log(obj.Age);
 var ret = obj.Func(&apos;haha&apos;);
 console.log(ret);
-</code></pre><h2 id="二、Dom"><a href="#二、Dom" class="headerlink" title="二、Dom"></a>二、Dom</h2><p>文档对象模型（Document Object Model，DOM）是一种用于HTML和XML文档的编程接口。它给文档提供了一种结构化的表示方法，可以改变文档的内容和呈现方式。我们最为关心的是，DOM把网页和脚本以及其他的编程语言联系了起来。DOM属于浏览器，而不是JavaScript语言规范里的规定的核心内容。</p>
+</code></pre><h2 id="三、Dom"><a href="#三、Dom" class="headerlink" title="三、Dom"></a>三、Dom</h2><p>文档对象模型（Document Object Model，DOM）是一种用于HTML和XML文档的编程接口。它给文档提供了一种结构化的表示方法，可以改变文档的内容和呈现方式。我们最为关心的是，DOM把网页和脚本以及其他的编程语言联系了起来。DOM属于浏览器，而不是JavaScript语言规范里的规定的核心内容。</p>
 <p>注：一般说的JS让页面动起来泛指JavaScript和Dom</p>
-<p>1、选择器</p>
-<pre><code>document.getElementById(&apos;id&apos;);
+<h3 id="1-选择器"><a href="#1-选择器" class="headerlink" title="1.选择器"></a>1.选择器</h3><pre><code>document.getElementById(&apos;id&apos;);
 document.getElementsByName(&apos;name&apos;);
 document.getElementsByTagName(&apos;tagname&apos;);
-</code></pre><p>2、内容</p>
-<pre><code>innerText
+</code></pre><h3 id="2-内容"><a href="#2-内容" class="headerlink" title="2.内容"></a>2.内容</h3><pre><code>innerText
 innerHTML
 
 var obj = document.getElementById(&apos;nid&apos;)
@@ -526,8 +512,7 @@ obj.innerHTML = &quot;&lt;h1&gt;asd&lt;/h1&gt;&quot;      # 设置HTML内容
     select标签
 
     value属性操作用户输入和选择的值
-</code></pre><p>3、创建标签</p>
-<pre><code>方式一：
+</code></pre><h3 id="3-创建标签"><a href="#3-创建标签" class="headerlink" title="3.创建标签"></a>3.创建标签</h3><pre><code>方式一：
     var obj = document.createElement(&apos;a&apos;);
     obj.href = &quot;http://www.apicloud.com&quot;;
     obj.innerText = &quot;APICloud&quot;;
@@ -543,8 +528,7 @@ obj.innerHTML = &quot;&lt;h1&gt;asd&lt;/h1&gt;&quot;      # 设置HTML内容
     container.innerHTML = obj;
     // &apos;beforeBegin&apos;, &apos;afterBegin&apos;, &apos;beforeEnd&apos;,  &apos;afterEnd&apos;
     //container.insertAdjacentHTML(&quot;beforeEnd&quot;,obj);
-</code></pre><p>4、标签属性</p>
-<pre><code>var obj = document.getElementById(&apos;container&apos;);
+</code></pre><h3 id="4-标签属性"><a href="#4-标签属性" class="headerlink" title="4.标签属性"></a>4.标签属性</h3><pre><code>var obj = document.getElementById(&apos;container&apos;);
 固定属性
     obj.id
     obj.id = &quot;nid&quot;
@@ -555,12 +539,9 @@ obj.innerHTML = &quot;&lt;h1&gt;asd&lt;/h1&gt;&quot;      # 设置HTML内容
     obj.setAttribute(name,value)
     obj.getAttribute(name)
     obj.removeAttribute(name)
-</code></pre><p>5、提交表单</p>
-<pre><code>document.geElementById(&apos;form&apos;).submit()
-</code></pre><p>6、事件</p>
-<p><img src="http://i.imgur.com/aP6MTMY.png" alt=""></p>
-<p>7、其他功能</p>
-<pre><code>console.log()
+</code></pre><h3 id="5-提交表单"><a href="#5-提交表单" class="headerlink" title="5.提交表单"></a>5.提交表单</h3><pre><code>document.geElementById(&apos;form&apos;).submit()
+</code></pre><h3 id="6-事件"><a href="#6-事件" class="headerlink" title="6.事件"></a>6.事件</h3><p><img src="http://i.imgur.com/aP6MTMY.png" alt=""></p>
+<h3 id="7-其他功能"><a href="#7-其他功能" class="headerlink" title="7.其他功能"></a>7.其他功能</h3><pre><code>console.log()
 alert()
 confirm()
 
@@ -621,8 +602,7 @@ clearTimeout(obj)
         }
     }
 &lt;/script&gt;
-</code></pre><h2 id="三、jQuery"><a href="#三、jQuery" class="headerlink" title="三、jQuery"></a>三、jQuery</h2><p>1、选择器：</p>
-<pre><code>#id
+</code></pre><h2 id="四、jQuery"><a href="#四、jQuery" class="headerlink" title="四、jQuery"></a>四、jQuery</h2><h3 id="1-选择器："><a href="#1-选择器：" class="headerlink" title="1.选择器："></a>1.选择器：</h3><pre><code>#id
 element
 .class
 *
@@ -669,14 +649,10 @@ selector1,selector2,selectorN
         &lt;/script&gt;
     &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>2、 筛选器</p>
-<p><img src="http://i.imgur.com/x7Jqi96.jpg" alt=""></p>
-<p>3、属性、CSS</p>
-<p><img src="http://i.imgur.com/mPoLfMu.png" alt="">    </p>
-<p>4、文档处理</p>
-<p><img src="http://i.imgur.com/8YcX0EW.png" alt=""></p>
-<p>5、事件</p>
-<p><img src="http://i.imgur.com/p53Uf3n.png" alt=""></p>
+</code></pre><h3 id="2-筛选器"><a href="#2-筛选器" class="headerlink" title="2.筛选器"></a>2.筛选器</h3><p><img src="http://i.imgur.com/x7Jqi96.jpg" alt=""></p>
+<h3 id="3-属性、CSS"><a href="#3-属性、CSS" class="headerlink" title="3.属性、CSS"></a>3.属性、CSS</h3><p><img src="http://i.imgur.com/mPoLfMu.png" alt="">    </p>
+<h3 id="4-文档处理"><a href="#4-文档处理" class="headerlink" title="4.文档处理"></a>4.文档处理</h3><p><img src="http://i.imgur.com/8YcX0EW.png" alt=""></p>
+<h3 id="5-事件"><a href="#5-事件" class="headerlink" title="5.事件"></a>5.事件</h3><p><img src="http://i.imgur.com/p53Uf3n.png" alt=""></p>
 <p><strong>作业</strong></p>
 <ol>
 <li>jQuery API文档阅读</li>
@@ -695,7 +671,7 @@ selector1,selector2,selectorN
         <p><span>本文标题:</span><a href="/2016/04/09/s12-20160409-day13/">python自动化开发 day13</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">南非波波</a></p>
         <p><span>发布时间:</span>2016-04-09, 15:30:00</p>
-        <p><span>最后更新:</span>2016-07-05, 18:30:10</p>
+        <p><span>最后更新:</span>2016-07-07, 11:02:36</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/04/09/s12-20160409-day13/" title="python自动化开发 day13">http://blog.songqingbo.cn/2016/04/09/s12-20160409-day13/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.songqingbo.cn/2016/04/09/s12-20160409-day13/　　作者: 南非波波" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -731,7 +707,7 @@ selector1,selector2,selectorN
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、概述"><span class="toc-number">1.</span> <span class="toc-text">一、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、javaScript"><span class="toc-number">2.</span> <span class="toc-text">一、javaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串操作"><span class="toc-number">2.0.1.</span> <span class="toc-text">字符串操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for循环"><span class="toc-number">2.0.2.</span> <span class="toc-text">for循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#while循环"><span class="toc-number">2.0.3.</span> <span class="toc-text">while循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#switch"><span class="toc-number">2.0.4.</span> <span class="toc-text">switch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#if条件句"><span class="toc-number">2.0.5.</span> <span class="toc-text">if条件句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#try"><span class="toc-number">2.0.6.</span> <span class="toc-text">try</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数"><span class="toc-number">2.0.7.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#面向对象"><span class="toc-number">2.0.8.</span> <span class="toc-text">面向对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Dom"><span class="toc-number">3.</span> <span class="toc-text">二、Dom</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、jQuery"><span class="toc-number">4.</span> <span class="toc-text">三、jQuery</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、概述"><span class="toc-text">一、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、javaScript"><span class="toc-text">二、javaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串操作"><span class="toc-text">字符串操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for循环"><span class="toc-text">for循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#while循环"><span class="toc-text">while循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#switch"><span class="toc-text">switch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#if条件句"><span class="toc-text">if条件句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#try"><span class="toc-text">try</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#面向对象"><span class="toc-text">面向对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Dom"><span class="toc-text">三、Dom</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-选择器"><span class="toc-text">1.选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-内容"><span class="toc-text">2.内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-创建标签"><span class="toc-text">3.创建标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-标签属性"><span class="toc-text">4.标签属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-提交表单"><span class="toc-text">5.提交表单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-事件"><span class="toc-text">6.事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-其他功能"><span class="toc-text">7.其他功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、jQuery"><span class="toc-text">四、jQuery</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-选择器："><span class="toc-text">1.选择器：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-筛选器"><span class="toc-text">2.筛选器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-属性、CSS"><span class="toc-text">3.属性、CSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-文档处理"><span class="toc-text">4.文档处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-事件"><span class="toc-text">5.事件</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -748,7 +724,7 @@ selector1,selector2,selectorN
     <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
     </script>
 
 
