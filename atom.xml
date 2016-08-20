@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.songqingbo.cn/"/>
-  <updated>2016-07-05T10:37:26.000Z</updated>
+  <updated>2016-08-20T10:54:23.986Z</updated>
   <id>http://blog.songqingbo.cn/</id>
   
   <author>
@@ -16,11 +16,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>2016/08/20 [nodejs开发书籍]MEAN Web开发</title>
+    <link href="http://blog.songqingbo.cn/2016/08/20/2016-08-20-nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D-MEAN-Web%E5%BC%80%E5%8F%91/"/>
+    <id>http://blog.songqingbo.cn/2016/08/20/2016-08-20-nodejs开发书籍-MEAN-Web开发/</id>
+    <published>2016-08-20T10:42:34.000Z</published>
+    <updated>2016-08-20T10:54:23.986Z</updated>
+    
+    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/MEAN Web开发.pdf&quot; title=&quot;MEAN Web开发.pdf&quot;&gt;MEAN WEB开发&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;声明：本电子书为为本人从图灵社区所购，涉及版权，请读者不要私自传播。本平台仅提供在线阅读功能。如果您觉得此书帮助了您，同时也想帮作者分摊一部分电子书版权费。欢迎通过微信二维码进行资助，非常感谢。&lt;br&gt;&lt;img src=&quot;http://blog.songqingbo.cn/img/微信收款.png&quot; alt=&quot;资助南非波波&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/MEAN Web开发.pdf&quot; title=&quot;MEAN Web开发.pdf&quot;&gt;MEAN WEB开发&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;声明：本电子书为为本人从图灵社区所
+    
+    </summary>
+    
+    
+      <category term="nodejs开发书籍" scheme="http://blog.songqingbo.cn/tags/nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D/"/>
+    
+  </entry>
+  
+  <entry>
     <title>python自动化开发 day17</title>
     <link href="http://blog.songqingbo.cn/2016/05/14/s12-20160514-day17/"/>
     <id>http://blog.songqingbo.cn/2016/05/14/s12-20160514-day17/</id>
     <published>2016-05-14T07:30:00.000Z</published>
-    <updated>2016-07-05T10:37:26.000Z</updated>
+    <updated>2016-07-05T10:37:26.015Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -185,7 +210,7 @@ def select2(array):
     <link href="http://blog.songqingbo.cn/2016/05/07/s12-20160507-day16/"/>
     <id>http://blog.songqingbo.cn/2016/05/07/s12-20160507-day16/</id>
     <published>2016-05-07T07:30:00.000Z</published>
-    <updated>2016-07-07T01:55:09.000Z</updated>
+    <updated>2016-07-07T01:55:09.382Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -302,7 +327,7 @@ def select2(array):
     <link href="http://blog.songqingbo.cn/2016/04/30/s12-20160430-day15/"/>
     <id>http://blog.songqingbo.cn/2016/04/30/s12-20160430-day15/</id>
     <published>2016-04-30T07:30:00.000Z</published>
-    <updated>2016-07-07T01:59:02.000Z</updated>
+    <updated>2016-07-07T01:59:02.606Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -451,7 +476,7 @@ e.
     <link href="http://blog.songqingbo.cn/2016/04/21/s12-20160421-day14/"/>
     <id>http://blog.songqingbo.cn/2016/04/21/s12-20160421-day14/</id>
     <published>2016-04-21T07:30:00.000Z</published>
-    <updated>2016-07-05T10:30:05.000Z</updated>
+    <updated>2016-07-05T10:30:05.747Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -771,7 +796,7 @@ ajax_jsonp
     <link href="http://blog.songqingbo.cn/2016/04/09/s12-20160409-day13/"/>
     <id>http://blog.songqingbo.cn/2016/04/09/s12-20160409-day13/</id>
     <published>2016-04-09T07:30:00.000Z</published>
-    <updated>2016-07-07T03:02:36.000Z</updated>
+    <updated>2016-07-07T03:02:36.049Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -1081,7 +1106,7 @@ selector1,selector2,selectorN
     <link href="http://blog.songqingbo.cn/2016/03/19/s12-20160319-day10/"/>
     <id>http://blog.songqingbo.cn/2016/03/19/s12-20160319-day10/</id>
     <published>2016-03-19T07:30:00.000Z</published>
-    <updated>2016-07-07T02:55:01.000Z</updated>
+    <updated>2016-07-07T02:55:01.160Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -2327,7 +2352,7 @@ subscriber.py
     <link href="http://blog.songqingbo.cn/2016/03/12/s12-20160312-day09/"/>
     <id>http://blog.songqingbo.cn/2016/03/12/s12-20160312-day09/</id>
     <published>2016-03-12T07:30:00.000Z</published>
-    <updated>2016-07-07T03:01:23.000Z</updated>
+    <updated>2016-07-07T03:01:23.952Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -3006,7 +3031,7 @@ excutemany()
     <link href="http://blog.songqingbo.cn/2016/03/05/s12-20160305-day08/"/>
     <id>http://blog.songqingbo.cn/2016/03/05/s12-20160305-day08/</id>
     <published>2016-03-05T07:30:00.000Z</published>
-    <updated>2016-07-07T03:07:16.000Z</updated>
+    <updated>2016-07-07T03:07:16.544Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -3448,7 +3473,7 @@ manager
     <link href="http://blog.songqingbo.cn/2016/02/27/s12-20160227-day07/"/>
     <id>http://blog.songqingbo.cn/2016/02/27/s12-20160227-day07/</id>
     <published>2016-02-27T07:30:00.000Z</published>
-    <updated>2016-07-07T03:08:46.000Z</updated>
+    <updated>2016-07-07T03:08:46.825Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -3880,7 +3905,7 @@ ssh_client.close()
     <link href="http://blog.songqingbo.cn/2016/02/20/s12-20160130-day06/"/>
     <id>http://blog.songqingbo.cn/2016/02/20/s12-20160130-day06/</id>
     <published>2016-02-20T07:30:00.000Z</published>
-    <updated>2016-07-07T03:09:56.000Z</updated>
+    <updated>2016-07-07T03:09:56.770Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -4196,7 +4221,7 @@ print(&amp;quot;t1[weapon]当前值:&amp;quot;,t1.weapon)
     <link href="http://blog.songqingbo.cn/2016/01/30/s12-20160130-day05/"/>
     <id>http://blog.songqingbo.cn/2016/01/30/s12-20160130-day05/</id>
     <published>2016-01-30T07:30:00.000Z</published>
-    <updated>2016-07-07T03:13:02.000Z</updated>
+    <updated>2016-07-07T03:13:02.040Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -4645,7 +4670,7 @@ ATM记录操作日志
     <link href="http://blog.songqingbo.cn/2016/01/23/s12-20160123-day04/"/>
     <id>http://blog.songqingbo.cn/2016/01/23/s12-20160123-day04/</id>
     <published>2016-01-23T07:30:00.000Z</published>
-    <updated>2016-07-07T03:14:56.000Z</updated>
+    <updated>2016-07-07T03:14:56.681Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -5162,7 +5187,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
     <link href="http://blog.songqingbo.cn/2016/01/16/s12-20160116-day03/"/>
     <id>http://blog.songqingbo.cn/2016/01/16/s12-20160116-day03/</id>
     <published>2016-01-16T07:30:00.000Z</published>
-    <updated>2016-07-07T03:17:58.000Z</updated>
+    <updated>2016-07-07T03:17:58.812Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
@@ -6296,7 +6321,7 @@ backend buy.oldboy.org
     <link href="http://blog.songqingbo.cn/2016/01/09/s12-20160109-day02/"/>
     <id>http://blog.songqingbo.cn/2016/01/09/s12-20160109-day02/</id>
     <published>2016-01-09T07:30:00.000Z</published>
-    <updated>2016-07-07T03:19:20.000Z</updated>
+    <updated>2016-07-07T03:19:20.417Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;作者注：&lt;/p&gt;
@@ -7111,7 +7136,7 @@ name
     <link href="http://blog.songqingbo.cn/2015/12/16/s12-20151226-day01/"/>
     <id>http://blog.songqingbo.cn/2015/12/16/s12-20151226-day01/</id>
     <published>2015-12-16T07:30:00.000Z</published>
-    <updated>2016-07-07T03:20:19.000Z</updated>
+    <updated>2016-07-07T03:20:19.721Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;作者注：&lt;/p&gt;
