@@ -301,6 +301,2481 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-s12-20160319-day10" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/19/s12-20160319-day10/" class="article-date">
+      <time datetime="2016-03-19T07:30:00.000Z" itemprop="datePublished">2016-03-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/19/s12-20160319-day10/">python自动化开发 day10</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author:@南非波波</p>
+<p>课程大纲：</p>
+<p>day09</p>
+<p><a href="http://www.cnblogs.com/alex3714/articles/5248247.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5248247.html</a></p>
+<p>day10</p>
+<p><a href="http://www.cnblogs.com/alex3714/articles/5286889.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5286889.html
+</a></p>
+<h2 id="一、回顾"><a href="#一、回顾" class="headerlink" title="一、回顾"></a>一、回顾</h2><h3 id="1-队列"><a href="#1-队列" class="headerlink" title="1.    队列"></a>1.    队列</h3><pre><code>1.    队列的作业就是实现多个线程之间数据安全的交互
+2.    队列类型：先进先出、后进先出、优先级
+3.    queue的数据必须按照顺序进行取出--&gt;处理--&gt;放回。主要作用就是不同进程之间数据的交换，manager可以进行多个进程之间的数据的共享，而且是数据安全的。
+4.    生产者-消费者模型：实现程序的松耦合
+</code></pre><h3 id="2-gevent模块：对Greenlet模块的一次封装"><a href="#2-gevent模块：对Greenlet模块的一次封装" class="headerlink" title="2. gevent模块：对Greenlet模块的一次封装"></a>2. gevent模块：对Greenlet模块的一次封装</h3><pre><code>1. gevent里面的socket本身可以实现IO阻塞变成非阻塞
+2. monkey.path_all()可以帮助我们实现阻塞变成非阻塞
+</code></pre><h3 id="3-协程"><a href="#3-协程" class="headerlink" title="3. 协程"></a>3. 协程</h3><pre><code>1. 实现单个线程里面的并发
+2. 无需线程上下文切换的开销，无需原子操作锁定及同步的开销，方便切换控制流，高并发+高扩展性+低成本
+3. 无法利用多核资源，但是可以实现单个进程下面起一个线程，然后一个线程下面实现多个协程并发
+</code></pre><h3 id="4-select"><a href="#4-select" class="headerlink" title="4. select"></a>4. select</h3><p><img src="http://i.imgur.com/SpEkQHr.png" alt=""></p>
+<pre><code>1. select 与poll的区别
+
+    select有一个最大文件数的限制1024，文件扫描一个列表是非常低效的；poll没有这个限制
+    内核态到用户态的数据copy；Epoll直接调用C语言进行内核态的数据nat到用户态
+
+2.    select代码注释
+
+
+    __auther__ = &apos;Victor&apos;
+
+    import select
+    import socket
+    import sys
+    import queue
+
+    # 创建一个TCP/IP socket
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setblocking(False)
+    # 绑定socket到指定端口
+    server_address = (&apos;localhost&apos;, 10000)
+    print(sys.stderr, &apos;starting up on %s port %s&apos; % server_address)
+    server.bind(server_address)
+    # 监听连接的地址
+    server.listen(5)
+    inputs = [server]
+    # Socket的读操作
+    outputs = []
+    # socket的写操作
+    message_queues = {}
+    while inputs:
+    # Wait for at least one of the sockets to be ready for processing
+    print( &apos;\nwaiting for the next event&apos;)
+    readable, writable, exceptional = select.select(inputs, outputs, inputs)
+    # 监听句柄序列，如果某个发生变化，select的第一个rLest会拿到数据，output只要有数据wLest就能获取到，select的第三个参数inputs用来监测异常，并赋值给exceptional。
+    # 监听inputs，outputs，inputs  如果他们的值有变化，就将分别赋值给readable，writable，exceptional。
+    for s in readable:
+    # 遍历readable的值。
+    if s is server:
+    connection, client_address = s.accept()
+    # 如果s 是server，那么server socket将接收连接。
+    print(&apos;new connection from&apos;, client_address)
+    # 打印出连接客户端的地址。
+    connection.setblocking(False)
+    # 设置socket 为非阻塞模式。
+    inputs.append(connection)
+    # 因为有读操作发生，所以将此连接加入inputs
+    message_queues[connection] = queue.Queue()
+    # 为每个连接创建一个queue队列。使得每个连接接收到正确的数据。
+    else:
+    data = s.recv(1024)
+    # 如果s不是server，说明客户端连接来了，那么就接受客户端的数据。
+    if data:
+    # 如果接收到客户端的数据
+    print(sys.stderr, &apos;received &quot;%s&quot; from %s&apos; % (data, s.getpeername()) )
+    message_queues[s].put(data)
+    # 将收到的数据放入队列中
+    if s not in outputs:
+    outputs.append(s)
+    # 将socket客户端的连接加入select的output中，并且用来返回给客户端数据。
+    else:
+    print(&apos;closing&apos;, client_address, &apos;after reading no data&apos;)
+    # 如果没有收到客户端发来的空消息，则说明客户端已经断开连接。
+    if s in outputs:
+    outputs.remove(s)
+    # 既然客户端都断开了，我就不用再给它返回数据了，所以这时候如果这个客户端的连接对象还在outputs列表中，就把它删掉
+    inputs.remove(s)
+    # inputs中也删除掉
+    s.close()
+    # 把这个连接关闭掉
+    del message_queues[s]
+    # 删除此客户端的消息队列
+
+    for s in writable:
+    # 遍历output的数据
+    try:
+    next_msg = message_queues[s].get_nowait()
+    except queue.Empty:
+    # 获取对应客户端消息队列中的数据，如果队列中的数据为空，从消息队列中移除此客户端连接。
+    print(&apos;output queue for&apos;, s.getpeername(), &apos;is empty&apos;)
+    outputs.remove(s)
+    else:
+    print( &apos;sending &quot;%s&quot; to %s&apos; % (next_msg, s.getpeername()))
+    s.send(next_msg)
+    # 如果消息队列有数据，则发送给客户端。
+    for s in exceptional:
+    # 处理 &quot;exceptional conditions&quot;
+    print(&apos;handling exceptional condition for&apos;, s.getpeername() )
+    inputs.remove(s)
+    # 取消对出现异常的客户端的监听
+    if s in outputs:
+    outputs.remove(s)
+    # 移除客户端的连接对象。
+    s.close()
+    # 关闭此socket连接
+    del message_queues[s]
+    # 删除此消息队列。
+
+    &apos;&apos;&apos;
+
+    在select/poll时代，服务器进程每次都把这100万个连接告诉操作系统(从用户态复制句柄数据结构到内核态)，让操作系统内核去查询这些套接字上是否有事件发生，
+
+    轮询完后，再将句柄数据复制到用户态，让服务器应用程序轮询处理已发生的网络事件，这一过程资源消耗较大，因此，select/poll一般只能处理几千的并发连接。
+
+    epoll的设计和实现与select完全不同。epoll通过在Linux内核中申请一个简易的文件系统(文件系统一般用什么数据结构实现？B+树)。把原先的select/poll调用分成了3个部分：
+
+    1）调用epoll_create()建立一个epoll对象(在epoll文件系统中为这个句柄对象分配资源)
+
+    2）调用epoll_ctl向epoll对象中添加这100万个连接的套接字
+
+    3）调用epoll_wait收集发生的事件的连接
+
+    &apos;&apos;&apos;
+
+
+3.    epoll代码注释
+
+    __auther__ = &apos;Victor&apos;
+
+
+    #--------------这是一个epoll的例子--------------
+
+
+    import socket, select
+    # &apos;windows&apos;下不支持&apos;epoll&apos;
+
+    EOL1 = b&apos;\n\n&apos;
+    EOL2 = b&apos;\n\r\n&apos;
+    response = b&apos;HTTP/1.0 200 OK\r\nDate: Mon, 1 Jan 1996 01:01:01 GMT\r\n&apos;
+    response += b&apos;Content-Type: text/plain\r\nContent-Length: 13\r\n\r\n&apos;
+    response += b&apos;Hello, world!&apos;
+
+    serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    serversocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    serversocket.bind((&apos;0.0.0.0&apos;, 8080))
+    serversocket.listen(1)
+    # 建立socket连接。
+    serversocket.setblocking(0)
+    # 因为socket本身是阻塞的，setblocking（0）使得socket不阻塞
+
+    epoll = select.epoll()
+    # 创建一个eopll对象
+    epoll.register(serversocket.fileno(), select.EPOLLIN)
+    # 在服务器端socket上面注册对读event的关注，一个读event随时会触发服务器端socket去接收一个socket连接。
+
+    try:
+       connections = {}; requests = {}; responses = {}
+    # 生成3个字典，connection字典是存储文件描述符映射到他们相应的网络连接对象
+       while True:
+          events = epoll.poll(1)
+    # 查询epoll对象，看是否有任何关注的event被触发，参数‘1’表示，会等待一秒来看是否有event发生，如果有任何感兴趣的event发生在这次查询之前，这个查询就会带着这些event的列表立即返回
+          for fileno, event in events:
+            # event作为一个序列（fileno，event code）的元组返回，fileno是文件描述符的代名词，始终是一个整数。
+             if fileno == serversocket.fileno():
+                # 如果一个读event在服务器端socket发生，就会有一个新的socket连接可能被创建。
+                connection, address = serversocket.accept()
+                # 服务器端开始接收连接和客户端地址
+                connection.setblocking(0)
+                # 设置新的socket为非阻塞模式
+                epoll.register(connection.fileno(), select.EPOLLIN)
+                # 为新的socket注册对读（EPOLLIN）event的关注
+                connections[connection.fileno()] = connection
+                requests[connection.fileno()] = b&apos;&apos;
+                responses[connection.fileno()] = response
+             elif event &amp; select.EPOLLIN:
+                requests[fileno] += connections[fileno].recv(1024)
+                # 如果发生一个读event，就读取从客户端发过来的数据。
+                if EOL1 in requests[fileno] or EOL2 in requests[fileno]:
+                   epoll.modify(fileno, select.EPOLLOUT)
+                # 一旦完成请求已经收到，就注销对读event的关注，注册对写（EPOLLOUT）event的关注，写event发生的时候，会回复数据给客户端。
+                   print(&apos;-&apos;*40 + &apos;\n&apos; + requests[fileno].decode()[:-2])
+                # 打印完整的请求，证明虽然与客户端的通信是交错进行的，但是数据可以作为一个整体来组装和处理。
+             elif event &amp; select.EPOLLOUT:
+                # 如果一个写event在一个客户端socket上面发生，他会接受新的数据以便发送到客户端。
+                byteswritten = connections[fileno].send(responses[fileno])
+                responses[fileno] = responses[fileno][byteswritten:]
+                if len(responses[fileno]) == 0:
+                    # 每次发送一部分响应数据，直到完整的响应数据都已经发送给操作系统等待传输给客户端。
+                   epoll.modify(fileno, 0)
+                # 一旦完整的响应数据发送完成，就不再关注读或者写event。
+                   connections[fileno].shutdown(socket.SHUT_RDWR)
+                # 如果一个连接显式关闭，那么socket shutdown是可选的，在这里这样使用，是为了让客户端首先关闭。
+                # shutdown调用会通知客户端socket没有更多的数据应该被发送或者接收，并会让功能正常的客户端关闭自己的socket连接。
+             elif event &amp; select.EPOLLHUP:
+                # HUP挂起event表明客户端socket已经断开（即关闭），所以服务器端也需要关闭，没有必要注册对HUP event的关注，在socket上面，他们总是会被epoll对象注册。
+                epoll.unregister(fileno)
+                # 注销对此socket连接的关注。
+                connections[fileno].close()
+                # 关闭socket连接。
+                del connections[fileno]
+    finally:
+       epoll.unregister(serversocket.fileno())
+    # 去掉已经注册的文件句柄
+       epoll.close()
+    # 关闭epoll对象
+       serversocket.close()
+    # 关闭服务器连接
+    # 打开的socket连接不需要关闭，因为Python会在程序结束时关闭， 这里的显示关闭是个好的习惯。
+
+    &apos;&apos;&apos;
+
+    首先我们来定义流的概念，一个流可以是文件，socket，pipe等等可以进行I/O操作的内核对象。
+
+        不管是文件，还是套接字，还是管道，我们都可以把他们看作流。
+
+        之后我们来讨论I/O的操作，通过read，我们可以从流中读入数据；通过write，我们可以往流写入数据。现在假定一个情形，
+        我们需要从流中读数据，但是流中还没有数据，（典型的例子为，客户端要从socket读如数据，但是服务器还没有把数据传回来），
+        这时候该怎么办？
+
+    阻塞：阻塞是个什么概念呢？比如某个时候你在等快递，但是你不知道快递什么时候过来，而且你没有别的事可以干（或者说接下来的事要等快递来了才能做）；
+    那么你可以去睡觉了，因为你知道快递把货送来时一定会给你打个电话（假定一定能叫醒你）。
+
+    非阻塞忙轮询：接着上面等快递的例子，如果用忙轮询的方法，那么你需要知道快递员的手机号，然后每分钟给他挂个电话：“你到了没？”
+
+        很明显一般人不会用第二种做法，不仅显很无脑，浪费话费不说，还占用了快递员大量的时间。
+
+        大部分程序也不会用第二种做法，因为第一种方法经济而简单，经济是指消耗很少的CPU时间，如果线程睡眠了，就掉出了系统的调度队列，暂时不会去瓜分CPU宝贵的时间片了。
+
+        为了了解阻塞是如何进行的，我们来讨论缓冲区，以及内核缓冲区，最终把I/O事件解释清楚。缓冲区的引入是为了减少频繁I/O操作而引起频繁的系统调用（你知道它很慢的），
+        当你操作一个流时，更多的是以缓冲区为单位进行操作，这是相对于用户空间而言。对于内核来说，也需要缓冲区。
+
+    假设有一个管道，进程A为管道的写入方，Ｂ为管道的读出方。
+
+    假设一开始内核缓冲区是空的，B作为读出方，被阻塞着。然后首先A往管道写入，这时候内核缓冲区由空的状态变到非空状态，内核就会产生一个事件告诉Ｂ该醒来了，
+    这个事件姑且称之为“缓冲区非空”。
+
+        但是“缓冲区非空”事件通知B后，B却还没有读出数据；且内核许诺了不能把写入管道中的数据丢掉这个时候，Ａ写入的数据会滞留在内核缓冲区中，如果内核也缓冲区满了，
+        B仍未开始读数据，最终内核缓冲区会被填满，这个时候会产生一个I/O事件，告诉进程A，你该等等（阻塞）了，我们把这个事件定义为“缓冲区满”。
+
+    假设后来Ｂ终于开始读数据了，于是内核的缓冲区空了出来，这时候内核会告诉A，内核缓冲区有空位了，你可以从长眠中醒来了，继续写数据了，我们把这个事件叫做“缓冲区非满”
+
+        也许事件Y1已经通知了A，但是A也没有数据写入了，而Ｂ继续读出数据，知道内核缓冲区空了。这个时候内核就告诉B，你需要阻塞了！，我们把这个时间定为“缓冲区空”。
+
+    这四个情形涵盖了四个I/O事件，缓冲区满，缓冲区空，缓冲区非空，缓冲区非满（注都是说的内核缓冲区，且这四个术语都是我生造的，仅为解释其原理而造）。
+    这四个I/O事件是进行阻塞同步的根本。（如果不能理解“同步”是什么概念，请学习操作系统的锁，信号量，条件变量等任务同步方面的相关知识）。
+
+        然后我们来说说阻塞I/O的缺点。但是阻塞I/O模式下，一个线程只能处理一个流的I/O事件。如果想要同时处理多个流，要么多进程(fork)，要么多线程(pthread_create)，
+        很不幸这两种方法效率都不高。
+
+        于是再来考虑非阻塞忙轮询的I/O方式，我们发现我们可以同时处理多个流了（把一个流从阻塞模式切换到非阻塞模式再此不予讨论）：
+
+    while true {
+        for i in stream[]; {
+            if i has data
+                read until unavailable
+        }
+    }
+
+        我们只要不停的把所有流从头到尾问一遍，又从头开始。这样就可以处理多个流了，但这样的做法显然不好，因为如果所有的流都没有数据，那么只会白白浪费CPU。
+        这里要补充一点，阻塞模式下，内核对于I/O事件的处理是阻塞或者唤醒，而非阻塞模式下则把I/O事件交给其他对象（后文介绍的select以及epoll）处理甚至直接忽略。
+
+        为了避免CPU空转，可以引进了一个代理（一开始有一位叫做select的代理，后来又有一位叫做poll的代理，不过两者的本质是一样的）。这个代理比较厉害，
+        可以同时观察许多流的I/O事件，在空闲的时候，会把当前线程阻塞掉，当有一个或多个流有I/O事件时，就从阻塞态中醒来，于是我们的程序就会轮询一遍所有的流
+        （于是我们可以把“忙”字去掉了）。代码长这样:
+
+    while true {
+        select(streams[])
+        for i in streams[] {
+            if i has data
+                read until unavailable
+        }
+    }
+
+        于是，如果没有I/O事件产生，我们的程序就会阻塞在select处。但是依然有个问题，我们从select那里仅仅知道了，有I/O事件发生了，但却并不知道是那几个流
+        （可能有一个，多个，甚至全部），我们只能无差别轮询所有流，找出能读出数据，或者写入数据的流，对他们进行操作。
+
+        但是使用select，我们有O(n)的无差别轮询复杂度，同时处理的流越多，没一次无差别轮询时间就越长。再次
+
+    说了这么多，终于能好好解释epoll了
+
+        epoll可以理解为event poll，不同于忙轮询和无差别轮询，epoll之会把哪个流发生了怎样的I/O事件通知我们。此时我们对这些流的操作都是有意义的。
+        （复杂度降低到了O(1)）
+
+        在讨论epoll的实现细节之前，先把epoll的相关操作列出：
+
+          epoll_create 创建一个epoll对象，一般epollfd = epoll_create()
+
+          epoll_ctl （epoll_add/epoll_del的合体），往epoll对象中增加/删除某一个流的某一个事件
+
+    比如
+
+    epoll_ctl(epollfd, EPOLL_CTL_ADD, socket, EPOLLIN);//注册缓冲区非空事件，即有数据流入
+
+    epoll_ctl(epollfd, EPOLL_CTL_DEL, socket, EPOLLOUT);//注册缓冲区非满事件，即流可以被写入
+
+    epoll_wait(epollfd,...)等待直到注册的事件发生
+
+    （注：当对一个非阻塞流的读写发生缓冲区满或缓冲区空，write/read会返回-1，并设置errno=EAGAIN。而epoll只关心缓冲区非满和缓冲区非空事件）。
+
+    一个epoll模式的代码大概的样子是：
+    while true {
+        active_stream[] = epoll_wait(epollfd)
+        for i in active_stream[] {
+            read or write till
+        }
+    }
+    &apos;&apos;&apos;
+</code></pre><h2 id="二、Twsited异步网络框架"><a href="#二、Twsited异步网络框架" class="headerlink" title="二、Twsited异步网络框架"></a>二、Twsited异步网络框架</h2><h3 id="1-事件驱动"><a href="#1-事件驱动" class="headerlink" title="1.    事件驱动"></a>1.    事件驱动</h3><pre><code>将自定义的类和函数注册到事件列表中，事件驱动框架就会自行去列表中获取事件并执行。
+
+第一，注册事件；第二，触发事件
+![](http://i.imgur.com/6brDszu.png)
+</code></pre><p>示例代码：</p>
+<pre><code>#event_drive.py
+
+#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+&apos;&apos;&apos;
+模拟twsited异步网络框架的流程
+&apos;&apos;&apos;
+#创建一个事件列表
+event_list = []
+
+#创建一个事件驱动动作
+def run():
+    for event in event_list:
+        obj = event()
+        obj.execute()
+
+#创建事件定义规则，用户将自定义事件注册到事件列表中需要继承此类
+class BaseHandler(object):
+    &quot;&quot;&quot;
+    用户必须继承该类，从而规范所有类的方法（类似于接口的功能）
+    &quot;&quot;&quot;
+    def execute(self):
+        raise Exception(&apos;you must overwrite execute&apos;)
+
+
+#event_run.py
+
+
+#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import event_drive
+
+#自定义事件，继承事件驱动自定义类
+class MyHandler(event_drive.BaseHandler):
+
+    #重写执行函数
+    def execute(self):
+        print(&apos;event-drive execute MyHandler&apos;)
+class YourHandler(event_drive.BaseHandler):
+
+    def execute(self):
+        print(&apos;event-drive ezecute YourHandler&apos;)
+
+event_drive.event_list.append(MyHandler) #将事件注册到事件列表中
+event_drive.event_list.append(YourHandler)
+event_drive.run()
+</code></pre><h3 id="2-Twisted框架"><a href="#2-Twisted框架" class="headerlink" title="2.    Twisted框架"></a>2.    Twisted框架</h3><pre><code>Echo_server
+
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    from twisted.internet import protocol
+    from twisted.internet import reactor
+
+    class Echo(protocol.Protocol):
+        &apos;&apos;&apos;
+        定义一个类，处理客户端传递的数据
+        &apos;&apos;&apos;
+        def dataReceived(self, data):
+            &apos;&apos;&apos;
+            一旦接收到客户端传递的数据就要调用该方法
+            :param data: 客户端传递过来的数据，python3版本传递的数据需要转换成bytes
+            :return: 返回的数据是将客户端传递过来的数据返回给客户端
+            &apos;&apos;&apos;
+            print(&quot;Client said:&quot;,data)
+            self.transport.write(data)
+
+    def main():
+        &apos;&apos;&apos;
+        主函数，程序执行时直接从该函数调用事件类
+        :return:
+        &apos;&apos;&apos;
+        factory = protocol.ServerFactory() #定义基础工厂类
+        factory.protocol = Echo #相当于socketserver中的Handler方法，工厂协议直接引用自定义的Echo类
+
+        reactor.listenTCP(5000,factory) #reactor自动重复去做一件事情。使用listenTCP监听端口
+        reactor.run() #运行
+
+    if __name__ == &apos;__main__&apos;:
+        main()
+
+
+Echo_client:
+
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    from twisted.internet import reactor, protocol
+
+
+    # a client protocol
+
+    class EchoClient(protocol.Protocol):
+        &apos;&apos;&apos;
+        客户端Echo事件
+        &apos;&apos;&apos;
+        def connectionMade(self):
+            &apos;&apos;&apos;
+            连接建立执行该方法，客户端发送数据
+            :return:
+            &apos;&apos;&apos;
+            self.transport.write(b&quot;hello alex!&quot;)
+
+        def dataReceived(self, data):
+            &apos;&apos;&apos;
+            客户端接收服务端的数据
+            :param data:
+            :return:
+            &apos;&apos;&apos;
+            print(&quot;Server said:&quot;, data)
+            self.transport.loseConnection()
+        def connectionLost(self, reason):
+            &apos;&apos;&apos;
+            客户端接收完数据断开连接，主动执行该方法断开连接
+            :param reason:
+            :return:
+            &apos;&apos;&apos;
+            print(&quot;connection lost&quot;)
+
+    class EchoFactory(protocol.ClientFactory):
+        &apos;&apos;&apos;
+        自定义工厂类，继承prorocol.ClientFactory类
+        &apos;&apos;&apos;
+        protocol = EchoClient #hanld。自己重写了protocol类
+
+        def clientConnectionFailed(self, connector, reason):
+            print(&quot;Connection failed - goodbye!&quot;)
+            reactor.stop()
+
+        def clientConnectionLost(self, connector, reason):
+            print(&quot;Connection lost - goodbye!&quot;)
+            reactor.stop()
+
+
+    # this connects the protocol to a server running on port 8000
+    def main():
+        f = EchoFactory()
+        reactor.connectTCP(&quot;localhost&quot;, 5000, f)
+        reactor.run()
+
+    # this only runs if the module was *not* imported
+    if __name__ == &apos;__main__&apos;:
+        main()
+</code></pre><h3 id="3-深入学习"><a href="#3-深入学习" class="headerlink" title="3.深入学习"></a>3.深入学习</h3><p><a href="http://blog.csdn.net/hanhuili/article/details/9389433" target="_blank" rel="external">http://blog.csdn.net/hanhuili/article/details/9389433</a> </p>
+<p><a href="http://krondo.com/an-introduction-to-asynchronous-programming-and-twisted/" target="_blank" rel="external">http://krondo.com/an-introduction-to-asynchronous-programming-and-twisted/</a> </p>
+<h3 id="三、非关系型数据库"><a href="#三、非关系型数据库" class="headerlink" title="三、非关系型数据库"></a>三、非关系型数据库</h3><h3 id="1-Redis"><a href="#1-Redis" class="headerlink" title="1.    Redis"></a>1.    Redis</h3><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/5132791.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5132791.html</a></p>
+<pre><code>数据（键值对）存储在内存中，一个独立的内存管理器，可以使多个程序共享数据    
+
+默认是非持久化的，但是可以在配置文件中进行设置
+
+1. redis基础使用
+
+        cli&gt;keys * #查看所有的键
+        cli&gt;set name swht ex 5 #设置一个键值对，其有效时间为5秒
+        cli&gt;get name #获取键值
+
+2. redis连接
+
+        import redis
+        redis_cli = redis.Redis(&quot;localhost&quot;)
+        print(redis_cli.get(&apos;name&apos;)) #b&apos;swht&apos;  get方法只能获取字符
+3. redis连接池
+
+        import redis
+        pool = redis.ConnectionPool(host = &apos;localhost&apos;,port = 6379)
+        redis_cli = redis.Redis(connection_pool=pool)
+        redis_cli.set(&apos;age&apos;,56)
+        print(redis_cli.get(&apos;age&apos;)) #b&apos;56&apos;
+4. 操作
+
+    set(name, value, ex=None, px=None, nx=False, xx=False)
+
+        在Redis中设置值，默认，不存在则创建，存在则修改
+        参数：
+             ex，过期时间（秒）
+             px，过期时间（毫秒）
+             nx，如果设置为True，则只有name不存在时，当前set操作才执行
+             xx，如果设置为True，则只有name存在时，岗前set操作才执行
+    setnx(name, value)
+
+        设置值，只有name不存在时，执行设置操作（添加）
+    setex(name, value, time)
+
+        # 设置值
+        # 参数：
+            # time，过期时间（数字秒 或 timedelta对象）
+    psetex(name, time_ms, value)
+
+        # 设置值
+        # 参数：
+            # time_ms，过期时间（数字毫秒 或 timedelta对象）
+    mset(*args, **kwargs)
+
+        批量设置值
+        如：
+            mset(k1=&apos;v1&apos;, k2=&apos;v2&apos;)
+            或
+            mget({&apos;k1&apos;: &apos;v1&apos;, &apos;k2&apos;: &apos;v2&apos;})
+    get(name)
+
+        获取值
+    mget(keys, *args)
+
+        批量获取
+        如：
+            mget(&apos;ylr&apos;, &apos;wupeiqi&apos;)
+            或
+            r.mget([&apos;ylr&apos;, &apos;wupeiqi&apos;])
+    getset(name, value)
+
+        设置新值并获取原来的值
+    getrange(key, start, end)
+
+
+        # 获取子序列（根据字节获取，非字符）
+        # 参数：
+            # name，Redis 的 name
+            # start，起始位置（字节）
+            # end，结束位置（字节）
+        # 如： &quot;武沛齐&quot; ，0-3表示 &quot;武&quot;
+    setrange(name, offset, value)
+
+        # 修改字符串内容，从指定字符串索引开始向后替换（新值太长时，则向后添加）
+        # 参数：
+            # offset，字符串的索引，字节（一个汉字三个字节）
+            # value，要设置的值
+    setbit(name, offset, value)    
+        # 对name对应值的二进制表示的位进行操作
+
+        # 参数：
+            # name，redis的name
+            # offset，位的索引（将值变换成二进制后再进行索引）
+            # value，值只能是 1 或 0
+
+        # 注：如果在Redis中有一个对应： n1 = &quot;foo&quot;，
+                那么字符串foo的二进制表示为：01100110 01101111 01101111
+            所以，如果执行 setbit(&apos;n1&apos;, 7, 1)，则就会将第7位设置为1，
+                那么最终二进制则变成 01100111 01101111 01101111，即：&quot;goo&quot;
+
+        # 扩展，转换二进制表示：
+
+            # source = &quot;武沛齐&quot;
+            source = &quot;foo&quot;
+
+            for i in source:
+                num = ord(i)
+                print bin(num).replace(&apos;b&apos;,&apos;&apos;)
+
+            特别的，如果source是汉字 &quot;武沛齐&quot;怎么办？
+            答：对于utf-8，每一个汉字占 3 个字节，那么 &quot;武沛齐&quot; 则有 9个字节
+               对于汉字，for循环时候会按照 字节 迭代，那么在迭代时，将每一个字节转换 十进制数，然后再将十进制数转换成二进制    
+    假定统计UV，使用setbit可以进行相应UV数统计。
+
+        #!/usr/local/env python3
+        &apos;&apos;&apos;
+        Author:@南非波波
+        Blog:http://www.cnblogs.com/songqingbo/
+        E-mail:qingbo.song@gmail.com
+        &apos;&apos;&apos;
+        import redis
+
+        pool = redis.ConnectionPool(host = &apos;localhost&apos;,port = 6379)
+        redis_cli = redis.Redis(connection_pool=pool)
+        redis_cli.setbit(&apos;ip&apos;,5,1)
+        redis_cli.setbit(&apos;ip&apos;,45,1)
+        redis_cli.setbit(&apos;ip&apos;,15,1)
+        redis_cli.setbit(&apos;ip&apos;,45,1)
+        print(&quot;uv_count:&quot;,redis_cli.bitcount(&apos;ip&apos;))    
+    getbit(name, offset)
+
+
+        # 获取name对应的值的二进制表示中的某位的值 （0或1）
+        bitcount(key, start=None, end=None)
+
+        # 获取name对应的值的二进制表示中 1 的个数
+        # 参数：
+            # key，Redis的name
+            # start，位起始位置
+            # end，位结束位置
+    bitop(operation, dest, *keys)
+
+        # 获取多个值，并将值做位运算，将最后的结果保存至新的name对应的值
+
+        # 参数：
+            # operation,AND（并） 、 OR（或） 、 NOT（非） 、 XOR（异或）
+            # dest, 新的Redis的name
+            # *keys,要查找的Redis的name
+
+        # 如：
+            bitop(&quot;AND&quot;, &apos;new_name&apos;, &apos;n1&apos;, &apos;n2&apos;, &apos;n3&apos;)
+            # 获取Redis中n1,n2,n3对应的值，然后讲所有的值做位运算（求并集），然后将结果保存 new_name 对应的值中
+    strlen(name)
+
+        # 返回name对应值的字节长度（一个汉字3个字节）
+    incr(self, name, amount=1)
+
+        做pv统计比较有用
+        # 自增 name对应的值，当name不存在时，则创建name＝amount，否则，则自增。
+
+        # 参数：
+            # name,Redis的name
+            # amount,自增数（必须是整数）
+
+        # 注：同incrby
+    incrbyfloat(self, name, amount=1.0)
+
+        # 自增 name对应的值，当name不存在时，则创建name＝amount，否则，则自增。
+
+        # 参数：
+            # name,Redis的name
+            # amount,自增数（浮点型）
+    decr(self, name, amount=1)
+
+        # 自减 name对应的值，当name不存在时，则创建name＝amount，否则，则自减。
+
+        # 参数：
+            # name,Redis的name
+            # amount,自减数（整数）
+    append(key, value)
+
+        # 在redis name对应的值后面追加内容
+
+        # 参数：
+            key, redis的name
+            value, 要追加的字符串        
+
+5. Hash操作
+
+    hset(name, key, value)
+
+        # name对应的hash中设置一个键值对（不存在，则创建；否则，修改）
+
+        # 参数：
+            # name，redis的name
+            # key，name对应的hash中的key
+            # value，name对应的hash中的value
+
+        # 注：
+            # hsetnx(name, key, value),当name对应的hash中不存在当前key时则创建（相当于添加）
+    hmset(name, mapping)
+
+        # 在name对应的hash中批量设置键值对
+
+        # 参数：
+            # name，redis的name
+            # mapping，字典，如：{&apos;k1&apos;:&apos;v1&apos;, &apos;k2&apos;: &apos;v2&apos;}
+
+        # 如：
+            # r.hmset(&apos;xx&apos;, {&apos;k1&apos;:&apos;v1&apos;, &apos;k2&apos;: &apos;v2&apos;})
+    hget(name,key)
+
+        # 在name对应的hash中获取根据key获取value
+        hmget(name, keys, *args)
+
+        # 在name对应的hash中获取多个key的值
+
+        # 参数：
+            # name，reids对应的name
+            # keys，要获取key集合，如：[&apos;k1&apos;, &apos;k2&apos;, &apos;k3&apos;]
+            # *args，要获取的key，如：k1,k2,k3
+
+        # 如：
+            # r.mget(&apos;xx&apos;, [&apos;k1&apos;, &apos;k2&apos;])
+            # 或
+            # print r.hmget(&apos;xx&apos;, &apos;k1&apos;, &apos;k2&apos;)
+    hgetall(name)
+
+        获取name对应hash的所有键值
+    hlen(name)
+
+        # 获取name对应的hash中键值对的个数
+    hkeys(name)
+
+        # 获取name对应的hash中所有的key的值
+    hvals(name)
+
+        # 获取name对应的hash中所有的value的值
+    hexists(name, key)
+
+        # 检查name对应的hash是否存在当前传入的key
+    hdel(name,*keys)
+
+        # 将name对应的hash中指定key的键值对删除
+    hincrby(name, key, amount=1)
+
+        # 自增name对应的hash中的指定key的值，不存在则创建key=amount
+        # 参数：
+            # name，redis中的name
+            # key， hash对应的key
+            # amount，自增数（整数）
+    hincrbyfloat(name, key, amount=1.0)
+
+        # 自增name对应的hash中的指定key的值，不存在则创建key=amount
+
+        # 参数：
+            # name，redis中的name
+            # key， hash对应的key
+            # amount，自增数（浮点数）
+
+        # 自增name对应的hash中的指定key的值，不存在则创建key=amount
+    hscan(name, cursor=0, match=None, count=None)
+
+        # 增量式迭代获取，对于数据大的数据非常有用，hscan可以实现分片的获取数据，并非一次性将数据全部获取完，从而放置内存被撑爆
+
+        # 参数：
+            # name，redis的name
+            # cursor，游标（基于游标分批取获取数据）
+            # match，匹配指定key，默认None 表示所有的key
+            # count，每次分片最少获取个数，默认None表示采用Redis的默认分片个数
+
+        # 如：
+            # 第一次：cursor1, data1 = r.hscan(&apos;xx&apos;, cursor=0, match=None, count=None)
+            # 第二次：cursor2, data1 = r.hscan(&apos;xx&apos;, cursor=cursor1, match=None, count=None)
+            # ...
+            # 直到返回值cursor的值为0时，表示数据已经通过分片获取完毕
+    hscan_iter(name, match=None, count=None)
+
+        # 利用yield封装hscan创建生成器，实现分批去redis中获取数据
+
+        # 参数：
+            # match，匹配指定key，默认None 表示所有的key
+            # count，每次分片最少获取个数，默认None表示采用Redis的默认分片个数
+
+        # 如：
+            # for item in r.hscan_iter(&apos;xx&apos;):
+            #     print item
+6. List操作
+
+    lpush(name,values)
+
+        # 在name对应的list中添加元素，每个新的元素都添加到列表的最左边
+
+        # 如：
+            # r.lpush(&apos;oo&apos;, 11,22,33)
+            # 保存顺序为: 33,22,11
+
+        # 扩展：
+            # rpush(name, values) 表示从右向左操作
+    lpushx(name,value)
+
+        # 在name对应的list中添加元素，只有name已经存在时，值添加到列表的最左边
+
+        # 更多：
+            # rpushx(name, value) 表示从右向左操作
+    llen(name)
+
+        # name对应的list元素的个数
+    linsert(name, where, refvalue, value))
+
+        # 在name对应的列表的某一个值前或后插入一个新值
+
+        # 参数：
+            # name，redis的name
+            # where，BEFORE或AFTER
+            # refvalue，标杆值，即：在它前后插入数据
+            # value，要插入的数据
+    r.lset(name, index, value)
+
+        # 对name对应的list中的某一个索引位置重新赋值
+
+        # 参数：
+            # name，redis的name
+            # index，list的索引位置
+            # value，要设置的值
+    r.lrem(name, value, num)
+
+        # 在name对应的list中删除指定的值
+
+        # 参数：
+            # name，redis的name
+            # value，要删除的值
+            # num，  num=0，删除列表中所有的指定值；
+                   # num=2,从前到后，删除2个；
+                   # num=-2,从后向前，删除2个
+    lpop(name)
+
+        # 在name对应的列表的左侧获取第一个元素并在列表中移除，返回值则是第一个元素
+
+        # 更多：
+            # rpop(name) 表示从右向左操作
+    lindex(name, index)
+
+        在name对应的列表中根据索引获取列表元素
+    lrange(name, start, end)
+
+        # 在name对应的列表分片获取数据
+        # 参数：
+            # name，redis的name
+            # start，索引的起始位置
+            # end，索引结束位置
+    ltrim(name, start, end)
+
+        # 在name对应的列表中移除没有在start-end索引之间的值
+        # 参数：
+            # name，redis的name
+            # start，索引的起始位置
+            # end，索引结束位置
+    rpoplpush(src, dst)
+
+        # 从一个列表取出最右边的元素，同时将其添加至另一个列表的最左边
+        # 参数：
+            # src，要取数据的列表的name
+            # dst，要添加数据的列表的name
+    blpop(keys, timeout)
+
+        # 将多个列表排列，按照从左到右去pop对应列表的元素
+
+        # 参数：
+            # keys，redis的name的集合
+            # timeout，超时时间，当元素所有列表的元素获取完之后，阻塞等待列表内有数据的时间（秒）, 0 表示永远阻塞
+
+        # 更多：
+            # r.brpop(keys, timeout)，从右向左获取数据
+    brpoplpush(src, dst, timeout=0)
+
+        # 从一个列表的右侧移除一个元素并将其添加到另一个列表的左侧
+
+        # 参数：
+            # src，取出并要移除元素的列表对应的name
+            # dst，要插入元素的列表对应的name
+            # timeout，当src对应的列表中没有数据时，阻塞等待其有数据的超时时间（秒），0 表示永远阻塞
+    自定义增量迭代
+
+        # 由于redis类库中没有提供对列表元素的增量迭代，如果想要循环name对应的列表的所有元素，那么就需要：
+            # 1、获取name对应的所有列表
+            # 2、循环列表
+        # 但是，如果列表非常大，那么就有可能在第一步时就将程序的内容撑爆，所有有必要自定义一个增量迭代的功能：
+
+        def list_iter(name):
+            &quot;&quot;&quot;
+            自定义redis列表增量迭代
+            :param name: redis中的name，即：迭代name对应的列表
+            :return: yield 返回 列表元素
+            &quot;&quot;&quot;
+            list_count = r.llen(name)
+            for index in xrange(list_count):
+                yield r.lindex(name, index)
+
+        # 使用
+        for item in list_iter(&apos;pp&apos;):
+            print item
+7. Set操作，Set集合就是不允许重复的列表
+
+    sadd(name,values)
+
+        # name对应的集合中添加元素
+    scard(name)
+
+        获取name对应的集合中元素个数
+    sdiff(keys, *args)
+
+        在第一个name对应的集合中且不在其他name对应的集合的元素集合
+    sdiffstore(dest, keys, *args)
+
+        # 获取第一个name对应的集合中且不在其他name对应的集合，再将其新加入到dest对应的集合中
+    sinter(keys, *args)
+
+        # 获取多一个name对应集合的并集
+    sinterstore(dest, keys, *args)
+
+        # 获取多一个name对应集合的并集，再讲其加入到dest对应的集合中
+    sismember(name, value)
+
+        # 检查value是否是name对应的集合的成员
+    smembers(name)
+
+        # 获取name对应的集合的所有成员
+    smove(src, dst, value)
+
+        # 将某个成员从一个集合中移动到另外一个集合
+    spop(name)
+
+        # 从集合的右侧（尾部）移除一个成员，并将其返回
+    srandmember(name, numbers)
+
+        # 从name对应的集合中随机获取 numbers 个元素
+    srem(name, values)
+
+        # 在name对应的集合中删除某些值
+    sunion(keys, *args)
+
+        # 获取多一个name对应的集合的并集
+    sunionstore(dest,keys, *args)
+
+        # 获取多一个name对应的集合的并集，并将结果保存到dest对应的集合中
+    sscan(name, cursor=0, match=None, count=None)
+    sscan_iter(name, match=None, count=None)
+
+        # 同字符串的操作，用于增量迭代分批获取元素，避免内存消耗太大
+
+
+8. 有序集合，在集合的基础上，为每元素排序；元素的排序需要根据另外一个值来进行比较，所以，对于有序集合，每一个元素有两个值，即：值和分数，分数专门用来做排序。
+
+    zadd(name, *args, **kwargs)
+
+        # 在name对应的有序集合中添加元素
+        # 如：
+             # zadd(&apos;zz&apos;, &apos;n1&apos;, 1, &apos;n2&apos;, 2)
+             # 或
+             # zadd(&apos;zz&apos;, n1=11, n2=22)
+    zcard(name)
+
+        # 获取name对应的有序集合元素的数量
+    zcount(name, min, max)
+
+        # 获取name对应的有序集合中分数 在 [min,max] 之间的个数
+    zincrby(name, value, amount)
+
+        # 自增name对应的有序集合的 name 对应的分数
+    r.zrange( name, start, end, desc=False, withscores=False, score_cast_func=float)
+
+        # 按照索引范围获取name对应的有序集合的元素
+
+        # 参数：
+            # name，redis的name
+            # start，有序集合索引起始位置（非分数）
+            # end，有序集合索引结束位置（非分数）
+            # desc，排序规则，默认按照分数从小到大排序
+            # withscores，是否获取元素的分数，默认只获取元素的值
+            # score_cast_func，对分数进行数据转换的函数
+
+        # 更多：
+            # 从大到小排序
+            # zrevrange(name, start, end, withscores=False, score_cast_func=float)
+
+            # 按照分数范围获取name对应的有序集合的元素
+            # zrangebyscore(name, min, max, start=None, num=None, withscores=False, score_cast_func=float)
+            # 从大到小排序
+            # zrevrangebyscore(name, max, min, start=None, num=None, withscores=False, score_cast_func=float)
+    zrank(name, value)
+
+        # 获取某个值在 name对应的有序集合中的排行（从 0 开始）
+
+        # 更多：
+            # zrevrank(name, value)，从大到小排序
+    zrangebylex(name, min, max, start=None, num=None)
+
+        # 当有序集合的所有成员都具有相同的分值时，有序集合的元素会根据成员的 值 （lexicographical ordering）来进行排序，而这个命令则可以返回给定的有序集合键 key 中， 元素的值介于 min 和 max 之间的成员
+        # 对集合中的每个成员进行逐个字节的对比（byte-by-byte compare）， 并按照从低到高的顺序， 返回排序后的集合成员。 如果两个字符串有一部分内容是相同的话， 那么命令会认为较长的字符串比较短的字符串要大
+
+        # 参数：
+            # name，redis的name
+            # min，左区间（值）。 + 表示正无限； - 表示负无限； ( 表示开区间； [ 则表示闭区间
+            # min，右区间（值）
+            # start，对结果进行分片处理，索引位置
+            # num，对结果进行分片处理，索引后面的num个元素
+
+        # 如：
+            # ZADD myzset 0 aa 0 ba 0 ca 0 da 0 ea 0 fa 0 ga
+            # r.zrangebylex(&apos;myzset&apos;, &quot;-&quot;, &quot;[ca&quot;) 结果为：[&apos;aa&apos;, &apos;ba&apos;, &apos;ca&apos;]
+
+        # 更多：
+            # 从大到小排序
+            # zrevrangebylex(name, max, min, start=None, num=None)
+    zrem(name, values)
+
+        # 删除name对应的有序集合中值是values的成员
+
+        # 如：zrem(&apos;zz&apos;, [&apos;s1&apos;, &apos;s2&apos;])
+    zremrangebyrank(name, min, max)
+
+        # 根据排行范围删除
+    zremrangebyscore(name, min, max)
+
+        # 根据分数范围删除
+    zremrangebylex(name, min, max)
+
+        # 根据值返回删除
+    zscore(name, value)
+
+        # 获取name对应有序集合中 value 对应的分数
+    zinterstore(dest, keys, aggregate=None)
+
+        # 获取两个有序集合的交集，如果遇到相同值不同分数，则按照aggregate进行操作
+        # aggregate的值为:  SUM  MIN  MAX
+    zunionstore(dest, keys, aggregate=None)
+
+        # 获取两个有序集合的并集，如果遇到相同值不同分数，则按照aggregate进行操作
+        # aggregate的值为:  SUM  MIN  MAX
+    zscan(name, cursor=0, match=None, count=None, score_cast_func=float)
+    zscan_iter(name, match=None, count=None,score_cast_func=float)
+
+        # 同字符串相似，相较于字符串新增score_cast_func，用来对分数进行操作
+
+　　9. redis的发布与订阅
+
+基础类：
+
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import redis
+
+
+    class RedisHelper:
+
+        def __init__(self):
+            self.__conn = redis.Redis(host=&apos;localhost&apos;,port=6379)
+            self.chan_sub = &apos;fm104.5&apos;
+            self.chan_pub = &apos;fm104.5&apos;
+
+        def public(self, msg):
+            self.__conn.publish(self.chan_pub, msg)
+            return True
+
+        def subscribe(self):
+            pub = self.__conn.pubsub()
+            pub.subscribe(self.chan_sub)
+            pub.parse_response()
+            return pub
+
+redis_sub.py
+
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    from RedisHelper import RedisHelper
+
+    obj = RedisHelper()
+    redis_sub = obj.subscribe()
+
+    while True:
+        msg= redis_sub.parse_response()
+        print(msg)
+
+redis_pub.py
+
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    from RedisHelper import RedisHelper
+
+    obj = RedisHelper()
+    obj.public(&apos;hello&apos;)
+</code></pre><h3 id="2-memcached"><a href="#2-memcached" class="headerlink" title="2.    memcached"></a>2.    memcached</h3><pre><code>非持久化轻量级缓存，使用第三方工具可以实现数据的持久化存储
+</code></pre><h3 id="3-mongodb"><a href="#3-mongodb" class="headerlink" title="3.    mongodb"></a>3.    mongodb</h3><pre><code>天生的数据持久化，默认将数据持久化存储在本地磁盘。
+</code></pre><h2 id="四、消息队列rabbitmq"><a href="#四、消息队列rabbitmq" class="headerlink" title="四、消息队列rabbitmq"></a>四、消息队列rabbitmq</h2><p>通信模式：</p>
+<h3 id="1-简单生产者消费者模型"><a href="#1-简单生产者消费者模型" class="headerlink" title="1. 简单生产者消费者模型"></a>1. 简单生产者消费者模型</h3><pre><code>rabbit_send
+
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import pika
+    #与消息队列建立一个连接
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+                   &apos;localhost&apos;))
+    #创建一个管道
+    channel = connection.channel()
+
+    #在管道中声明一个名称为&apos;name&apos;的队列
+    channel.queue_declare(queue=&apos;name&apos;)
+
+    #一个消息不能直接发送给消息队列，需要通过一个路由器进行转发，这个路由器就是由exchange进行设置
+    channel.basic_publish(exchange=&apos;&apos;, #路由器
+                          routing_key=&apos;name&apos;, #队列名称
+                          body=&apos;swht&apos;) #消息
+    print(&quot; [swht] Sent a message&quot;)
+    connection.close()
+
+rabbit_recive
+
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import pika
+
+    #与消息队列服务器建立连接
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+                   &apos;localhost&apos;))
+    #创建一个管道
+    channel = connection.channel()
+    #消费者声明一个队列，为了防止生产者还没有启动没有完成创建队列时代码出错的问题。如果队列已存在，则忽略该操作，否则则创建队列
+    channel.queue_declare(queue=&apos;name&apos;)
+
+    def callback(ch, method, properties, body):
+        print(&quot; [x] Received %r&quot; % body)
+
+    channel.basic_consume(callback,
+                          queue=&apos;name&apos;,
+                          no_ack=True) #接收消息不进行确认
+
+    print(&apos; [*] Waiting for messages. To exit press CTRL+C&apos;)
+    channel.start_consuming()
+</code></pre><h3 id="2-消息持久化"><a href="#2-消息持久化" class="headerlink" title="2. 消息持久化"></a>2. 消息持久化</h3><pre><code>    channel.queue_declare(queue=&apos;name&apos;,durable=True)
+已经存在的队列是不能再进行持久化设置的，所以在只有创建队列的时候设置持久化选项
+    basc_ack = (delivery_tag= method.delivry_tag)
+
+查看当前所有的queue  XX
+</code></pre><h3 id="3-消息公平分发"><a href="#3-消息公平分发" class="headerlink" title="3. 消息公平分发"></a>3. 消息公平分发</h3><p><img src="http://i.imgur.com/qBwPkju.png" alt=""></p>
+<pre><code>只在消费者添加
+channel.basic_qos(prefetch_count=1)
+
+示例代码：
+
+rabbit_slb_send.py
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import pika
+
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+                   &apos;192.168.137.6&apos;))
+    channel = connection.channel()
+
+    #声明queue
+    channel.queue_declare(queue=&apos;task_queue&apos;)
+
+    #n RabbitMQ a message can never be sent directly to the queue, it always needs to go through an exchange.
+    import sys
+
+    message = &apos; &apos;.join(sys.argv[1:]) or &quot;Hello World!&quot;
+    channel.basic_publish(exchange=&apos;&apos;,
+                          routing_key=&apos;task_queue&apos;,
+                          body=message,
+                          properties=pika.BasicProperties(
+                          delivery_mode = 2, # make message persistent
+                          ))
+    print(&quot; [x] Sent %r&quot; % message)
+    connection.close()
+</code></pre><h3 id="4-exchange路由"><a href="#4-exchange路由" class="headerlink" title="4. exchange路由"></a>4. exchange路由</h3><p><img src="http://i.imgur.com/MFX1LTo.png" alt=""></p>
+<p>代码：</p>
+<pre><code>publisher.py
+
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import pika
+    import sys
+
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+            host=&apos;localhost&apos;))
+    channel = connection.channel()
+
+    channel.exchange_declare(exchange=&apos;logs&apos;,
+                             type=&apos;fanout&apos;)
+
+    message = &apos; &apos;.join(sys.argv[1:]) or &quot;info: Hello World!&quot;
+    channel.basic_publish(exchange=&apos;logs&apos;,
+                          routing_key=&apos;&apos;,
+                          body=message)
+    print(&quot; [x] Sent %r&quot; % message)
+    connection.close()
+
+subscriber.py
+
+    import pika
+
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+            host=&apos;localhost&apos;))
+    channel = connection.channel()
+
+    channel.exchange_declare(exchange=&apos;logs&apos;,
+                             type=&apos;fanout&apos;)
+
+    result = channel.queue_declare(exclusive=True) #不指定queue名字,rabbit会随机分配一个名字,exclusive=True会在使用此queue的消费者断开后,自动将queue删除
+    queue_name = result.method.queue
+
+    channel.queue_bind(exchange=&apos;logs&apos;,
+                       queue=queue_name)
+
+    print(&apos; [*] Waiting for logs. To exit press CTRL+C&apos;)
+
+    def callback(ch, method, properties, body):
+        print(&quot; [x] %r&quot; % body)
+
+    channel.basic_consume(callback,
+                          queue=queue_name,
+                          no_ack=True)
+
+    channel.start_consuming()
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-s12-20160312-day09" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/12/s12-20160312-day09/" class="article-date">
+      <time datetime="2016-03-12T07:30:00.000Z" itemprop="datePublished">2016-03-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/12/s12-20160312-day09/">python自动化开发 day09</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author:@南非波波</p>
+<p>课程大纲：</p>
+<p>day08</p>
+<p><a href="http://www.cnblogs.com/alex3714/articles/5227251.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5227251.html</a></p>
+<p>day09</p>
+<p><a href="http://www.cnblogs.com/alex3714/articles/5248247.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5248247.html</a></p>
+<p>###推荐电影###</p>
+<pre><code>&lt;权利的游戏:冰与火之歌&gt;  &lt;纸牌屋&gt; &lt;绝命毒师&gt;
+《林大看美国》
+</code></pre><h2 id="一、回顾进程、线程"><a href="#一、回顾进程、线程" class="headerlink" title="一、回顾进程、线程"></a>一、回顾进程、线程</h2><pre><code>python调用C的原生线程
+GIL(全局解释器)防止数据被修改异常。使用线程锁控制同时仅有一个线程对数据有操作权限
+全局解释器限制的是原生C线程，
+python同一时刻只有一个线程
+python会处理不同cpu核之间的进程切换
+父进程与子进程之间默认不能共享数据
+</code></pre><p>获取线程的数据</p>
+<pre><code>#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import time,threading
+
+data = [] #列表是一个安全的内存空间，可以不用加线程锁
+def run(n):
+    &apos;&apos;&apos;
+    定义一个run方法，返回的n的n次方
+    :param n:
+    :return:
+    &apos;&apos;&apos;
+    data.append(n**n)
+    return n**n
+#创建一个多线程
+t = threading.Thread(target=run,args=[8,])
+t.start()
+t.join() #起阻塞作用，让主进程等待线程执行完再执行主进程  默认无限期的等待，添加一个超时时间timeout=3.在守护线程下面是不好使的
+print(data)
+</code></pre><h2 id="二、-队列"><a href="#二、-队列" class="headerlink" title="二、 队列"></a>二、 队列</h2><h3 id="1-先进先出"><a href="#1-先进先出" class="headerlink" title="1.    先进先出"></a>1.    先进先出</h3><pre><code>python队列queue默认的是先进先出。
+import queue
+Queue = queue.Queue(maxsize=5)
+Queue.put((2,[&quot;swht&quot;,&quot;shen&quot;]))
+Queue.put((5,{&quot;name&quot;:&quot;swht&quot;}))
+Queue.put((1,&quot;sdsd&quot;),timeout=2)
+for i in range(Queue._qsize()):
+    print(&quot;data%s:%s&quot; % (i,Queue.get()))
+返回结果：
+data0:(2, [&apos;swht&apos;, &apos;shen&apos;])
+data1:(5, {&apos;name&apos;: &apos;swht&apos;})
+data2:(1, &apos;sdsd&apos;)    
+</code></pre><h3 id="2-后进先出"><a href="#2-后进先出" class="headerlink" title="2.    后进先出"></a>2.    后进先出</h3><pre><code>python队列支持后面进去的消息最先被取出。
+    python队列queue默认的是先进先出。
+import queue
+Queue = queue.LifoQueue(maxsize=5)
+Queue.put((2,[&quot;swht&quot;,&quot;shen&quot;]))
+Queue.put((5,{&quot;name&quot;:&quot;swht&quot;}))
+Queue.put((1,&quot;sdsd&quot;),timeout=2)
+for i in range(Queue._qsize()):
+    print(&quot;data%s:%s&quot; % (i,Queue.get()))
+返回结果：
+data0:(1, &apos;sdsd&apos;)
+data1:(5, {&apos;name&apos;: &apos;swht&apos;})
+data2:(2, [&apos;swht&apos;, &apos;shen&apos;])
+</code></pre><h3 id="3-按照优先级"><a href="#3-按照优先级" class="headerlink" title="3.    按照优先级"></a>3.    按照优先级</h3><pre><code>python queue支持设置优先级，取消息可以安装优先级顺序取出消息
+import queue
+Queue = queue.PriorityQueue(maxsize=5)
+Queue.put((2,[&quot;swht&quot;,&quot;shen&quot;]))
+Queue.put((5,{&quot;name&quot;:&quot;swht&quot;}))
+Queue.put((1,&quot;sdsd&quot;),timeout=2)
+for i in range(Queue._qsize()):
+    print(&quot;data%s:%s&quot; % (i,Queue.get()))
+返回结果：
+data0:(1, &apos;sdsd&apos;)
+data1:(2, [&apos;swht&apos;, &apos;shen&apos;])
+data2:(5, {&apos;name&apos;: &apos;swht&apos;})
+</code></pre><h3 id="生产者-消费者模型："><a href="#生产者-消费者模型：" class="headerlink" title="生产者-消费者模型："></a>生产者-消费者模型：</h3><h4 id="1-一对一："><a href="#1-一对一：" class="headerlink" title="1.一对一："></a>1.一对一：</h4><pre><code>import threading,queue,time
+def consumer(n):
+&apos;&apos;&apos;
+消费者，消费生产者产生的消息、数据
+:param n: 消费者标志
+:return:
+&apos;&apos;&apos;
+while True:
+print(&quot;\033[32;1m消费者[%s]\033[0m 获取消息 %s&quot; % (n,q.get()))
+time.sleep(1)
+q.task_done() #消费者等待生产者生产消息
+
+def prodeucer(n):
+&apos;&apos;&apos;
+生产者，生产消息、数据
+:param n: 生产者标志
+:return:
+&apos;&apos;&apos;
+count = 1
+while True:
+print(&quot;\033[31;1m生产者[%s]\033[0m 生产消息 %s&quot; % (n,count))
+q.put(count)
+count += 1
+q.join() #生产者阻塞
+print(&quot;==================&quot;) #发出信号：消息已经生产
+
+q = queue.Queue()
+c1 = threading.Thread(target=consumer,args=[1,])
+
+p1 = threading.Thread(target=prodeucer,args=[&quot;swht&quot;,])
+
+c1.start()
+p1.start()
+
+结果：
+
+生产者[swht] 生产消息 1
+消费者[1] 获取消息 1
+==================
+生产者[swht] 生产消息 2
+消费者[1] 获取消息 2
+==================
+生产者[swht] 生产消息 3
+消费者[1] 获取消息 3
+==================
+生产者[swht] 生产消息 4
+消费者[1] 获取消息 4
+==================
+生产者[swht] 生产消息 5
+消费者[1] 获取消息 5
+==================
+生产者[swht] 生产消息 6
+消费者[1] 获取消息 6
+==================
+生产者[swht] 生产消息 7
+消费者[1] 获取消息 7
+==================
+</code></pre><h4 id="2-一对多："><a href="#2-一对多：" class="headerlink" title="2.一对多："></a>2.一对多：</h4><pre><code>import threading,queue,time
+def consumer(n):
+    &apos;&apos;&apos;
+    消费者，消费生产者产生的消息、数据
+    :param n: 消费者标志
+    :return:
+    &apos;&apos;&apos;
+    while True:
+        print(&quot;\033[32;1m消费者[%s]\033[0m 获取消息 %s&quot; % (n,q.get()))
+        time.sleep(1)
+        q.task_done() #消费者等待生产者生产消息
+
+def prodeucer(n):
+    &apos;&apos;&apos;
+    生产者，生产消息、数据
+    :param n: 生产者标志
+    :return:
+    &apos;&apos;&apos;
+    count = 1
+    while True:
+        print(&quot;\033[31;1m生产者[%s]\033[0m 生产消息 %s&quot; % (n,count))
+        q.put(count)
+        count += 1
+        q.join() #生产者阻塞
+        print(&quot;==================&quot;) #发出信号：消息已经生产
+
+q = queue.Queue()
+c1 = threading.Thread(target=consumer,args=[1,])
+c2 = threading.Thread(target=consumer,args=[2,])
+c3 = threading.Thread(target=consumer,args=[3,])
+p1 = threading.Thread(target=prodeucer,args=[&quot;swht&quot;,])
+
+c1.start()
+c2.start()
+c3.start()
+p1.start()
+
+结果：
+
+生产者[swht] 生产消息 1
+消费者[1] 获取消息 1
+==================
+生产者[swht] 生产消息 2
+消费者[2] 获取消息 2
+==================
+生产者[swht] 生产消息 3
+消费者[3] 获取消息 3
+==================
+生产者[swht] 生产消息 4
+消费者[1] 获取消息 4
+==================
+生产者[swht] 生产消息 5
+消费者[2] 获取消息 5
+==================
+生产者[swht] 生产消息 6
+消费者[3] 获取消息 6
+==================
+生产者[swht] 生产消息 7
+消费者[1] 获取消息 7
+==================
+</code></pre><h4 id="3-多对多："><a href="#3-多对多：" class="headerlink" title="3.多对多："></a>3.多对多：</h4><pre><code>import threading,queue,time
+def consumer(n):
+    &apos;&apos;&apos;
+    消费者，消费生产者产生的消息、数据
+    :param n: 消费者标志
+    :return:
+    &apos;&apos;&apos;
+    while True:
+        print(&quot;\033[32;1m消费者[%s]\033[0m 获取消息 %s&quot; % (n,q.get()))
+        time.sleep(1)
+        q.task_done() #消费者等待生产者生产消息
+
+def prodeucer(n):
+    &apos;&apos;&apos;
+    生产者，生产消息、数据
+    :param n: 生产者标志
+    :return:
+    &apos;&apos;&apos;
+    count = 1
+    while True:
+        print(&quot;\033[31;1m生产者[%s]\033[0m 生产消息 %s&quot; % (n,count))
+        q.put(count)
+        count += 1
+        q.join() #生产者阻塞
+        print(&quot;==================&quot;) #发出信号：消息已经生产
+
+q = queue.Queue()
+c1 = threading.Thread(target=consumer,args=[1,])
+c2 = threading.Thread(target=consumer,args=[2,])
+c3 = threading.Thread(target=consumer,args=[3,])
+p1 = threading.Thread(target=prodeucer,args=[&quot;swht&quot;,])
+p2 = threading.Thread(target=prodeucer,args=[&quot;shen&quot;,])
+p3 = threading.Thread(target=prodeucer,args=[&quot;alex&quot;,])
+
+c1.start()
+c2.start()
+c3.start()
+p1.start()
+p2.start()
+p3.start()
+
+结果：
+
+生产者[swht] 生产消息 1
+生产者[shen] 生产消息 1
+消费者[1] 获取消息 1
+生产者[alex] 生产消息 1
+消费者[2] 获取消息 1
+消费者[3] 获取消息 1
+==================
+生产者[swht] 生产消息 2
+消费者[1] 获取消息 2
+==================
+生产者[swht] 生产消息 3
+消费者[2] 获取消息 3
+==================
+生产者[swht] 生产消息 4
+消费者[3] 获取消息 4
+==================
+生产者[alex] 生产消息 2
+消费者[1] 获取消息 2
+==================
+生产者[swht] 生产消息 5
+==================
+生产者[shen] 生产消息 2
+消费者[2] 获取消息 2
+消费者[3] 获取消息 5
+==================
+生产者[swht] 生产消息 6
+==================
+生产者[shen] 生产消息 3
+消费者[1] 获取消息 3
+消费者[3] 获取消息 6
+==================
+生产者[shen] 生产消息 4
+消费者[2] 获取消息 4
+==================
+生产者[shen] 生产消息 5
+消费者[1] 获取消息 5
+==================
+生产者[shen] 生产消息 6
+消费者[3] 获取消息 6
+==================
+生产者[shen] 生产消息 7
+消费者[2] 获取消息 7
+==================
+</code></pre><h2 id="三、协程"><a href="#三、协程" class="headerlink" title="三、协程"></a>三、协程</h2><p>协程是一种用户态的轻量级线程。协程拥有自己的寄存器上下文和栈。协程调度切换时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈。因此：协程能保留上一次调用时的状态（即所有局部状态的一个特定组合），每次过程重入时，就相当于进入上一次调用的状态，换种说法：进入上一次离开时所处逻辑流的位置。</p>
+<p>通过协程进行线程内切换，虽然还是串行的执行，但是因为切换速度快，可以达到一种并发的效果。用户自行控制</p>
+<p>协程的好处：</p>
+<pre><code>无需线程上下文切换的开销
+无需原子操作锁定及同步的开销
+方便切换控制流，简化编程模型
+高并发+高扩展性+低成本：一个CPU支持上万的协程都不是问题。所以很适合用于高并发处理。
+</code></pre><p>缺点：</p>
+<pre><code>无法利用多核资源：协程的本质是个单线程,它不能同时将 单个CPU 的多个核用上,协程需要和进程配合才能运行在多CPU上.当然我们日常所编写的绝大部分应用都没有这个必要，除非是cpu密集型应用。
+进行阻塞（Blocking）操作（如IO时）会阻塞掉整个程序
+</code></pre><p>通过<strong>yeild</strong>简单模拟协程</p>
+<pre><code>import time
+import queue
+def consumer(name):
+    print(&quot;---&gt;starting eating baozi...&quot;)
+    while True:
+        new_baozi = yield
+        print(&quot;[%s] is eating baozi %s&quot; % (name,new_baozi))
+        #time.sleep(1)
+
+def producer():
+
+    r = con.__next__()
+    r = con2.__next__()
+    n = 0
+    while n &lt; 5:
+        n +=1
+        con.send(n)
+        con2.send(n)
+        print(&quot;\033[32;1m[producer]\033[0m is making baozi %s&quot; %n )
+
+
+if __name__ == &apos;__main__&apos;:
+    con = consumer(&quot;c1&quot;)
+    con2 = consumer(&quot;c2&quot;)
+    p = producer()
+
+&apos;&apos;&apos;    
+结果：
+---&gt;starting eating baozi...
+---&gt;starting eating baozi...
+[c1] is eating baozi 1
+[c2] is eating baozi 1
+[producer] is making baozi 1
+[c1] is eating baozi 2
+[c2] is eating baozi 2
+[producer] is making baozi 2
+[c1] is eating baozi 3
+[c2] is eating baozi 3
+[producer] is making baozi 3
+[c1] is eating baozi 4
+[c2] is eating baozi 4
+[producer] is making baozi 4
+[c1] is eating baozi 5
+[c2] is eating baozi 5
+[producer] is making baozi 5
+&apos;&apos;&apos;
+</code></pre><p><strong>greenlet模块</strong></p>
+<p>greenlet模块可以简单的实现协程之间的切换</p>
+<p>示例代码：</p>
+<pre><code>from greenlet import greenlet
+def test1():
+    print(12)
+    gr2.switch()
+    print(34)
+    gr2.switch()
+def test2():
+    print(56)
+    gr1.switch()
+    print(78)
+
+gr1 = greenlet(test1)
+gr2 = greenlet(test2)
+gr1.switch()
+</code></pre><p><strong>gevent模块</strong></p>
+<p>Gevent 是一个第三方库，可以轻松通过gevent实现并发同步或异步编程，在gevent中用到的主要模式是Greenlet, 它是以C扩展模块形式接入Python的轻量级协程。 Greenlet全部运行在主程序操作系统进程的内部，但它们被协作式地调度。</p>
+<p>gevent模块实现协程在遇到IO阻塞时进行切换的功能。避免了协程的致命缺点：一个协程阻塞，整个线程宕掉</p>
+<p>示例代码：</p>
+<pre><code>#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import gevent
+
+def foo():
+    print(&apos;\033[32;1mRunning in foo\033[0m&apos;)
+    gevent.sleep(1)
+    print(&apos;\033[32;1mExplicit context switch to foo again\033[0m&apos;)
+
+def bar():
+    print(&apos;Explicit context to bar&apos;)
+    gevent.sleep(1)
+    print(&apos;Implicit context switch back to bar&apos;)
+
+def exe():
+    print(&apos;\033[31;1mExplicit context to bar\033[0m&apos;)
+    gevent.sleep(1)
+    print(&apos;\033[31;1mImplicit context switch back to bar\033[0m&apos;)
+
+gevent.joinall([
+    gevent.spawn(foo),
+    gevent.spawn(bar),
+    gevent.spawn(exe),
+])
+</code></pre><p>附注：</p>
+<pre><code>gevent模块安装：
+1. windows环境：
+
+    使用pip进行安装：pip2 install gevent 
+                   pip3 install gevent
+
+2. Linux环境：
+
+    使用pip进行安装：pip2 install gevent 
+                      pip3 install gevent
+    使用源码包编译安装：
+</code></pre><h2 id="四、select、poll、epoll多路IO阻塞"><a href="#四、select、poll、epoll多路IO阻塞" class="headerlink" title="四、select、poll、epoll多路IO阻塞"></a>四、select、poll、epoll多路IO阻塞</h2><h3 id="1-select"><a href="#1-select" class="headerlink" title="1.select"></a>1.select</h3><pre><code>select目前几乎在所有的平台上支持，其良好跨平台支持也是它的一个优点，事实上从现在看来，这也是它所剩不多的优点之一。
+
+select的一个缺点在于单个进程能够监视的文件描述符的数量存在最大限制，在Linux上一般为1024，不过可以通过修改宏定义甚至重新编译内核的方式提升这一限制。
+
+select()所维护的存储大量文件描述符的数据结构，随着文件描述符数量的增大，其复制的开销也线性增长。同时，由于网络响应时间的延迟使得大量TCP连接处于非活跃状态，但调用select()会对所有socket进行一次线性扫描，所以这也浪费了一定的开销。
+</code></pre><h3 id="2-poll"><a href="#2-poll" class="headerlink" title="2.poll"></a>2.poll</h3><pre><code>poll和select同样存在一个缺点就是，包含大量文件描述符的数组被整体复制于用户态和内核的地址空间之间，而不论这些文件描述符是否就绪，它的开销随着文件描述符数量的增加而线性增大。
+
+select()和poll()将就绪的文件描述符告诉进程后，如果进程没有对其进行IO操作，那么下次调用select()和poll()的时候将再次报告这些文件描述符，所以它们一般不会丢失就绪的消息，这种方式称为水平触发（Level Triggered）。    
+</code></pre><h3 id="3-epoll"><a href="#3-epoll" class="headerlink" title="3.epoll"></a>3.epoll</h3><pre><code>epoll可以同时支持水平触发和边缘触发（Edge Triggered，只告诉进程哪些文件描述符刚刚变为就绪状态，它只说一遍，如果我们没有采取行动，那么它将不会再次告知，这种方式称为边缘触发），理论上边缘触发的性能要更高一些，但是代码实现相当复杂。
+
+epoll同样只告知那些就绪的文件描述符，而且当我们调用epoll_wait()获得就绪文件描述符时，返回的不是实际的描述符，而是一个代表就绪描述符数量的值，你只需要去epoll指定的一个数组中依次取得相应数量的文件描述符即可，这里也使用了内存映射（mmap）技术，这样便彻底省掉了这些文件描述符在系统调用时复制的开销。
+
+另一个本质的改进在于epoll采用基于事件的就绪通知方式。在select/poll中，进程只有在调用一定的方法后，内核才对所有监视的文件描述符进行扫描，而epoll事先通过epoll_ctl()来注册一个文件描述符，一旦基于某个文件描述符就绪时，内核会采用类似callback的回调机制，迅速激活这个文件描述符，当进程调用epoll_wait()时便得到通知。
+</code></pre><h3 id="select示例："><a href="#select示例：" class="headerlink" title="select示例："></a>select示例：</h3><pre><code>server端
+
+#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+&apos;&apos;&apos;
+通过echo server例子了解select 是如何通过单进程实现同时处理多个非阻塞的socket连接
+&apos;&apos;&apos;
+
+import select
+import socket
+import sys
+import queue
+
+# 创建一个TCP/IP socket
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.setblocking(False) #设置非阻塞 ==&gt;server.setblocking(0)
+
+# 绑定端口和ip地址
+server_address = (&apos;localhost&apos;, 10000)
+print(sys.stderr, &apos;starting up on %s port %s&apos; % server_address) #
+# print &gt;&gt; sys.stderr,&apos;starting up on %s port %s&apos; % server_address
+server.bind(server_address)
+
+# 监听连接，允许同时有5个链接
+server.listen(5)
+#select()方法接收并监控3个通信列表
+#1.所有的输入数据，即外部发过来的数据；
+#2.监控和监听所要发出去的数据；
+#3.监控错误信息
+# 创建输入列表将输入的信息传递给select()
+inputs = [ server ]
+
+# 创建输出列表将输出的信息传递给select()
+outputs = [ ]
+
+#创建一个缓存队列，用来存储每个连接的输入或输出的数据，然后由select去出来再发出去。
+message_queues = {}
+#程序的主循环，当调用select()时会阻塞和等待直到新的连接和数据进来
+while inputs:
+
+    # Wait for at least one of the sockets to be ready for processing
+    print( &apos;\nwaiting for the next event&apos;)
+    #readable 代表socket连接有数据可以接收(resv)
+    #writable 代表socket连接有可以进行发送(send)的数据
+    #exceptional 存放连接通信出现的error错误信息。这里使用inputs信息代替
+    readable, writable, exceptional = select.select(inputs, outputs, inputs)
+    # Handle inputs
+    #readsble list中可以有3种可能状态，第一种是如果这个socket是main&quot;server&quot; socket,它负责监听客户端的连接，
+    for s in readable:
+        # 如果这个main server socket出现在readable里，那代表这是server端已经ready来接收一个新的连接进来了
+        if s is server:
+            # A &quot;readable&quot; server socket is ready to accept a connection
+            connection, client_address = s.accept() #接收一个新的连接
+            print(&apos;new connection from&apos;, client_address) #打印客户端连接的地址
+            connection.setblocking(False) #设置成非阻塞状态
+            inputs.append(connection) #将链接添加到inputs链表中
+
+            # Give the connection a queue for data we want to send
+            message_queues[connection] = queue.Queue()
+        #这种情况是这个socket是已经建立了的连接，它把数据发了过来，这个时候就可以通过recv()来接收它发过来的数据，
+        # 然后把接收到的数据放到queue里，这样就可以把接收到的数据再传回给客户端了。
+        else:
+            data = s.recv(1024) #接收客户端传递的数据
+            if data: #如果接收的数据不为空
+                # A readable client socket has data
+                print(sys.stderr, &apos;received &quot;%s&quot; from %s&apos; % (data, s.getpeername()) )
+                message_queues[s].put(data) #从缓存队列里获取数据然后将其传递给客户端
+                # 如果连接不在发送列表中，则将其添加到发送列表中
+                if s not in outputs:
+                    outputs.append(s)
+            else: #如果接收的数据为空
+                # Interpret empty result as closed connection
+                print(&apos;closing&apos;, client_address, &apos;after reading no data&apos;)
+                # Stop listening for input on the connection
+                #停止监听这个连接
+                # 这种情况就是这个客户端已经断开了，所以你再通过recv()接收到的数据就为空了，
+                # 所以这个时候你就可以把这个跟客户端的连接关闭了。
+                if s in outputs:
+                    outputs.remove(s)  #既然客户端都断开了，我就不用再给它返回数据了，所以这时候如果这个客户端的连接对象还在outputs列表中，就把它删掉
+                inputs.remove(s)    #inputs中也删除掉
+                s.close()           #把这个连接关闭掉
+
+                # Remove message queue
+                del message_queues[s]
+    # 对于writable list中的socket，也有几种状态，如果这个客户端连接在跟它对应的queue里有数据，就把这个数据取出来再发回给这个客户端，否则就把这个连接从output list中移除，
+    # 这样下一次循环select()调用时检测到outputs list中没有这个连接，那就会认为这个连接还处于非活动状态
+    for s in writable:
+        try:
+            next_msg = message_queues[s].get_nowait() #获取信息不阻塞等待
+        except queue.Empty:
+            # No messages waiting so stop checking for writability.
+            print(&apos;output queue for&apos;, s.getpeername(), &apos;is empty&apos;)
+            outputs.remove(s) #队列为空，则从发送列表中删除连接
+        else:
+            print( &apos;sending &quot;%s&quot; to %s&apos; % (next_msg, s.getpeername()))
+            s.send(next_msg) #当从队列中获取到信息时将其发送给客户端
+    #果在跟某个socket连接通信过程中出了错误，就把这个连接对象在inputs\outputs\message_queue中都删除，
+    # 再把连接关闭掉
+    for s in exceptional:
+        print(&apos;handling exceptional condition for&apos;, s.getpeername() )
+        # Stop listening for input on the connection
+        inputs.remove(s)
+        if s in outputs:
+            outputs.remove(s)
+        s.close()
+
+        # Remove message queue
+        del message_queues[s]
+
+client端
+#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import socket
+import sys
+
+messages = [ &apos;This is the message. &apos;,
+             &apos;It will be sent &apos;,
+             &apos;in parts.&apos;,
+             ]
+server_address = (&apos;localhost&apos;, 10000)
+
+# Create a TCP/IP socket
+socks = [ socket.socket(socket.AF_INET, socket.SOCK_STREAM),
+          socket.socket(socket.AF_INET, socket.SOCK_STREAM),
+          ]
+
+# Connect the socket to the port where the server is listening
+print(sys.stderr, &apos;connecting to %s port %s&apos; % server_address)
+for s in socks:
+    s.connect(server_address)
+
+for message in messages:
+
+    # Send messages on both sockets
+    for s in socks:
+        print(sys.stderr, &apos;%s: sending &quot;%s&quot;&apos; % (s.getsockname(), message))
+        s.send(bytes(message,&apos;utf8&apos;))
+
+    # Read responses on both sockets
+    for s in socks:
+        data = s.recv(1024)
+        print(sys.stderr, &apos;%s: received &quot;%s&quot;&apos; % (s.getsockname(), data))
+        if not data:
+            print(sys.stderr, &apos;closing socket&apos;, s.getsockname())
+            s.close()
+</code></pre><h2 id="五、堡垒机模块"><a href="#五、堡垒机模块" class="headerlink" title="五、堡垒机模块"></a>五、堡垒机模块</h2><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/5095821.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5095821.html</a></p>
+<h3 id="1-模块安装："><a href="#1-模块安装：" class="headerlink" title="1.模块安装："></a>1.模块安装：</h3><pre><code>pip2 install paramiko
+
+pip3 install paramiko  
+ #win下python3安装paramiko模块涉及到编译工具的问题没有安装成功，在Linux环境下面测试下面的代码正常。
+</code></pre><h3 id="2-示例代码"><a href="#2-示例代码" class="headerlink" title="2.示例代码"></a>2.示例代码</h3><pre><code>#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import paramiko
+&apos;&apos;&apos;
+基于用户名密码连接
+&apos;&apos;&apos;
+# 创建SSH对象
+ssh = paramiko.SSHClient()
+# 允许连接不在know_hosts文件中的主机
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+# 连接服务器
+ssh.connect(hostname=&apos;192.168.137.5&apos;, port=22, username=&apos;root&apos;, password=&apos;shen1234&apos;)
+
+# 执行命令
+stdin, stdout, stderr = ssh.exec_command(&apos;df -h&apos;)
+# 获取命令结果
+result = stdout.read()
+#打印结果
+print(result.decode())
+# 关闭连接
+ssh.close()
+
+import paramiko
+
+transport = paramiko.Transport((&apos;192.168.137.5&apos;, 22))
+transport.connect(username=&apos;root&apos;, password=&apos;shen1234&apos;)
+
+ssh = paramiko.SSHClient()
+ssh._transport = transport
+
+stdin, stdout, stderr = ssh.exec_command(&apos;ifconfig&apos;)
+print(stdout.read().decode())
+
+transport.close()
+
+import paramiko
+
+def ssh_connet(host,user,shell):
+    &apos;&apos;&apos;
+    实现ssh远程登录服务器进行相关操作
+    :param host: 远程服务器地址和端口号 host_ip:port
+    :param user: 远程服务器用户名密码 user:passwd
+    :parm shell: 需要执行的shell命令
+    :return: 返回用户执行shell命令的
+    &apos;&apos;&apos;
+    host = host.split(&quot;:&quot;)
+    user = user.split(&quot;:&quot;)
+    transport = paramiko.Transport((host[0], int(host[1])))
+    transport.connect(username=user[0], password=user[1])
+    ssh = paramiko.SSHClient()
+    ssh._transport = transport
+    stdin, stdout, stderr = ssh.exec_command(shell)
+    reaults = stdout.read().decode()
+    transport.close()
+    return reaults
+print(ssh_connet(&quot;192.168.137.5:22&quot;,&quot;root:shen1234&quot;,&quot;df -h&quot;))
+</code></pre><h3 id="基于公钥密钥连接："><a href="#基于公钥密钥连接：" class="headerlink" title="基于公钥密钥连接："></a>基于公钥密钥连接：</h3><pre><code>import paramiko
+
+def ssh_connet(host,user,private_key,shell):
+    &apos;&apos;&apos;
+    实现ssh远程登录服务器进行相关操作
+    :param host: 远程服务器地址和端口号 host_ip:port
+    :param user: 远程服务器用户名密码 user:passwd
+    :param private_key: 基于公钥的形式登录
+    :parm shell: 需要执行的shell命令
+    :return: 返回用户执行shell命令的
+    &apos;&apos;&apos;
+    host = host.split(&quot;:&quot;)
+    transport = paramiko.Transport((host[0], int(host[1])))
+    transport.connect(username=user[0], key=private_key)
+    ssh = paramiko.SSHClient()
+    ssh._transport = transport
+    stdin, stdout, stderr = ssh.exec_command(shell)
+    reaults = stdout.read().decode()
+    transport.close()
+    return reaults
+private_key = paramiko.RSAKey.from_private_key_file(&apos;/home/auto/.ssh/id_rsa&apos;)
+print(ssh_connet(&quot;192.168.137.5:22&quot;,&quot;root&quot;,private_key,&quot;df -h&quot;))
+</code></pre><h2 id="六、mysql操作模块"><a href="#六、mysql操作模块" class="headerlink" title="六、mysql操作模块"></a>六、mysql操作模块</h2><pre><code>rollback()事务回滚
+excutemany()
+</code></pre><p><strong>作业：</strong></p>
+<pre><code>1.    select（）代码，注释
+2.    主机批量管理工具
+    1.    saltstack文档阅读（常用架构弄清楚）
+    2.    修改主机批量管理工具的架构
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-s12-20160305-day08" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/05/s12-20160305-day08/" class="article-date">
+      <time datetime="2016-03-05T07:30:00.000Z" itemprop="datePublished">2016-03-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/05/s12-20160305-day08/">python自动化开发 day08</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author:@南非波波</p>
+<p>课程大纲：</p>
+<p>day07</p>
+<p><a href="http://www.cnblogs.com/alex3714/articles/5213184.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5213184.html</a></p>
+<p>day08</p>
+<p><a href="http://www.cnblogs.com/alex3714/articles/5227251.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5227251.html</a></p>
+<p>###推荐电影###</p>
+<pre><code>绝美之城  上帝之城 | 千与千寻  龙猫 卡尔的移动城堡
+</code></pre><p>通过实例私有变量，需要将在类中封装一个方法，该方法返回私有变量的值</p>
+<h2 id="一、socket深入"><a href="#一、socket深入" class="headerlink" title="一、socket深入"></a>一、socket深入</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><pre><code>Unix的进程通信机制。一个完整的socket有一个本地唯一的socket号，由操作系统分配。socket是面向客户/服务器模型而设计的，针对客户和服务器程序提供不同的socket系统调用。socket利用客户/服务器模式巧妙的解决了进程之间建立通信连接的问题。
+
+套接字（socket）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元。它是网络通信过程中端点的抽象表示，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。
+</code></pre><h3 id="2-地址簇"><a href="#2-地址簇" class="headerlink" title="2.地址簇"></a>2.地址簇</h3><pre><code>socket.AF_UNIX unix本机进程间通信 
+socket.AF_INET　使用IPV4地址协议进行进程间通信
+socket.AF_INET6  使用IPV6地址协议进行进程间通信
+</code></pre><h3 id="3-套接字类型"><a href="#3-套接字类型" class="headerlink" title="3.套接字类型"></a>3.套接字类型</h3><pre><code>socket.SOCK_STREAM  #使用tcp协议
+socket.SOCK_DGRAM   #使用udp协议
+socket.SOCK_RAW     #原始套接字，普通的套接字无法处理ICMP、IFMP等网络报文，而SOCK_RAM可以。其次SOCK_RAM也可以处理特殊的IPV4报文,此外，利用原始套接字可以通过IP_HDRINCL套接字选项由用户构造IP头。
+socket.SOCK_RDM    #是一种可靠的UDP形式，即保证交付数据报但不保证顺序。SOCK_RAW用来提供对原始协议的低级访问，在需要执行某些特殊操作时使用，如发送ICMP报文。SOCK_RAW通常仅限于高级用户或管理员运行的程序使用。
+</code></pre><h3 id="4-socket方法"><a href="#4-socket方法" class="headerlink" title="4.socket方法"></a>4.socket方法</h3><pre><code>1. socket.socket(family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None)
+2. socket.socketpair([family[, type[, proto]]])
+3. socket.create_connection(address[, timeout[, source_address]])
+4. socket.getaddrinfo(host, port, family=0, type=0, proto=0, flags=0) 
+    获取要连接的对端主机地址
+5. sk.bind(address) 
+    将套接字绑定到地址，地址的格式取决于地址簇。在AF_INET下，以元组(host.port)的形式表示地址。
+6. sk.listen(backlog) 
+    开始监听传入的连接，backlog指定在拒绝连接之前，可以挂起的最大连接数量。backlog等于5，表示内核已经连接到连接请求，但服务器还没有调用accept进行处理的连接个数最大为5.这个值根据内核和服务器物理配置进行设置。
+7. sk.setblocking(bool) 
+    是否阻塞（默认True），如果设置为False，那么accept和recv时一旦无数据则报错。
+8. sk.accept() 
+    接受连接并返回（conn,address）,其中conn是新的套接字对象，可以用来接收和发送数据，address是连接客户端的地址。接收TCP客户的连接（阻塞式）等待连接的到来。
+9. sk.connect(address)
+    连接到address处的套接字。一般，address的格式为元组（hostname,port），如果连接出错，返回socket.err错误。
+10. sk.connect_ex(address)
+    同上，只是会有返回值，连接成功时返回0，连接失败时会返回编码，例如：10061
+11. sk.close()
+    关闭套接字
+12. sk.recv(bufsize[,flag])
+    接收套接字的数据，数据以字符串形式返回。bufsize指定最多可以接收的数量，建议不要超过1024*8。flag提供有关消息的其他信息。通常可以忽略。
+13. sk.recvfrom(bufsize[.flag])
+    与recv()类似，但返回值是（data,address）。其中data是包含接收数据的字符串，address是发送数据的套接字地址
+14. sk.send(string[,flag])
+    将string中的数据发送到连接的套接字，返回值是要发送的字节数量，该数量可能小于string的字节大小，即：可能未壮指定内容全部发送
+15. sk.sendall(string[,flag])
+    将string中的数据发送到连接的套接字，但在返回之前会尝试发送所有数据。成功返回None，失败则跑出异常。内部通过递归调用send将所有内容发送出去。
+16.    sk.sendto(string[,flag],address)
+    将数据发送到套接字，address是形式为（ipaddr，port）的元组，指定远程地址。返回值是发送的字节数。该函数主要用于UDP协议。
+17. sk.settimeout(timeout)
+    设置套接字操作的超时期，timeout是一个浮点数，单位是秒。值为None表示没有超时期。一般，超时期应该在刚创建套接字时设置，因为它们可能用于连接的操作（如 client 连接最多等待5s ）
+18. sk.getpeername()
+    返回连接套接字的远程地址。返回值通常是元组（ipaddr,port）
+19.    sk.getsockname()
+    返回套接字自己的地址，通常在是一个元组（ipaddr,port）
+20. socket.gethostname()
+    获取程序运行所在计算机的主机名
+21.    gethostbyname(name) 
+    尝试将给定的主机名解释为一个IP地址。首先将检查当前计算机是否能够解释。如果不能，一个解释请求将发送给一个远程的DNS服务器（远程的DNS服务器 还可能将解释请求转发给另一个DNS服务器，直到该请求可以被处理）。gethostbyname函数返回这个IP地址或在查找失败后引发一个异常。例如： socket.gethostbyname(&apos;www.apicloud.com&apos;)
+    扩展形式：socket.gethostbyname_ex(&apos;www.apicloud.com&apos;)
+    (&apos;98e86f98d416f10c.7cname.com&apos;, [&apos;www.apicloud.com&apos;], [&apos;117.25.140.17&apos;])
+    它返回一个包含三个元素的元组，分别是给定地址的主要的主机名、同一IP地址的可选的主机名的一个列表、关于同一主机的同一接口的其它IP地址的一个列表（列表可能都是空的）。
+22. gethostbyaddr(address)
+    函数的作用与gethostbyname_ex相同，只是你提供给它的参数是一个IP地址字符串。
+    socket.gethostbyaddr(&apos;202.165.102.205&apos;)
+    (&apos;homepage.vip.cnb.yahoo.com&apos;, [&apos;www.yahoo.com.cn&apos;], [&apos;202.165.102.205&apos;])
+23.    getservbyname(service,protocol)
+    函数要求一个服务名（如&apos;telnet&apos;或&apos;ftp&apos;）和一个协议（如&apos;tcp&apos;或&apos;udp&apos;），返回服务所使用的端口号：
+    &gt;&gt;&gt; socket.getservbyname(&apos;http&apos;,&apos;tcp&apos;)
+    80
+    &gt;&gt;&gt; socket.getservbyname(&apos;https&apos;,&apos;tcp&apos;)
+    443
+    &gt;&gt;&gt; socket.getservbyname(&apos;telnet&apos;,&apos;tcp&apos;)
+24.    sk.fileno()
+    套接字的文件描述符
+    socket.sendfile(file, offset=0, count=None)
+    发送文件 ，但目前多数情况下并无什么卵用
+</code></pre><h2 id="二、socketserver"><a href="#二、socketserver" class="headerlink" title="二、socketserver"></a>二、socketserver</h2><p>参考链接：<a href="http://my.oschina.net/u/1433482/blog/190612" target="_blank" rel="external">http://my.oschina.net/u/1433482/blog/190612</a></p>
+<p>SocketServer简化了网络服务器的编写。它有4个类：TCPServer，UDPServer，UnixStreamServer，UnixDatagramServer。这4个类是同步进行处理的，另外通过ForkingMixIn和ThreadingMixIn类来支持异步。</p>
+<h3 id="创建服务器的步骤"><a href="#创建服务器的步骤" class="headerlink" title="创建服务器的步骤"></a>创建服务器的步骤</h3><pre><code>首先，你必须创建一个请求处理类，它是BaseRequestHandler的子类并重载其handle()方法。其次，你必须实例化一个服务器类，传入服务器的地址和请求处理程序类。最后，调用handle_request()(一般是调用其他事件循环或者使用select())或serve_forever()。
+</code></pre><h3 id="服务器类型"><a href="#服务器类型" class="headerlink" title="服务器类型"></a>服务器类型</h3><pre><code>5种类型：BaseServer，TCPServer，UnixStreamServer，UDPServer，UnixDatagramServer。 注意：BaseServer不直接对外服务。
+</code></pre><h3 id="服务器对象"><a href="#服务器对象" class="headerlink" title="服务器对象"></a>服务器对象</h3><pre><code>class SocketServer.BaseServer：这是模块中的所有服务器对象的超类。它定义了接口，如下所述，但是大多数的方法不实现，在子类中进行细化。
+
+BaseServer.fileno()：返回服务器监听套接字的整数文件描述符。通常用来传递给select.select(), 以允许一个进程监视多个服务器。
+
+BaseServer.handle_request()：处理单个请求。处理顺序：get_request(), verify_request(), process_request()。如果用户提供handle()方法抛出异常，将调用服务器的handle_error()方法。如果self.timeout内没有请求收到， 将调用handle_timeout()并返回handle_request()。
+
+BaseServer.serve_forever(poll_interval=0.5): 处理请求，直到一个明确的shutdown()请求。每poll_interval秒轮询一次shutdown。忽略self.timeout。如果你需要做周期性的任务，建议放置在其他线程。
+
+BaseServer.shutdown()：告诉serve_forever()循环停止并等待其停止。python2.6版本。
+
+BaseServer.address_family: 地址家族，比如socket.AF_INET和socket.AF_UNIX。
+
+BaseServer.RequestHandlerClass：用户提供的请求处理类，这个类为每个请求创建实例。
+
+BaseServer.server_address：服务器侦听的地址。格式根据协议家族地址的各不相同，请参阅socket模块的文档。
+
+BaseServer.socketSocket：服务器上侦听传入的请求socket对象的服务器。
+
+服务器类支持下面的类变量：
+
+BaseServer.allow_reuse_address：服务器是否允许地址的重用。默认为false ，并且可在子类中更改。
+
+BaseServer.request_queue_size
+
+请求队列的大小。如果单个请求需要很长的时间来处理，服务器忙时请求被放置到队列中，最多可以放request_queue_size个。一旦队列已满，来自客户端的请求将得到 “Connection denied”错误。默认值通常为5 ，但可以被子类覆盖。
+
+BaseServer.socket_type：服务器使用的套接字类型; socket.SOCK_STREAM和socket.SOCK_DGRAM等。
+
+BaseServer.timeout：超时时间，以秒为单位，或 None表示没有超时。如果handle_request()在timeout内没有收到请求，将调用handle_timeout()。
+
+下面方法可以被子类重载，它们对服务器对象的外部用户没有影响。
+
+BaseServer.finish_request()：实际处理RequestHandlerClass发起的请求并调用其handle()方法。 常用。
+
+BaseServer.get_request()：接受socket请求，并返回二元组包含要用于与客户端通信的新socket对象，以及客户端的地址。
+
+BaseServer.handle_error(request, client_address)：如果RequestHandlerClass的handle()方法抛出异常时调用。默认操作是打印traceback到标准输出，并继续处理其他请求。
+
+BaseServer.handle_timeout()：超时处理。默认对于forking服务器是收集退出的子进程状态，threading服务器则什么都不做。
+
+BaseServer.process_request(request, client_address) :调用finish_request()创建RequestHandlerClass的实例。如果需要，此功能可以创建新的进程或线程来处理请求,ForkingMixIn和ThreadingMixIn类做到这点。常用。
+
+BaseServer.server_activate()：通过服务器的构造函数来激活服务器。默认的行为只是监听服务器套接字。可重载。
+
+BaseServer.server_bind()：通过服务器的构造函数中调用绑定socket到所需的地址。可重载。
+
+BaseServer.verify_request(request, client_address)：返回一个布尔值，如果该值为True ，则该请求将被处理，反之请求将被拒绝。此功能可以重写来实现对服务器的访问控制。默认的实现始终返回True。client_address可以限定客户端，比如只处理指定ip区间的请求。 常用。
+</code></pre><h3 id="请求处理器"><a href="#请求处理器" class="headerlink" title="请求处理器"></a>请求处理器</h3><pre><code>处理器接收数据并决定如何操作。它负责在socket层之上实现协议（i.e., HTTP, XML-RPC, or AMQP)，读取数据，处理并写反应。可以重载的方法如下：
+
+setup(): 准备请求处理. 默认什么都不做，StreamRequestHandler中会创建文件类似的对象以读写socket.
+
+handle(): 处理请求。解析传入的请求，处理数据，并发送响应。默认什么都不做。常用变量：self.request，self.client_address，self.server。
+
+finish(): 环境清理。默认什么都不做，如果setup产生异常，不会执行finish。
+
+通常只需要重载handle。self.request的类型和数据报或流的服务不同。对于流服务，self.request是socket 对象；对于数据报服务，self.request是字符串和socket 。可以在子类StreamRequestHandler或DatagramRequestHandler中重载，重写setup()和finish() ，并提供self.rfile和self.wfile属性。 self.rfile和self.wfile可以读取或写入，以获得请求数据或将数据返回到客户端。
+</code></pre><h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><pre><code>1.server
+
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import socketserver
+
+    class MyHandleServer(socketserver.BaseRequestHandler):
+        &apos;&apos;&apos;
+        定义一个测试socketserver类
+        &apos;&apos;&apos;
+        def handle(self):
+            &apos;&apos;&apos;
+            定义一个函数，用来处理每个客户端发来的请求
+            :return:
+            &apos;&apos;&apos;
+            print(&quot;新建立一个连接：&quot;,self.client_address)
+            while True:
+                try:
+                    client_data = self.request.recv(1024)
+                    if not client_data:
+                        print(&quot;客户端发送的数据为空,主动断开!&quot;,self.client_address)
+                        break
+                    print(&quot;客户端发来的请求:&quot;,client_data.decode())
+                    self.request.send(client_data)
+                except ConnectionResetError:
+                    print(&quot;客户端主动断开!&quot;,self.client_address)
+                    break
+
+    if __name__ == &quot;__main__&quot;:
+        HOST,PORT = &quot;127.0.0.1&quot;,5000
+        server = socketserver.ThreadingTCPServer((HOST,PORT),MyHandleServer)
+        server.serve_forever()
+
+
+2.client
+
+    #!/usr/local/env python3
+    &apos;&apos;&apos;
+    Author:@南非波波
+    Blog:http://www.cnblogs.com/songqingbo/
+    E-mail:qingbo.song@gmail.com
+    &apos;&apos;&apos;
+    import socket
+
+    ip_port = (&quot;127.0.0.1&quot;,5000)
+
+    sk = socket.socket()
+    sk.connect(ip_port)
+    while True:
+        msg = input(&quot;&gt;&gt;:&quot;).strip()
+        if not msg:
+            break
+        sk.sendall(bytes(msg,&quot;utf8&quot;))
+        server_reply = sk.recv(1024)
+        print(&quot;服务端返回:&quot;,str(server_reply,&quot;utf8&quot;))
+    sk.close()
+</code></pre><h2 id="三、异常处理"><a href="#三、异常处理" class="headerlink" title="三、异常处理"></a>三、异常处理</h2><p><a href="http://www.cnblogs.com/wupeiqi/articles/5017742.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5017742.html</a></p>
+<h3 id="1-异常基础-python3的写法"><a href="#1-异常基础-python3的写法" class="headerlink" title="1.异常基础(python3的写法)"></a>1.异常基础(python3的写法)</h3><pre><code>在编程过程中为了增加友好性，在程序出现bug时一般不会将错误信息显示给用户，而是显示一个提示的页面，通俗来说就是不让用户看见代码出错的页面
+
+    try:
+        pass
+    except Exception as ex:
+        pass
+</code></pre><h3 id="2-异常种类"><a href="#2-异常种类" class="headerlink" title="2.异常种类"></a>2.异常种类</h3><pre><code>常用异常：
+
+    AttributeError 试图访问一个对象没有的树形，比如foo.x，但是foo没有属性x
+    IOError 输入/输出异常；基本上是无法打开文件
+    ImportError 无法引入模块或包；基本上是路径问题或名称错误
+    IndentationError 语法错误（的子类） ；代码没有正确对齐
+    IndexError 下标索引超出序列边界，比如当x只有三个元素，却试图访问x[5]
+    KeyError 试图访问字典里不存在的键
+    KeyboardInterrupt Ctrl+C被按下
+    NameError 使用一个还未被赋予对象的变量
+    SyntaxError Python代码非法，代码不能编译(个人认为这是语法错误，写错了）
+    TypeError 传入对象类型与要求的不符合
+    UnboundLocalError 试图访问一个还未被设置的局部变量，基本上是由于另有一个同名的全局变量，
+    导致你以为正在访问它
+    ValueError 传入一个调用者不期望的值，即使值的类型是正确的
+更多种类：
+
+    ArithmeticError
+    AssertionError
+    AttributeError
+    BaseException
+    BufferError
+    BytesWarning
+    DeprecationWarning
+    EnvironmentError
+    EOFError
+    Exception  #捕获一般的所有异常
+    FloatingPointError
+    FutureWarning
+    GeneratorExit
+    ImportError  #捕获导入模块异常
+    ImportWarning
+    IndentationError
+    IndexError  #捕获索引异常
+    IOError  #捕获IO异常
+    KeyboardInterrupt  #捕获键盘组合键异常
+    KeyError
+    LookupError
+    MemoryError
+    NameError
+    NotImplementedError
+    OSError
+    OverflowError
+    PendingDeprecationWarning
+    ReferenceError
+    RuntimeError
+    RuntimeWarning
+    StandardError
+    StopIteration
+    SyntaxError
+    SyntaxWarning
+    SystemError
+    SystemExit
+    TabError
+    TypeError
+    UnboundLocalError
+    UnicodeDecodeError
+    UnicodeEncodeError
+    UnicodeError
+    UnicodeTranslateError
+    UnicodeWarning
+    UserWarning
+    ValueError
+    Warning
+    ZeroDivisionError
+</code></pre><h3 id="3-自定义异常类"><a href="#3-自定义异常类" class="headerlink" title="3.自定义异常类"></a>3.自定义异常类</h3><pre><code>#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+class SwhtError(Exception):
+    &apos;&apos;&apos;
+    自定义异常
+    &apos;&apos;&apos;
+    def __init__(self,msg):
+        &apos;&apos;&apos;
+        初始化函数
+        :param msg:用户输入message
+        :return:
+        &apos;&apos;&apos;
+        self.message = msg
+
+    def __str__(self): #名称可以自行定义，只是通过该方法返回message的值
+        &apos;&apos;&apos;
+        返回用户输入的信息
+        :return:
+        &apos;&apos;&apos;
+        return self.message
+
+try:
+    raise SwhtError(&quot;这是一个致命的错误！&quot;)
+except Exception as e:
+    print(&quot;dsdsd&quot;,e)
+</code></pre><h3 id="4-示例代码："><a href="#4-示例代码：" class="headerlink" title="4.示例代码："></a>4.示例代码：</h3><pre><code>dic = [&quot;swht&quot;, &apos;shen&apos;]
+try:
+    dic[10]
+except IndexError as e:
+    print(&quot;IndexError:&quot;,e)
+
+dic = {&apos;k1&apos;:&apos;v1&apos;}
+try:
+    dic[&apos;k20&apos;]
+except KeyError as e:
+    print(&quot;keyError:&quot;,e)
+
+s1 = &apos;hello&apos;
+try:
+    int(s1)
+except ValueError as e:
+    print(&quot;ValueError:&quot;,e)
+</code></pre><h3 id="5-特殊异常"><a href="#5-特殊异常" class="headerlink" title="5.特殊异常"></a>5.特殊异常</h3><pre><code>虽然python自带的一个处理万能异常类Exception，但是并不是有一些异常都能被捕获的。如果要想捕获这些特殊的异常，就需要进行自定义异常类
+</code></pre><h3 id="6-异常其他架构"><a href="#6-异常其他架构" class="headerlink" title="6.异常其他架构"></a>6.异常其他架构</h3><pre><code>try:
+    # 主代码块
+    pass
+except KeyError as e:
+    # 异常时，执行该块
+    pass
+else:
+    # 主代码块执行完，执行该块
+    pass
+finally:
+    # 无论异常与否，最终执行该块
+    pass
+</code></pre><h3 id="7-主动触发异常"><a href="#7-主动触发异常" class="headerlink" title="7.主动触发异常"></a>7.主动触发异常</h3><pre><code>try:
+    raise Exception(&apos;错误了。。。&apos;)
+except Exception as e:
+    print(&quot;Error&quot;,e)
+</code></pre><h3 id="8-Asser断言："><a href="#8-Asser断言：" class="headerlink" title="8.Asser断言："></a>8.Asser断言：</h3><pre><code>至关重要的判断，强制判断前面的业务结果是否符合要求，否则就抛出异常
+
+    a = 1
+    try:
+        assert a == 2
+        print(&quot;True&quot;)
+    except Exception as e:
+        print(&quot;False&quot;,e)
+</code></pre><h2 id="四、进程与线程"><a href="#四、进程与线程" class="headerlink" title="四、进程与线程"></a>四、进程与线程</h2><h3 id="1-概念-1"><a href="#1-概念-1" class="headerlink" title="1.概念"></a>1.概念</h3><pre><code>1.进程
+
+        一个具有一定独立功能的程序关于某个数据集合的一次运行活动，是系统进行资源分配和调度运行的基本单位
+2.线程
+
+        线程是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务
+
+3.进程与线程的区别
+
+        1. 进程是一个动态的概念
+
+        进程是程序的一次执行过程，是动态概念
+
+        程序是一组有序的指令集和，是静态概念
+
+        2. 不同的进程可以执行同一个程序
+
+        区分进程的条件：所执行的程序和数据集合。
+
+        两个进程即使执行在相同的程序上，只要他们运行在不同的数据集合上，他们也是两个进程。例如：多个用户同时调用同一个编译程序编译他们编写的C语言源程序，由于编译程序运行在不同的数据集合（不同的C语言源程序）上，于是产生了一个个不同的进程
+
+        3. 每个进程都有自己的生命周期
+
+        当操作系统要完成某个任务时，它会创建一个进程。当进程完成任务之后，系统就会撤销这个进程，收回它所占用的资源。从创建到撤销的时间段就是进程的生命期
+
+        4. 进程之间存在并发性
+
+        在一个系统中，同时会存在多个进程。他们轮流占用CPU和各种资源
+
+        5. 进程间会相互制约
+
+        进程是系统中资源分配和运行调度的单位，在对资源的共享和竞争中，必然相互制约，影响各自向前推进的速度
+
+        6. 进程可以创建子进程，程序不能创建子程序
+
+        7. 从结构上讲，每个进程都由程序、数据和一个进程控制块（Process Control Block, PCB）组成
+</code></pre><h3 id="2-进程锁"><a href="#2-进程锁" class="headerlink" title="2.进程锁"></a>2.进程锁</h3><p> Python threading模块</p>
+<pre><code>1.线程的两种调用方式
+    1.    直接调用
+    2.    继承式调用
+2.join&amp;&amp;Demo
+3.线程锁
+    1.    互斥锁：同时仅且只有一个线程在运行
+    2.    共享锁：同时可以有多个线程共同运行，可以实现一个线程池的效果
+    2.    递归锁
+    3.    Semaphore(信号量)
+</code></pre><h3 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h3><pre><code>#!/usr/local/env python3
+
+import threading,time
+
+def addNum():
+    global num #声明修改全局变量
+    print(&quot;--get num:&quot;,num)
+    time.sleep(1)
+    lock.acquire()
+    num -=1
+    lock.release()
+
+lock = threading.Lock()
+num = 100
+threading_list = []
+for i in range(2040):
+    t = threading.Thread(target=addNum)
+    t.start()
+    threading_list.append(t)
+for t in threading_list: #等待所有线程执行完毕
+    t.join()
+
+print(&quot;num:&quot;,num)
+</code></pre><p>event</p>
+<p>多进程</p>
+<p>进程间通讯</p>
+<pre><code>队列
+管道
+manager
+    Manager 所有的子进程和父进程之间都能进行数据的共享
+    Manager 是一个安全的进程管理池，不需要加进程锁
+</code></pre><p>进程同步</p>
+<p>进程池</p>
+<pre><code>开启一个进程的系统开销太大，设置进程池限制启动的进程数，以达到保护系统的目的。另外在线程池内的进程可以实现同步或异步调用。
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-s12-20160227-day07" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

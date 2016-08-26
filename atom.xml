@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.songqingbo.cn/"/>
-  <updated>2016-08-24T03:48:56.108Z</updated>
+  <updated>2016-08-26T02:32:44.187Z</updated>
   <id>http://blog.songqingbo.cn/</id>
   
   <author>
@@ -14,6 +14,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2016-08-26-nodejs开发书籍-Node入门</title>
+    <link href="http://blog.songqingbo.cn/2016/08/26/2016-08-26-nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D-Node%E5%85%A5%E9%97%A8/"/>
+    <id>http://blog.songqingbo.cn/2016/08/26/2016-08-26-nodejs开发书籍-Node入门/</id>
+    <published>2016-08-26T02:31:54.000Z</published>
+    <updated>2016-08-26T02:32:44.187Z</updated>
+    
+    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/nodejs/Node入门.pdf&quot; title=&quot;Node入门.pdf&quot;&gt;Node入门&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/nodejs/Node入门.pdf&quot; title=&quot;Node入门.pdf&quot;&gt;Node入门&lt;/a&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="nodejs开发书籍" scheme="http://blog.songqingbo.cn/tags/nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2016-08-26-nodejs开发书籍-Node+Web开发</title>
+    <link href="http://blog.songqingbo.cn/2016/08/26/2016-08-26-nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D-Node-Web%E5%BC%80%E5%8F%91/"/>
+    <id>http://blog.songqingbo.cn/2016/08/26/2016-08-26-nodejs开发书籍-Node-Web开发/</id>
+    <published>2016-08-26T02:29:04.000Z</published>
+    <updated>2016-08-26T02:31:29.564Z</updated>
+    
+    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/nodejs/Node+Web开发.pdf&quot; title=&quot;Node+Web开发.pdf&quot;&gt;Node+Web开发&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/nodejs/Node+Web开发.pdf&quot; title=&quot;Node+Web开发.pdf&quot;&gt;Node+Web开发&lt;/a&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="nodejs开发书籍" scheme="http://blog.songqingbo.cn/tags/nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2016-08-26-nodejs开发书籍-Node.js+开js+开发指南</title>
+    <link href="http://blog.songqingbo.cn/2016/08/26/2016-08-26-nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D-Nodejs-%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/"/>
+    <id>http://blog.songqingbo.cn/2016/08/26/2016-08-26-nodejs开发书籍-Nodejs-开发指南/</id>
+    <published>2016-08-26T02:15:31.000Z</published>
+    <updated>2016-08-26T02:28:17.405Z</updated>
+    
+    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/nodejs/Node.js+开发指南.pdf&quot; title=&quot;Node.js+开发指南.pdf&quot;&gt;Node.js+开发指南&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/nodejs/Node.js+开发指南.pdf&quot; title=&quot;Node.js+开发指南.pdf&quot;&gt;Node.js+开发指南&lt;/a&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="nodejs开发书籍" scheme="http://blog.songqingbo.cn/tags/nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>2016/08/22 [nodejs开发书籍]深入浅出Node.js.pdf</title>
@@ -46,10 +118,11 @@
     <link href="http://blog.songqingbo.cn/2016/08/20/2016-08-20-nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D-MEAN-Web%E5%BC%80%E5%8F%91/"/>
     <id>http://blog.songqingbo.cn/2016/08/20/2016-08-20-nodejs开发书籍-MEAN-Web开发/</id>
     <published>2016-08-20T10:42:34.000Z</published>
-    <updated>2016-08-24T03:48:49.965Z</updated>
+    <updated>2016-08-26T02:36:40.635Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/nodejs/MEAN Web开发.pdf&quot; title=&quot;MEAN Web开发.pdf&quot;&gt;MEAN WEB开发&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/nodejs/MEANWeb开发.pdf&quot; title=&quot;MEAN Web开发.pdf&quot;&gt;MEAN WEB开发&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/nodejs/MEANWeb开发代码.zip&quot; title=&quot;MEAN Web开发代码.zip&quot;&gt;MEAN Web开发代码&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;声明：本电子书为为本人从图灵社区所购，涉及版权，请读者不要私自传播。本平台仅提供在线阅读功能。如果您觉得此书帮助了您，同时也想帮作者分摊一部分电子书版权费。欢迎通过微信二维码进行资助，非常感谢。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://blog.songqingbo.cn/img/微信收款.png&quot; width=&quot;30%&quot; height=&quot;30%&quot;&gt;&lt;/p&gt;
 </content>
@@ -57,8 +130,8 @@
     <summary type="html">
     
       &lt;p&gt;Author:@南非波波&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/nodejs/MEAN Web开发.pdf&quot; title=&quot;MEAN Web开发.pdf&quot;&gt;MEAN WEB开发&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;声明：本电子书为为本
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/nodejs/MEANWeb开发.pdf&quot; title=&quot;MEAN Web开发.pdf&quot;&gt;MEAN WEB开发&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;ht
     
     </summary>
     

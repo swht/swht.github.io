@@ -4,6 +4,30 @@
   
     
     <entry>
+      <title><![CDATA[2016-08-26-nodejs开发书籍-Node入门]]></title>
+      <url>http://blog.songqingbo.cn/2016/08/26/2016-08-26-nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D-Node%E5%85%A5%E9%97%A8/</url>
+      <content type="html"><![CDATA[<p>Author:@南非波波</p>
+<p><a href="http://blog.songqingbo.cn/pdf/nodejs/Node入门.pdf" title="Node入门.pdf">Node入门</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[2016-08-26-nodejs开发书籍-Node+Web开发]]></title>
+      <url>http://blog.songqingbo.cn/2016/08/26/2016-08-26-nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D-Node-Web%E5%BC%80%E5%8F%91/</url>
+      <content type="html"><![CDATA[<p>Author:@南非波波</p>
+<p><a href="http://blog.songqingbo.cn/pdf/nodejs/Node+Web开发.pdf" title="Node+Web开发.pdf">Node+Web开发</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[2016-08-26-nodejs开发书籍-Node.js+开js+开发指南]]></title>
+      <url>http://blog.songqingbo.cn/2016/08/26/2016-08-26-nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D-Nodejs-%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</url>
+      <content type="html"><![CDATA[<p>Author:@南非波波</p>
+<p><a href="http://blog.songqingbo.cn/pdf/nodejs/Node.js+开发指南.pdf" title="Node.js+开发指南.pdf">Node.js+开发指南</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[2016/08/22 [nodejs开发书籍]深入浅出Node.js.pdf]]></title>
       <url>http://blog.songqingbo.cn/2016/08/22/2016-08-22-nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D-%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BANode-js-pdf/</url>
       <content type="html"><![CDATA[<p>Author: @南非波波</p>
@@ -17,7 +41,8 @@
       <title><![CDATA[2016/08/20 [nodejs开发书籍]MEAN Web开发]]></title>
       <url>http://blog.songqingbo.cn/2016/08/20/2016-08-20-nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D-MEAN-Web%E5%BC%80%E5%8F%91/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
-<p><a href="http://blog.songqingbo.cn/pdf/nodejs/MEAN Web开发.pdf" title="MEAN Web开发.pdf">MEAN WEB开发</a></p>
+<p><a href="http://blog.songqingbo.cn/pdf/nodejs/MEANWeb开发.pdf" title="MEAN Web开发.pdf">MEAN WEB开发</a></p>
+<p><a href="http://blog.songqingbo.cn/pdf/nodejs/MEANWeb开发代码.zip" title="MEAN Web开发代码.zip">MEAN Web开发代码</a></p>
 <p>声明：本电子书为为本人从图灵社区所购，涉及版权，请读者不要私自传播。本平台仅提供在线阅读功能。如果您觉得此书帮助了您，同时也想帮作者分摊一部分电子书版权费。欢迎通过微信二维码进行资助，非常感谢。</p>
 <p><img src="http://blog.songqingbo.cn/img/微信收款.png" width="30%" height="30%"></p>
 ]]></content>
