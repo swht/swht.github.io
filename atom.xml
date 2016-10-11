@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.songqingbo.cn/"/>
-  <updated>2016-10-11T03:29:40.293Z</updated>
+  <updated>2016-10-11T05:44:32.412Z</updated>
   <id>http://blog.songqingbo.cn/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4/"/>
     <id>http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql查询命令/</id>
     <published>2016-10-11T03:18:50.000Z</published>
-    <updated>2016-10-11T03:29:40.293Z</updated>
+    <updated>2016-10-11T05:44:32.412Z</updated>
     
-    <content type="html">&lt;p&gt;编者按:&lt;/p&gt;
+    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;p&gt;编者按:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;这篇文章会陆续记录在工作中使用mysql进行数据查询的一些命令，以及将一些需求和命令的实现进行结合讲解。
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一、获取在(北京、广州、深圳)近三个月内有登录行为的用户信息，字段：用户名，邮箱，手机号，创建应用数量，注册时间，最后一次登录时间&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;SELECT
@@ -74,9 +75,10 @@ ORDER BY
     
     <summary type="html">
     
-      &lt;p&gt;编者按:&lt;/p&gt;
+      &lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;p&gt;编者按:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;这篇文章会陆续记录在工作中使用mysql进行数据查询的一些命令，以及将一些需求和命令的实现进行结合讲解。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一、获取在(北京、广州、深圳)近三个月内有登录行为的用户信息，字段：用户名，邮箱，手机号，创建应
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一、获取在(北京、广州、深圳)近三个月内有登录行为的用户
     
     </summary>
     

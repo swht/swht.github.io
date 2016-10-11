@@ -6,7 +6,8 @@
     <entry>
       <title><![CDATA[2016-10-11-mysql-mysql查询命令]]></title>
       <url>http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4/</url>
-      <content type="html"><![CDATA[<p>编者按:</p>
+      <content type="html"><![CDATA[<p>Author:@南非波波</p>
+<p>编者按:</p>
 <pre><code>这篇文章会陆续记录在工作中使用mysql进行数据查询的一些命令，以及将一些需求和命令的实现进行结合讲解。
 </code></pre><p>一、获取在(北京、广州、深圳)近三个月内有登录行为的用户信息，字段：用户名，邮箱，手机号，创建应用数量，注册时间，最后一次登录时间</p>
 <pre><code>SELECT
