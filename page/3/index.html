@@ -210,7 +210,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs开发书籍/">nodejs开发书籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python开发书籍/">python开发书籍</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs开发书籍/">nodejs开发书籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python开发书籍/">python开发书籍</a></li></ul>
                     </div>
                 </section>
                 
@@ -300,6 +300,721 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-s12-20160312-day09" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/12/s12-20160312-day09/" class="article-date">
+      <time datetime="2016-03-12T07:30:00.000Z" itemprop="datePublished">2016-03-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/12/s12-20160312-day09/">python自动化开发 day09</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author:@南非波波</p>
+<p>课程大纲：</p>
+<p>day08</p>
+<p><a href="http://www.cnblogs.com/alex3714/articles/5227251.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5227251.html</a></p>
+<p>day09</p>
+<p><a href="http://www.cnblogs.com/alex3714/articles/5248247.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5248247.html</a></p>
+<p>###推荐电影###</p>
+<pre><code>&lt;权利的游戏:冰与火之歌&gt;  &lt;纸牌屋&gt; &lt;绝命毒师&gt;
+《林大看美国》
+</code></pre><h2 id="一、回顾进程、线程"><a href="#一、回顾进程、线程" class="headerlink" title="一、回顾进程、线程"></a>一、回顾进程、线程</h2><pre><code>python调用C的原生线程
+GIL(全局解释器)防止数据被修改异常。使用线程锁控制同时仅有一个线程对数据有操作权限
+全局解释器限制的是原生C线程，
+python同一时刻只有一个线程
+python会处理不同cpu核之间的进程切换
+父进程与子进程之间默认不能共享数据
+</code></pre><p>获取线程的数据</p>
+<pre><code>#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import time,threading
+
+data = [] #列表是一个安全的内存空间，可以不用加线程锁
+def run(n):
+    &apos;&apos;&apos;
+    定义一个run方法，返回的n的n次方
+    :param n:
+    :return:
+    &apos;&apos;&apos;
+    data.append(n**n)
+    return n**n
+#创建一个多线程
+t = threading.Thread(target=run,args=[8,])
+t.start()
+t.join() #起阻塞作用，让主进程等待线程执行完再执行主进程  默认无限期的等待，添加一个超时时间timeout=3.在守护线程下面是不好使的
+print(data)
+</code></pre><h2 id="二、-队列"><a href="#二、-队列" class="headerlink" title="二、 队列"></a>二、 队列</h2><h3 id="1-先进先出"><a href="#1-先进先出" class="headerlink" title="1.    先进先出"></a>1.    先进先出</h3><pre><code>python队列queue默认的是先进先出。
+import queue
+Queue = queue.Queue(maxsize=5)
+Queue.put((2,[&quot;swht&quot;,&quot;shen&quot;]))
+Queue.put((5,{&quot;name&quot;:&quot;swht&quot;}))
+Queue.put((1,&quot;sdsd&quot;),timeout=2)
+for i in range(Queue._qsize()):
+    print(&quot;data%s:%s&quot; % (i,Queue.get()))
+返回结果：
+data0:(2, [&apos;swht&apos;, &apos;shen&apos;])
+data1:(5, {&apos;name&apos;: &apos;swht&apos;})
+data2:(1, &apos;sdsd&apos;)    
+</code></pre><h3 id="2-后进先出"><a href="#2-后进先出" class="headerlink" title="2.    后进先出"></a>2.    后进先出</h3><pre><code>python队列支持后面进去的消息最先被取出。
+    python队列queue默认的是先进先出。
+import queue
+Queue = queue.LifoQueue(maxsize=5)
+Queue.put((2,[&quot;swht&quot;,&quot;shen&quot;]))
+Queue.put((5,{&quot;name&quot;:&quot;swht&quot;}))
+Queue.put((1,&quot;sdsd&quot;),timeout=2)
+for i in range(Queue._qsize()):
+    print(&quot;data%s:%s&quot; % (i,Queue.get()))
+返回结果：
+data0:(1, &apos;sdsd&apos;)
+data1:(5, {&apos;name&apos;: &apos;swht&apos;})
+data2:(2, [&apos;swht&apos;, &apos;shen&apos;])
+</code></pre><h3 id="3-按照优先级"><a href="#3-按照优先级" class="headerlink" title="3.    按照优先级"></a>3.    按照优先级</h3><pre><code>python queue支持设置优先级，取消息可以安装优先级顺序取出消息
+import queue
+Queue = queue.PriorityQueue(maxsize=5)
+Queue.put((2,[&quot;swht&quot;,&quot;shen&quot;]))
+Queue.put((5,{&quot;name&quot;:&quot;swht&quot;}))
+Queue.put((1,&quot;sdsd&quot;),timeout=2)
+for i in range(Queue._qsize()):
+    print(&quot;data%s:%s&quot; % (i,Queue.get()))
+返回结果：
+data0:(1, &apos;sdsd&apos;)
+data1:(2, [&apos;swht&apos;, &apos;shen&apos;])
+data2:(5, {&apos;name&apos;: &apos;swht&apos;})
+</code></pre><h3 id="生产者-消费者模型："><a href="#生产者-消费者模型：" class="headerlink" title="生产者-消费者模型："></a>生产者-消费者模型：</h3><h4 id="1-一对一："><a href="#1-一对一：" class="headerlink" title="1.一对一："></a>1.一对一：</h4><pre><code>import threading,queue,time
+def consumer(n):
+&apos;&apos;&apos;
+消费者，消费生产者产生的消息、数据
+:param n: 消费者标志
+:return:
+&apos;&apos;&apos;
+while True:
+print(&quot;\033[32;1m消费者[%s]\033[0m 获取消息 %s&quot; % (n,q.get()))
+time.sleep(1)
+q.task_done() #消费者等待生产者生产消息
+
+def prodeucer(n):
+&apos;&apos;&apos;
+生产者，生产消息、数据
+:param n: 生产者标志
+:return:
+&apos;&apos;&apos;
+count = 1
+while True:
+print(&quot;\033[31;1m生产者[%s]\033[0m 生产消息 %s&quot; % (n,count))
+q.put(count)
+count += 1
+q.join() #生产者阻塞
+print(&quot;==================&quot;) #发出信号：消息已经生产
+
+q = queue.Queue()
+c1 = threading.Thread(target=consumer,args=[1,])
+
+p1 = threading.Thread(target=prodeucer,args=[&quot;swht&quot;,])
+
+c1.start()
+p1.start()
+
+结果：
+
+生产者[swht] 生产消息 1
+消费者[1] 获取消息 1
+==================
+生产者[swht] 生产消息 2
+消费者[1] 获取消息 2
+==================
+生产者[swht] 生产消息 3
+消费者[1] 获取消息 3
+==================
+生产者[swht] 生产消息 4
+消费者[1] 获取消息 4
+==================
+生产者[swht] 生产消息 5
+消费者[1] 获取消息 5
+==================
+生产者[swht] 生产消息 6
+消费者[1] 获取消息 6
+==================
+生产者[swht] 生产消息 7
+消费者[1] 获取消息 7
+==================
+</code></pre><h4 id="2-一对多："><a href="#2-一对多：" class="headerlink" title="2.一对多："></a>2.一对多：</h4><pre><code>import threading,queue,time
+def consumer(n):
+    &apos;&apos;&apos;
+    消费者，消费生产者产生的消息、数据
+    :param n: 消费者标志
+    :return:
+    &apos;&apos;&apos;
+    while True:
+        print(&quot;\033[32;1m消费者[%s]\033[0m 获取消息 %s&quot; % (n,q.get()))
+        time.sleep(1)
+        q.task_done() #消费者等待生产者生产消息
+
+def prodeucer(n):
+    &apos;&apos;&apos;
+    生产者，生产消息、数据
+    :param n: 生产者标志
+    :return:
+    &apos;&apos;&apos;
+    count = 1
+    while True:
+        print(&quot;\033[31;1m生产者[%s]\033[0m 生产消息 %s&quot; % (n,count))
+        q.put(count)
+        count += 1
+        q.join() #生产者阻塞
+        print(&quot;==================&quot;) #发出信号：消息已经生产
+
+q = queue.Queue()
+c1 = threading.Thread(target=consumer,args=[1,])
+c2 = threading.Thread(target=consumer,args=[2,])
+c3 = threading.Thread(target=consumer,args=[3,])
+p1 = threading.Thread(target=prodeucer,args=[&quot;swht&quot;,])
+
+c1.start()
+c2.start()
+c3.start()
+p1.start()
+
+结果：
+
+生产者[swht] 生产消息 1
+消费者[1] 获取消息 1
+==================
+生产者[swht] 生产消息 2
+消费者[2] 获取消息 2
+==================
+生产者[swht] 生产消息 3
+消费者[3] 获取消息 3
+==================
+生产者[swht] 生产消息 4
+消费者[1] 获取消息 4
+==================
+生产者[swht] 生产消息 5
+消费者[2] 获取消息 5
+==================
+生产者[swht] 生产消息 6
+消费者[3] 获取消息 6
+==================
+生产者[swht] 生产消息 7
+消费者[1] 获取消息 7
+==================
+</code></pre><h4 id="3-多对多："><a href="#3-多对多：" class="headerlink" title="3.多对多："></a>3.多对多：</h4><pre><code>import threading,queue,time
+def consumer(n):
+    &apos;&apos;&apos;
+    消费者，消费生产者产生的消息、数据
+    :param n: 消费者标志
+    :return:
+    &apos;&apos;&apos;
+    while True:
+        print(&quot;\033[32;1m消费者[%s]\033[0m 获取消息 %s&quot; % (n,q.get()))
+        time.sleep(1)
+        q.task_done() #消费者等待生产者生产消息
+
+def prodeucer(n):
+    &apos;&apos;&apos;
+    生产者，生产消息、数据
+    :param n: 生产者标志
+    :return:
+    &apos;&apos;&apos;
+    count = 1
+    while True:
+        print(&quot;\033[31;1m生产者[%s]\033[0m 生产消息 %s&quot; % (n,count))
+        q.put(count)
+        count += 1
+        q.join() #生产者阻塞
+        print(&quot;==================&quot;) #发出信号：消息已经生产
+
+q = queue.Queue()
+c1 = threading.Thread(target=consumer,args=[1,])
+c2 = threading.Thread(target=consumer,args=[2,])
+c3 = threading.Thread(target=consumer,args=[3,])
+p1 = threading.Thread(target=prodeucer,args=[&quot;swht&quot;,])
+p2 = threading.Thread(target=prodeucer,args=[&quot;shen&quot;,])
+p3 = threading.Thread(target=prodeucer,args=[&quot;alex&quot;,])
+
+c1.start()
+c2.start()
+c3.start()
+p1.start()
+p2.start()
+p3.start()
+
+结果：
+
+生产者[swht] 生产消息 1
+生产者[shen] 生产消息 1
+消费者[1] 获取消息 1
+生产者[alex] 生产消息 1
+消费者[2] 获取消息 1
+消费者[3] 获取消息 1
+==================
+生产者[swht] 生产消息 2
+消费者[1] 获取消息 2
+==================
+生产者[swht] 生产消息 3
+消费者[2] 获取消息 3
+==================
+生产者[swht] 生产消息 4
+消费者[3] 获取消息 4
+==================
+生产者[alex] 生产消息 2
+消费者[1] 获取消息 2
+==================
+生产者[swht] 生产消息 5
+==================
+生产者[shen] 生产消息 2
+消费者[2] 获取消息 2
+消费者[3] 获取消息 5
+==================
+生产者[swht] 生产消息 6
+==================
+生产者[shen] 生产消息 3
+消费者[1] 获取消息 3
+消费者[3] 获取消息 6
+==================
+生产者[shen] 生产消息 4
+消费者[2] 获取消息 4
+==================
+生产者[shen] 生产消息 5
+消费者[1] 获取消息 5
+==================
+生产者[shen] 生产消息 6
+消费者[3] 获取消息 6
+==================
+生产者[shen] 生产消息 7
+消费者[2] 获取消息 7
+==================
+</code></pre><h2 id="三、协程"><a href="#三、协程" class="headerlink" title="三、协程"></a>三、协程</h2><p>协程是一种用户态的轻量级线程。协程拥有自己的寄存器上下文和栈。协程调度切换时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈。因此：协程能保留上一次调用时的状态（即所有局部状态的一个特定组合），每次过程重入时，就相当于进入上一次调用的状态，换种说法：进入上一次离开时所处逻辑流的位置。</p>
+<p>通过协程进行线程内切换，虽然还是串行的执行，但是因为切换速度快，可以达到一种并发的效果。用户自行控制</p>
+<p>协程的好处：</p>
+<pre><code>无需线程上下文切换的开销
+无需原子操作锁定及同步的开销
+方便切换控制流，简化编程模型
+高并发+高扩展性+低成本：一个CPU支持上万的协程都不是问题。所以很适合用于高并发处理。
+</code></pre><p>缺点：</p>
+<pre><code>无法利用多核资源：协程的本质是个单线程,它不能同时将 单个CPU 的多个核用上,协程需要和进程配合才能运行在多CPU上.当然我们日常所编写的绝大部分应用都没有这个必要，除非是cpu密集型应用。
+进行阻塞（Blocking）操作（如IO时）会阻塞掉整个程序
+</code></pre><p>通过<strong>yeild</strong>简单模拟协程</p>
+<pre><code>import time
+import queue
+def consumer(name):
+    print(&quot;---&gt;starting eating baozi...&quot;)
+    while True:
+        new_baozi = yield
+        print(&quot;[%s] is eating baozi %s&quot; % (name,new_baozi))
+        #time.sleep(1)
+
+def producer():
+
+    r = con.__next__()
+    r = con2.__next__()
+    n = 0
+    while n &lt; 5:
+        n +=1
+        con.send(n)
+        con2.send(n)
+        print(&quot;\033[32;1m[producer]\033[0m is making baozi %s&quot; %n )
+
+
+if __name__ == &apos;__main__&apos;:
+    con = consumer(&quot;c1&quot;)
+    con2 = consumer(&quot;c2&quot;)
+    p = producer()
+
+&apos;&apos;&apos;    
+结果：
+---&gt;starting eating baozi...
+---&gt;starting eating baozi...
+[c1] is eating baozi 1
+[c2] is eating baozi 1
+[producer] is making baozi 1
+[c1] is eating baozi 2
+[c2] is eating baozi 2
+[producer] is making baozi 2
+[c1] is eating baozi 3
+[c2] is eating baozi 3
+[producer] is making baozi 3
+[c1] is eating baozi 4
+[c2] is eating baozi 4
+[producer] is making baozi 4
+[c1] is eating baozi 5
+[c2] is eating baozi 5
+[producer] is making baozi 5
+&apos;&apos;&apos;
+</code></pre><p><strong>greenlet模块</strong></p>
+<p>greenlet模块可以简单的实现协程之间的切换</p>
+<p>示例代码：</p>
+<pre><code>from greenlet import greenlet
+def test1():
+    print(12)
+    gr2.switch()
+    print(34)
+    gr2.switch()
+def test2():
+    print(56)
+    gr1.switch()
+    print(78)
+
+gr1 = greenlet(test1)
+gr2 = greenlet(test2)
+gr1.switch()
+</code></pre><p><strong>gevent模块</strong></p>
+<p>Gevent 是一个第三方库，可以轻松通过gevent实现并发同步或异步编程，在gevent中用到的主要模式是Greenlet, 它是以C扩展模块形式接入Python的轻量级协程。 Greenlet全部运行在主程序操作系统进程的内部，但它们被协作式地调度。</p>
+<p>gevent模块实现协程在遇到IO阻塞时进行切换的功能。避免了协程的致命缺点：一个协程阻塞，整个线程宕掉</p>
+<p>示例代码：</p>
+<pre><code>#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import gevent
+
+def foo():
+    print(&apos;\033[32;1mRunning in foo\033[0m&apos;)
+    gevent.sleep(1)
+    print(&apos;\033[32;1mExplicit context switch to foo again\033[0m&apos;)
+
+def bar():
+    print(&apos;Explicit context to bar&apos;)
+    gevent.sleep(1)
+    print(&apos;Implicit context switch back to bar&apos;)
+
+def exe():
+    print(&apos;\033[31;1mExplicit context to bar\033[0m&apos;)
+    gevent.sleep(1)
+    print(&apos;\033[31;1mImplicit context switch back to bar\033[0m&apos;)
+
+gevent.joinall([
+    gevent.spawn(foo),
+    gevent.spawn(bar),
+    gevent.spawn(exe),
+])
+</code></pre><p>附注：</p>
+<pre><code>gevent模块安装：
+1. windows环境：
+
+    使用pip进行安装：pip2 install gevent 
+                   pip3 install gevent
+
+2. Linux环境：
+
+    使用pip进行安装：pip2 install gevent 
+                      pip3 install gevent
+    使用源码包编译安装：
+</code></pre><h2 id="四、select、poll、epoll多路IO阻塞"><a href="#四、select、poll、epoll多路IO阻塞" class="headerlink" title="四、select、poll、epoll多路IO阻塞"></a>四、select、poll、epoll多路IO阻塞</h2><h3 id="1-select"><a href="#1-select" class="headerlink" title="1.select"></a>1.select</h3><pre><code>select目前几乎在所有的平台上支持，其良好跨平台支持也是它的一个优点，事实上从现在看来，这也是它所剩不多的优点之一。
+
+select的一个缺点在于单个进程能够监视的文件描述符的数量存在最大限制，在Linux上一般为1024，不过可以通过修改宏定义甚至重新编译内核的方式提升这一限制。
+
+select()所维护的存储大量文件描述符的数据结构，随着文件描述符数量的增大，其复制的开销也线性增长。同时，由于网络响应时间的延迟使得大量TCP连接处于非活跃状态，但调用select()会对所有socket进行一次线性扫描，所以这也浪费了一定的开销。
+</code></pre><h3 id="2-poll"><a href="#2-poll" class="headerlink" title="2.poll"></a>2.poll</h3><pre><code>poll和select同样存在一个缺点就是，包含大量文件描述符的数组被整体复制于用户态和内核的地址空间之间，而不论这些文件描述符是否就绪，它的开销随着文件描述符数量的增加而线性增大。
+
+select()和poll()将就绪的文件描述符告诉进程后，如果进程没有对其进行IO操作，那么下次调用select()和poll()的时候将再次报告这些文件描述符，所以它们一般不会丢失就绪的消息，这种方式称为水平触发（Level Triggered）。    
+</code></pre><h3 id="3-epoll"><a href="#3-epoll" class="headerlink" title="3.epoll"></a>3.epoll</h3><pre><code>epoll可以同时支持水平触发和边缘触发（Edge Triggered，只告诉进程哪些文件描述符刚刚变为就绪状态，它只说一遍，如果我们没有采取行动，那么它将不会再次告知，这种方式称为边缘触发），理论上边缘触发的性能要更高一些，但是代码实现相当复杂。
+
+epoll同样只告知那些就绪的文件描述符，而且当我们调用epoll_wait()获得就绪文件描述符时，返回的不是实际的描述符，而是一个代表就绪描述符数量的值，你只需要去epoll指定的一个数组中依次取得相应数量的文件描述符即可，这里也使用了内存映射（mmap）技术，这样便彻底省掉了这些文件描述符在系统调用时复制的开销。
+
+另一个本质的改进在于epoll采用基于事件的就绪通知方式。在select/poll中，进程只有在调用一定的方法后，内核才对所有监视的文件描述符进行扫描，而epoll事先通过epoll_ctl()来注册一个文件描述符，一旦基于某个文件描述符就绪时，内核会采用类似callback的回调机制，迅速激活这个文件描述符，当进程调用epoll_wait()时便得到通知。
+</code></pre><h3 id="select示例："><a href="#select示例：" class="headerlink" title="select示例："></a>select示例：</h3><pre><code>server端
+
+#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+&apos;&apos;&apos;
+通过echo server例子了解select 是如何通过单进程实现同时处理多个非阻塞的socket连接
+&apos;&apos;&apos;
+
+import select
+import socket
+import sys
+import queue
+
+# 创建一个TCP/IP socket
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.setblocking(False) #设置非阻塞 ==&gt;server.setblocking(0)
+
+# 绑定端口和ip地址
+server_address = (&apos;localhost&apos;, 10000)
+print(sys.stderr, &apos;starting up on %s port %s&apos; % server_address) #
+# print &gt;&gt; sys.stderr,&apos;starting up on %s port %s&apos; % server_address
+server.bind(server_address)
+
+# 监听连接，允许同时有5个链接
+server.listen(5)
+#select()方法接收并监控3个通信列表
+#1.所有的输入数据，即外部发过来的数据；
+#2.监控和监听所要发出去的数据；
+#3.监控错误信息
+# 创建输入列表将输入的信息传递给select()
+inputs = [ server ]
+
+# 创建输出列表将输出的信息传递给select()
+outputs = [ ]
+
+#创建一个缓存队列，用来存储每个连接的输入或输出的数据，然后由select去出来再发出去。
+message_queues = {}
+#程序的主循环，当调用select()时会阻塞和等待直到新的连接和数据进来
+while inputs:
+
+    # Wait for at least one of the sockets to be ready for processing
+    print( &apos;\nwaiting for the next event&apos;)
+    #readable 代表socket连接有数据可以接收(resv)
+    #writable 代表socket连接有可以进行发送(send)的数据
+    #exceptional 存放连接通信出现的error错误信息。这里使用inputs信息代替
+    readable, writable, exceptional = select.select(inputs, outputs, inputs)
+    # Handle inputs
+    #readsble list中可以有3种可能状态，第一种是如果这个socket是main&quot;server&quot; socket,它负责监听客户端的连接，
+    for s in readable:
+        # 如果这个main server socket出现在readable里，那代表这是server端已经ready来接收一个新的连接进来了
+        if s is server:
+            # A &quot;readable&quot; server socket is ready to accept a connection
+            connection, client_address = s.accept() #接收一个新的连接
+            print(&apos;new connection from&apos;, client_address) #打印客户端连接的地址
+            connection.setblocking(False) #设置成非阻塞状态
+            inputs.append(connection) #将链接添加到inputs链表中
+
+            # Give the connection a queue for data we want to send
+            message_queues[connection] = queue.Queue()
+        #这种情况是这个socket是已经建立了的连接，它把数据发了过来，这个时候就可以通过recv()来接收它发过来的数据，
+        # 然后把接收到的数据放到queue里，这样就可以把接收到的数据再传回给客户端了。
+        else:
+            data = s.recv(1024) #接收客户端传递的数据
+            if data: #如果接收的数据不为空
+                # A readable client socket has data
+                print(sys.stderr, &apos;received &quot;%s&quot; from %s&apos; % (data, s.getpeername()) )
+                message_queues[s].put(data) #从缓存队列里获取数据然后将其传递给客户端
+                # 如果连接不在发送列表中，则将其添加到发送列表中
+                if s not in outputs:
+                    outputs.append(s)
+            else: #如果接收的数据为空
+                # Interpret empty result as closed connection
+                print(&apos;closing&apos;, client_address, &apos;after reading no data&apos;)
+                # Stop listening for input on the connection
+                #停止监听这个连接
+                # 这种情况就是这个客户端已经断开了，所以你再通过recv()接收到的数据就为空了，
+                # 所以这个时候你就可以把这个跟客户端的连接关闭了。
+                if s in outputs:
+                    outputs.remove(s)  #既然客户端都断开了，我就不用再给它返回数据了，所以这时候如果这个客户端的连接对象还在outputs列表中，就把它删掉
+                inputs.remove(s)    #inputs中也删除掉
+                s.close()           #把这个连接关闭掉
+
+                # Remove message queue
+                del message_queues[s]
+    # 对于writable list中的socket，也有几种状态，如果这个客户端连接在跟它对应的queue里有数据，就把这个数据取出来再发回给这个客户端，否则就把这个连接从output list中移除，
+    # 这样下一次循环select()调用时检测到outputs list中没有这个连接，那就会认为这个连接还处于非活动状态
+    for s in writable:
+        try:
+            next_msg = message_queues[s].get_nowait() #获取信息不阻塞等待
+        except queue.Empty:
+            # No messages waiting so stop checking for writability.
+            print(&apos;output queue for&apos;, s.getpeername(), &apos;is empty&apos;)
+            outputs.remove(s) #队列为空，则从发送列表中删除连接
+        else:
+            print( &apos;sending &quot;%s&quot; to %s&apos; % (next_msg, s.getpeername()))
+            s.send(next_msg) #当从队列中获取到信息时将其发送给客户端
+    #果在跟某个socket连接通信过程中出了错误，就把这个连接对象在inputs\outputs\message_queue中都删除，
+    # 再把连接关闭掉
+    for s in exceptional:
+        print(&apos;handling exceptional condition for&apos;, s.getpeername() )
+        # Stop listening for input on the connection
+        inputs.remove(s)
+        if s in outputs:
+            outputs.remove(s)
+        s.close()
+
+        # Remove message queue
+        del message_queues[s]
+
+client端
+#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import socket
+import sys
+
+messages = [ &apos;This is the message. &apos;,
+             &apos;It will be sent &apos;,
+             &apos;in parts.&apos;,
+             ]
+server_address = (&apos;localhost&apos;, 10000)
+
+# Create a TCP/IP socket
+socks = [ socket.socket(socket.AF_INET, socket.SOCK_STREAM),
+          socket.socket(socket.AF_INET, socket.SOCK_STREAM),
+          ]
+
+# Connect the socket to the port where the server is listening
+print(sys.stderr, &apos;connecting to %s port %s&apos; % server_address)
+for s in socks:
+    s.connect(server_address)
+
+for message in messages:
+
+    # Send messages on both sockets
+    for s in socks:
+        print(sys.stderr, &apos;%s: sending &quot;%s&quot;&apos; % (s.getsockname(), message))
+        s.send(bytes(message,&apos;utf8&apos;))
+
+    # Read responses on both sockets
+    for s in socks:
+        data = s.recv(1024)
+        print(sys.stderr, &apos;%s: received &quot;%s&quot;&apos; % (s.getsockname(), data))
+        if not data:
+            print(sys.stderr, &apos;closing socket&apos;, s.getsockname())
+            s.close()
+</code></pre><h2 id="五、堡垒机模块"><a href="#五、堡垒机模块" class="headerlink" title="五、堡垒机模块"></a>五、堡垒机模块</h2><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/5095821.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5095821.html</a></p>
+<h3 id="1-模块安装："><a href="#1-模块安装：" class="headerlink" title="1.模块安装："></a>1.模块安装：</h3><pre><code>pip2 install paramiko
+
+pip3 install paramiko  
+ #win下python3安装paramiko模块涉及到编译工具的问题没有安装成功，在Linux环境下面测试下面的代码正常。
+</code></pre><h3 id="2-示例代码"><a href="#2-示例代码" class="headerlink" title="2.示例代码"></a>2.示例代码</h3><pre><code>#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import paramiko
+&apos;&apos;&apos;
+基于用户名密码连接
+&apos;&apos;&apos;
+# 创建SSH对象
+ssh = paramiko.SSHClient()
+# 允许连接不在know_hosts文件中的主机
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+# 连接服务器
+ssh.connect(hostname=&apos;192.168.137.5&apos;, port=22, username=&apos;root&apos;, password=&apos;shen1234&apos;)
+
+# 执行命令
+stdin, stdout, stderr = ssh.exec_command(&apos;df -h&apos;)
+# 获取命令结果
+result = stdout.read()
+#打印结果
+print(result.decode())
+# 关闭连接
+ssh.close()
+
+import paramiko
+
+transport = paramiko.Transport((&apos;192.168.137.5&apos;, 22))
+transport.connect(username=&apos;root&apos;, password=&apos;shen1234&apos;)
+
+ssh = paramiko.SSHClient()
+ssh._transport = transport
+
+stdin, stdout, stderr = ssh.exec_command(&apos;ifconfig&apos;)
+print(stdout.read().decode())
+
+transport.close()
+
+import paramiko
+
+def ssh_connet(host,user,shell):
+    &apos;&apos;&apos;
+    实现ssh远程登录服务器进行相关操作
+    :param host: 远程服务器地址和端口号 host_ip:port
+    :param user: 远程服务器用户名密码 user:passwd
+    :parm shell: 需要执行的shell命令
+    :return: 返回用户执行shell命令的
+    &apos;&apos;&apos;
+    host = host.split(&quot;:&quot;)
+    user = user.split(&quot;:&quot;)
+    transport = paramiko.Transport((host[0], int(host[1])))
+    transport.connect(username=user[0], password=user[1])
+    ssh = paramiko.SSHClient()
+    ssh._transport = transport
+    stdin, stdout, stderr = ssh.exec_command(shell)
+    reaults = stdout.read().decode()
+    transport.close()
+    return reaults
+print(ssh_connet(&quot;192.168.137.5:22&quot;,&quot;root:shen1234&quot;,&quot;df -h&quot;))
+</code></pre><h3 id="基于公钥密钥连接："><a href="#基于公钥密钥连接：" class="headerlink" title="基于公钥密钥连接："></a>基于公钥密钥连接：</h3><pre><code>import paramiko
+
+def ssh_connet(host,user,private_key,shell):
+    &apos;&apos;&apos;
+    实现ssh远程登录服务器进行相关操作
+    :param host: 远程服务器地址和端口号 host_ip:port
+    :param user: 远程服务器用户名密码 user:passwd
+    :param private_key: 基于公钥的形式登录
+    :parm shell: 需要执行的shell命令
+    :return: 返回用户执行shell命令的
+    &apos;&apos;&apos;
+    host = host.split(&quot;:&quot;)
+    transport = paramiko.Transport((host[0], int(host[1])))
+    transport.connect(username=user[0], key=private_key)
+    ssh = paramiko.SSHClient()
+    ssh._transport = transport
+    stdin, stdout, stderr = ssh.exec_command(shell)
+    reaults = stdout.read().decode()
+    transport.close()
+    return reaults
+private_key = paramiko.RSAKey.from_private_key_file(&apos;/home/auto/.ssh/id_rsa&apos;)
+print(ssh_connet(&quot;192.168.137.5:22&quot;,&quot;root&quot;,private_key,&quot;df -h&quot;))
+</code></pre><h2 id="六、mysql操作模块"><a href="#六、mysql操作模块" class="headerlink" title="六、mysql操作模块"></a>六、mysql操作模块</h2><pre><code>rollback()事务回滚
+excutemany()
+</code></pre><p><strong>作业：</strong></p>
+<pre><code>1.    select（）代码，注释
+2.    主机批量管理工具
+    1.    saltstack文档阅读（常用架构弄清楚）
+    2.    修改主机批量管理工具的架构
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-s12-20160305-day08" class="article article-type-post" itemscope itemprop="blogPost">
   

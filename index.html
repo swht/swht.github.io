@@ -210,7 +210,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs开发书籍/">nodejs开发书籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python开发书籍/">python开发书籍</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs开发书籍/">nodejs开发书籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python开发书籍/">python开发书籍</a></li></ul>
                     </div>
                 </section>
                 
@@ -300,6 +300,113 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-2016-10-11-mysql-mysql查询命令" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/11/2016-10-11-mysql-mysql查询命令/" class="article-date">
+      <time datetime="2016-10-11T03:18:50.000Z" itemprop="datePublished">2016-10-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/11/2016-10-11-mysql-mysql查询命令/">2016-10-11-mysql-mysql查询命令</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>编者按:</p>
+<pre><code>这篇文章会陆续记录在工作中使用mysql进行数据查询的一些命令，以及将一些需求和命令的实现进行结合讲解。
+</code></pre><p>一、获取在(北京、广州、深圳)近三个月内有登录行为的用户信息，字段：用户名，邮箱，手机号，创建应用数量，注册时间，最后一次登录时间</p>
+<pre><code>SELECT
+    userName,
+    loginName,
+    phone,
+    num,
+    province,
+    FROM_UNIXTIME(
+        ct / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS ct,
+    FROM_UNIXTIME(
+        loginTime / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS loginTime
+FROM
+    TB_Enterprise_User
+INNER JOIN (
+    SELECT
+        userId,
+        COUNT(*) AS num
+    FROM
+        cad_app_user
+    WHERE
+        type = 0
+    GROUP BY
+        userId
+    ORDER BY
+        num
+) tb1 ON TB_Enterprise_User.enterUserId = tb1.userId
+WHERE
+    LENGTH(phone) = 11
+AND phone IS NOT NULL
+AND loginTime &gt;= UNIX_TIMESTAMP(&apos;2016-07-11 00:00:00&apos;) * 1000
+
+AND (
+    province = &apos;北京&apos;
+    OR province = &apos;广州&apos;
+    OR province = &apos;深圳&apos;
+)
+ORDER BY
+    loginTime ASC
+</code></pre><p>需求分析：</p>
+<pre><code>用户名，邮箱，手机号，注册时间，最后一次登录时间这几个字段都存放在一张表中(TB_Enterprise_User),只需要写好相应的条件就行。
+创建应用数需要从另一张表中(cad_app_user)进行统计查询形成新表与TB_Enterprise_User进行表关联。
+这里需要注意loginTime、ct记录的是毫秒值，而UNIX_TIMESTAMP(&apos;2016-07-11 00:00:00&apos;)转换的记录值是秒
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-2016-08-31-python开发书籍-Python教程-20141026" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -820,67 +927,6 @@
           
         <p>Author:@南非波波</p>
 <p><a href="http://blog.songqingbo.cn/pdf/nodejs/Node入门.pdf" title="Node入门.pdf">Node入门</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs开发书籍/">nodejs开发书籍</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-08-26-nodejs开发书籍-Node-Web开发" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/26/2016-08-26-nodejs开发书籍-Node-Web开发/" class="article-date">
-      <time datetime="2016-08-26T02:29:04.000Z" itemprop="datePublished">2016-08-26</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/26/2016-08-26-nodejs开发书籍-Node-Web开发/">2016-08-26-nodejs开发书籍-Node+Web开发</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Author:@南非波波</p>
-<p><a href="http://blog.songqingbo.cn/pdf/nodejs/Node+Web开发.pdf" title="Node+Web开发.pdf">Node+Web开发</a></p>
 
       
     </div>
