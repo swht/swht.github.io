@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.songqingbo.cn/"/>
-  <updated>2016-10-11T05:44:32.412Z</updated>
+  <updated>2016-10-24T10:39:53.436Z</updated>
   <id>http://blog.songqingbo.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4/"/>
     <id>http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql查询命令/</id>
     <published>2016-10-11T03:18:50.000Z</published>
-    <updated>2016-10-11T05:44:32.412Z</updated>
+    <updated>2016-10-24T10:39:53.436Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;编者按:&lt;/p&gt;
@@ -71,6 +71,50 @@ ORDER BY
 &lt;pre&gt;&lt;code&gt;用户名，邮箱，手机号，注册时间，最后一次登录时间这几个字段都存放在一张表中(TB_Enterprise_User),只需要写好相应的条件就行。
 创建应用数需要从另一张表中(cad_app_user)进行统计查询形成新表与TB_Enterprise_User进行表关联。
 这里需要注意loginTime、ct记录的是毫秒值，而UNIX_TIMESTAMP(&amp;apos;2016-07-11 00:00:00&amp;apos;)转换的记录值是秒
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;二、获取过去一周新增loader用户的信息&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;查询指定时间增加loader用户的信息：
+    1.统计服务器每天新增文件total_day/new.txt获取appId
+        awk -F &amp;quot;|&amp;quot; &amp;apos;{print $1}&amp;apos; 20161023 |sort -k 1 -n -r|uniq -c|awk -F &amp;quot; &amp;quot; &amp;apos;{print $2}&amp;apos; &amp;gt;&amp;gt; test.txt （多天就执行多条，把文件名换一下，然后执行下面一句）
+        awk -F &amp;quot;|&amp;quot; &amp;apos;{print $1}&amp;apos; test.txt |sort -k 1 -n -r|uniq -c|awk -F &amp;quot; &amp;quot; &amp;apos;{print $2}&amp;apos; &amp;gt;&amp;gt; test_2.txt(获取到全部的新增loader的应用ID)
+    2.根据应用ID获取对应的userId
+    3.查询对应userId创建应用的数量
+    4.进行表关联，查询用户表，获取用户的信息
+
+
+SELECT
+    userName,
+    loginName,
+    phone,
+    FROM_UNIXTIME(
+        TB_Enterprise_User.ct / 1000,
+        &amp;apos;%Y-%m-%d %H:%i:%S&amp;apos;
+    ) AS ct,
+    province,
+    num
+FROM 
+    TB_Enterprise_User
+INNER JOIN (
+    SELECT
+        userId,COUNT(*) AS num
+    FROM
+        cad_app_user
+    WHERE
+        userId IN (
+            SELECT
+                userId
+            FROM
+                cad_app_user
+            WHERE
+                type = 0
+            AND appId IN(&amp;apos;A6999979578606&amp;apos;,&amp;apos;A6999956860949&amp;apos;,&amp;apos;A6999909977189&amp;apos;)
+            GROUP BY
+                userId
+        )
+    GROUP BY
+        userId
+) tb1 ON TB_Enterprise_User.enterUserId = tb1.userId
+ORDER BY
+    TB_Enterprise_User.enterUserId ASC;
 &lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
