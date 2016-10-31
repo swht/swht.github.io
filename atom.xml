@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.songqingbo.cn/"/>
-  <updated>2016-10-24T10:39:53.436Z</updated>
+  <updated>2016-10-27T01:29:32.316Z</updated>
   <id>http://blog.songqingbo.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4/"/>
     <id>http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql查询命令/</id>
     <published>2016-10-11T03:18:50.000Z</published>
-    <updated>2016-10-24T10:39:53.436Z</updated>
+    <updated>2016-10-27T01:29:32.316Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;编者按:&lt;/p&gt;
@@ -113,6 +113,25 @@ INNER JOIN (
     GROUP BY
         userId
 ) tb1 ON TB_Enterprise_User.enterUserId = tb1.userId
+ORDER BY
+    TB_Enterprise_User.enterUserId ASC;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;三、指定时间的自定义loader的使用用户&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT
+    userName,
+    loginName,
+    phone,
+    FROM_UNIXTIME(
+        TB_Enterprise_User.ct / 1000,
+        &amp;apos;%Y-%m-%d %H:%i:%S&amp;apos;
+    ) AS ct,
+    province
+FROM
+    TB_Enterprise_User
+INNER JOIN loader_pack ON TB_Enterprise_User.enterUserId = loader_pack.userId
+WHERE
+    loader_pack.ct &amp;gt;= UNIX_TIMESTAMP(&amp;apos;2016-10-17 00:00:00&amp;apos;) * 1000
+AND loader_pack.ct &amp;lt; UNIX_TIMESTAMP(&amp;apos;2016-10-24 00:00:00&amp;apos;) * 1000
+GROUP BY enterUserId
 ORDER BY
     TB_Enterprise_User.enterUserId ASC;
 &lt;/code&gt;&lt;/pre&gt;</content>

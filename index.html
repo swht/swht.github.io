@@ -437,6 +437,25 @@ INNER JOIN (
 ) tb1 ON TB_Enterprise_User.enterUserId = tb1.userId
 ORDER BY
     TB_Enterprise_User.enterUserId ASC;
+</code></pre><p>三、指定时间的自定义loader的使用用户</p>
+<pre><code>SELECT
+    userName,
+    loginName,
+    phone,
+    FROM_UNIXTIME(
+        TB_Enterprise_User.ct / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS ct,
+    province
+FROM
+    TB_Enterprise_User
+INNER JOIN loader_pack ON TB_Enterprise_User.enterUserId = loader_pack.userId
+WHERE
+    loader_pack.ct &gt;= UNIX_TIMESTAMP(&apos;2016-10-17 00:00:00&apos;) * 1000
+AND loader_pack.ct &lt; UNIX_TIMESTAMP(&apos;2016-10-24 00:00:00&apos;) * 1000
+GROUP BY enterUserId
+ORDER BY
+    TB_Enterprise_User.enterUserId ASC;
 </code></pre>
       
     </div>
@@ -1030,7 +1049,7 @@ ORDER BY
                 2016  <a href="https://github.com/swht" target="_blank" title="南非波波github主页">南非波波</a>
             </div>
             <div class="footer-right">
-                <a href="http://www.cnblogs.com/songqingbo/" target="_blank" title="南非波波博客园主页">南非波波博客园主页</a> <!-- <p>京ICP备16009444号-1</p> -->
+                <a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action" target="_blank" title="京ICP备16009444号">南非波波博客园主页</a> <!-- <p>京ICP备16009444号-1</p> -->
                           
             </div>
         </div>
