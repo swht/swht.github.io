@@ -39,7 +39,7 @@ SELECT
     phone,
     num,
     pro">
-<meta property="og:updated_time" content="2016-10-27T01:29:32.316Z">
+<meta property="og:updated_time" content="2016-11-08T05:18:44.248Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2016-10-11-mysql-mysql查询命令">
 <meta name="twitter:description" content="Author:@南非波波
@@ -484,6 +484,93 @@ AND loader_pack.ct &lt; UNIX_TIMESTAMP(&apos;2016-10-24 00:00:00&apos;) * 1000
 GROUP BY enterUserId
 ORDER BY
     TB_Enterprise_User.enterUserId ASC;
+</code></pre><p>四、10月28号-11月8号访问课程页面“未买课程”的用户数据。需要信息：注册时间、手机号、邮箱、应用个数、最后登录时间</p>
+<pre><code>SELECT
+    userName,
+    loginName,
+    phone,
+    FROM_UNIXTIME(
+        TB_Enterprise_User.ct / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS ct,
+    FROM_UNIXTIME(
+        TB_Enterprise_User.loginTime / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS loginTime,
+    num,
+    MAX(vip_click.date) AS date
+FROM
+    TB_Enterprise_User
+INNER JOIN vip_click ON TB_Enterprise_User.enterUserId = vip_click.userId
+INNER JOIN (
+    SELECT
+        userId,
+        COUNT(*) AS num
+    FROM
+        cad_app_user
+    WHERE
+        type = 0
+    GROUP BY
+        userId
+) tb1 ON TB_Enterprise_User.enterUserId = tb1.userId
+WHERE
+    UNIX_TIMESTAMP(vip_click.date) &gt;= UNIX_TIMESTAMP(&apos;2016-10-28 00:00:00&apos;)
+AND UNIX_TIMESTAMP(vip_click.date) &lt; UNIX_TIMESTAMP(&apos;2016-11-09 00:00:00&apos;)
+AND vip_click.url = &apos;/vipservice/course&apos;
+AND vip_click.userId NOT IN (select userid from training_user GROUP BY userid)
+GROUP BY
+    vip_click.userId
+ORDER BY
+    vip_click.date ASC;    
+</code></pre><p>五、10月21号-11月8号注册的新用户“未访问过课程页面的用户”需要信息：注册时间、手机号、邮箱、最后登录时间</p>
+<pre><code>SELECT
+    userName,
+    loginName,
+    phone,
+    FROM_UNIXTIME(
+        TB_Enterprise_User.ct / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS ct,
+    FROM_UNIXTIME(
+        TB_Enterprise_User.loginTime / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS loginTime
+FROM
+    TB_Enterprise_User
+WHERE
+    UNIX_TIMESTAMP(ct) &gt;= UNIX_TIMESTAMP(&apos;2016-10-28 00:00:00&apos;)
+AND UNIX_TIMESTAMP(ct) &lt; UNIX_TIMESTAMP(&apos;2016-11-09 00:00:00&apos;)
+AND enterUserId NOT IN(select userId from vip_click GROUP BY
+    vip_click.userId)
+ORDER BY
+    enterUserId ASC;
+</code></pre><p>六、点击公开直播课程按钮的用户信息</p>
+<pre><code>SELECT
+    userName,
+    loginName,
+    phone,
+    FROM_UNIXTIME(
+        TB_Enterprise_User.ct / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS ct,
+    num
+FROM
+    TB_Enterprise_User
+INNER JOIN (
+    SELECT
+        userId,
+        COUNT(*) AS num
+    FROM
+        cad_app_user
+    WHERE
+        type = 0
+    GROUP BY
+        userId
+) tb1 ON TB_Enterprise_User.enterUserId = tb1.userId
+where 
+    enterUserId in (select userid from vip_click where  url=&apos;openclass&apos; and date &gt;&apos;2016-11-06&apos;)
+ORDER BY
+    TB_Enterprise_User.enterUserId ASC;
 </code></pre>
       
     </div>
@@ -495,7 +582,7 @@ ORDER BY
         <p><span>本文标题:</span><a href="/2016/10/11/2016-10-11-mysql-mysql查询命令/">2016-10-11-mysql-mysql查询命令</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">南非波波</a></p>
         <p><span>发布时间:</span>2016-10-11, 11:18:50</p>
-        <p><span>最后更新:</span>2016-10-27, 09:29:32</p>
+        <p><span>最后更新:</span>2016-11-08, 13:18:44</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/10/11/2016-10-11-mysql-mysql查询命令/" title="2016-10-11-mysql-mysql查询命令">http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql查询命令/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql查询命令/　　作者: 南非波波" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
