@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.songqingbo.cn/"/>
-  <updated>2016-11-08T05:18:44.248Z</updated>
+  <updated>2016-11-15T08:09:10.555Z</updated>
   <id>http://blog.songqingbo.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4/"/>
     <id>http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql查询命令/</id>
     <published>2016-10-11T03:18:50.000Z</published>
-    <updated>2016-11-08T05:18:44.248Z</updated>
+    <updated>2016-11-15T08:09:10.555Z</updated>
     
     <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;编者按:&lt;/p&gt;
@@ -221,6 +221,117 @@ where
     enterUserId in (select userid from vip_click where  url=&amp;apos;openclass&amp;apos; and date &amp;gt;&amp;apos;2016-11-06&amp;apos;)
 ORDER BY
     TB_Enterprise_User.enterUserId ASC;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;七、获取指定城市注册用户的信息&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT
+    userName,
+    loginName,
+    phone,
+    FROM_UNIXTIME(
+        ct / 1000,
+        &amp;apos;%Y-%m-%d %H:%i:%S&amp;apos;
+    ) AS ct,
+    FROM_UNIXTIME(
+        loginTime / 1000,
+        &amp;apos;%Y-%m-%d %H:%i:%S&amp;apos;
+    ) AS loginTime,
+    province,
+    num
+FROM
+    TB_Enterprise_User
+INNER JOIN (
+    SELECT
+        userId,
+        COUNT(*) AS num
+    FROM
+        cad_app_user
+    WHERE
+        type = 0
+    GROUP BY
+        userId
+) tb1 ON TB_Enterprise_User.enterUserId = tb1.userId
+WHERE
+    state != 100
+AND (
+    TB_Enterprise_User.province = &amp;apos;青岛&amp;apos;
+    OR TB_Enterprise_User.province = &amp;apos;潍坊&amp;apos;
+    OR TB_Enterprise_User.province = &amp;apos;济南&amp;apos;
+    OR TB_Enterprise_User.province = &amp;apos;淄博&amp;apos;
+)
+ORDER BY
+    loginTime ASC
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;八、获取指定城市购买过七天培训课程的用户信息(运行库为CAD)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT
+    userName,
+    loginName,
+    phone,
+    FROM_UNIXTIME(
+        ct / 1000,
+        &amp;apos;%Y-%m-%d %H:%i:%S&amp;apos;
+    ) AS ct,
+    FROM_UNIXTIME(
+        loginTime / 1000,
+        &amp;apos;%Y-%m-%d %H:%i:%S&amp;apos;
+    ) AS loginTime,
+    province,
+    num
+FROM
+    TB_Enterprise_User
+INNER JOIN (
+    SELECT
+        userId,
+        COUNT(*) AS num
+    FROM
+        cad_app_user
+    WHERE
+        type = 0
+    GROUP BY
+        userId
+) tb1 ON TB_Enterprise_User.enterUserId = tb1.userId
+WHERE
+    state != 100
+AND (
+    TB_Enterprise_User.province = &amp;apos;青岛&amp;apos;
+    OR TB_Enterprise_User.province = &amp;apos;潍坊&amp;apos;
+    OR TB_Enterprise_User.province = &amp;apos;济南&amp;apos;
+    OR TB_Enterprise_User.province = &amp;apos;淄博&amp;apos;
+)
+AND enterUserId IN (
+    SELECT
+        userid
+    FROM
+        training_user
+    GROUP BY
+        userid
+    UNION
+        SELECT
+            userid
+        FROM
+            admin2.tr_order
+        GROUP BY
+            userid
+)
+ORDER BY
+    loginTime ASC
+
+
+===============================================================================
+参考：http://www.cnblogs.com/kissdodog/archive/2013/06/24/3152743.html
+使用了union关键字做查询结果的并集 
+    select * from table1
+    union [all]
+    select * from table2
+#注意事项：两个表的查询结果数据结构要一致。另外如果使用 union all组合关键字，求并集的时候不会去掉重复行
+===============================================================================
+#延伸知识
+#求交集
+    SELECT Name FROM Person_1
+    INTERSECT
+    SELECT Name FROM Person_2
+#求差集
+    SELECT Name FROM Person_1
+    EXCEPT
+    SELECT Name FROM Person_2
+===============================================================================
 &lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">

@@ -205,6 +205,117 @@ where
     enterUserId in (select userid from vip_click where  url=&apos;openclass&apos; and date &gt;&apos;2016-11-06&apos;)
 ORDER BY
     TB_Enterprise_User.enterUserId ASC;
+</code></pre><p>七、获取指定城市注册用户的信息</p>
+<pre><code>SELECT
+    userName,
+    loginName,
+    phone,
+    FROM_UNIXTIME(
+        ct / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS ct,
+    FROM_UNIXTIME(
+        loginTime / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS loginTime,
+    province,
+    num
+FROM
+    TB_Enterprise_User
+INNER JOIN (
+    SELECT
+        userId,
+        COUNT(*) AS num
+    FROM
+        cad_app_user
+    WHERE
+        type = 0
+    GROUP BY
+        userId
+) tb1 ON TB_Enterprise_User.enterUserId = tb1.userId
+WHERE
+    state != 100
+AND (
+    TB_Enterprise_User.province = &apos;青岛&apos;
+    OR TB_Enterprise_User.province = &apos;潍坊&apos;
+    OR TB_Enterprise_User.province = &apos;济南&apos;
+    OR TB_Enterprise_User.province = &apos;淄博&apos;
+)
+ORDER BY
+    loginTime ASC
+</code></pre><p>八、获取指定城市购买过七天培训课程的用户信息(运行库为CAD)</p>
+<pre><code>SELECT
+    userName,
+    loginName,
+    phone,
+    FROM_UNIXTIME(
+        ct / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS ct,
+    FROM_UNIXTIME(
+        loginTime / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS loginTime,
+    province,
+    num
+FROM
+    TB_Enterprise_User
+INNER JOIN (
+    SELECT
+        userId,
+        COUNT(*) AS num
+    FROM
+        cad_app_user
+    WHERE
+        type = 0
+    GROUP BY
+        userId
+) tb1 ON TB_Enterprise_User.enterUserId = tb1.userId
+WHERE
+    state != 100
+AND (
+    TB_Enterprise_User.province = &apos;青岛&apos;
+    OR TB_Enterprise_User.province = &apos;潍坊&apos;
+    OR TB_Enterprise_User.province = &apos;济南&apos;
+    OR TB_Enterprise_User.province = &apos;淄博&apos;
+)
+AND enterUserId IN (
+    SELECT
+        userid
+    FROM
+        training_user
+    GROUP BY
+        userid
+    UNION
+        SELECT
+            userid
+        FROM
+            admin2.tr_order
+        GROUP BY
+            userid
+)
+ORDER BY
+    loginTime ASC
+
+
+===============================================================================
+参考：http://www.cnblogs.com/kissdodog/archive/2013/06/24/3152743.html
+使用了union关键字做查询结果的并集 
+    select * from table1
+    union [all]
+    select * from table2
+#注意事项：两个表的查询结果数据结构要一致。另外如果使用 union all组合关键字，求并集的时候不会去掉重复行
+===============================================================================
+#延伸知识
+#求交集
+    SELECT Name FROM Person_1
+    INTERSECT
+    SELECT Name FROM Person_2
+#求差集
+    SELECT Name FROM Person_1
+    EXCEPT
+    SELECT Name FROM Person_2
+===============================================================================
 </code></pre>]]></content>
     </entry>
     
