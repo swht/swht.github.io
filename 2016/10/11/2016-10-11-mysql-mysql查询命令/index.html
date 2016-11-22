@@ -39,7 +39,7 @@ SELECT
     phone,
     num,
     pro">
-<meta property="og:updated_time" content="2016-11-15T08:09:10.555Z">
+<meta property="og:updated_time" content="2016-11-22T05:53:23.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2016-10-11-mysql-mysql查询命令">
 <meta name="twitter:description" content="Author:@南非波波
@@ -682,6 +682,25 @@ ORDER BY
     EXCEPT
     SELECT Name FROM Person_2
 ===============================================================================
+</code></pre><p>九、获取指定时间的移动端未完全注册渠道来源用户    </p>
+<pre><code>SELECT
+    userName,
+    loginName,
+    phone,
+    FROM_UNIXTIME(
+        TB_Enterprise_User.ct / 1000,
+        &apos;%Y-%m-%d %H:%i:%S&apos;
+    ) AS ctime,
+    channel
+FROM
+    TB_Enterprise_User
+WHERE
+    state = 10
+AND ct &gt;= UNIX_TIMESTAMP(&apos;2016-11-09 00:00:00&apos;) * 1000
+AND ct &lt; UNIX_TIMESTAMP(&apos;2016-11-23 00:00:00&apos;) * 1000
+AND channelType=0
+ORDER BY
+ct ASC;
 </code></pre>
       
     </div>
@@ -693,7 +712,7 @@ ORDER BY
         <p><span>本文标题:</span><a href="/2016/10/11/2016-10-11-mysql-mysql查询命令/">2016-10-11-mysql-mysql查询命令</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">南非波波</a></p>
         <p><span>发布时间:</span>2016-10-11, 11:18:50</p>
-        <p><span>最后更新:</span>2016-11-15, 16:09:10</p>
+        <p><span>最后更新:</span>2016-11-22, 13:53:23</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/10/11/2016-10-11-mysql-mysql查询命令/" title="2016-10-11-mysql-mysql查询命令">http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql查询命令/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.songqingbo.cn/2016/10/11/2016-10-11-mysql-mysql查询命令/　　作者: 南非波波" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
