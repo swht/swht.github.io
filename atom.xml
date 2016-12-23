@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.songqingbo.cn/"/>
-  <updated>2016-12-21T11:03:09.734Z</updated>
+  <updated>2016-12-23T07:11:34.076Z</updated>
   <id>http://blog.songqingbo.cn/</id>
   
   <author>
@@ -14,6 +14,151 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)</title>
+    <link href="http://blog.songqingbo.cn/2016/12/22/2016-12-22-Nodejs%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF-Nodejs%E5%9F%BA%E7%A1%80(%E6%A8%A1%E5%9D%97%E3%80%81%E5%8C%85%E3%80%81%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E3%80%81%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%BC%82%E6%AD%A5%E6%A8%A1%E5%BC%8F)/"/>
+    <id>http://blog.songqingbo.cn/2016/12/22/2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)/</id>
+    <published>2016-12-22T02:30:50.000Z</published>
+    <updated>2016-12-23T07:11:34.076Z</updated>
+    
+    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;h3 id=&quot;一、模块&quot;&gt;&lt;a href=&quot;#一、模块&quot; class=&quot;headerlink&quot; title=&quot;一、模块&quot;&gt;&lt;/a&gt;一、模块&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;任何具有特定功能的js文件都可以被封装成模块。
+通过require将模块引入。
+使用exports将函数全局化，使得其他文件可以通过引入该模块引用函数。
+
+示例：
+#test.js
+    var sum = require(&amp;apos;./sum&amp;apos;); //导入自定义模块
+    var data = sum[&amp;apos;sum&amp;apos;](2,3);
+    var data1 = sum[&amp;apos;product&amp;apos;](3,5);
+    console.log(data); //5
+    console.log(data1); //60
+#sum.js
+    module.exports = {
+        sum: function (startnum, endnum) {
+            var sumnum = 0
+            for (i = startnum; i &amp;lt;= endnum; i++) {
+                sumnum += i;
+            }
+            return sumnum;
+        },
+        product: function (startnum, endnum) {
+            var productnum = 1;
+            for (j = startnum; j &amp;lt;= endnum; j++) {
+                productnum *= j;
+            }
+            return productnum;
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;二、包管理&quot;&gt;&lt;a href=&quot;#二、包管理&quot; class=&quot;headerlink&quot; title=&quot;二、包管理&quot;&gt;&lt;/a&gt;二、包管理&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;使用nodejs的包管理工具npm，可以从网络上下载并安装已经被封装好实现某个功能的接口模块。
+开发者也可以将自己的模块封装成包上传到网络供其他开发者使用。
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;三、文件相关&quot;&gt;&lt;a href=&quot;#三、文件相关&quot; class=&quot;headerlink&quot; title=&quot;三、文件相关&quot;&gt;&lt;/a&gt;三、文件相关&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;使用fs对文件进行操作
+
+示例：
+#test.js //异步回调读取文件内容
+    var fs = require(&amp;apos;fs&amp;apos;);
+    fs.readFile(&amp;apos;./err.txt&amp;apos;,function(err,data){
+        if(err){
+            console.log(&amp;apos;读取文件出错!&amp;apos;,err);
+        }else{
+            console.log(&amp;apos;文件读取成功:&amp;apos;,data.toString());//如果不加编码格式，这里data输出的是16进制的字符串
+        }
+
+    });
+    // fs.readFile(&amp;apos;./err.txt&amp;apos;,&amp;apos;utf-8&amp;apos;,function(err,data){
+    //     if(err){
+    //         console.log(&amp;apos;读取文件出错!&amp;apos;,err);
+    //     }else{
+    //         console.log(&amp;apos;文件读取成功:&amp;apos;,data);
+    //     }
+
+    // });
+#输出：
+    文件读取成功: warn this！
+    error this！
+#test.js  //同步读取文件内容
+    var fs = require(&amp;apos;fs&amp;apos;);
+    var data = fs.readFileSync(&amp;apos;./err.txt&amp;apos;,&amp;apos;utf-8&amp;apos;);
+    console.log(&amp;apos;文件读取成功:&amp;apos;,data);
+#输出：
+    文件读取成功: warn this！
+    error this！
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;四、-path模块&quot;&gt;&lt;a href=&quot;#四、-path模块&quot; class=&quot;headerlink&quot; title=&quot;四、 path模块&quot;&gt;&lt;/a&gt;四、 path模块&lt;/h3&gt;&lt;h4 id=&quot;1-path-normalize-p&quot;&gt;&lt;a href=&quot;#1-path-normalize-p&quot; class=&quot;headerlink&quot; title=&quot;1. path.normalize(p)&quot;&gt;&lt;/a&gt;1. path.normalize(p)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;规范化路径，注意&amp;apos;..&amp;apos; 和 &amp;apos;.&amp;apos;。
+
+示例：
+#test.js
+    var path = require(&amp;apos;path&amp;apos;);
+    filepath = &amp;apos;./upload-aws/app.js&amp;apos;;
+    console.log( path.normalize(filepath)); //返回指定文件的规范的路径
+    console.log(&amp;apos;normalization : &amp;apos; + path.normalize(&amp;apos;/test/test1//2slashes/1slash/tab/..&amp;apos;)); 
+#输出：
+    upload-aws/app.js
+    normalization : \test\test1\2slashes\1slash
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;2-path-join-path1-path2-…&quot;&gt;&lt;a href=&quot;#2-path-join-path1-path2-…&quot; class=&quot;headerlink&quot; title=&quot;2.    path.join([path1][, path2][, …])&quot;&gt;&lt;/a&gt;2.    path.join([path1][, path2][, …])&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;用于连接路径。该方法的主要用途在于，会正确使用当前系统的路径分隔符，Unix系统是&amp;quot;/&amp;quot;，Windows系统是&amp;quot;\&amp;quot;。
+
+示例：
+    var path = require(&amp;apos;path&amp;apos;);
+    console.log(&amp;apos;join path : &amp;apos; + path.join(&amp;apos;/test&amp;apos;, &amp;apos;test1&amp;apos;, &amp;apos;2slashes/1slash&amp;apos;, &amp;apos;tab/ddd/&amp;apos;, &amp;apos;..&amp;apos;));//join path : \test\test1\2slashes\1slash\tab
+    console.log(&amp;apos;join path : &amp;apos; + path.join(&amp;apos;/test&amp;apos;, &amp;apos;test1&amp;apos;, &amp;apos;2slashes/1slash&amp;apos;,&amp;apos;..&amp;apos;));//join path : \test\test1\2slashes
+#该方法会把最后一个正常的路径名称识别为文件，不会拼接在路径中。这一点儿很奇怪
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;3-path-resolve-from-…-to&quot;&gt;&lt;a href=&quot;#3-path-resolve-from-…-to&quot; class=&quot;headerlink&quot; title=&quot;3. path.resolve([from …], to)&quot;&gt;&lt;/a&gt;3. path.resolve([from …], to)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;将 to 参数解析为绝对路径。
+
+示例：
+    var path = require(&amp;apos;path&amp;apos;);
+    filepath = &amp;apos;./upload-aws/app.js&amp;apos;;
+    console.log(path.resolve(filepath)); //将指定文件相对路径转换成绝对路径
+输出：
+    E:\projects\all-code\node\upload-aws\app.js 
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;4-path-isAbsolute-path&quot;&gt;&lt;a href=&quot;#4-path-isAbsolute-path&quot; class=&quot;headerlink&quot; title=&quot;4.    path.isAbsolute(path)&quot;&gt;&lt;/a&gt;4.    path.isAbsolute(path)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;判断参数 path 是否是绝对路径。
+返回值是：true false,根据返回值判断是否是绝对路径
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;5-path-relative-from-to&quot;&gt;&lt;a href=&quot;#5-path-relative-from-to&quot; class=&quot;headerlink&quot; title=&quot;5.    path.relative(from, to)&quot;&gt;&lt;/a&gt;5.    path.relative(from, to)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;用于将相对路径转为绝对路径。from是指定源路径，to是指定的目的路径，输出结果是从源路径到目的路径的相对路径。
+
+示例：
+    console.log(path.relative(&amp;apos;upload-aws/app.js&amp;apos;,&amp;apos;swht.github.io&amp;apos;)); //..\swht.github.io
+    解析：upload-aws 和swht.github.io在同一级路径，从upload-aws路径进入到swht.github.io路径，需要的相对路径是..\swht.github.io
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;6-path-dirname-p&quot;&gt;&lt;a href=&quot;#6-path-dirname-p&quot; class=&quot;headerlink&quot; title=&quot;6. path.dirname(p)&quot;&gt;&lt;/a&gt;6. path.dirname(p)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;返回路径中代表文件夹的部分，同 Unix的 __dirname 命令类似,但是_dirname获取的是文件所在位置的绝对路径
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;7-path-basename-p-ext&quot;&gt;&lt;a href=&quot;#7-path-basename-p-ext&quot; class=&quot;headerlink&quot; title=&quot;7.    path.basename(p[, ext])&quot;&gt;&lt;/a&gt;7.    path.basename(p[, ext])&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;返回路径中的最后一部分。同 Unix 命令 bashname 类似。
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;8-path-extname-p&quot;&gt;&lt;a href=&quot;#8-path-extname-p&quot; class=&quot;headerlink&quot; title=&quot;8.    path.extname(p)&quot;&gt;&lt;/a&gt;8.    path.extname(p)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;返回路径中文件的后缀名，即路径中最后一个&amp;apos;.&amp;apos;之后的部分。如果一个路径中并不包含&amp;apos;.&amp;apos;或该路径只包含一个&amp;apos;.&amp;apos; 且这个&amp;apos;.&amp;apos;为路径的第一个字符，则此命令返回空字符串。
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;9-path-parse-pathString&quot;&gt;&lt;a href=&quot;#9-path-parse-pathString&quot; class=&quot;headerlink&quot; title=&quot;9.    path.parse(pathString)&quot;&gt;&lt;/a&gt;9.    path.parse(pathString)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;返回路径字符串的对象。
+
+示例：
+    var path = require(&amp;apos;path&amp;apos;);
+    filepath = &amp;apos;./upload-aws/app.js&amp;apos;;
+    console.log(path.parse(filepath));
+    // { root: &amp;apos;&amp;apos;,
+    //   dir: &amp;apos;./upload-aws&amp;apos;,
+    //   base: &amp;apos;app.js&amp;apos;,
+    //   ext: &amp;apos;.js&amp;apos;,
+    //   name: &amp;apos;app&amp;apos; }    
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;10-path-format-pathObject&quot;&gt;&lt;a href=&quot;#10-path-format-pathObject&quot; class=&quot;headerlink&quot; title=&quot;10. path.format(pathObject)&quot;&gt;&lt;/a&gt;10. path.format(pathObject)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;从对象中返回路径字符串，和 path.parse 相反。
+
+示例：
+    data = { root: &amp;apos;&amp;apos;,
+      dir: &amp;apos;./upload-aws&amp;apos;,
+      base: &amp;apos;app.js&amp;apos;,
+      ext: &amp;apos;.js&amp;apos;,
+      name: &amp;apos;app&amp;apos; }
+      console.log(path.format(data));
+输出：./upload-aws\app.js
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;11-path-sep&quot;&gt;&lt;a href=&quot;#11-path-sep&quot; class=&quot;headerlink&quot; title=&quot;11. path.sep&quot;&gt;&lt;/a&gt;11. path.sep&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;平台的文件路径分隔符，&amp;apos;\\&amp;apos; 或 &amp;apos;/&amp;apos;。
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;12-path-delimiter&quot;&gt;&lt;a href=&quot;#12-path-delimiter&quot; class=&quot;headerlink&quot; title=&quot;12. path.delimiter&quot;&gt;&lt;/a&gt;12. path.delimiter&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;平台的分隔符, ; or &amp;apos;:&amp;apos;.
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;13-path-posix&quot;&gt;&lt;a href=&quot;#13-path-posix&quot; class=&quot;headerlink&quot; title=&quot;13. path.posix&quot;&gt;&lt;/a&gt;13. path.posix&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;提供上述 path 的方法，不过总是以 posix 兼容的方式交互。
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;14-path-win32&quot;&gt;&lt;a href=&quot;#14-path-win32&quot; class=&quot;headerlink&quot; title=&quot;14. path.win32&quot;&gt;&lt;/a&gt;14. path.win32&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;提供上述 path 的方法，不过总是以 win32 兼容的方式交互。
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;h3 id=&quot;一、模块&quot;&gt;&lt;a href=&quot;#一、模块&quot; class=&quot;headerlink&quot; title=&quot;一、模块&quot;&gt;&lt;/a&gt;一、模块&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;任何具有特定功能的js文件都可以被封装成模块。
+通过require将
+    
+    </summary>
+    
+    
+      <category term="Nodejs全栈开发之路" scheme="http://blog.songqingbo.cn/tags/Nodejs%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>2016-12-21-Nodejs全栈开发之路-Nodejs基础(console、process)</title>
@@ -1522,316 +1667,6 @@ ajax_jsonp
       &lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/wupeiqi/articles/5369773.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www
-    
-    </summary>
-    
-    
-      <category term="Python开发之路" scheme="http://blog.songqingbo.cn/tags/Python%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python自动化开发 day13</title>
-    <link href="http://blog.songqingbo.cn/2016/04/09/s12-20160409-day13/"/>
-    <id>http://blog.songqingbo.cn/2016/04/09/s12-20160409-day13/</id>
-    <published>2016-04-09T07:30:00.000Z</published>
-    <updated>2016-07-07T03:02:36.049Z</updated>
-    
-    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
-&lt;p&gt;课程大纲：&lt;/p&gt;
-&lt;p&gt;day13&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/wupeiqi/articles/5369773.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/wupeiqi/articles/5369773.html&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;js    
-    使页面动起来的一门语言，解释器就是浏览器的引擎
-dom
-    提供一套api
-jQuery
-    封装的JS和dom的类库
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;二、javaScript&quot;&gt;&lt;a href=&quot;#二、javaScript&quot; class=&quot;headerlink&quot; title=&quot;二、javaScript&quot;&gt;&lt;/a&gt;二、javaScript&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;1. 存在形式：
-    文件
-    标签
-2. 放置位置：
-    原则上可以存在head 和body，但是当页面请求不到js的时候就会一直在等待。建议将js代码放在body底部
-3. 声明变量：
-    name = &amp;quot;swht&amp;quot;;  //全局变量
-    age = 18;   //局部变量    
-
-4. 注释：
-    当行注释：  //
-    多行注释：    /*  ..  */
-    每行代码结束需要加分号(;)
-5. 类型：
-    数字                
-    字符串
-    数组（字典）
-6. 类型转换：
-    var age = 18；
-    var age = Number(18)；
-
-    Number(&amp;quot;123&amp;quot;);
-    parseInt(&amp;apos;123&amp;apos;);  //将字符串转换成数字类型
-    var num = 18.9;
-    num1 = parseInt(num); //将数字类型转换成整型数字输出
-    num2 = parseFloat(num); //将数字类型转换成浮点型数字输出
-    console.log(&amp;quot;num1:&amp;quot;,num1,typeof num1,&amp;quot;num2:&amp;quot;,num2,typeof num2); //控制台打印转换后的值和类型
-    //输出结果：num1: 18 number num2: 18.9 number
-7. 控制台打印：
-    var age = &amp;quot;18&amp;quot;; 
-    var n1 = 1,n2 = 3,n3 = 4; //单行可以声明多个变量并赋值
-    console.log(age,typeof age); //控制台输出变量的值和类型
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;字符串操作&quot;&gt;&lt;a href=&quot;#字符串操作&quot; class=&quot;headerlink&quot; title=&quot;字符串操作&quot;&gt;&lt;/a&gt;字符串操作&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;1. 去除字符串左右空格：        
-    var name = &amp;quot;swht   &amp;quot;;
-    name.trim();    
-2. 按索引取值：
-    var name = &amp;quot;swht&amp;quot;;
-    name.charAt(1);
-3. search:
-    name.search(&amp;quot;w&amp;quot;);  //返回字符所在的索引值
-4. split：
-    name.split(&amp;quot;&amp;quot;);  //将字符串转换成数组
-    [&amp;quot;s&amp;quot;, &amp;quot;w&amp;quot;, &amp;quot;h&amp;quot;, &amp;quot;t&amp;quot;, &amp;quot; &amp;quot;, &amp;quot; &amp;quot;, &amp;quot; &amp;quot;]
-5. xx
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;for循环&quot;&gt;&lt;a href=&quot;#for循环&quot; class=&quot;headerlink&quot; title=&quot;for循环&quot;&gt;&lt;/a&gt;for循环&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;var li1 = [11,22,33,44];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;for (var index in li1)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;console.log(index);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;for (var i = 0;i &amp;lt; li1.length;i++)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;console.log(i,li1[i]);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;var dict = &amp;#123;&amp;quot;name&amp;quot;:&amp;quot;swht&amp;quot;,&amp;quot;age&amp;quot;:18,&amp;quot;work&amp;quot;:&amp;quot;运维&amp;quot;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;for (var item in dict)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;console.log(item,dict[item]);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;while循环&quot;&gt;&lt;a href=&quot;#while循环&quot; class=&quot;headerlink&quot; title=&quot;while循环&quot;&gt;&lt;/a&gt;while循环&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;while(true){
-    countine;
-    break;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;switch&quot;&gt;&lt;a href=&quot;#switch&quot; class=&quot;headerlink&quot; title=&quot;switch&quot;&gt;&lt;/a&gt;switch&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;var name = &amp;apos;1&amp;apos;;
-switch (name){
-    case &amp;quot;1&amp;quot;:
-        console.log(1);
-        break;
-    case &amp;quot;2&amp;quot;:
-        console.log(2);
-        break;
-    case &amp;quot;3&amp;quot;:
-        console.log(3);
-        break;
-    default:
-        console.log(&amp;apos;default&amp;apos;);
-        break;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;if条件句&quot;&gt;&lt;a href=&quot;#if条件句&quot; class=&quot;headerlink&quot; title=&quot;if条件句&quot;&gt;&lt;/a&gt;if条件句&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;var name = &amp;quot;swht&amp;quot;;
-if (name == &amp;quot;alex&amp;quot;){
-    console.log(err);
-}else if (name == &amp;quot;hh&amp;quot;){
-    console.log(true);
-}else {
-    console.log(&amp;quot;你逗呢！&amp;quot;);
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;try&quot;&gt;&lt;a href=&quot;#try&quot; class=&quot;headerlink&quot; title=&quot;try&quot;&gt;&lt;/a&gt;try&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;var name = &amp;quot;swht&amp;quot;;
-try {
-    if (name == &amp;quot;shen&amp;quot;){
-        console.log(&amp;quot;err&amp;quot;);
-    }else {
-        console.log(&amp;quot;false&amp;quot;);
-    }
-}catch (e){
-    console.log(e);
-}finally {
-    console.log(&amp;quot;finally&amp;quot;);
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//函数的声明
-function func1(arg){
-    return true;
-}
-//匿名函数
-var func2 = function(arg){
-    return true;
-}
-//自执行函数，一般用在jq封装类库时使用
-(function(arg){
-    console.log(arg);
-})(&amp;apos;123&amp;apos;)
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;面向对象&quot;&gt;&lt;a href=&quot;#面向对象&quot; class=&quot;headerlink&quot; title=&quot;面向对象&quot;&gt;&lt;/a&gt;面向对象&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;function Foo(name,age){
-this.Name = name;
-this.Age = age;
-this.Func = function(arg){
-    return this.Name +arg;
-}
-}
-var obj = new Foo(&amp;apos;swht&amp;apos;,22)
-console.log(obj.Name);
-console.log(obj.Age);
-var ret = obj.Func(&amp;apos;haha&amp;apos;);
-console.log(ret);
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;三、Dom&quot;&gt;&lt;a href=&quot;#三、Dom&quot; class=&quot;headerlink&quot; title=&quot;三、Dom&quot;&gt;&lt;/a&gt;三、Dom&lt;/h2&gt;&lt;p&gt;文档对象模型（Document Object Model，DOM）是一种用于HTML和XML文档的编程接口。它给文档提供了一种结构化的表示方法，可以改变文档的内容和呈现方式。我们最为关心的是，DOM把网页和脚本以及其他的编程语言联系了起来。DOM属于浏览器，而不是JavaScript语言规范里的规定的核心内容。&lt;/p&gt;
-&lt;p&gt;注：一般说的JS让页面动起来泛指JavaScript和Dom&lt;/p&gt;
-&lt;h3 id=&quot;1-选择器&quot;&gt;&lt;a href=&quot;#1-选择器&quot; class=&quot;headerlink&quot; title=&quot;1.选择器&quot;&gt;&lt;/a&gt;1.选择器&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;document.getElementById(&amp;apos;id&amp;apos;);
-document.getElementsByName(&amp;apos;name&amp;apos;);
-document.getElementsByTagName(&amp;apos;tagname&amp;apos;);
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;2-内容&quot;&gt;&lt;a href=&quot;#2-内容&quot; class=&quot;headerlink&quot; title=&quot;2.内容&quot;&gt;&lt;/a&gt;2.内容&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;innerText
-innerHTML
-
-var obj = document.getElementById(&amp;apos;nid&amp;apos;)
-obj.innerText                       # 获取文本内容
-obj.innerText = &amp;quot;hello&amp;quot;             # 设置文本内容
-obj.innerHTML                       # 获取HTML内容
-obj.innerHTML = &amp;quot;&amp;lt;h1&amp;gt;asd&amp;lt;/h1&amp;gt;&amp;quot;      # 设置HTML内容
-
-
-特殊的：
-    input系列
-    textarea标签
-    select标签
-
-    value属性操作用户输入和选择的值
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-创建标签&quot;&gt;&lt;a href=&quot;#3-创建标签&quot; class=&quot;headerlink&quot; title=&quot;3.创建标签&quot;&gt;&lt;/a&gt;3.创建标签&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;方式一：
-    var obj = document.createElement(&amp;apos;a&amp;apos;);
-    obj.href = &amp;quot;http://www.apicloud.com&amp;quot;;
-    obj.innerText = &amp;quot;APICloud&amp;quot;;
-
-    var container = document.getElementById(&amp;apos;container&amp;apos;);
-    //container.appendChild(obj);
-    //container.insertBefore(obj, container.firstChild);
-    //container.insertBefore(obj, document.getElementById(&amp;apos;hhh&amp;apos;));
-
-方式二：
-    var container = document.getElementById(&amp;apos;container&amp;apos;);
-    var obj = &amp;quot;&amp;lt;input  type=&amp;apos;text&amp;apos; /&amp;gt;&amp;quot;;
-    container.innerHTML = obj;
-    // &amp;apos;beforeBegin&amp;apos;, &amp;apos;afterBegin&amp;apos;, &amp;apos;beforeEnd&amp;apos;,  &amp;apos;afterEnd&amp;apos;
-    //container.insertAdjacentHTML(&amp;quot;beforeEnd&amp;quot;,obj);
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;4-标签属性&quot;&gt;&lt;a href=&quot;#4-标签属性&quot; class=&quot;headerlink&quot; title=&quot;4.标签属性&quot;&gt;&lt;/a&gt;4.标签属性&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;var obj = document.getElementById(&amp;apos;container&amp;apos;);
-固定属性
-    obj.id
-    obj.id = &amp;quot;nid&amp;quot;
-    obj.className
-    obj.style.fontSize = &amp;quot;88px&amp;quot;;
-
-自定义属性
-    obj.setAttribute(name,value)
-    obj.getAttribute(name)
-    obj.removeAttribute(name)
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;5-提交表单&quot;&gt;&lt;a href=&quot;#5-提交表单&quot; class=&quot;headerlink&quot; title=&quot;5.提交表单&quot;&gt;&lt;/a&gt;5.提交表单&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;document.geElementById(&amp;apos;form&amp;apos;).submit()
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;6-事件&quot;&gt;&lt;a href=&quot;#6-事件&quot; class=&quot;headerlink&quot; title=&quot;6.事件&quot;&gt;&lt;/a&gt;6.事件&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/aP6MTMY.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;7-其他功能&quot;&gt;&lt;a href=&quot;#7-其他功能&quot; class=&quot;headerlink&quot; title=&quot;7.其他功能&quot;&gt;&lt;/a&gt;7.其他功能&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;console.log()
-alert()
-confirm()
-
-// URL和刷新
-location.href
-location.href = &amp;quot;url&amp;quot;  window.location.reload()
-
-// 定时器
-setInterval(&amp;quot;alert()&amp;quot;,2000);   
-clearInterval(obj)
-setTimeout();   
-clearTimeout(obj)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;示例：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;跑马灯
-
-&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
-    &amp;lt;head&amp;gt;
-        &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
-        &amp;lt;title&amp;gt;欢迎南非波波同志成为本届董事长&amp;lt;/title&amp;gt;
-    &amp;lt;/head&amp;gt;
-    &amp;lt;body&amp;gt;
-        &amp;lt;input type=&amp;quot;button&amp;quot; onclick=&amp;quot;DropInterval();&amp;quot; value=&amp;quot;停止滚动&amp;quot; /&amp;gt;
-        &amp;lt;script&amp;gt;
-            obj1 = setInterval(&amp;quot;GunDong()&amp;quot;,1000);
-            console.log(obj1);
-            function DropInterval(){
-                   clearInterval(obj1);
-            }
-            function GunDong(){
-                var text = document.title;
-                var firstWord = text.charAt(0);
-                var subWord = text.substring(1,text.length);
-                var newWord = subWord + firstWord;
-                document.title = newWord;
-            }
-        &amp;lt;/script&amp;gt;
-    &amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-
-搜索框
-
-&amp;lt;input type=&amp;quot;text&amp;quot; placeholder=&amp;quot;请输入关键字&amp;quot; id=&amp;quot;search&amp;quot; onfocus=&amp;quot;Focus();&amp;quot; onblur=&amp;quot;Blur();&amp;quot;/&amp;gt;
-&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
-    function Focus(){
-        var nid = document.getElementById(&amp;quot;search&amp;quot;);
-        var value = nid.placeholder;
-        if (value == &amp;quot;请输入关键字&amp;quot;){
-            nid.placeholder = &amp;quot;&amp;quot;;
-        }
-    }
-
-    function Blur(){
-        var nid = document.getElementById(&amp;quot;search&amp;quot;);
-        var value = nid.placeholder;
-        if (!value.trim()){
-            nid.placeholder = &amp;quot;请输入关键字&amp;quot;;
-        }
-    }
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;四、jQuery&quot;&gt;&lt;a href=&quot;#四、jQuery&quot; class=&quot;headerlink&quot; title=&quot;四、jQuery&quot;&gt;&lt;/a&gt;四、jQuery&lt;/h2&gt;&lt;h3 id=&quot;1-选择器：&quot;&gt;&lt;a href=&quot;#1-选择器：&quot; class=&quot;headerlink&quot; title=&quot;1.选择器：&quot;&gt;&lt;/a&gt;1.选择器：&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;#id
-element
-.class
-*
-selector1,selector2,selectorN
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/fhuW9MD.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;示例：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
-    &amp;lt;head&amp;gt;
-        &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
-        &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
-    &amp;lt;/head&amp;gt;
-    &amp;lt;body&amp;gt;
-        &amp;lt;div&amp;gt;
-           &amp;lt;div id=&amp;quot;n1&amp;quot;&amp;gt;11&amp;lt;/div&amp;gt;
-            &amp;lt;div class=&amp;quot;c1&amp;quot;&amp;gt;22&amp;lt;/div&amp;gt;
-            &amp;lt;div  class=&amp;quot;c1&amp;quot;&amp;gt;33&amp;lt;/div&amp;gt;
-            &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;
-            &amp;lt;span id=&amp;quot;n2&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
-
-            &amp;lt;div id=&amp;quot;n3&amp;quot;&amp;gt;
-                &amp;lt;div&amp;gt;
-                    &amp;lt;div class=&amp;quot;c3&amp;quot;&amp;gt;
-                        &amp;lt;span&amp;gt;
-                            &amp;lt;a class=&amp;quot;c4&amp;quot;&amp;gt;asdf&amp;lt;/a&amp;gt;
-                        &amp;lt;/span&amp;gt;
-                    &amp;lt;/div&amp;gt;
-                &amp;lt;/div&amp;gt;
-                &amp;lt;span&amp;gt;asdf&amp;lt;/span&amp;gt;
-            &amp;lt;/div&amp;gt;
-
-        &amp;lt;/div&amp;gt;
-
-        &amp;lt;script src=&amp;quot;jquery-2.2.3.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-        &amp;lt;script&amp;gt;
-            /*
-            选择器基础使用
-             */
-            $(&amp;quot;#n1&amp;quot;).text(&amp;quot;中国好声音&amp;quot;);
-            $(&amp;quot;.c1&amp;quot;).text(&amp;quot;欢迎三江同学&amp;quot;);
-            $(&amp;quot;.c4&amp;quot;).text(&amp;quot;一不小心挂掉了&amp;quot;);
-            $(&amp;quot;#n3 span&amp;quot;).text(&amp;quot;游泳冠军&amp;quot;);
-
-        &amp;lt;/script&amp;gt;
-    &amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;2-筛选器&quot;&gt;&lt;a href=&quot;#2-筛选器&quot; class=&quot;headerlink&quot; title=&quot;2.筛选器&quot;&gt;&lt;/a&gt;2.筛选器&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/x7Jqi96.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;3-属性、CSS&quot;&gt;&lt;a href=&quot;#3-属性、CSS&quot; class=&quot;headerlink&quot; title=&quot;3.属性、CSS&quot;&gt;&lt;/a&gt;3.属性、CSS&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/mPoLfMu.png&quot; alt=&quot;&quot;&gt;    &lt;/p&gt;
-&lt;h3 id=&quot;4-文档处理&quot;&gt;&lt;a href=&quot;#4-文档处理&quot; class=&quot;headerlink&quot; title=&quot;4.文档处理&quot;&gt;&lt;/a&gt;4.文档处理&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/8YcX0EW.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;5-事件&quot;&gt;&lt;a href=&quot;#5-事件&quot; class=&quot;headerlink&quot; title=&quot;5.事件&quot;&gt;&lt;/a&gt;5.事件&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/p53Uf3n.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;作业&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;jQuery API文档阅读&lt;/li&gt;
-&lt;li&gt;博客实例阅读练习&lt;/li&gt;
-&lt;li&gt;列表处理、登录方式&lt;/li&gt;
-&lt;li&gt;主机管理列表可编辑&lt;/li&gt;
-&lt;/ol&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Author:@南非波波&lt;/p&gt;
-&lt;p&gt;课程大纲：&lt;/p&gt;
-&lt;p&gt;day13&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/wupeiqi/articles/5369773.html&quot; target=&quot;_blank&quot; rel=&quot;externa
     
     </summary>
     

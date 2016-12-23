@@ -16,18 +16,39 @@
 
 
 <meta name="description" content="Author:@南非波波
-PythonCookbook第三版中文">
+一、模块任何具有特定功能的js文件都可以被封装成模块。
+通过require将模块引入。
+使用exports将函数全局化，使得其他文件可以通过引入该模块引用函数。
+
+示例：
+#test.js
+    var sum = require(&amp;apos;./sum&amp;apos;); //导入自定义模块
+    var data = sum[&amp;apos;sum&amp;apos;](2,3)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2016-08-31-python开发书籍-PythonCookbook第三版中文">
-<meta property="og:url" content="http://blog.songqingbo.cn/2016/08/31/2016-08-31-python开发书籍-PythonCookbook第三版中文/index.html">
+<meta property="og:title" content="2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)">
+<meta property="og:url" content="http://blog.songqingbo.cn/2016/12/22/2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)/index.html">
 <meta property="og:site_name" content="南非波波博客">
 <meta property="og:description" content="Author:@南非波波
-PythonCookbook第三版中文">
-<meta property="og:updated_time" content="2016-09-26T08:58:36.005Z">
+一、模块任何具有特定功能的js文件都可以被封装成模块。
+通过require将模块引入。
+使用exports将函数全局化，使得其他文件可以通过引入该模块引用函数。
+
+示例：
+#test.js
+    var sum = require(&amp;apos;./sum&amp;apos;); //导入自定义模块
+    var data = sum[&amp;apos;sum&amp;apos;](2,3)">
+<meta property="og:updated_time" content="2016-12-23T07:11:34.076Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2016-08-31-python开发书籍-PythonCookbook第三版中文">
+<meta name="twitter:title" content="2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)">
 <meta name="twitter:description" content="Author:@南非波波
-PythonCookbook第三版中文">
+一、模块任何具有特定功能的js文件都可以被封装成模块。
+通过require将模块引入。
+使用exports将函数全局化，使得其他文件可以通过引入该模块引用函数。
+
+示例：
+#test.js
+    var sum = require(&amp;apos;./sum&amp;apos;); //导入自定义模块
+    var data = sum[&amp;apos;sum&amp;apos;](2,3)">
 
 <link rel="apple-touch-icon" href= "/南非波波.png">
 
@@ -59,7 +80,7 @@ PythonCookbook第三版中文">
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>2016-08-31-python开发书籍-PythonCookbook第三版中文 | 南非波波博客</title>
+<title>2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式) | 南非波波博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -308,11 +329,11 @@ PythonCookbook第三版中文">
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-2016-08-31-python开发书籍-PythonCookbook第三版中文" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/31/2016-08-31-python开发书籍-PythonCookbook第三版中文/" class="article-date">
-      <time datetime="2016-08-31T08:51:58.000Z" itemprop="datePublished">2016-08-31</time>
+      <a href="/2016/12/22/2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)/" class="article-date">
+      <time datetime="2016-12-22T02:30:50.000Z" itemprop="datePublished">2016-12-22</time>
 </a>
 
 
@@ -327,7 +348,7 @@ PythonCookbook第三版中文">
         
   
     <h1 class="article-title" itemprop="name">
-      2016-08-31-python开发书籍-PythonCookbook第三版中文
+      2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)
     </h1>
   
 
@@ -338,7 +359,7 @@ PythonCookbook第三版中文">
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python开发书籍/">python开发书籍</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nodejs全栈开发之路/">Nodejs全栈开发之路</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -349,8 +370,129 @@ PythonCookbook第三版中文">
       
           
         <p>Author:@南非波波</p>
-<p><a href="http://blog.songqingbo.cn/pdf/python/PythonCookbook第三版中文.pdf" title="PythonCookbook第三版中文.pdf">PythonCookbook第三版中文</a></p>
+<h3 id="一、模块"><a href="#一、模块" class="headerlink" title="一、模块"></a>一、模块</h3><pre><code>任何具有特定功能的js文件都可以被封装成模块。
+通过require将模块引入。
+使用exports将函数全局化，使得其他文件可以通过引入该模块引用函数。
 
+示例：
+#test.js
+    var sum = require(&apos;./sum&apos;); //导入自定义模块
+    var data = sum[&apos;sum&apos;](2,3);
+    var data1 = sum[&apos;product&apos;](3,5);
+    console.log(data); //5
+    console.log(data1); //60
+#sum.js
+    module.exports = {
+        sum: function (startnum, endnum) {
+            var sumnum = 0
+            for (i = startnum; i &lt;= endnum; i++) {
+                sumnum += i;
+            }
+            return sumnum;
+        },
+        product: function (startnum, endnum) {
+            var productnum = 1;
+            for (j = startnum; j &lt;= endnum; j++) {
+                productnum *= j;
+            }
+            return productnum;
+        }
+    }
+</code></pre><h3 id="二、包管理"><a href="#二、包管理" class="headerlink" title="二、包管理"></a>二、包管理</h3><pre><code>使用nodejs的包管理工具npm，可以从网络上下载并安装已经被封装好实现某个功能的接口模块。
+开发者也可以将自己的模块封装成包上传到网络供其他开发者使用。
+</code></pre><h3 id="三、文件相关"><a href="#三、文件相关" class="headerlink" title="三、文件相关"></a>三、文件相关</h3><pre><code>使用fs对文件进行操作
+
+示例：
+#test.js //异步回调读取文件内容
+    var fs = require(&apos;fs&apos;);
+    fs.readFile(&apos;./err.txt&apos;,function(err,data){
+        if(err){
+            console.log(&apos;读取文件出错!&apos;,err);
+        }else{
+            console.log(&apos;文件读取成功:&apos;,data.toString());//如果不加编码格式，这里data输出的是16进制的字符串
+        }
+
+    });
+    // fs.readFile(&apos;./err.txt&apos;,&apos;utf-8&apos;,function(err,data){
+    //     if(err){
+    //         console.log(&apos;读取文件出错!&apos;,err);
+    //     }else{
+    //         console.log(&apos;文件读取成功:&apos;,data);
+    //     }
+
+    // });
+#输出：
+    文件读取成功: warn this！
+    error this！
+#test.js  //同步读取文件内容
+    var fs = require(&apos;fs&apos;);
+    var data = fs.readFileSync(&apos;./err.txt&apos;,&apos;utf-8&apos;);
+    console.log(&apos;文件读取成功:&apos;,data);
+#输出：
+    文件读取成功: warn this！
+    error this！
+</code></pre><h3 id="四、-path模块"><a href="#四、-path模块" class="headerlink" title="四、 path模块"></a>四、 path模块</h3><h4 id="1-path-normalize-p"><a href="#1-path-normalize-p" class="headerlink" title="1. path.normalize(p)"></a>1. path.normalize(p)</h4><pre><code>规范化路径，注意&apos;..&apos; 和 &apos;.&apos;。
+
+示例：
+#test.js
+    var path = require(&apos;path&apos;);
+    filepath = &apos;./upload-aws/app.js&apos;;
+    console.log( path.normalize(filepath)); //返回指定文件的规范的路径
+    console.log(&apos;normalization : &apos; + path.normalize(&apos;/test/test1//2slashes/1slash/tab/..&apos;)); 
+#输出：
+    upload-aws/app.js
+    normalization : \test\test1\2slashes\1slash
+</code></pre><h4 id="2-path-join-path1-path2-…"><a href="#2-path-join-path1-path2-…" class="headerlink" title="2.    path.join([path1][, path2][, …])"></a>2.    path.join([path1][, path2][, …])</h4><pre><code>用于连接路径。该方法的主要用途在于，会正确使用当前系统的路径分隔符，Unix系统是&quot;/&quot;，Windows系统是&quot;\&quot;。
+
+示例：
+    var path = require(&apos;path&apos;);
+    console.log(&apos;join path : &apos; + path.join(&apos;/test&apos;, &apos;test1&apos;, &apos;2slashes/1slash&apos;, &apos;tab/ddd/&apos;, &apos;..&apos;));//join path : \test\test1\2slashes\1slash\tab
+    console.log(&apos;join path : &apos; + path.join(&apos;/test&apos;, &apos;test1&apos;, &apos;2slashes/1slash&apos;,&apos;..&apos;));//join path : \test\test1\2slashes
+#该方法会把最后一个正常的路径名称识别为文件，不会拼接在路径中。这一点儿很奇怪
+</code></pre><h4 id="3-path-resolve-from-…-to"><a href="#3-path-resolve-from-…-to" class="headerlink" title="3. path.resolve([from …], to)"></a>3. path.resolve([from …], to)</h4><pre><code>将 to 参数解析为绝对路径。
+
+示例：
+    var path = require(&apos;path&apos;);
+    filepath = &apos;./upload-aws/app.js&apos;;
+    console.log(path.resolve(filepath)); //将指定文件相对路径转换成绝对路径
+输出：
+    E:\projects\all-code\node\upload-aws\app.js 
+</code></pre><h4 id="4-path-isAbsolute-path"><a href="#4-path-isAbsolute-path" class="headerlink" title="4.    path.isAbsolute(path)"></a>4.    path.isAbsolute(path)</h4><pre><code>判断参数 path 是否是绝对路径。
+返回值是：true false,根据返回值判断是否是绝对路径
+</code></pre><h4 id="5-path-relative-from-to"><a href="#5-path-relative-from-to" class="headerlink" title="5.    path.relative(from, to)"></a>5.    path.relative(from, to)</h4><pre><code>用于将相对路径转为绝对路径。from是指定源路径，to是指定的目的路径，输出结果是从源路径到目的路径的相对路径。
+
+示例：
+    console.log(path.relative(&apos;upload-aws/app.js&apos;,&apos;swht.github.io&apos;)); //..\swht.github.io
+    解析：upload-aws 和swht.github.io在同一级路径，从upload-aws路径进入到swht.github.io路径，需要的相对路径是..\swht.github.io
+</code></pre><h4 id="6-path-dirname-p"><a href="#6-path-dirname-p" class="headerlink" title="6. path.dirname(p)"></a>6. path.dirname(p)</h4><pre><code>返回路径中代表文件夹的部分，同 Unix的 __dirname 命令类似,但是_dirname获取的是文件所在位置的绝对路径
+</code></pre><h4 id="7-path-basename-p-ext"><a href="#7-path-basename-p-ext" class="headerlink" title="7.    path.basename(p[, ext])"></a>7.    path.basename(p[, ext])</h4><pre><code>返回路径中的最后一部分。同 Unix 命令 bashname 类似。
+</code></pre><h4 id="8-path-extname-p"><a href="#8-path-extname-p" class="headerlink" title="8.    path.extname(p)"></a>8.    path.extname(p)</h4><pre><code>返回路径中文件的后缀名，即路径中最后一个&apos;.&apos;之后的部分。如果一个路径中并不包含&apos;.&apos;或该路径只包含一个&apos;.&apos; 且这个&apos;.&apos;为路径的第一个字符，则此命令返回空字符串。
+</code></pre><h4 id="9-path-parse-pathString"><a href="#9-path-parse-pathString" class="headerlink" title="9.    path.parse(pathString)"></a>9.    path.parse(pathString)</h4><pre><code>返回路径字符串的对象。
+
+示例：
+    var path = require(&apos;path&apos;);
+    filepath = &apos;./upload-aws/app.js&apos;;
+    console.log(path.parse(filepath));
+    // { root: &apos;&apos;,
+    //   dir: &apos;./upload-aws&apos;,
+    //   base: &apos;app.js&apos;,
+    //   ext: &apos;.js&apos;,
+    //   name: &apos;app&apos; }    
+</code></pre><h4 id="10-path-format-pathObject"><a href="#10-path-format-pathObject" class="headerlink" title="10. path.format(pathObject)"></a>10. path.format(pathObject)</h4><pre><code>从对象中返回路径字符串，和 path.parse 相反。
+
+示例：
+    data = { root: &apos;&apos;,
+      dir: &apos;./upload-aws&apos;,
+      base: &apos;app.js&apos;,
+      ext: &apos;.js&apos;,
+      name: &apos;app&apos; }
+      console.log(path.format(data));
+输出：./upload-aws\app.js
+</code></pre><h4 id="11-path-sep"><a href="#11-path-sep" class="headerlink" title="11. path.sep"></a>11. path.sep</h4><pre><code>平台的文件路径分隔符，&apos;\\&apos; 或 &apos;/&apos;。
+</code></pre><h4 id="12-path-delimiter"><a href="#12-path-delimiter" class="headerlink" title="12. path.delimiter"></a>12. path.delimiter</h4><pre><code>平台的分隔符, ; or &apos;:&apos;.
+</code></pre><h4 id="13-path-posix"><a href="#13-path-posix" class="headerlink" title="13. path.posix"></a>13. path.posix</h4><pre><code>提供上述 path 的方法，不过总是以 posix 兼容的方式交互。
+</code></pre><h4 id="14-path-win32"><a href="#14-path-win32" class="headerlink" title="14. path.win32"></a>14. path.win32</h4><pre><code>提供上述 path 的方法，不过总是以 win32 兼容的方式交互。
+</code></pre>
       
     </div>
     
@@ -358,13 +500,13 @@ PythonCookbook第三版中文">
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/08/31/2016-08-31-python开发书籍-PythonCookbook第三版中文/">2016-08-31-python开发书籍-PythonCookbook第三版中文</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/22/2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)/">2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">南非波波</a></p>
-        <p><span>发布时间:</span>2016-08-31, 16:51:58</p>
-        <p><span>最后更新:</span>2016-09-26, 16:58:36</p>
+        <p><span>发布时间:</span>2016-12-22, 10:30:50</p>
+        <p><span>最后更新:</span>2016-12-23, 15:11:34</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/08/31/2016-08-31-python开发书籍-PythonCookbook第三版中文/" title="2016-08-31-python开发书籍-PythonCookbook第三版中文">http://blog.songqingbo.cn/2016/08/31/2016-08-31-python开发书籍-PythonCookbook第三版中文/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://blog.songqingbo.cn/2016/08/31/2016-08-31-python开发书籍-PythonCookbook第三版中文/　　作者: 南非波波" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/22/2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)/" title="2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)">http://blog.songqingbo.cn/2016/12/22/2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://blog.songqingbo.cn/2016/12/22/2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)/　　作者: 南非波波" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -376,16 +518,10 @@ PythonCookbook第三版中文">
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/08/31/2016-08-31-python开发书籍-Python核心编程-第三版-英文版/">
-                    2016-08-31-python开发书籍-Python核心编程 第三版 英文版
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/08/31/2016-08-31-python开发书籍-Python-入门指南3-5-1-中文/">
-                    2016-08-31-python开发书籍-Python 入门指南3.5.1 中文
+                <a href="/2016/12/21/2016-12-21-Nodejs全栈开发之路-Nodejs基础(console、process)/">
+                    2016-12-21-Nodejs全栈开发之路-Nodejs基础(console、process)
                 </a>
             </div>
         
@@ -397,7 +533,7 @@ PythonCookbook第三版中文">
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、模块"><span class="toc-text">一、模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、包管理"><span class="toc-text">二、包管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、文件相关"><span class="toc-text">三、文件相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、-path模块"><span class="toc-text">四、 path模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-path-normalize-p"><span class="toc-text">1. path.normalize(p)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-path-join-path1-path2-…"><span class="toc-text">2.    path.join([path1][, path2][, …])</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-path-resolve-from-…-to"><span class="toc-text">3. path.resolve([from …], to)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-path-isAbsolute-path"><span class="toc-text">4.    path.isAbsolute(path)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-path-relative-from-to"><span class="toc-text">5.    path.relative(from, to)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-path-dirname-p"><span class="toc-text">6. path.dirname(p)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-path-basename-p-ext"><span class="toc-text">7.    path.basename(p[, ext])</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-path-extname-p"><span class="toc-text">8.    path.extname(p)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-path-parse-pathString"><span class="toc-text">9.    path.parse(pathString)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-path-format-pathObject"><span class="toc-text">10. path.format(pathObject)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-path-sep"><span class="toc-text">11. path.sep</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-path-delimiter"><span class="toc-text">12. path.delimiter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-path-posix"><span class="toc-text">13. path.posix</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-path-win32"><span class="toc-text">14. path.win32</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -433,7 +569,7 @@ PythonCookbook第三版中文">
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"2016-08-31-python开发书籍-PythonCookbook第三版中文　| 南非波波博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)　| 南非波波博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -449,7 +585,7 @@ PythonCookbook第三版中文">
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/08/31/2016-08-31-python开发书籍-PythonCookbook第三版中文/" data-title="2016-08-31-python开发书籍-PythonCookbook第三版中文" data-url="http://blog.songqingbo.cn/2016/08/31/2016-08-31-python开发书籍-PythonCookbook第三版中文/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/22/2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)/" data-title="2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)" data-url="http://blog.songqingbo.cn/2016/12/22/2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)/"></div>
     <script>
         var duoshuoQuery = {short_name:"nanfeibobo"};
         var loadComment = function(){
@@ -472,15 +608,13 @@ PythonCookbook第三版中文">
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/08/31/2016-08-31-python开发书籍-Python核心编程-第三版-英文版/" title="上一篇: 2016-08-31-python开发书籍-Python核心编程 第三版 英文版">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/08/31/2016-08-31-python开发书籍-Python-入门指南3-5-1-中文/" title="下一篇: 2016-08-31-python开发书籍-Python 入门指南3.5.1 中文">
+            <a href="/2016/12/21/2016-12-21-Nodejs全栈开发之路-Nodejs基础(console、process)/" title="下一篇: 2016-12-21-Nodejs全栈开发之路-Nodejs基础(console、process)">
                 <i class="fa fa-angle-right"></i>
             </a>
         
