@@ -245,7 +245,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">读书、登山、旅行、码代码</div>
+                    <div id="js-aboutme">读书、登山、旅行、摄影、码代码</div>
                 </section>
                 
             </div>
@@ -314,6 +314,67 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-2016-08-31-python开发书籍-《Python标准库源代码》" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/31/2016-08-31-python开发书籍-《Python标准库源代码》/" class="article-date">
+      <time datetime="2016-08-31T08:43:40.000Z" itemprop="datePublished">2016-08-31</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/31/2016-08-31-python开发书籍-《Python标准库源代码》/">2016-08-31-python开发书籍-《Python标准库源代码》</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author:@南非波波</p>
+<p><a href="http://blog.songqingbo.cn/pdf/python/《Python标准库源代码》.CHM" title="《Python标准库源代码》.CHM">《Python标准库源代码》</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python开发书籍/">python开发书籍</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-2016-08-31-python开发书籍-《Python标准库》中文版" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1198,363 +1259,6 @@ e.
                 &apos;django.contrib.messages.middleware.MessageMiddleware&apos;,
                 &apos;django.middleware.clickjacking.XFrameOptionsMiddleware&apos;,
             ]
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-s12-20160421-day14" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/21/s12-20160421-day14/" class="article-date">
-      <time datetime="2016-04-21T07:30:00.000Z" itemprop="datePublished">2016-04-21</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/21/s12-20160421-day14/">python自动化开发 day14</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Author:@南非波波</p>
-<p>课程大纲：</p>
-<p><a href="http://www.cnblogs.com/wupeiqi/articles/5369773.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5369773.html</a></p>
-<p><a href="http://www.php100.com/manual/jquery/" target="_blank" rel="external">http://www.php100.com/manual/jquery/</a></p>
-<h2 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery"></a>JQuery</h2><h3 id="1-查找"><a href="#1-查找" class="headerlink" title="1.查找"></a>1.查找</h3><h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><pre><code>$(&apos;#nid&apos;)  根据id找到某个标签
-$(&apos;.nid&apos;)  根据class查找
-$(&apos;.nid div #nid&apos;)  根据class查找下面的div标签下面的id
-$(&apos;.nid,div,#nid&apos;)  查找到class或div或id条件的查找到
-$(&apos;li:eq(0)&apos;)  查到到第一个li标签行
-</code></pre><h4 id="筛选器"><a href="#筛选器" class="headerlink" title="筛选器"></a>筛选器</h4><pre><code>$(&apos;li&apos;).eq(0)  查到到第一个li标签行
-</code></pre><h2 id="2-操作"><a href="#2-操作" class="headerlink" title="2.操作"></a>2.操作</h2><p>属性</p>
-<pre><code>添加指定属性，并删除兄弟的属性
- $(ths).addClass(&apos;current&apos;).siblings().removeClass(&apos;current&apos;);
-
-attr：
-    其他所有标签都适用，除checkbox、redio之外
-prop：
-    checkbox、redio
-
-jQuery循环：
-
-    var userList = [&apos;swht&apos;,&apos;shen&apos;,&apos;test&apos;];
-    $.each(userList,fun(i,item){
-        console.log(i,item);
-    })    
-</code></pre><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>文档处理</p>
-<pre><code>增加
-append(content|fn)
-    在指定的标签内部后面追加
-appendTo(content)
-    把指定的某个标签追加某个标签内部后面
-prepend(content|fn)
-    在指定的标签内部前面追加
-prependTo(content)
-    把指定的某个标签追加某个标签内部前面
-包裹
-wrap(html|ele|fn)
-unwrap()
-wrapAll(html|ele)
-wrapInner(html|ele|fn)
-
-删除
-empty()
-remove([expr])
-detach([expr])
-复制
-clone([Even[,deepEven]])
-</code></pre><p>事件</p>
-<pre><code>绑定事件：
-    1. 直接绑定ready(fn) 文本加载完之后执行事件绑定
-        1. $(document).ready(function(){
-
-            })
-        2. $(function(){
-
-            })
-    2. 委派delegate(s,[t],[d],fn)
-        1. $(&apos;ul&apos;).delegate(&apos;li&apos;,&apos;click&apos;,function(){
-
-           })
-
-    3. bind(type,[data],fn)
-        1. $(&apos;li&apos;).click(function(){
-
-            })
-        2. $(&apos;li&apos;).bind(&apos;click&apos;)
-        3. unbind
-</code></pre><p>AJAX</p>
-<pre><code>异步的javascript和xml
-ajax是对javascript和Dom的封装。
-ajax容易出现跨域的问题。
-$.ajax({
-    url:&quot;&quot;,
-    data:{},
-    type:&quot;&quot;,
-    dateType:&quot;&quot;,
-    jsonp:&quot;&quot;,
-    jsonpCallback:&quot;&quot;,
-    sucess:function(){},
-    error:function(){}
-})
-</code></pre><p>JQuery扩展</p>
-<pre><code>(function(arg){
-    arg.extend({
-      qinghua: function() {
-        return &quot;SB&quot;;
-      },
-      qinghua1: function() {
-        return this.each(function() { this.checked = false; });
-      }
-    });
-
-    arg.fn.extend({
-       sanjiang:function(){
-           return &quot;DSB&quot;
-       }
-    });
-})(jQuery);
-</code></pre><p>其他</p>
-<p>30款最好的 Bootstrap 3.0 免费主题和模板<br><a href="http://www.cnblogs.com/lhb25/p/30-free-bootstrap-templates.html" target="_blank" rel="external">http://www.cnblogs.com/lhb25/p/30-free-bootstrap-templates.html</a></p>
-<p>例子：</p>
-<pre><code>tab菜单
-
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;tab&lt;/title&gt;
-    &lt;style&gt;
-        .tab-box .box-menu{
-            background-color: #DDDDDD;
-            border: 1px solid #DDDDDD;
-            height: 33px;
-            line-height: 33px;
-        }
-        .box-menu a{
-            border-right: 1px solid #664747;
-            padding: 10px;
-            background-color: #425a66;;
-        }
-        .tab-box .box-body{
-            border: 1px solid #dddddd;
-        }
-        .hide{
-            display: none;
-        }
-         .current{
-            background-color: white;
-            color: black;
-            border-top: 2px solid red;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class=&quot;tab-box&quot;&gt;
-        &lt;div class=&quot;box-menu&quot;&gt;
-            &lt;!--所有菜单--&gt;
-            &lt;a menu1=&quot;c1&quot; onclick=&quot;ChangeTab(this);&quot; class=&quot;current&quot;&gt;菜单一&lt;/a&gt;
-            &lt;a menu1=&quot;c2&quot; onclick=&quot;ChangeTab(this);&quot;&gt;菜单二&lt;/a&gt;
-            &lt;a menu1=&quot;c3&quot; onclick=&quot;ChangeTab(this);&quot;&gt;菜单三&lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;box-body&quot;&gt;
-            &lt;!--所有内容--&gt;
-            &lt;div id=&quot;c1&quot;&gt;内容一&lt;/div&gt;
-            &lt;div id=&quot;c2&quot; class=&quot;hide&quot;&gt;内容二&lt;/div&gt;
-            &lt;div id=&quot;c3&quot; class=&quot;hide&quot;&gt;内容三&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;script src=&quot;jquery-2.2.3.js&quot;&gt;&lt;/script&gt;
-    &lt;script&gt;
-        function ChangeTab(ths){
-            $(ths).addClass(&apos;current&apos;).siblings().removeClass(&apos;current&apos;);
-            var contentId = $(ths).attr(&apos;menu1&apos;);
-            var temp = &quot;#&quot; + contentId;
-            $(temp).removeClass(&apos;hide&apos;).siblings().addClass(&apos;hide&apos;);
-
-        }
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-全选、反选、取消
-
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;全选、反选、取消&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div&gt;
-        &lt;input type=&quot;button&quot; value=&quot;全选&quot; onclick=&quot;selectAll();&quot; /&gt;
-        &lt;input type=&quot;button&quot; value=&quot;反选&quot; onclick=&quot;selectInvert();&quot; /&gt;
-        &lt;input type=&quot;button&quot; value=&quot;取消&quot; onclick=&quot;clearAll();&quot; /&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;table border=&quot;1&quot;&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                    &lt;input type=&quot;checkbox&quot; /&gt;
-                &lt;/td&gt;
-                &lt;td&gt;
-                    第一章
-                &lt;/td&gt;
-                &lt;td&gt;
-                    第一篇
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                    &lt;input type=&quot;checkbox&quot; /&gt;
-                &lt;/td&gt;
-                &lt;td&gt;
-                    第二章
-                &lt;/td&gt;
-                &lt;td&gt;
-                    第一篇
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                    &lt;input type=&quot;checkbox&quot; /&gt;
-                &lt;/td&gt;
-                &lt;td&gt;
-                   第三章
-                &lt;/td&gt;
-                &lt;td&gt;
-                    第一篇
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;
-                    &lt;input type=&quot;checkbox&quot; /&gt;
-                &lt;/td&gt;
-                &lt;td&gt;
-                   第四章
-                &lt;/td&gt;
-                &lt;td&gt;
-                    第一篇
-                &lt;/td&gt;
-            &lt;/tr&gt;
-        &lt;/table&gt;
-    &lt;/div&gt;
-
-    &lt;script src=&quot;jquery-2.2.3.js&quot;&gt;&lt;/script&gt;
-    &lt;script&gt;
-        function selectAll(){
-            $(&quot;table input[type=&apos;checkbox&apos;]&quot;).prop(&apos;checked&apos;,true);
-        }
-        function selectInvert(){
-            $(&quot;table input[type=&apos;checkbox&apos;]&quot;).each(function(){
-               var isChecked = $(this).prop(&apos;checked&apos;);
-                if(isChecked){
-                    $(this).prop(&apos;checked&apos;,false);
-                }else{
-                    $(this).prop(&apos;checked&apos;,true);
-                }
-            });
-        }
-        function clearAll(){
-            $(&quot;table input[type=&apos;checkbox&apos;]&quot;).prop(&apos;checked&apos;,false);
-        }
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-ajax_jsonp
-
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;ajax_jsonp&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-    &lt;input type=&quot;button&quot; value=&quot;获取电视节目&quot; onclick=&quot;Ajax_jsonp();&quot;/&gt;
-    &lt;dev id=&quot;contaner&quot;&gt;
-
-    &lt;/dev&gt;
-    &lt;script src=&quot;jquery-2.2.3.js&quot;&gt;&lt;/script&gt;
-    &lt;script&gt;
-        function Ajax_jsonp(){
-            $.ajax({
-                url:&quot;http://www.jxntv.cn/data/jmd-jxtv2.html&quot;,
-                data:{},
-                type:&quot;GET&quot;,
-                dataType:&quot;jsonp&quot;,
-                jsonp:&quot;callback&quot;,
-                jsonpCallback:&quot;list&quot;,
-                success:function(arg){
-                    console.log(arg);
-                    var jsonArray = arg.data;
-                    $.each(jsonArray,function(k,v){
-                        var week = v.week;
-                        var label = &quot;&lt;h1&gt;&quot; + week + &quot;&lt;/h1&gt;&quot;;
-                        $(&quot;#contaner&quot;).append(label);
-                        var listArray = v.list;
-                        $.each(listArray,function(kk,vv){
-                            var link = vv.link;
-                            var name = vv.name;
-                            var time = vv.time;
-                            var labelNew = &quot;&lt;a href=&apos;&quot; + link + &quot;&apos;&gt;&quot; + time+name + &quot;&lt;/a&gt;&lt;br/&gt;&quot;;
-                            $(&quot;#contaner&quot;).append(labelNew);
-                        })
-                    })
-                },
-                error:function(arg){
-                    console.log(arg);
-                }
-            })
-        }
-    &lt;/script&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
 </code></pre>
       
     </div>

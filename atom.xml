@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.songqingbo.cn/"/>
-  <updated>2016-12-23T07:11:34.076Z</updated>
+  <updated>2016-12-26T11:30:01.776Z</updated>
   <id>http://blog.songqingbo.cn/</id>
   
   <author>
@@ -14,6 +14,129 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2016-12-26-Nodejs全栈开发之路-Nodejs基础(如何通过nodejs开发web网站程序)</title>
+    <link href="http://blog.songqingbo.cn/2016/12/26/2016-12-26-Nodejs%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF-Nodejs%E5%9F%BA%E7%A1%80(%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87nodejs%E5%BC%80%E5%8F%91web%E7%BD%91%E7%AB%99%E7%A8%8B%E5%BA%8F)/"/>
+    <id>http://blog.songqingbo.cn/2016/12/26/2016-12-26-Nodejs全栈开发之路-Nodejs基础(如何通过nodejs开发web网站程序)/</id>
+    <published>2016-12-26T03:50:50.000Z</published>
+    <updated>2016-12-26T11:30:01.776Z</updated>
+    
+    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;h3 id=&quot;一、http模块&quot;&gt;&lt;a href=&quot;#一、http模块&quot; class=&quot;headerlink&quot; title=&quot;一、http模块&quot;&gt;&lt;/a&gt;一、http模块&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;创建一个服务器监听指定端口，浏览器等客户端会通过该服务器端获取到相应的信息
+
+示例：
+#test.js
+    var fs = require(&amp;apos;fs&amp;apos;);
+    var http = require(&amp;apos;http&amp;apos;);
+    //创建server
+    http.createServer(function(request,response){
+        fs.readFile(&amp;apos;E:/projects/all-code/笔记/js &amp;amp;&amp;amp; html/Html模板主题/登录模板/login5/index.html&amp;apos;,&amp;apos;utf-8&amp;apos;,function(error,data){
+            if(error){
+                console.log(&amp;quot;读取文件出错！&amp;quot;);
+                response.end(&amp;apos;页面获取失败!&amp;apos;);
+            }else{
+                console.log(&amp;quot;读取文件成功,返回页面数据!&amp;quot;);
+                response.end(data);
+            }
+
+        });
+    }).listen(8000); //绑定指定端口号
+
+    console.log(&amp;apos;监听8000端口...&amp;apos;);
+#控制台会首先打印监听8000端口...,当浏览器访问localhost:8000的时候，控制台打印“读取文件成功，返回页面数据！”，页面返回指定的html页面
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;二、url模块&quot;&gt;&lt;a href=&quot;#二、url模块&quot; class=&quot;headerlink&quot; title=&quot;二、url模块&quot;&gt;&lt;/a&gt;二、url模块&lt;/h3&gt;&lt;h4 id=&quot;1-parse&quot;&gt;&lt;a href=&quot;#1-parse&quot; class=&quot;headerlink&quot; title=&quot;1. parse&quot;&gt;&lt;/a&gt;1. parse&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;获取url的相关信息
+#url.parse(request.url)  http://localhost:8000/query.html
+    Url {
+      protocol: null,
+      slashes: null,
+      auth: null,
+      host: null,
+      port: null,
+      hostname: null,
+      hash: null,
+      search: null,
+      query: null,
+      pathname: &amp;apos;/query.html&amp;apos;,
+      path: &amp;apos;/query.html&amp;apos;,
+      href: &amp;apos;/query.html&amp;apos; }
+    Url {
+      protocol: null,
+      slashes: null,
+      auth: null,
+      host: null,
+      port: null,
+      hostname: null,
+      hash: null,
+      search: null,
+      query: null,
+      pathname: &amp;apos;/favicon.ico&amp;apos;,
+      path: &amp;apos;/favicon.ico&amp;apos;,
+      href: &amp;apos;/favicon.ico&amp;apos; }
+
+示例：
+    var fs = require(&amp;apos;fs&amp;apos;);
+    var http = require(&amp;apos;http&amp;apos;);
+    var url = require(&amp;apos;url&amp;apos;);
+    http.createServer(function(request,response){
+        var urlObj = url.parse(request.url);
+        console.log(urlObj);
+        var pathname = urlObj.pathname;
+        fs.readFile(pathname.substr(1),&amp;apos;utf-8&amp;apos;,function(error,data){
+            response.end(pathname.substr(1));
+        });
+
+    }).listen(8000);
+    console.log(&amp;quot;端口监听8000端口...&amp;quot;);
+
+
+
+
+示例：
+
+    var fs = require(&amp;apos;fs&amp;apos;);
+    var http = require(&amp;apos;http&amp;apos;);
+    var url = require(&amp;apos;url&amp;apos;);
+    http.createServer(function(request,response){
+        var urlObj = url.parse(request.url);
+        console.log(urlObj);
+        var pathname = urlObj.pathname;
+        if(pathname === &amp;apos;/&amp;apos;){
+            requestAndresponse(&amp;apos;/index.html&amp;apos;,response);
+        }else if(pathname === &amp;apos;/test.html&amp;apos;){
+            response.end(&amp;apos;msg:{hostname:&amp;quot;intel&amp;quot;,IP:192.168.13.1}&amp;apos;);
+        }else{
+            requestAndresponse(pathname,response);
+        }
+
+
+    }).listen(8000);
+    console.log(&amp;quot;端口监听8000端口...&amp;quot;);
+
+    function requestAndresponse(pathname,response){
+            fs.readFile(pathname.substr(1),&amp;apos;utf-8&amp;apos;,function(error,data){
+            if(error){
+                response.writeHead(404);
+                response.end(&amp;apos;file not found!&amp;apos;);
+            }else{
+                response.end(pathname.substr(1));
+            }
+
+        });
+    };
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;h3 id=&quot;一、http模块&quot;&gt;&lt;a href=&quot;#一、http模块&quot; class=&quot;headerlink&quot; title=&quot;一、http模块&quot;&gt;&lt;/a&gt;一、http模块&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;创建一个服务器监听指定端口，浏览器等
+    
+    </summary>
+    
+    
+      <category term="Nodejs全栈开发之路" scheme="http://blog.songqingbo.cn/tags/Nodejs%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)</title>
@@ -1347,326 +1470,6 @@ e.
       &lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/wupeiqi/articles/4491246.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www
-    
-    </summary>
-    
-    
-      <category term="Python开发之路" scheme="http://blog.songqingbo.cn/tags/Python%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python自动化开发 day14</title>
-    <link href="http://blog.songqingbo.cn/2016/04/21/s12-20160421-day14/"/>
-    <id>http://blog.songqingbo.cn/2016/04/21/s12-20160421-day14/</id>
-    <published>2016-04-21T07:30:00.000Z</published>
-    <updated>2016-07-05T10:30:05.747Z</updated>
-    
-    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
-&lt;p&gt;课程大纲：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/wupeiqi/articles/5369773.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/wupeiqi/articles/5369773.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.php100.com/manual/jquery/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.php100.com/manual/jquery/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;JQuery&quot;&gt;&lt;a href=&quot;#JQuery&quot; class=&quot;headerlink&quot; title=&quot;JQuery&quot;&gt;&lt;/a&gt;JQuery&lt;/h2&gt;&lt;h3 id=&quot;1-查找&quot;&gt;&lt;a href=&quot;#1-查找&quot; class=&quot;headerlink&quot; title=&quot;1.查找&quot;&gt;&lt;/a&gt;1.查找&lt;/h3&gt;&lt;h4 id=&quot;选择器&quot;&gt;&lt;a href=&quot;#选择器&quot; class=&quot;headerlink&quot; title=&quot;选择器&quot;&gt;&lt;/a&gt;选择器&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;$(&amp;apos;#nid&amp;apos;)  根据id找到某个标签
-$(&amp;apos;.nid&amp;apos;)  根据class查找
-$(&amp;apos;.nid div #nid&amp;apos;)  根据class查找下面的div标签下面的id
-$(&amp;apos;.nid,div,#nid&amp;apos;)  查找到class或div或id条件的查找到
-$(&amp;apos;li:eq(0)&amp;apos;)  查到到第一个li标签行
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;筛选器&quot;&gt;&lt;a href=&quot;#筛选器&quot; class=&quot;headerlink&quot; title=&quot;筛选器&quot;&gt;&lt;/a&gt;筛选器&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;$(&amp;apos;li&amp;apos;).eq(0)  查到到第一个li标签行
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;2-操作&quot;&gt;&lt;a href=&quot;#2-操作&quot; class=&quot;headerlink&quot; title=&quot;2.操作&quot;&gt;&lt;/a&gt;2.操作&lt;/h2&gt;&lt;p&gt;属性&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;添加指定属性，并删除兄弟的属性
- $(ths).addClass(&amp;apos;current&amp;apos;).siblings().removeClass(&amp;apos;current&amp;apos;);
-
-attr：
-    其他所有标签都适用，除checkbox、redio之外
-prop：
-    checkbox、redio
-
-jQuery循环：
-
-    var userList = [&amp;apos;swht&amp;apos;,&amp;apos;shen&amp;apos;,&amp;apos;test&amp;apos;];
-    $.each(userList,fun(i,item){
-        console.log(i,item);
-    })    
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;CSS&quot;&gt;&lt;a href=&quot;#CSS&quot; class=&quot;headerlink&quot; title=&quot;CSS&quot;&gt;&lt;/a&gt;CSS&lt;/h3&gt;&lt;p&gt;文档处理&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;增加
-append(content|fn)
-    在指定的标签内部后面追加
-appendTo(content)
-    把指定的某个标签追加某个标签内部后面
-prepend(content|fn)
-    在指定的标签内部前面追加
-prependTo(content)
-    把指定的某个标签追加某个标签内部前面
-包裹
-wrap(html|ele|fn)
-unwrap()
-wrapAll(html|ele)
-wrapInner(html|ele|fn)
-
-删除
-empty()
-remove([expr])
-detach([expr])
-复制
-clone([Even[,deepEven]])
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;事件&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;绑定事件：
-    1. 直接绑定ready(fn) 文本加载完之后执行事件绑定
-        1. $(document).ready(function(){
-
-            })
-        2. $(function(){
-
-            })
-    2. 委派delegate(s,[t],[d],fn)
-        1. $(&amp;apos;ul&amp;apos;).delegate(&amp;apos;li&amp;apos;,&amp;apos;click&amp;apos;,function(){
-
-           })
-
-    3. bind(type,[data],fn)
-        1. $(&amp;apos;li&amp;apos;).click(function(){
-
-            })
-        2. $(&amp;apos;li&amp;apos;).bind(&amp;apos;click&amp;apos;)
-        3. unbind
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;AJAX&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;异步的javascript和xml
-ajax是对javascript和Dom的封装。
-ajax容易出现跨域的问题。
-$.ajax({
-    url:&amp;quot;&amp;quot;,
-    data:{},
-    type:&amp;quot;&amp;quot;,
-    dateType:&amp;quot;&amp;quot;,
-    jsonp:&amp;quot;&amp;quot;,
-    jsonpCallback:&amp;quot;&amp;quot;,
-    sucess:function(){},
-    error:function(){}
-})
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;JQuery扩展&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;(function(arg){
-    arg.extend({
-      qinghua: function() {
-        return &amp;quot;SB&amp;quot;;
-      },
-      qinghua1: function() {
-        return this.each(function() { this.checked = false; });
-      }
-    });
-
-    arg.fn.extend({
-       sanjiang:function(){
-           return &amp;quot;DSB&amp;quot;
-       }
-    });
-})(jQuery);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其他&lt;/p&gt;
-&lt;p&gt;30款最好的 Bootstrap 3.0 免费主题和模板&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/lhb25/p/30-free-bootstrap-templates.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/lhb25/p/30-free-bootstrap-templates.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;例子：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;tab菜单
-
-&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
-    &amp;lt;title&amp;gt;tab&amp;lt;/title&amp;gt;
-    &amp;lt;style&amp;gt;
-        .tab-box .box-menu{
-            background-color: #DDDDDD;
-            border: 1px solid #DDDDDD;
-            height: 33px;
-            line-height: 33px;
-        }
-        .box-menu a{
-            border-right: 1px solid #664747;
-            padding: 10px;
-            background-color: #425a66;;
-        }
-        .tab-box .box-body{
-            border: 1px solid #dddddd;
-        }
-        .hide{
-            display: none;
-        }
-         .current{
-            background-color: white;
-            color: black;
-            border-top: 2px solid red;
-        }
-    &amp;lt;/style&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-    &amp;lt;div class=&amp;quot;tab-box&amp;quot;&amp;gt;
-        &amp;lt;div class=&amp;quot;box-menu&amp;quot;&amp;gt;
-            &amp;lt;!--所有菜单--&amp;gt;
-            &amp;lt;a menu1=&amp;quot;c1&amp;quot; onclick=&amp;quot;ChangeTab(this);&amp;quot; class=&amp;quot;current&amp;quot;&amp;gt;菜单一&amp;lt;/a&amp;gt;
-            &amp;lt;a menu1=&amp;quot;c2&amp;quot; onclick=&amp;quot;ChangeTab(this);&amp;quot;&amp;gt;菜单二&amp;lt;/a&amp;gt;
-            &amp;lt;a menu1=&amp;quot;c3&amp;quot; onclick=&amp;quot;ChangeTab(this);&amp;quot;&amp;gt;菜单三&amp;lt;/a&amp;gt;
-        &amp;lt;/div&amp;gt;
-        &amp;lt;div class=&amp;quot;box-body&amp;quot;&amp;gt;
-            &amp;lt;!--所有内容--&amp;gt;
-            &amp;lt;div id=&amp;quot;c1&amp;quot;&amp;gt;内容一&amp;lt;/div&amp;gt;
-            &amp;lt;div id=&amp;quot;c2&amp;quot; class=&amp;quot;hide&amp;quot;&amp;gt;内容二&amp;lt;/div&amp;gt;
-            &amp;lt;div id=&amp;quot;c3&amp;quot; class=&amp;quot;hide&amp;quot;&amp;gt;内容三&amp;lt;/div&amp;gt;
-        &amp;lt;/div&amp;gt;
-    &amp;lt;/div&amp;gt;
-    &amp;lt;script src=&amp;quot;jquery-2.2.3.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-    &amp;lt;script&amp;gt;
-        function ChangeTab(ths){
-            $(ths).addClass(&amp;apos;current&amp;apos;).siblings().removeClass(&amp;apos;current&amp;apos;);
-            var contentId = $(ths).attr(&amp;apos;menu1&amp;apos;);
-            var temp = &amp;quot;#&amp;quot; + contentId;
-            $(temp).removeClass(&amp;apos;hide&amp;apos;).siblings().addClass(&amp;apos;hide&amp;apos;);
-
-        }
-    &amp;lt;/script&amp;gt;
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-
-
-全选、反选、取消
-
-&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
-    &amp;lt;title&amp;gt;全选、反选、取消&amp;lt;/title&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-    &amp;lt;div&amp;gt;
-        &amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;全选&amp;quot; onclick=&amp;quot;selectAll();&amp;quot; /&amp;gt;
-        &amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;反选&amp;quot; onclick=&amp;quot;selectInvert();&amp;quot; /&amp;gt;
-        &amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;取消&amp;quot; onclick=&amp;quot;clearAll();&amp;quot; /&amp;gt;
-    &amp;lt;/div&amp;gt;
-    &amp;lt;div&amp;gt;
-        &amp;lt;table border=&amp;quot;1&amp;quot;&amp;gt;
-            &amp;lt;tr&amp;gt;
-                &amp;lt;td&amp;gt;
-                    &amp;lt;input type=&amp;quot;checkbox&amp;quot; /&amp;gt;
-                &amp;lt;/td&amp;gt;
-                &amp;lt;td&amp;gt;
-                    第一章
-                &amp;lt;/td&amp;gt;
-                &amp;lt;td&amp;gt;
-                    第一篇
-                &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-                &amp;lt;td&amp;gt;
-                    &amp;lt;input type=&amp;quot;checkbox&amp;quot; /&amp;gt;
-                &amp;lt;/td&amp;gt;
-                &amp;lt;td&amp;gt;
-                    第二章
-                &amp;lt;/td&amp;gt;
-                &amp;lt;td&amp;gt;
-                    第一篇
-                &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-                &amp;lt;td&amp;gt;
-                    &amp;lt;input type=&amp;quot;checkbox&amp;quot; /&amp;gt;
-                &amp;lt;/td&amp;gt;
-                &amp;lt;td&amp;gt;
-                   第三章
-                &amp;lt;/td&amp;gt;
-                &amp;lt;td&amp;gt;
-                    第一篇
-                &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-            &amp;lt;tr&amp;gt;
-                &amp;lt;td&amp;gt;
-                    &amp;lt;input type=&amp;quot;checkbox&amp;quot; /&amp;gt;
-                &amp;lt;/td&amp;gt;
-                &amp;lt;td&amp;gt;
-                   第四章
-                &amp;lt;/td&amp;gt;
-                &amp;lt;td&amp;gt;
-                    第一篇
-                &amp;lt;/td&amp;gt;
-            &amp;lt;/tr&amp;gt;
-        &amp;lt;/table&amp;gt;
-    &amp;lt;/div&amp;gt;
-
-    &amp;lt;script src=&amp;quot;jquery-2.2.3.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-    &amp;lt;script&amp;gt;
-        function selectAll(){
-            $(&amp;quot;table input[type=&amp;apos;checkbox&amp;apos;]&amp;quot;).prop(&amp;apos;checked&amp;apos;,true);
-        }
-        function selectInvert(){
-            $(&amp;quot;table input[type=&amp;apos;checkbox&amp;apos;]&amp;quot;).each(function(){
-               var isChecked = $(this).prop(&amp;apos;checked&amp;apos;);
-                if(isChecked){
-                    $(this).prop(&amp;apos;checked&amp;apos;,false);
-                }else{
-                    $(this).prop(&amp;apos;checked&amp;apos;,true);
-                }
-            });
-        }
-        function clearAll(){
-            $(&amp;quot;table input[type=&amp;apos;checkbox&amp;apos;]&amp;quot;).prop(&amp;apos;checked&amp;apos;,false);
-        }
-    &amp;lt;/script&amp;gt;
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-
-
-ajax_jsonp
-
-&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
-    &amp;lt;title&amp;gt;ajax_jsonp&amp;lt;/title&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-
-    &amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;获取电视节目&amp;quot; onclick=&amp;quot;Ajax_jsonp();&amp;quot;/&amp;gt;
-    &amp;lt;dev id=&amp;quot;contaner&amp;quot;&amp;gt;
-
-    &amp;lt;/dev&amp;gt;
-    &amp;lt;script src=&amp;quot;jquery-2.2.3.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-    &amp;lt;script&amp;gt;
-        function Ajax_jsonp(){
-            $.ajax({
-                url:&amp;quot;http://www.jxntv.cn/data/jmd-jxtv2.html&amp;quot;,
-                data:{},
-                type:&amp;quot;GET&amp;quot;,
-                dataType:&amp;quot;jsonp&amp;quot;,
-                jsonp:&amp;quot;callback&amp;quot;,
-                jsonpCallback:&amp;quot;list&amp;quot;,
-                success:function(arg){
-                    console.log(arg);
-                    var jsonArray = arg.data;
-                    $.each(jsonArray,function(k,v){
-                        var week = v.week;
-                        var label = &amp;quot;&amp;lt;h1&amp;gt;&amp;quot; + week + &amp;quot;&amp;lt;/h1&amp;gt;&amp;quot;;
-                        $(&amp;quot;#contaner&amp;quot;).append(label);
-                        var listArray = v.list;
-                        $.each(listArray,function(kk,vv){
-                            var link = vv.link;
-                            var name = vv.name;
-                            var time = vv.time;
-                            var labelNew = &amp;quot;&amp;lt;a href=&amp;apos;&amp;quot; + link + &amp;quot;&amp;apos;&amp;gt;&amp;quot; + time+name + &amp;quot;&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;&amp;quot;;
-                            $(&amp;quot;#contaner&amp;quot;).append(labelNew);
-                        })
-                    })
-                },
-                error:function(arg){
-                    console.log(arg);
-                }
-            })
-        }
-    &amp;lt;/script&amp;gt;
-
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Author:@南非波波&lt;/p&gt;
-&lt;p&gt;课程大纲：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/wupeiqi/articles/5369773.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www
     
     </summary>
     

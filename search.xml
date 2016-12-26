@@ -4,6 +4,114 @@
   
     
     <entry>
+      <title><![CDATA[2016-12-26-Nodejs全栈开发之路-Nodejs基础(如何通过nodejs开发web网站程序)]]></title>
+      <url>http://blog.songqingbo.cn/2016/12/26/2016-12-26-Nodejs%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF-Nodejs%E5%9F%BA%E7%A1%80(%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87nodejs%E5%BC%80%E5%8F%91web%E7%BD%91%E7%AB%99%E7%A8%8B%E5%BA%8F)/</url>
+      <content type="html"><![CDATA[<p>Author:@南非波波</p>
+<h3 id="一、http模块"><a href="#一、http模块" class="headerlink" title="一、http模块"></a>一、http模块</h3><pre><code>创建一个服务器监听指定端口，浏览器等客户端会通过该服务器端获取到相应的信息
+
+示例：
+#test.js
+    var fs = require(&apos;fs&apos;);
+    var http = require(&apos;http&apos;);
+    //创建server
+    http.createServer(function(request,response){
+        fs.readFile(&apos;E:/projects/all-code/笔记/js &amp;&amp; html/Html模板主题/登录模板/login5/index.html&apos;,&apos;utf-8&apos;,function(error,data){
+            if(error){
+                console.log(&quot;读取文件出错！&quot;);
+                response.end(&apos;页面获取失败!&apos;);
+            }else{
+                console.log(&quot;读取文件成功,返回页面数据!&quot;);
+                response.end(data);
+            }
+
+        });
+    }).listen(8000); //绑定指定端口号
+
+    console.log(&apos;监听8000端口...&apos;);
+#控制台会首先打印监听8000端口...,当浏览器访问localhost:8000的时候，控制台打印“读取文件成功，返回页面数据！”，页面返回指定的html页面
+</code></pre><h3 id="二、url模块"><a href="#二、url模块" class="headerlink" title="二、url模块"></a>二、url模块</h3><h4 id="1-parse"><a href="#1-parse" class="headerlink" title="1. parse"></a>1. parse</h4><pre><code>获取url的相关信息
+#url.parse(request.url)  http://localhost:8000/query.html
+    Url {
+      protocol: null,
+      slashes: null,
+      auth: null,
+      host: null,
+      port: null,
+      hostname: null,
+      hash: null,
+      search: null,
+      query: null,
+      pathname: &apos;/query.html&apos;,
+      path: &apos;/query.html&apos;,
+      href: &apos;/query.html&apos; }
+    Url {
+      protocol: null,
+      slashes: null,
+      auth: null,
+      host: null,
+      port: null,
+      hostname: null,
+      hash: null,
+      search: null,
+      query: null,
+      pathname: &apos;/favicon.ico&apos;,
+      path: &apos;/favicon.ico&apos;,
+      href: &apos;/favicon.ico&apos; }
+
+示例：
+    var fs = require(&apos;fs&apos;);
+    var http = require(&apos;http&apos;);
+    var url = require(&apos;url&apos;);
+    http.createServer(function(request,response){
+        var urlObj = url.parse(request.url);
+        console.log(urlObj);
+        var pathname = urlObj.pathname;
+        fs.readFile(pathname.substr(1),&apos;utf-8&apos;,function(error,data){
+            response.end(pathname.substr(1));
+        });
+
+    }).listen(8000);
+    console.log(&quot;端口监听8000端口...&quot;);
+
+
+
+
+示例：
+
+    var fs = require(&apos;fs&apos;);
+    var http = require(&apos;http&apos;);
+    var url = require(&apos;url&apos;);
+    http.createServer(function(request,response){
+        var urlObj = url.parse(request.url);
+        console.log(urlObj);
+        var pathname = urlObj.pathname;
+        if(pathname === &apos;/&apos;){
+            requestAndresponse(&apos;/index.html&apos;,response);
+        }else if(pathname === &apos;/test.html&apos;){
+            response.end(&apos;msg:{hostname:&quot;intel&quot;,IP:192.168.13.1}&apos;);
+        }else{
+            requestAndresponse(pathname,response);
+        }
+
+
+    }).listen(8000);
+    console.log(&quot;端口监听8000端口...&quot;);
+
+    function requestAndresponse(pathname,response){
+            fs.readFile(pathname.substr(1),&apos;utf-8&apos;,function(error,data){
+            if(error){
+                response.writeHead(404);
+                response.end(&apos;file not found!&apos;);
+            }else{
+                response.end(pathname.substr(1));
+            }
+
+        });
+    };
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[2016-12-22-Nodejs全栈开发之路-Nodejs基础(模块、包、文件读取、非阻塞异步模式)]]></title>
       <url>http://blog.songqingbo.cn/2016/12/22/2016-12-22-Nodejs%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF-Nodejs%E5%9F%BA%E7%A1%80(%E6%A8%A1%E5%9D%97%E3%80%81%E5%8C%85%E3%80%81%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E3%80%81%E9%9D%9E%E9%98%BB%E5%A1%9E%E5%BC%82%E6%AD%A5%E6%A8%A1%E5%BC%8F)/</url>
       <content type="html"><![CDATA[<p>Author:@南非波波</p>
