@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.songqingbo.cn/"/>
-  <updated>2016-12-26T11:30:01.776Z</updated>
+  <updated>2016-12-29T04:00:51.830Z</updated>
   <id>http://blog.songqingbo.cn/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2016/12/29 持续交付-发布可靠软件的系统方法完整版</title>
+    <link href="http://blog.songqingbo.cn/2016/12/29/2016-08-20-nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D-%E6%8C%81%E7%BB%AD%E4%BA%A4%E4%BB%98-%E5%8F%91%E5%B8%83%E5%8F%AF%E9%9D%A0%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%B3%95%E5%AE%8C%E6%95%B4%E7%89%88/"/>
+    <id>http://blog.songqingbo.cn/2016/12/29/2016-08-20-nodejs开发书籍-持续交付-发布可靠软件的系统方法完整版/</id>
+    <published>2016-12-29T04:00:34.000Z</published>
+    <updated>2016-12-29T04:00:51.830Z</updated>
+    
+    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/软件开发书籍/持续交付-发布可靠软件的系统方法完整版.pdf&quot; title=&quot;持续交付-发布可靠软件的系统方法完整版.pdf&quot;&gt;持续交付-发布可靠软件的系统方法完整版&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.songqingbo.cn/pdf/软件开发书籍/持续交付-发布可靠软件的系统方法完整版.pdf&quot; title=&quot;持续交付-发布可靠软件的系统方法完整版.pdf&quot;&gt;持续交付-发布可靠软件的系统
+    
+    </summary>
+    
+    
+      <category term="软件开发书籍" scheme="http://blog.songqingbo.cn/tags/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>2016-12-26-Nodejs全栈开发之路-Nodejs基础(如何通过nodejs开发web网站程序)</title>
@@ -1022,8 +1045,8 @@ ct ASC;
   
   <entry>
     <title>2016/08/20 [nodejs开发书籍]MEAN Web开发</title>
-    <link href="http://blog.songqingbo.cn/2016/08/20/2016-08-20-nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D-MEAN-Web%E5%BC%80%E5%8F%91/"/>
-    <id>http://blog.songqingbo.cn/2016/08/20/2016-08-20-nodejs开发书籍-MEAN-Web开发/</id>
+    <link href="http://blog.songqingbo.cn/2016/08/20/2016-12-29-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E4%B9%A6%E7%B1%8D-MEAN-Web%E5%BC%80%E5%8F%91/"/>
+    <id>http://blog.songqingbo.cn/2016/08/20/2016-12-29-软件开发方法书籍-MEAN-Web开发/</id>
     <published>2016-08-20T10:42:34.000Z</published>
     <updated>2016-08-26T02:36:40.635Z</updated>
     
@@ -1321,155 +1344,6 @@ def select2(array):
       &lt;p&gt;Author:@南非波波&lt;/p&gt;
 &lt;p&gt;课程大纲：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/alex3714/articles/5457672.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ww
-    
-    </summary>
-    
-    
-      <category term="Python开发之路" scheme="http://blog.songqingbo.cn/tags/Python%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python自动化开发 day15</title>
-    <link href="http://blog.songqingbo.cn/2016/04/30/s12-20160430-day15/"/>
-    <id>http://blog.songqingbo.cn/2016/04/30/s12-20160430-day15/</id>
-    <published>2016-04-30T07:30:00.000Z</published>
-    <updated>2016-07-07T01:59:02.606Z</updated>
-    
-    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
-&lt;p&gt;课程大纲：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/wupeiqi/articles/4491246.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/wupeiqi/articles/4491246.html&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/wupeiqi/articles/4508271.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/wupeiqi/articles/4508271.html&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;一、前端设计&quot;&gt;&lt;a href=&quot;#一、前端设计&quot; class=&quot;headerlink&quot; title=&quot;一、前端设计&quot;&gt;&lt;/a&gt;一、前端设计&lt;/h2&gt;&lt;h3 id=&quot;1-实现图片轮播&quot;&gt;&lt;a href=&quot;#1-实现图片轮播&quot; class=&quot;headerlink&quot; title=&quot;1.实现图片轮播&quot;&gt;&lt;/a&gt;1.实现图片轮播&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;js下载地址：&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	http://bxslider.com/&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;引入&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;!-- jQuery library (served from Google) --&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;script src=&amp;quot;//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;!-- bxSlider Javascript file --&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;script src=&amp;quot;/js/jquery.bxslider.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;!-- bxSlider CSS file --&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;link href=&amp;quot;/lib/jquery.bxslider.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot; /&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;加载图片：&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;ul class=&amp;quot;bxslider&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  &amp;lt;li&amp;gt;&amp;lt;img src=&amp;quot;/images/pic1.jpg&amp;quot; /&amp;gt;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  &amp;lt;li&amp;gt;&amp;lt;img src=&amp;quot;/images/pic2.jpg&amp;quot; /&amp;gt;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  &amp;lt;li&amp;gt;&amp;lt;img src=&amp;quot;/images/pic3.jpg&amp;quot; /&amp;gt;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  &amp;lt;li&amp;gt;&amp;lt;img src=&amp;quot;/images/pic4.jpg&amp;quot; /&amp;gt;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;lt;/ul&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;调用：	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	$(document).ready(function()&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  $(&amp;apos;.bxslider&amp;apos;).bxSlider();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;2-图标资源&quot;&gt;&lt;a href=&quot;#2-图标资源&quot; class=&quot;headerlink&quot; title=&quot;2.图标资源&quot;&gt;&lt;/a&gt;2.图标资源&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;Font Awesome
-   http://fontawesome.io/
-   a、图片，自己找图片，挖洞
-   b、现成的图标
-       css
-       使用样式
-       --以前版本
-           css
-           图片库
-           使用样式
-       -- 现在
-           css
-           字体文件
-           使用样式
-   c、css
-       字体文件
-       样式
-   =====》 大图片
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-伪类&quot;&gt;&lt;a href=&quot;#3-伪类&quot; class=&quot;headerlink&quot; title=&quot;3.伪类&quot;&gt;&lt;/a&gt;3.伪类&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;28&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;29&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;30&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;31&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;32&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;33&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;34&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;35&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;36&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;37&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;38&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;39&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;40&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;title&amp;gt;响应式&amp;lt;/title&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;style&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        @media (min-width: 768px) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            .lead &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                background-color: red;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        .c1 &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            background-color: green;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        .clearfix:after &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            content: &amp;quot;.&amp;quot;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            clear: both;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            visibility: hidden;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;/style&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;dev class=&amp;quot;lead&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        我们都是中国人&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;/dev&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;div class=&amp;quot;c1 clearfix&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;div style=&amp;quot;float: right;&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            你好&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;/div&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         &amp;lt;div style=&amp;quot;float: right;&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;             china&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;/div&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         &amp;lt;!--&amp;lt;div style=&amp;quot;clear: both&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;/div&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;二、web框架&quot;&gt;&lt;a href=&quot;#二、web框架&quot; class=&quot;headerlink&quot; title=&quot;二、web框架&quot;&gt;&lt;/a&gt;二、web框架&lt;/h2&gt;&lt;h3 id=&quot;1-python-web框架分类&quot;&gt;&lt;a href=&quot;#1-python-web框架分类&quot; class=&quot;headerlink&quot; title=&quot;1.python web框架分类&quot;&gt;&lt;/a&gt;1.python web框架分类&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
-#coding:utf-8
-
-import socket
-
-def handle_request(client):
-    buf = client.recv(1024)
-    client.send(&amp;quot;HTTP/1.1 200 OK\r\n\r\n&amp;quot;)
-    client.send(&amp;quot;Hello, Seven&amp;quot;)
-
-def main():
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.bind((&amp;apos;localhost&amp;apos;,8000))
-    sock.listen(5)
-
-    while True:
-        connection, address = sock.accept()
-        handle_request(connection)
-        connection.close()
-
-if __name__ == &amp;apos;__main__&amp;apos;:
-    main()
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;2-MVC-web框架&quot;&gt;&lt;a href=&quot;#2-MVC-web框架&quot; class=&quot;headerlink&quot; title=&quot;2.MVC web框架&quot;&gt;&lt;/a&gt;2.MVC web框架&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;MVC：Models  Views Controllers
-
-        数据库操作 模板  处理请求的函数
-代码块的归类结构
-
-MTV：Models Templates Views
-
-    数据库操作 模板  处理请求的函数
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-Django基础&quot;&gt;&lt;a href=&quot;#3-Django基础&quot; class=&quot;headerlink&quot; title=&quot;3.Django基础&quot;&gt;&lt;/a&gt;3.Django基础&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;Django框架属于MTV框架。程序需要的操作的：
-    1.models
-    2.Templates
-    3.Views
-    4.urls
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;三、Django&quot;&gt;&lt;a href=&quot;#三、Django&quot; class=&quot;headerlink&quot; title=&quot;三、Django&quot;&gt;&lt;/a&gt;三、Django&lt;/h2&gt;&lt;h3 id=&quot;1-安装&quot;&gt;&lt;a href=&quot;#1-安装&quot; class=&quot;headerlink&quot; title=&quot;1.安装&quot;&gt;&lt;/a&gt;1.安装&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;pip install django 1.9.5
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;2-创建Django程序框架&quot;&gt;&lt;a href=&quot;#2-创建Django程序框架&quot; class=&quot;headerlink&quot; title=&quot;2.创建Django程序框架&quot;&gt;&lt;/a&gt;2.创建Django程序框架&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;使用命令创建
-    django-admin startproject demo 创建projects
-    cd demo
-    python manage.py startapp app0 创建应用
-使用pycharm进行创建项目和应用
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-执行程序&quot;&gt;&lt;a href=&quot;#3-执行程序&quot; class=&quot;headerlink&quot; title=&quot;3.执行程序&quot;&gt;&lt;/a&gt;3.执行程序&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;进入项目， python manage.py runserver 127.0.0.1：8000
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;4-创建数据表&quot;&gt;&lt;a href=&quot;#4-创建数据表&quot; class=&quot;headerlink&quot; title=&quot;4.创建数据表&quot;&gt;&lt;/a&gt;4.创建数据表&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;python manage.py makemigrations #生成配置文件
-python manage.py migrate       #根据配置文件创建数据库相关 表
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;5-django默认后台管理&quot;&gt;&lt;a href=&quot;#5-django默认后台管理&quot; class=&quot;headerlink&quot; title=&quot;5.django默认后台管理&quot;&gt;&lt;/a&gt;5.django默认后台管理&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;创建超级用户名 python manage.py createsuperuser
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;6-路由系统&quot;&gt;&lt;a href=&quot;#6-路由系统&quot; class=&quot;headerlink&quot; title=&quot;6.路由系统&quot;&gt;&lt;/a&gt;6.路由系统&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;静态路由
-动态路由
-    安照顺序，第n个匹配的数据交给函数的第n个参数，严格按照顺序
-        url(r&amp;apos;^page/（\d+)/(\d+)&amp;apos;,views.page)
-    模板的方法，将匹配的参数，传给指定的形式参数
-        url(r&amp;apos;^page/(?P&amp;lt;n1&amp;gt;\d+)/(?P&amp;lt;n2&amp;gt;\d+)&amp;apos;,views.page)
-二级路由
-    app01
-        urls.py
-    project name 
-        URL：app01 -&amp;gt;include（&amp;quot;app01.urls&amp;quot;）
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/QbaeTDM.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;7-基本数据库操作&quot;&gt;&lt;a href=&quot;#7-基本数据库操作&quot; class=&quot;headerlink&quot; title=&quot;7.基本数据库操作&quot;&gt;&lt;/a&gt;7.基本数据库操作&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;ORM框架
-    code first
-        自己写类 --&amp;gt;数据库表
-    db first
-        自己写命令操作数据库--&amp;gt;更新类
-    使用类进行数据操作
-
-创建类
-    from django.db import models
-    class UserInfo(models.Model):
-        username = models.CharField(max_length=32)
-        password = models.CharField(max_length=32)
-        age = models.IntegerField()
-
-配置
-    setting
-        INSTALLED_APPS = [
-            &amp;apos;django.contrib.admin&amp;apos;,
-            &amp;apos;django.contrib.auth&amp;apos;,
-            &amp;apos;django.contrib.contenttypes&amp;apos;,
-            &amp;apos;django.contrib.sessions&amp;apos;,
-            &amp;apos;django.contrib.messages&amp;apos;,
-            &amp;apos;django.contrib.staticfiles&amp;apos;,
-            &amp;apos;app01&amp;apos;,
-        ]
-使用命令根据类创建表
-    python manage.py makemigrations #生成配置文件
-    python manage.py migrate       #根据配置文件创建数据库相关 表
-默认表名：
-    appname_classname
-
-d. 
-    views中导入models
-
-e.
-    POST提交数据
-        settings里操作：
-            MIDDLEWARE_CLASSES = [
-                &amp;apos;django.middleware.security.SecurityMiddleware&amp;apos;,
-                &amp;apos;django.contrib.sessions.middleware.SessionMiddleware&amp;apos;,
-                &amp;apos;django.middleware.common.CommonMiddleware&amp;apos;,
-               # &amp;apos;django.middleware.csrf.CsrfViewMiddleware&amp;apos;,
-                &amp;apos;django.contrib.auth.middleware.AuthenticationMiddleware&amp;apos;,
-                &amp;apos;django.contrib.auth.middleware.SessionAuthenticationMiddleware&amp;apos;,
-                &amp;apos;django.contrib.messages.middleware.MessageMiddleware&amp;apos;,
-                &amp;apos;django.middleware.clickjacking.XFrameOptionsMiddleware&amp;apos;,
-            ]
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Author:@南非波波&lt;/p&gt;
-&lt;p&gt;课程大纲：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/wupeiqi/articles/4491246.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www
     
     </summary>
     

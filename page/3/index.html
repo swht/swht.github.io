@@ -224,7 +224,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs全栈开发之路/">Nodejs全栈开发之路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs开发书籍/">nodejs开发书籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python开发书籍/">python开发书籍</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs全栈开发之路/">Nodejs全栈开发之路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs开发书籍/">nodejs开发书籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python开发书籍/">python开发书籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件开发书籍/">软件开发书籍</a></li></ul>
                     </div>
                 </section>
                 
@@ -314,6 +314,192 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-s12-20160430-day15" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/30/s12-20160430-day15/" class="article-date">
+      <time datetime="2016-04-30T07:30:00.000Z" itemprop="datePublished">2016-04-30</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/30/s12-20160430-day15/">python自动化开发 day15</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author:@南非波波</p>
+<p>课程大纲：</p>
+<p><a href="http://www.cnblogs.com/wupeiqi/articles/4491246.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/4491246.html</a><br><a href="http://www.cnblogs.com/wupeiqi/articles/4508271.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/4508271.html</a></p>
+<h2 id="一、前端设计"><a href="#一、前端设计" class="headerlink" title="一、前端设计"></a>一、前端设计</h2><h3 id="1-实现图片轮播"><a href="#1-实现图片轮播" class="headerlink" title="1.实现图片轮播"></a>1.实现图片轮播</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">js下载地址：</div><div class="line">	http://bxslider.com/</div><div class="line">引入</div><div class="line">	&lt;!-- jQuery library (served from Google) --&gt;</div><div class="line">	&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;!-- bxSlider Javascript file --&gt;</div><div class="line">	&lt;script src=&quot;/js/jquery.bxslider.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;!-- bxSlider CSS file --&gt;</div><div class="line">	&lt;link href=&quot;/lib/jquery.bxslider.css&quot; rel=&quot;stylesheet&quot; /&gt;</div><div class="line">加载图片：</div><div class="line">	&lt;ul class=&quot;bxslider&quot;&gt;</div><div class="line">	  &lt;li&gt;&lt;img src=&quot;/images/pic1.jpg&quot; /&gt;&lt;/li&gt;</div><div class="line">	  &lt;li&gt;&lt;img src=&quot;/images/pic2.jpg&quot; /&gt;&lt;/li&gt;</div><div class="line">	  &lt;li&gt;&lt;img src=&quot;/images/pic3.jpg&quot; /&gt;&lt;/li&gt;</div><div class="line">	  &lt;li&gt;&lt;img src=&quot;/images/pic4.jpg&quot; /&gt;&lt;/li&gt;</div><div class="line">	&lt;/ul&gt;</div><div class="line"></div><div class="line">调用：	</div><div class="line">	$(document).ready(function()&#123;</div><div class="line">	  $(&apos;.bxslider&apos;).bxSlider();</div><div class="line">	&#125;);</div></pre></td></tr></table></figure>
+<h3 id="2-图标资源"><a href="#2-图标资源" class="headerlink" title="2.图标资源"></a>2.图标资源</h3><pre><code>Font Awesome
+   http://fontawesome.io/
+   a、图片，自己找图片，挖洞
+   b、现成的图标
+       css
+       使用样式
+       --以前版本
+           css
+           图片库
+           使用样式
+       -- 现在
+           css
+           字体文件
+           使用样式
+   c、css
+       字体文件
+       样式
+   =====》 大图片
+</code></pre><h3 id="3-伪类"><a href="#3-伪类" class="headerlink" title="3.伪类"></a>3.伪类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;响应式&lt;/title&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">        @media (min-width: 768px) &#123;</div><div class="line">            .lead &#123;</div><div class="line">                background-color: red;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        .c1 &#123;</div><div class="line">            background-color: green;</div><div class="line">            &#125;</div><div class="line">        .clearfix:after &#123;</div><div class="line">            content: &quot;.&quot;;</div><div class="line">            clear: both;</div><div class="line">            visibility: hidden;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">    &lt;dev class=&quot;lead&quot;&gt;</div><div class="line">        我们都是中国人</div><div class="line">    &lt;/dev&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;c1 clearfix&quot;&gt;</div><div class="line">        &lt;div style=&quot;float: right;&quot;&gt;</div><div class="line">            你好</div><div class="line">        &lt;/div&gt;</div><div class="line">         &lt;div style=&quot;float: right;&quot;&gt;</div><div class="line">             china</div><div class="line">        &lt;/div&gt;</div><div class="line">         &lt;!--&lt;div style=&quot;clear: both&quot;&gt;&lt;/div&gt;--&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="二、web框架"><a href="#二、web框架" class="headerlink" title="二、web框架"></a>二、web框架</h2><h3 id="1-python-web框架分类"><a href="#1-python-web框架分类" class="headerlink" title="1.python web框架分类"></a>1.python web框架分类</h3><pre><code>#!/usr/bin/env python
+#coding:utf-8
+
+import socket
+
+def handle_request(client):
+    buf = client.recv(1024)
+    client.send(&quot;HTTP/1.1 200 OK\r\n\r\n&quot;)
+    client.send(&quot;Hello, Seven&quot;)
+
+def main():
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.bind((&apos;localhost&apos;,8000))
+    sock.listen(5)
+
+    while True:
+        connection, address = sock.accept()
+        handle_request(connection)
+        connection.close()
+
+if __name__ == &apos;__main__&apos;:
+    main()
+</code></pre><h3 id="2-MVC-web框架"><a href="#2-MVC-web框架" class="headerlink" title="2.MVC web框架"></a>2.MVC web框架</h3><pre><code>MVC：Models  Views Controllers
+
+        数据库操作 模板  处理请求的函数
+代码块的归类结构
+
+MTV：Models Templates Views
+
+    数据库操作 模板  处理请求的函数
+</code></pre><h3 id="3-Django基础"><a href="#3-Django基础" class="headerlink" title="3.Django基础"></a>3.Django基础</h3><pre><code>Django框架属于MTV框架。程序需要的操作的：
+    1.models
+    2.Templates
+    3.Views
+    4.urls
+</code></pre><h2 id="三、Django"><a href="#三、Django" class="headerlink" title="三、Django"></a>三、Django</h2><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><pre><code>pip install django 1.9.5
+</code></pre><h3 id="2-创建Django程序框架"><a href="#2-创建Django程序框架" class="headerlink" title="2.创建Django程序框架"></a>2.创建Django程序框架</h3><pre><code>使用命令创建
+    django-admin startproject demo 创建projects
+    cd demo
+    python manage.py startapp app0 创建应用
+使用pycharm进行创建项目和应用
+</code></pre><h3 id="3-执行程序"><a href="#3-执行程序" class="headerlink" title="3.执行程序"></a>3.执行程序</h3><pre><code>进入项目， python manage.py runserver 127.0.0.1：8000
+</code></pre><h3 id="4-创建数据表"><a href="#4-创建数据表" class="headerlink" title="4.创建数据表"></a>4.创建数据表</h3><pre><code>python manage.py makemigrations #生成配置文件
+python manage.py migrate       #根据配置文件创建数据库相关 表
+</code></pre><h3 id="5-django默认后台管理"><a href="#5-django默认后台管理" class="headerlink" title="5.django默认后台管理"></a>5.django默认后台管理</h3><pre><code>创建超级用户名 python manage.py createsuperuser
+</code></pre><h3 id="6-路由系统"><a href="#6-路由系统" class="headerlink" title="6.路由系统"></a>6.路由系统</h3><pre><code>静态路由
+动态路由
+    安照顺序，第n个匹配的数据交给函数的第n个参数，严格按照顺序
+        url(r&apos;^page/（\d+)/(\d+)&apos;,views.page)
+    模板的方法，将匹配的参数，传给指定的形式参数
+        url(r&apos;^page/(?P&lt;n1&gt;\d+)/(?P&lt;n2&gt;\d+)&apos;,views.page)
+二级路由
+    app01
+        urls.py
+    project name 
+        URL：app01 -&gt;include（&quot;app01.urls&quot;）
+</code></pre><p><img src="http://i.imgur.com/QbaeTDM.png" alt=""></p>
+<h3 id="7-基本数据库操作"><a href="#7-基本数据库操作" class="headerlink" title="7.基本数据库操作"></a>7.基本数据库操作</h3><pre><code>ORM框架
+    code first
+        自己写类 --&gt;数据库表
+    db first
+        自己写命令操作数据库--&gt;更新类
+    使用类进行数据操作
+
+创建类
+    from django.db import models
+    class UserInfo(models.Model):
+        username = models.CharField(max_length=32)
+        password = models.CharField(max_length=32)
+        age = models.IntegerField()
+
+配置
+    setting
+        INSTALLED_APPS = [
+            &apos;django.contrib.admin&apos;,
+            &apos;django.contrib.auth&apos;,
+            &apos;django.contrib.contenttypes&apos;,
+            &apos;django.contrib.sessions&apos;,
+            &apos;django.contrib.messages&apos;,
+            &apos;django.contrib.staticfiles&apos;,
+            &apos;app01&apos;,
+        ]
+使用命令根据类创建表
+    python manage.py makemigrations #生成配置文件
+    python manage.py migrate       #根据配置文件创建数据库相关 表
+默认表名：
+    appname_classname
+
+d. 
+    views中导入models
+
+e.
+    POST提交数据
+        settings里操作：
+            MIDDLEWARE_CLASSES = [
+                &apos;django.middleware.security.SecurityMiddleware&apos;,
+                &apos;django.contrib.sessions.middleware.SessionMiddleware&apos;,
+                &apos;django.middleware.common.CommonMiddleware&apos;,
+               # &apos;django.middleware.csrf.CsrfViewMiddleware&apos;,
+                &apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;,
+                &apos;django.contrib.auth.middleware.SessionAuthenticationMiddleware&apos;,
+                &apos;django.contrib.messages.middleware.MessageMiddleware&apos;,
+                &apos;django.middleware.clickjacking.XFrameOptionsMiddleware&apos;,
+            ]
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-s12-20160421-day14" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -5321,1177 +5507,6 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
 2. 用户输入 1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2) )等类似公式后，必须自己解析里面的(),+,-,*,/符号和公式，运算后得出结果，结果必须与真实的计算器所得出的结果一致
 
 博客地址：http://www.cnblogs.com/songqingbo/p/5168125.html
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-s12-20160116-day03" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/16/s12-20160116-day03/" class="article-date">
-      <time datetime="2016-01-16T07:30:00.000Z" itemprop="datePublished">2016-01-16</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/16/s12-20160116-day03/">python自动化开发 day03</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Author:@南非波波</p>
-<p>课程大纲：</p>
-<p>day2<br><a href="http://www.cnblogs.com/wupeiqi/articles/5115190.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5115190.html</a></p>
-<p>day3<br><a href="http://www.cnblogs.com/wupeiqi/articles/5133343.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5133343.html</a></p>
-<h2 id="一、set集合"><a href="#一、set集合" class="headerlink" title="一、set集合"></a>一、set集合</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5128066.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5128066.html</a></p>
-<pre><code>优点：访问速度快；
-     自带一套解决元素重复的解决方案
-</code></pre><p><strong>测试程序</strong></p>
-<pre><code>old_dict = {
-    &quot;#1&quot;:{ &apos;hostname&apos;:&apos;c1&apos;, &apos;cpu_count&apos;: 2, &apos;mem_capicity&apos;: 80 },
-    &quot;#2&quot;:{ &apos;hostname&apos;:&apos;c1&apos;, &apos;cpu_count&apos;: 2, &apos;mem_capicity&apos;: 80 },
-    &quot;#3&quot;:{ &apos;hostname&apos;:&apos;c1&apos;, &apos;cpu_count&apos;: 2, &apos;mem_capicity&apos;: 80 },
-}
-new_dict = {
-    &quot;#1&quot;:{ &apos;hostname&apos;:&apos;c1&apos;, &apos;cpu_count&apos;: 2, &apos;mem_capicity&apos;: 800 },
-    &quot;#3&quot;:{ &apos;hostname&apos;:&apos;c1&apos;, &apos;cpu_count&apos;: 2, &apos;mem_capicity&apos;: 80 },
-    &quot;#4&quot;:{ &apos;hostname&apos;:&apos;c2&apos;, &apos;cpu_count&apos;: 2, &apos;mem_capicity&apos;: 80 },
-}
-
-获取三个列表：
-    1. 需要更新的列表 update_list
-    2. 需要删除的列表 del_list
-    3. 需要增加的列表 add_list
-
-代码实现：
-    #!/usr/local/env python3
-    &apos;&apos;&apos;
-    Author:@南非波波
-    Blog:http://www.cnblogs.com/songqingbo/
-    E-mail:qingbo.song@gmail.com
-    &apos;&apos;&apos;
-
-    old_dict = {
-        &quot;#1&quot;:{ &apos;hostname&apos;:&apos;c1&apos;, &apos;cpu_count&apos;: 2, &apos;mem_capicity&apos;: 80 },
-        &quot;#2&quot;:{ &apos;hostname&apos;:&apos;c1&apos;, &apos;cpu_count&apos;: 2, &apos;mem_capicity&apos;: 80 },
-        &quot;#3&quot;:{ &apos;hostname&apos;:&apos;c1&apos;, &apos;cpu_count&apos;: 2, &apos;mem_capicity&apos;: 80 },
-    }
-    new_dict = {
-        &quot;#1&quot;:{ &apos;hostname&apos;:&apos;c1&apos;, &apos;cpu_count&apos;: 2, &apos;mem_capicity&apos;: 800 },
-        &quot;#3&quot;:{ &apos;hostname&apos;:&apos;c1&apos;, &apos;cpu_count&apos;: 2, &apos;mem_capicity&apos;: 80 },
-        &quot;#4&quot;:{ &apos;hostname&apos;:&apos;c2&apos;, &apos;cpu_count&apos;: 2, &apos;mem_capicity&apos;: 80 },
-    }
-
-    #设置set
-    old_set = set(old_dict.keys())
-    new_set = set(new_dict.keys())
-
-    #更新的set
-    update_set = new_set.intersection(old_dict)
-    delate_set = old_set.difference(update_set)
-    add_set = new_set.difference(update_set)
-
-    update_list = []
-    del_list = []
-    add_list = []
-    # print(update_set)
-    # print(delate_set)
-    # print(add_set)
-    for i in update_set:
-        update_list.append({i:new_dict[i]})
-        print(&apos;需要更新的列表:%s&apos; % update_list)
-
-    for i in delate_set:
-        del_list.append({i:old_dict[i]})
-        print(&quot;需要删除的列表:%s&quot; % del_list)
-
-    for i in add_set:
-        add_list.append({i:new_dict[i]})
-        print(&quot;需要增加的列表:%s&quot; % add_list)
-</code></pre><h2 id="二、collection系列"><a href="#二、collection系列" class="headerlink" title="二、collection系列"></a>二、collection系列</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5137785.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5137785.html</a></p>
-<pre><code>不常用功能，需要进行模块功能导入:
-    import collection
-</code></pre><h3 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h3><p>常用方法测试：</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import collections
-
-obj = collections.Counter(&apos;sjndsjkdsdmslaladsldsldms&apos;)
-
-print(&quot;输出字符出现的次数字典:&quot;)
-for k,v in obj.items():
-    print(&quot;{%s:%s}&quot; % (k,v))
-
-print(&quot;输出每一个字符:&quot;) #遍历获取原始字符元素
-for k in obj.elements():
-    print(k)
-
-print(&quot;输出前四个出现次数最多的字符:&quot;)
-for k in obj.most_common(4):
-    print(k)
-
-
-输出结果：
-    输出字符出现的次数字典:
-    {s:7}
-    {l:4}
-    {m:2}
-    {d:6}
-    {k:1}
-    {n:1}
-    {j:2}
-    {a:2}
-    输出每一个字符:
-    s
-    s
-    s
-    s
-    s
-    s
-    s
-    l
-    l
-    l
-    l
-    m
-    m
-    d
-    d
-    d
-    d
-    d
-    d
-    k
-    n
-    j
-    j
-    a
-    a
-    输出前四个出现次数最多的字符:
-    (&apos;s&apos;, 7)
-    (&apos;d&apos;, 6)
-    (&apos;l&apos;, 4)
-    (&apos;m&apos;, 2)
-</code></pre><p><strong>__missing__</strong></p>
-<pre><code>功能：对于不存在的元素，返回计数器为0
-import collections
-c = collections.Counter(&apos;adjsdkskdjksjaksklklakl&apos;)
-c.__missing__(5)
-返回结果：0
-</code></pre><p><strong>most_common</strong></p>
-<pre><code>功能：获取出现次数的前几个字母排名
-import collections
-c = collections.Counter(&apos;adjsdkskdjksjaksklklakl&apos;)
-c.most_common(3)
-[(&apos;k&apos;, 7), (&apos;s&apos;, 4), (&apos;a&apos;, 3)]
-c.most_common(8)
-[(&apos;k&apos;, 7), (&apos;s&apos;, 4), (&apos;a&apos;, 3), (&apos;j&apos;, 3), (&apos;l&apos;, 3), (&apos;d&apos;, 3)]
-</code></pre><p><strong>elements</strong></p>
-<pre><code>功能：计数器中的所有元素，并且按照ascii码进行了排序
-    返回一个迭代器。元素被重复了多少次，在该迭代器中就包含多少个该元素。所有元素按照字母序排序，个数小于1的元素不被包含。
-import collections
-c = collections.Counter(&apos;adjsdkskdjksjaksklklakl&apos;)
-sorted(c.elements())
-返回结果：[&apos;a&apos;, &apos;a&apos;, &apos;a&apos;, &apos;d&apos;, &apos;d&apos;, &apos;d&apos;, &apos;j&apos;, &apos;j&apos;, &apos;j&apos;, &apos;k&apos;, &apos;k&apos;, &apos;k&apos;, &apos;k&apos;, &apos;k&apos;, &apos;k&apos;, &apos;k&apos;,&apos;l&apos;, &apos;l&apos;, &apos;l&apos;, &apos;s&apos;, &apos;s&apos;, &apos;s&apos;, &apos;s&apos;]
-</code></pre><p><strong>计数值的访问与缺失的键</strong></p>
-<pre><code>功能：默认将计数器中所有的字符认为一个键，然后统计键出现的次数，即键值。如果键不存在则返回0.
-import collections
-c = collections.Counter(&apos;adjsdkskdjksjaksklklakl&apos;)
-&gt;&gt;&gt; c[&apos;a&apos;]
-3
-&gt;&gt;&gt; c[&apos;b&apos;]
-0
-&gt;&gt;&gt; c[&apos;l&apos;]
-3
-</code></pre><p><strong>update &amp;&amp; subtract</strong></p>
-<pre><code>功能：都是更新计数器，update是增加，subtract是减少
-import collections
-&gt;&gt;&gt; c = collections.Counter(&apos;which&apos;)
-&gt;&gt;&gt; c[&apos;h&apos;]  #这里的h出现2次
-2
-&gt;&gt;&gt; c.update(&apos;with&apos;)
-&gt;&gt;&gt; c
-Counter({&apos;h&apos;: 3, &apos;i&apos;: 2, &apos;w&apos;: 2, &apos;t&apos;: 1, &apos;c&apos;: 1})
-&gt;&gt;&gt; c[&apos;h&apos;] #这里则完成了update操作，h出现了3次
-3
-
-&gt;&gt;&gt; c.subtract(&apos;with&apos;) 
-&gt;&gt;&gt; c
-Counter({&apos;h&apos;: 2, &apos;c&apos;: 1, &apos;i&apos;: 1, &apos;w&apos;: 1, &apos;t&apos;: 0})
-&gt;&gt;&gt; c[&apos;h&apos;] #这里完成subtract操作之后，h出现的次数又恢复到2次
-2
-</code></pre><p><strong>del</strong></p>
-<pre><code>功能：删除键
-import collections
-&gt;&gt;&gt; c = collections.Counter(&apos;which&apos;)
-&gt;&gt;&gt; c[&apos;h&apos;]  #这里的h出现2次
-2
-&gt;&gt;&gt; del c[&apos;h&apos;]
-&gt;&gt;&gt; c
-Counter({&apos;c&apos;: 1, &apos;i&apos;: 1, &apos;w&apos;: 1, &apos;t&apos;: 0})
-&gt;&gt;&gt; c[&apos;h&apos;]  #del操作删除了键&apos;h&apos;
-0
-</code></pre><p><strong>copy</strong></p>
-<pre><code>功能：浅拷贝
-import collections
-&gt;&gt;&gt; c = collections.Counter(&apos;which&apos;)
-&gt;&gt;&gt; d = c.copy()
-&gt;&gt;&gt; d
-Counter({&apos;h&apos;: 2, &apos;c&apos;: 1, &apos;i&apos;: 1, &apos;w&apos;: 1})
-&gt;&gt;&gt; id(c)
-7150792
-&gt;&gt;&gt; id(d)
-6511976
-</code></pre><p><strong>算术和集合操作</strong></p>
-<pre><code>功能：+、-、&amp;、|操作也可以用于Counter。其中&amp;和|操作分别返回两个Counter对象各元素的最小值和最大值。需要注意的是，得到的Counter对象将删除小于1的元素。
-</code></pre><p><img src="http://i.imgur.com/dpBUpJJ.png" alt=""></p>
-<p><strong>常用操作</strong></p>
-<pre><code>说明：Counter继承dict的所有方法，常用的操作列在下面，仅供参考
-</code></pre><p><img src="http://i.imgur.com/5EmjmX2.png" alt=""></p>
-<h3 id="有序字典orderedDict"><a href="#有序字典orderedDict" class="headerlink" title="有序字典orderedDict"></a>有序字典orderedDict</h3><pre><code>有序字典继承字典的一切属性，只是在顺序上是有序的。
-d = collections.OrderedDict({&apos;name&apos;:&apos;swht&apos;,&apos;age&apos;:18})
-print(d)
-返回结果：OrderedDict([(&apos;name&apos;, &apos;swht&apos;), (&apos;age&apos;, 18)])
-print(type(d))
-返回结果：&lt;class &apos;collections.OrderedDict&apos;&gt;
-</code></pre><p><strong>move_to_end</strong></p>
-<pre><code>功能：将指定的键值对从开头移动到末尾。
-d = collections.OrderedDict({&apos;name&apos;:&apos;swht&apos;,&apos;age&apos;:18,&apos;address&apos;:&apos;shandong&apos;,})
-d.move_to_end(&apos;name&apos;)
-print(d)
-返回结果：OrderedDict([(&apos;age&apos;, 18), (&apos;address&apos;, &apos;shandong&apos;), (&apos;name&apos;, &apos;swht&apos;)])
-</code></pre><p><strong>pop</strong></p>
-<pre><code>功能：移除字典键值，并返回删除键值的values
-d = collections.OrderedDict({&apos;name&apos;:&apos;swht&apos;,&apos;age&apos;:18,&apos;address&apos;:&apos;shandong&apos;,})
-d.pop(&apos;address&apos;)
-print(d)
-返回结果：OrderedDict([(&apos;age&apos;, 18), (&apos;name&apos;, &apos;swht&apos;)])
-</code></pre><p><strong>clear</strong></p>
-<pre><code>功能：清空有序字典的值
-d = collections.OrderedDict({&apos;name&apos;:&apos;swht&apos;,&apos;age&apos;:18,&apos;address&apos;:&apos;shandong&apos;,})
-d.clear()
-print(d)
-返回结果：OrderedDict()
-</code></pre><p><strong>keys,values,items</strong></p>
-<pre><code>功能：继承字典的属性，获取字典的所有键和所有值
-d = collections.OrderedDict({&apos;name&apos;:&apos;swht&apos;,&apos;age&apos;:18,&apos;address&apos;:&apos;shandong&apos;,})
-l1 = d.keys()
-l2 = d.values()
-l3 = d.items()
-print(l1,l2，l3)
-返回结果：odict_keys([&apos;address&apos;, &apos;age&apos;, &apos;name&apos;]) odict_values([&apos;shandong&apos;, 18, &apos;swht&apos;]) odict_items([(&apos;age&apos;, 18), (&apos;name&apos;, &apos;swht&apos;), (&apos;address&apos;, &apos;shandong&apos;)])
-</code></pre><h3 id="默认字典defaultdict"><a href="#默认字典defaultdict" class="headerlink" title="默认字典defaultdict"></a>默认字典defaultdict</h3><pre><code>defaultdict是对字典的类型的补充，他默认给字典的值设置了一个类型。创建一个默认字典，value值类型为列表.
-dic = collections.defaultdict(list)
-</code></pre><h3 id="可命名元组nametuple"><a href="#可命名元组nametuple" class="headerlink" title="可命名元组nametuple"></a>可命名元组nametuple</h3><pre><code>没有现成的类，用户需要自行创建相应的类
-</code></pre><p>测试代码</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import collections
-MytupleClass = collections.namedtuple(&quot;MytupleClass&quot;,[&apos;x&apos;,&apos;y&apos;,&apos;z&apos;])
-obj = MytupleClass(11,22,33)
-print(obj.x,obj.y,obj.z)
-返回结果：11 22 33
-总结：相当于在元组的基础上增加一个key，使其成为一个类字典的样子
-</code></pre><h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p><img src="http://i.imgur.com/DnEPoMR.png" alt=""></p>
-<p>双向队列</p>
-<pre><code>下面两种方法都可以创建双向列表，虽然在最初的引用的类不同，但最后创建的类型 都是collections.deque
-#创建双向队列
-import collections
-d = collections.deque()
-返回结果：&lt;class &apos;collections.deque&apos;&gt;
-
-#but这样创建双向队列呢
-import queue
-p = queue.deque()
-print(type(p))
-#&lt;class &apos;collections.deque&apos;&gt;
-</code></pre><p>单向队列</p>
-<pre><code>#创建单向队列
-import queue
-q = queue.Queue()
-print(type(q))
-#&lt;class &apos;queue.Queue&apos;&gt;
-</code></pre><h2 id="三、深浅拷贝"><a href="#三、深浅拷贝" class="headerlink" title="三、深浅拷贝"></a>三、深浅拷贝</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5139015.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5139015.html</a></p>
-<pre><code>#对于 数字 和 字符串 而言，赋值、浅拷贝和深拷贝无意义，因为其永远指向同一个内存地址
-    import copy
-    a1 = 22255
-    a2 = 22255
-    print(id(a1),id(a2)) #3428240 3428240
-
-#对于字典、元祖、列表 而言，进行赋值、浅拷贝和深拷贝时，其内存地址的变化是不同的。
-
-    import copy
-    #字典
-    n1 = {&quot;k1&quot;: &quot;wu&quot;, &quot;k2&quot;: 123, &quot;k3&quot;: [&quot;alex&quot;, 456]}
-    ##赋值
-    n2 = n1
-    print(n1,n2) #{&apos;k1&apos;: &apos;wu&apos;, &apos;k2&apos;: 123, &apos;k3&apos;: [&apos;alex&apos;, 456]} {&apos;k1&apos;: &apos;wu&apos;, &apos;k2&apos;: 123, &apos;k3&apos;: [&apos;alex&apos;, 456]}
-    print(id(n1),id(n2))  #6674440 6674440 #内存地址一样
-    ##浅拷贝
-    n3 = copy.copy(n1)
-    print(n1,n3) #{&apos;k1&apos;: &apos;wu&apos;, &apos;k2&apos;: 123, &apos;k3&apos;: [&apos;alex&apos;, 456]} {&apos;k1&apos;: &apos;wu&apos;, &apos;k2&apos;: 123, &apos;k3&apos;: [&apos;alex&apos;, 456]}
-    print(id(n1),id(n3)) #6936584 12067848  #浅拷贝第一级，内存地址相同
-    print(id(n1[&apos;k3&apos;]),id(n3[&apos;k3&apos;])) #18741768 18741768
-    ##深拷贝
-    n4 = copy.deepcopy(n1)
-    print(n1,n4) #{&apos;k3&apos;: [&apos;alex&apos;, 456], &apos;k2&apos;: 123, &apos;k1&apos;: &apos;wu&apos;} {&apos;k3&apos;: [&apos;alex&apos;, 456], &apos;k1&apos;: &apos;wu&apos;, &apos;k2&apos;: 123}
-    print(id(n1),id(n4)) #6805512 11736904
-    print(id(n1[&apos;k3&apos;]),id(n4[&apos;k3&apos;])) #7601032 7599496 #深拷贝第二级，内存地址也不相同
-
-    #列表
-    n1 = [1,2,3,4,5,[6,7],]
-    ##赋值
-    n2 = n1
-    print(n1,n2) #[1, 2, 3, 4, 5, [6, 7]] [1, 2, 3, 4, 5, [6, 7]]
-    print(id(n1),id(n2)) #18609928 18609928
-    print(id(n1[5]),id(n2[5])) #18609544 18609544
-    ##浅拷贝
-    n3 = copy.copy(n1)
-    print(n1,n3) #[1, 2, 3, 4, 5, [6, 7]] [1, 2, 3, 4, 5, [6, 7]]
-    print(id(n1),id(n3)) #18609928 18232904
-    print(id(n1[5]),id(n3[5])) #18609544 18609544
-    ##深拷贝
-    n4 = copy.deepcopy(n1)
-    print(n1,n4) #[1, 2, 3, 4, 5, [6, 7]] [1, 2, 3, 4, 5, [6, 7]]
-    print(id(n1),id(n4)) #18609928 18611848
-    print(id(n1[5]),id(n4[5])) #18609544 18611912
-
-
-    #元组
-    一个小插曲：
-        import copy
-        n1 = (1,2,3,4,5,(6,7,),)
-        #赋值
-        n2 = n1
-        print(&apos;n1:&apos;,n1,&apos;n2:&apos;,n2) #n1: (1, 2, 3, 4, 5, (6, 7)) n2: (1, 2, 3, 4, 5, (6, 7))
-        print(id(n1),id(n2)) #10416584 10416584
-        print(id(n1[5]),id(n2[5])) #18415304 18415304
-        print(type(n1),type(2)) #&lt;class &apos;tuple&apos;&gt; &lt;class &apos;int&apos;&gt;
-        #浅拷贝
-        n3 = copy.copy(n1)
-        print(&apos;n1:&apos;,n1,&apos;n3:&apos;,n3) #n1: (1, 2, 3, 4, 5, (6, 7)) n2: (1, 2, 3, 4, 5, (6, 7))
-        print(id(n1),id(n3)) #10416584 10416584
-        print(id(n1[5]),id(n3[5])) #18415304 18415304
-        print(type(n1),type(3)) #&lt;class &apos;tuple&apos;&gt; &lt;class &apos;int&apos;&gt;
-        #深拷贝
-        n4 = copy.deepcopy(n1)
-        print(&apos;n1:&apos;,n1,&apos;n4:&apos;,n4) #n1: (1, 2, 3, 4, 5, (6, 7)) n2: (1, 2, 3, 4, 5, (6, 7))
-        print(id(n1),id(n4)) #10416584 10416584
-        print(id(n1[5]),id(n4[5])) #18415304 18415304
-        print(type(n1),type(5)) #&lt;class &apos;tuple&apos;&gt; &lt;class &apos;int&apos;&gt;
-</code></pre><p><img src="http://i.imgur.com/SHmoN06.png" alt="">    </p>
-<pre><code>再一个小插曲：
-    import copy
-    n1 = (1,2,3,4,5,[6,7,],)
-    #赋值
-    n2 = n1
-    print(&apos;n1:&apos;,n1,&apos;n2:&apos;,n2) #(1, 2, 3, 4, 5, [6, 7]) n2: (1, 2, 3, 4, 5, [6, 7])
-    print(id(n1),id(n2)) #11465160 11465160
-    print(id(n1[5]),id(n2[5])) #18480456 18480456
-    print(type(n1),type(2)) #&lt;class &apos;tuple&apos;&gt; &lt;class &apos;int&apos;&gt;
-    #浅拷贝
-    n3 = copy.copy(n1)
-    print(&apos;n1:&apos;,n1,&apos;n3:&apos;,n3) #n1: (1, 2, 3, 4, 5, [6, 7]) n3: (1, 2, 3, 4, 5, [6, 7])
-    print(id(n1),id(n3)) #11465160 11465160
-    print(id(n1[5]),id(n3[5])) #18480456 18480456
-    print(type(n1),type(3)) #&lt;class &apos;tuple&apos;&gt; &lt;class &apos;int&apos;&gt;
-    #深拷贝
-    n4 = copy.deepcopy(n1)
-    print(&apos;n1:&apos;,n1,&apos;n4:&apos;,n4) #n1: (1, 2, 3, 4, 5, [6, 7]) n4: (1, 2, 3, 4, 5, [6, 7])
-    print(id(n1),id(n4)) #11465160 18109736
-    print(id(n1[5]),id(n4[5])) #18480456 18478920
-    print(type(n1),type(5)) #&lt;class &apos;tuple&apos;&gt; &lt;class &apos;int&apos;&gt;
-</code></pre><p><img src="http://i.imgur.com/DubYez7.png" alt=""><br>出现以上问题有可能跟下面的说法有关：<br><img src="http://i.imgur.com/XCsFOj6.png" alt=""></p>
-<pre><code>案例代码
-
-    import copy
-    dic = {
-        &quot;cpu&quot;:[80,],
-        &quot;mem&quot;:[80,],
-        &quot;disk&quot;:[80,],
-    }
-
-    print(&quot;old:&quot;,dic)
-    new_dic1 = copy.copy(dic)
-    new_dic1[&quot;cpu&quot;][0] = 50
-    print(&quot;old:&quot;,dic)
-    print(&quot;浅拷贝:&quot;,new_dic1)
-    #返回结果：
-    #old: {&apos;disk&apos;: [80], &apos;cpu&apos;: [80], &apos;mem&apos;: [80]}
-    #浅拷贝: {&apos;disk&apos;: [80], &apos;cpu&apos;: [50], &apos;mem&apos;: [80]}
-
-    new_dic2 = copy.deepcopy(dic)
-    new_dic2[&quot;cpu&quot;][0] = 60
-    print(&quot;old:&quot;,dic)
-    print(&quot;深拷贝:&quot;,new_dic2)
-    #返回结果
-    # old: {&apos;mem&apos;: [80], &apos;cpu&apos;: [50], &apos;disk&apos;: [80]}
-    # 深拷贝: {&apos;mem&apos;: [80], &apos;cpu&apos;: [60], &apos;disk&apos;: [80]}
-</code></pre><h2 id="四、函数"><a href="#四、函数" class="headerlink" title="四、函数"></a>四、函数</h2><p>博客链接：<a href="http://www.cnblogs.com/songqingbo/p/5142957.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5142957.html</a></p>
-<pre><code>定义：
-
-    #!/usr/local/env python3
-    &apos;&apos;&apos;
-    Author:@南非波波
-    Blog:http://www.cnblogs.com/songqingbo/
-    E-mail:qingbo.song@gmail.com
-    &apos;&apos;&apos;
-    #定义函数，作用打印一个值
-    def num_print():
-        n = 456
-        n += 1
-        print(n)
-使用：
-
-    #函数调用
-    num_print()
-    #将f变量指向函数num_print，然后调用f()相当于调用num_print()
-    f = num_print
-    f()
-</code></pre><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><pre><code>形参：函数中一个变量，在函数执行前无意义，在函数调用时必须指定实际参数。
-实参：实际参数用户传递给所调用的函数的一个变量，其值赋值到函数中的形式参数，然后在函数中       作为变量参与函数执行
-默认参数：必须放在最后
-    def show(a1,a2,a3 = 5):
-        print(a1,a2,a3)
-    show(&quot;wu&quot;,&quot;ha&quot;)
-    #返回结果：wu ha 5
-
-指定参数：
-    def show(a1,a2):
-        print(a1,a2)
-    show(a2=52,a1=8)
-    #返回结果：8 52
-
-动态参数：
-    *arg --序列：自动转换成一个元组
-        def show(*arg):
-            print(arg,type(arg))
-        show(23,45,67)
-        #返回结果：(23, 45, 67) &lt;class &apos;tuple&apos;&gt;
-        #or
-        l = [23,45,67]
-        show(*l)
-        #返回结果：(23, 45, 67) &lt;class &apos;tuple&apos;&gt;
-
-    **arg --字典：自动转换成一个字典
-        #默认字典处理
-        def show(**arg):
-            print(arg,type(arg))
-        show(name1=&apos;swht&apos;,name2=&apos;shen&apos;)
-        #返回结果：{&apos;name1&apos;: &apos;swht&apos;, &apos;name2&apos;: &apos;shen&apos;} &lt;class &apos;dict&apos;&gt;
-        #or
-        d = {&quot;name1&quot;=&quot;swht&quot;,&quot;name2&quot;=&quot;shen&quot;}
-        show(**d)
-        #返回结果：{&apos;name1&apos;: &apos;swht&apos;, &apos;name2&apos;: &apos;shen&apos;} &lt;class &apos;dict&apos;&gt;
-
-    *arg，**kwarges --序列和字典
-        def show(*args,**kwargs):
-            print(args,type(args),&apos;\n&apos;,kwargs,type(kwargs))
-        show(23,45,67,82,name1=&apos;swht&apos;,name2=&apos;shen&apos;)
-        #返回结果：(23, 45, 67, 82) &lt;class &apos;tuple&apos;&gt; 
-                   {&apos;name2&apos;: &apos;shen&apos;, &apos;name1&apos;: &apos;swht&apos;} &lt;class &apos;dict&apos;&gt;        
-        注意：使用*arg，**kwarges组合参数，必须是*arg在前，**kwarges在后，否则系统报错；另外实参在输入的时候也应该是按照上述顺序。
-</code></pre><p><img src="http://i.imgur.com/NR71YzT.png" alt=""></p>
-<p><strong>拓展：</strong></p>
-<pre><code>def show(*args,**kwargs):
-    print(args,type(args),&apos;\n&apos;,kwargs,type(kwargs))
-l = [23,45,67,82]
-d = {&apos;name1&apos;:&apos;swht&apos;,&apos;name2&apos;:&apos;shen&apos;}
-show(l,d)
-#返回结果：
-([23, 45, 67, 82], {&apos;name1&apos;: &apos;swht&apos;, &apos;name2&apos;: &apos;shen&apos;}) &lt;class &apos;tuple&apos;&gt; 
-{} &lt;class &apos;dict&apos;&gt;
-
-def show(*args,**kwargs):
-    print(args,type(args),&apos;\n&apos;,kwargs,type(kwargs))
-l = [23,45,67,82]
-d = {&apos;name1&apos;:&apos;swht&apos;,&apos;name2&apos;:&apos;shen&apos;}
-show(*l,**d)
-#返回结果：
-(23, 45, 67, 82) &lt;class &apos;tuple&apos;&gt; 
-{&apos;name2&apos;: &apos;shen&apos;, &apos;name1&apos;: &apos;swht&apos;} &lt;class &apos;dict&apos;&gt;
-
-总结：
-    函数可以传递元组、列表、字典等类型的值，由于带&apos;*&apos;、&apos;**&apos;的参数允许传入多个参数，所以在调用函数的时候默认将传入的参数识别到第一个*args。为了指定将参数传给某个args，这里需要对实参进行加&apos;*&apos;进行标识。
-
-#list
-show = &quot;Welcome to {0},there have too many {1}!&quot;
-# reault = show.format(&quot;China&quot;,&quot;Foods&quot;)
-l = [&quot;China&quot;,&quot;Foods&quot;]
-reault = show.format(*l)
-print(reault)
-#返回结果：Welcome to China,there have too many Foods!
-
-#dict
-show = &quot;{name} is a {acter}!&quot;
-# reault = show.format(name=&apos;swht&apos;,acter=&apos;teacher&apos;)
-d = {&apos;name&apos;:&apos;swht&apos;,&apos;acter&apos;:&apos;teacher&apos;}
-reault = show.format(**d)
-print(reault)
-#返回结果：swht is a teacher!
-</code></pre><h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p><img src="http://i.imgur.com/ICv89lK.jpg" alt=""></p>
-<pre><code>    功能：简单函数的表示方式
-    func = lambda a:a+1
-    函数名  关键字 形参：函数体
-    创建形式参数a，函数内容为a+1,并将结果return
-测试代码：
-    f = lambda x:x + 1
-    ret = f(4)
-    print(ret)
-</code></pre><h3 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h3><p><img src="http://i.imgur.com/5so1j4e.png" alt=""></p>
-<p><strong>abs()</strong></p>
-<pre><code>功能：取绝对值
-&gt;&gt;&gt; abs(5)
-5
-&gt;&gt;&gt; abs(-85)
-85
-</code></pre><p><strong>all(iterable)</strong></p>
-<pre><code>功能：iterable所有的元素都为真,返回True，否则返回False
-备注：为False的元素：0、&apos;&apos;、False或者空，其他的为True
-参数：iterable为可迭代对象
-all的功能可以使用下面的函数进行理解：
-    def all(iterable):
-    for element in iterable:
-        if not element:
-            return False
-    return True
-测试代码：
-    all(&apos;test,hh&apos;)
-    返回值为：True
-    &gt;&gt;&gt; all([&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;])  #列表list，元素都不为空或0
-    True
-    &gt;&gt;&gt; all([&apos;a&apos;, &apos;b&apos;, &apos;&apos;, &apos;d&apos;])  #列表list，存在一个为空的元素
-    False
-    &gt;&gt;&gt; all([0, 1，2, 3])  #列表list，存在一个为0的元素
-    False              
-    &gt;&gt;&gt; all((&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;))  #元组tuple，元素都不为空或0
-    True
-    &gt;&gt;&gt; all((&apos;a&apos;, &apos;b&apos;, &apos;&apos;, &apos;d&apos;))  #元组tuple，存在一个为空的元素
-    False
-    &gt;&gt;&gt; all((0, 1，2, 3))  #元组tuple，存在一个为0的元素
-    False
-    &gt;&gt;&gt; all([]) # 空列表
-    True
-    &gt;&gt;&gt; all(()) # 空元组
-    True    
-</code></pre><p><strong>any(iterable)</strong></p>
-<pre><code>功能：iterable中元素只要有一个元素为真，则返回True,否则返回False(即iterable中所有的元素为假才会返回False)
-参数：iterable为可迭代对象
-any的功能可以使用下面的函数进行理解：
-def any(iterable):
-   for element in iterable:
-       if  element:
-           return False
-   return True
-测试代码：
-    &gt;&gt;&gt; any([0,1,2,3]) #列表中仅有一个元素0为假，返回True
-    True
-    &gt;&gt;&gt; any([&apos; &apos;, &apos;  &apos;, &apos;&apos;, 0])
-    True
-    &gt;&gt;&gt; any([0]) #列表中元素只有一个元素0，返回False
-    False
-    &gt;&gt;&gt; any([0,&apos;&apos;])
-    False
-    &gt;&gt;&gt; any([0,&apos;&apos;,4])
-    True    
-    &gt;&gt;&gt; any((&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;))  #元组tuple，元素都不为空或0
-    True
-    &gt;&gt;&gt; any((&apos;a&apos;, &apos;b&apos;, &apos;&apos;, &apos;d&apos;))  #元组tuple，存在一个为空的元素
-    True
-    &gt;&gt;&gt; any((0, &apos;&apos;, False))  #元组tuple，元素全为0,&apos;&apos;,false
-    False
-    &gt;&gt;&gt; any([]) # 空列表
-    False
-    &gt;&gt;&gt; any(()) # 空元组
-    False
-</code></pre><p><strong>map(iterable)</strong></p>
-<pre><code>功能：对可迭代函数&apos;iterable&apos;中的每一个元素应用‘function’方法，将结果作为list返回
-参考链接：http://segmentfault.com/a/1190000000322433
-测试代码：
-    def add_100(num):
-        return num + 100
-    li1 = [25,26,27]
-    ret = list(map(add_100,li1))
-    print(ret)
-    返回结果：[125, 126, 127]
-</code></pre><p><img src="http://i.imgur.com/DVA1NXt.jpg" alt=""><br><img src="http://i.imgur.com/YqzknXX.jpg" alt=""></p>
-<pre><code>python2.7                                python3.5
-两个版本的对比，真是让人感到诧异，python3上执行map明明已经获取了值，但非得加个list进行展示，超乎寻常。
-
-def abc(a,b,c):
-    return a*1000 + b*100 + c*10
-
-list1 = [11,22,33]
-list2 = [44,55,66]
-list3 = [77,88,99]
-ret = list(map(abc,list1,list2,list3))
-print(ret) #返回结果 [16170, 28380, 40590]
-</code></pre><p><strong>ascii(object)</strong></p>
-<pre><code>功能：该函数与python2中的repr()函数一样，返回一个可打印的对象字符串。当遇到非ascii码时，就会输出\x，\u或\U等字符来表示。例如：ascii(4) = int.__repr__(4) = repr(4)等号两边的方式是对等的。
-测试代码：
-    &gt;&gt;&gt; ascii(54)
-    &apos;54&apos;
-    &gt;&gt;&gt; ascii(&apos;o&apos;)
-    &quot;&apos;o&apos;&quot;
-    &gt;&gt;&gt; type(ascii(54))
-    &lt;class &apos;str&apos;&gt;    
-    &gt;&gt;&gt; print(ascii(10), ascii(9000000), ascii(&apos;b\31&apos;), ascii(&apos;0x\1000&apos;))
-        10 9000000 &apos;b\x19&apos; &apos;0x@0&apos;
-</code></pre><p><strong>bin()</strong></p>
-<pre><code>功能：将整数转换为二进制字符串
-&gt;&gt;&gt; bin(56)
-&apos;0b111000&apos;
-&gt;&gt;&gt; bin(100)
-&apos;0b1100100&apos;
-注意：如果bin()函数的实际参数不是一个整数,则该该实参(由类创建的对象)返回值必须是整数型
-如：
-&gt;&gt;&gt; class myType:
-...     def __index__(self):
-...             return 56
-...
-&gt;&gt;&gt; myvar = myType()
-&gt;&gt;&gt; bin(myvar)
-&apos;0b111000&apos;
-</code></pre><p><strong>bool()</strong></p>
-<pre><code>功能：获取对象的bool值
-bool(0) #False
-bool(5) #True
-bool(&apos;&apos;) #False
-#为假的元素：0 none 空列表 空字典 空元组 空字符串
-</code></pre><p><strong>bytearray()</strong></p>
-<pre><code>功能：转成字符字典。Bytearray类型是一个可变的序列，并且序列中的元素的取值范围为 [0 ,255]。
-&gt;&gt;&gt; a = bytearray([5,8])
-&gt;&gt;&gt; a[0]
-5
-&gt;&gt;&gt; a[1]
-8
-&gt;&gt;&gt; a
-bytearray(b&apos;\x05\x08&apos;)
-</code></pre><p><strong>bytes()</strong></p>
-<pre><code>    功能：返回一个新的数组对象，这个数组不能对数组元素进行修改，每个元素的取值范围为[0 ,255]
-    测试代码：
-    bytes(iterable_of_ints) 
-        &gt;&gt;&gt; b = bytes((5,8,6,8))
-        &gt;&gt;&gt; print(b)
-        b&apos;\x05\x08\x06\x08&apos;
-    bytes(string, encoding[, errors])     
-        &gt;&gt;&gt; bytes(&apos;sdjsd&apos;,encoding=&apos;utf-8&apos;)
-        b&apos;sdjsd&apos;
-    bytes(bytes_or_buffer)  ？
-    bytes(int) 
-        &gt;&gt;&gt; bytes(5)
-        b&apos;\x00\x00\x00\x00\x00&apos;
-    bytes()  
-        &gt;&gt;&gt; bytes()
-        b&apos;&apos;
-
-总结：（参考：http://blog.csdn.net/caimouse/article/details/40860827）
-    bytes函数与bytearray函数主要区别是bytes函数产生的对象的元素不能修改，而bytearray函数产生的对象的元素可以修改。因此，除了可修改的对象函数跟bytearray函数不一样之外，其它使用方法全部是相同的。最后它的参数定义方式也与bytearray函数是一样的。
-</code></pre><p><strong>callable()</strong></p>
-<pre><code>功能：判断函数或者对象是否可执行
-&gt;&gt;&gt; callable(5)
-False
-&gt;&gt;&gt; callable(0)
-False
-&gt;&gt;&gt; callable(&apos;&apos;)
-False
-&gt;&gt;&gt; callable(int())
-False
-&gt;&gt;&gt; callable(lambda x:x+1)
-True
-</code></pre><p><strong>chr()</strong></p>
-<pre><code>功能：参数为一个整型数字，返回值对应ASCII码的字符
-&gt;&gt;&gt; chr(5)
-&apos;\x05&apos;
-&gt;&gt;&gt; chr(115)
-&apos;s&apos;
-&gt;&gt;&gt; chr(56)
-&apos;8&apos;
-</code></pre><p><strong>ord()</strong> </p>
-<pre><code>功能：返回一个字符的ASCII码值
-&gt;&gt;&gt; ord(&apos;s&apos;)
-115
-&gt;&gt;&gt; ord(&apos;5&apos;)
-53
-</code></pre><p><strong>classmethod()</strong></p>
-<pre><code>功能：classmethod是用来指定一个类的方法为类方法，没有此参数指定的类的方法为实例方法
-    &gt;&gt;&gt; class C: #定义一个类
-    ...     @classmethod  #声明为类方法，不经过实例化就可以直接调用
-    ...     def f(self): #定义一个函数（类的方法）
-    ...             print &quot;This is a class method&quot;
-    ...
-    &gt;&gt;&gt; C.f()  #通过类调用函数
-    This is a class method
-    &gt;&gt;&gt; c = C()
-    &gt;&gt;&gt; c.f()
-    This is a class method
-    &gt;&gt;&gt; class D:
-    ...     def f(self):
-    ...             print &quot; This is not a class method &quot;
-    ...
-    &gt;&gt;&gt; D.f()  #没有经过@classmethod 声明的类方法，必须经过实例化才能被调用
-    Traceback (most recent call last):
-      File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-    TypeError: unbound method f() must be called with D instance as first argument (got nothing instead)
-    &gt;&gt;&gt; d = D()
-    &gt;&gt;&gt; d.f()
-    This is not a class method
-</code></pre><p><strong>staticmethod()</strong></p>
-<pre><code>    功能：类的静态方法，只能在类内部使用。经过静态类方法声明的类，在调用的时候不需要进行实例化
-
-总结：对比classmethod()和staticmethod()
-
-    静态方法：@staticmethod()
-        class Foo(object):
-            str = &quot;I&apos;m a static method.&quot;
-            def bar():
-                print(Foo.str)
-            bar = staticmethod(bar)
-
-        Foo.bar()
-    返回结果：I&apos;m a static method. 
-
-    类方法：@classmethod()
-        class Foo(object):
-            str = &quot;I&apos;m a static method.&quot;
-            def bar(cls):
-                print(cls.str)
-            bar = classmethod(bar)
-        Foo.bar()
-    返回结果：I&apos;m a static method. 
-较简单的操作代码：
-
-    静态方法：@staticmethod()
-        class Foo:
-            str = &quot;I&apos;m a static method.&quot;
-            @staticmethod
-            def bar():
-                print(Foo.str)
-        Foo.bar() 
-    返回结果：I&apos;m a static method. 
-
-    类方法：@classmethod()
-        class Foo:
-            str = &quot;I&apos;m a static method.&quot;
-            @classmethod
-            def bar(cls):
-                print(cls.str )
-        Foo.bar()
-    返回结果：I&apos;m a static method.
-</code></pre><p><strong>compile()、eval()、exec()</strong></p>
-<pre><code>功能：compile语句是从type类型中将str里面的语句创建成代码对象。
-    compile语句的目的是提供一次性的字节码编译，就不用在以后的每次调用中重新进行编译了
-语法：compile( str, file, type )
-    eveal_code = compile(&apos;1+2&apos;,&apos;&apos;,&apos;eval&apos;)
-    &gt;&gt;&gt;eveal_code
-    返回结果：&lt;code object &lt;module&gt; at 0x01555D40, file &quot;&quot;, line 1&gt;
-    &gt;&gt;&gt;eval(eveal_code)
-    返回结果：3
-
-    single_code = compile( &apos;print(&quot;apicloud.com&quot;)&apos;, &apos;&apos;, &apos;single&apos; )
-    &gt;&gt;&gt; single_code
-    返回结果：&lt;code object &lt;module&gt; at 0x01555B10, file &quot;&quot;, line 1&gt;
-    &gt;&gt;&gt; exec(single_code)
-    返回结果：apicloud.com
-</code></pre><p><strong>complex()</strong></p>
-<pre><code>功能：创建一个值为real + imag * j的复数或者转化一个字符串或数为复数。如果第一个参数为字符串，则不需要指定第二个参数。
-参数real: int, long, float或字符串；
-参数imag: int, long, float
-&gt;&gt;&gt;complex()
-0j
-#数字
-&gt;&gt;&gt; complex(1,2)
-(1+2j)
-#当做字符串处理
-&gt;&gt;&gt; complex(&apos;1&apos;)
-(1+0j)
-#注意：这个地方在“+”号两边不能有空格，也就是不能写成&quot;1 + 2j&quot;，应该是&quot;1+2j&quot;，否则会报错
-&gt;&gt;&gt; complex(&apos;1+2j&apos;)
-(1+2j)
-</code></pre><p><strong>delattr()</strong></p>
-<pre><code>参考链接：http://www.cnblogs.com/zhangjing0502/archive/2012/05/16/2503702.html
-功能：删除object对象名为name的属性
-语法：delattr(object,name) 
-参数object：对象。
-参数name：属性名称字符串。
-
-&gt;&gt;&gt; class Person:
-...     def __init__(self, name, age):
-...             self.name = name
-...             self.age = age
-...
-&gt;&gt;&gt; tom = Person(&quot;Tom&quot;, 35)
-&gt;&gt;&gt; dir(tom)
-[&apos;__doc__&apos;, &apos;__init__&apos;, &apos;__module__&apos;, &apos;age&apos;, &apos;name&apos;]
-&gt;&gt;&gt; delattr(tom, &quot;age&quot;)
-&gt;&gt;&gt; dir(tom)
-[&apos;__doc__&apos;, &apos;__init__&apos;, &apos;__module__&apos;, &apos;name&apos;]
-</code></pre><p><strong>getattr()</strong></p>
-<pre><code>功能：用于返回一个对象属性，或者方法
-class A:   
-    def __init__(self):   
-        self.name = &apos;zhangjing&apos;  
-　　  #self.age=&apos;24&apos;
-    def method(self):   
-        print(&quot;method print&quot;)  
-
-Instance = A()   
-print(getattr(Instance , &apos;name&apos;, &apos;not find&apos;)) #如果Instance 对象中有属性name则打印self.name的值，否则打印&apos;not find&apos;
-print(getattr(Instance , &apos;age&apos;, &apos;not find&apos;))  #如果Instance 对象中有属性age则打印self.age的值，否则打印&apos;not find&apos;
-print(getattr(a, &apos;method&apos;, &apos;default&apos;))  
-#如果有方法method，否则打印其地址，否则打印default   
-print(getattr(a, &apos;method&apos;, &apos;default&apos;)()) 
-#如果有方法method，运行函数并打印None否则打印default
-
-li=[&quot;swht&quot;,&quot;shen&quot;]
-getattr(li,&quot;pop&quot;)
-返回结果：&lt;built-in method pop of list object at 0x01AFDA80&gt;
-</code></pre><p><strong>setattr()</strong>    </p>
-<pre><code>功能：参数是一个对象,一个字符串和一个任意值。字符串可能会列出一个现有的属性或一个新的属性。这个函数将值赋给属性的。该对象允许它提供。
-语法：setattr(object, name, value)    
-setattr(x,“foobar”,123)相当于x.foobar = 123
-</code></pre><p><strong>hasattr()</strong></p>
-<pre><code>功能：用于确定一个对象是否具有某个属性
-语法：hasattr(object, name) -&gt; bool
-    判断object中是否有name属性，返回一个布尔值
-li=[&quot;swht&quot;,&quot;shen&quot;]
-hasattr(li,&apos;append&apos;)
-返回结果：True
-</code></pre><p><strong>dict()</strong></p>
-<pre><code>功能：字典定义函数，可以创建一个字典，也可以将其他类型（列表、元组、字符串）转换成字典类型
-定义：
-    dict1 = dict(one = 1, two = 2, a = 3)
-    prin（dict1)
-    {&apos;one&apos;: 1, &apos;a&apos;: 3, &apos;two&apos;: 2}
-类型转换：
-    list1 = [&apos;name&apos;,&apos;age&apos;,]
-    list2 = [&apos;swht&apos;,18]
-    dict(zip(list1,list2))
-    返回结果：{&apos;name&apos;: &apos;swht&apos;, &apos;age&apos;: 18}
-
-    new_list= [[&apos;key1&apos;,&apos;value1&apos;],[&apos;key2&apos;,&apos;value2&apos;],[&apos;key3&apos;,&apos;value3&apos;]]
-    dict(new_list)
-    返回结果：{&apos;key3&apos;: &apos;value3&apos;, &apos;key1&apos;: &apos;value1&apos;, &apos;key2&apos;: &apos;value2&apos;}
-</code></pre><p><strong>dir()</strong></p>
-<pre><code>功能：查看函数或模块内的操作方法都有什么，输出的是方法列表。
-如dir(int)可以直接获取int的所有方法，返回的类型是一个列表
-</code></pre><p><strong>divmod()</strong></p>
-<pre><code>功能：divmod(a,b)方法返回的是a//b（除法取整）以及a对b的余数
-&gt;&gt;&gt; divmod(2,5)
-(0, 2)
-&gt;&gt;&gt; divmod(12,5)
-(2, 2)
-</code></pre><p><strong>enumerate()</strong></p>
-<pre><code>功能：获取字典的索引值并指定开始值
-li = [&apos;swht&apos;,&apos;shen&apos;,&apos;test&apos;]
-for i,k in enumerate(li,3): #遍历列表，索引值从3开始
-    print(i,k)
-#返回结果
-3 swht
-4 shen
-5 test
-</code></pre><p><strong>filter()</strong></p>
-<pre><code>参考链接：http://www.cnblogs.com/fangshenghui/p/3445469.html
-功能：filter(function, sequence)对于队列中的item依次被function处理
-def fun(item):
-    if item != 4:
-        return item
-list1 = [5,4,8]
-print(list(filter(fun,list1)))
-返回结果：[4, 8]
-总结：相当于一个过滤函数
-</code></pre><p><strong>frozenset()</strong></p>
-<pre><code>参考：http://blog.csdn.net/caimouse/article/details/42042051
-功能：本函数是返回一个冻结的集合
-l = [1, 2, 3, 4, 5, 6, 6, 7, 8, 8, 9]  
-print(len(l), l)  
-set = frozenset(l)  
-print(len(set), set) 
-返回结果：11 [1, 2, 3, 4, 5, 6, 6, 7, 8, 8, 9]
-         9 frozenset({1, 2, 3, 4, 5, 6, 7, 8, 9})
-总结：所谓冻结就是这个集合不能再添加或删除任何集合里的元素。因此与集合set的区别，就是set是可以添加或删除元素，而frozenset不行。frozenset的主要作用就是速度快，它是使用hash算法实现。参数iterable是表示可迭代的对象，比如列表、字典、元组等等
-</code></pre><p><strong>locals()、globals()</strong></p>
-<pre><code>功能：基于字典的访问局部和全局变量的方式
-locals 是只读的，globals 不是
-关于名字空间的相关说明请移步参考：http://blog.csdn.net/scelong/article/details/6977867
-</code></pre><p><strong>hash()</strong></p>
-<pre><code>功能：输出对象的hash值
-&gt;&gt;&gt; hash(8)
-8
-&gt;&gt;&gt; hash(&apos;sd&apos;)
--584109415
-&gt;&gt;&gt; hash(&apos;99&apos;)
--1356598271
-&gt;&gt;&gt; hash(&apos;asds&apos;)
--1179125483
-</code></pre><p><strong>help()</strong></p>
-<pre><code>功能：查看函数或模块用途的详细说明
-使用方法：help(object)
-</code></pre><p><strong>类型转换</strong></p>
-<pre><code>int(x [,base ])         将x转换为一个整数    
-long(x [,base ])        将x转换为一个长整数    
-float(x )               将x转换到一个浮点数    
-complex(real [,imag ])  创建一个复数    
-str(x )                 将对象 x 转换为字符串    
-repr(x )                将对象 x 转换为表达式字符串    
-eval(str )              用来计算在字符串中的有效Python表达式,并返回一个对象    
-tuple(s )               将序列 s 转换为一个元组    
-list(s )                将序列 s 转换为一个列表    
-chr(x )                 将一个整数转换为一个字符    
-unichr(x )              将一个整数转换为Unicode字符    
-ord(x )                 将一个字符转换为它的整数值    
-hex(x )                 将一个整数转换为一个十六进制字符串    
-oct(x )                 将一个整数转换为一个八进制字符串
-</code></pre><p><strong>id()</strong></p>
-<pre><code>功能：获取对象的内存地址
-id(object)
-</code></pre><p><strong>input()</strong></p>
-<pre><code>功能:获取用户的输入信息
-input(&quot;请输入你的名字:&quot;)
-&gt;&gt;&gt;请输入你的名字:swht
-swht
-</code></pre><p><strong>isinstance()</strong></p>
-<pre><code>功能：判断对象类型
-isinstance(5,int)
-返回结果:True
-</code></pre><p><strong>issubclass()</strong></p>
-<pre><code>功能：本函数用来判断类参数class是否是类型参数classinfo的子类
-class Line:  
-    pass  
-class RedLine(Line):  
-    pass  
-
-class Rect:  
-    pass  
-
-print(issubclass(RedLine, Line))  #返回True  Redline是Line的子类
-print(issubclass(Rect, Line))  #返回False  
-</code></pre><p><strong>iter()</strong></p>
-<pre><code>功能：创建一个迭代器
-for i in iter((1,2,4,5,6,7,)):
-    print(i)
-返回结果：1 2 4 5 6 7 #循环遍历元组
-</code></pre><p><strong>len()</strong></p>
-<pre><code>功能：获取字符串的长度
-len(str)
-</code></pre><p><strong>max()</strong></p>
-<pre><code>功能：返回所有整数中最大的一个数
-max(5,6,8,7) 
-返回结果：8
-</code></pre><p><strong>memoryview()</strong></p>
-<pre><code>功能：本函数是返回对象obj的内存查看对象
-&gt;&gt;&gt; v = memoryview(b&apos;abc123&apos;)
-&gt;&gt;&gt; print(v[1])
-98
-&gt;&gt;&gt; print(v[0])
-97
-&gt;&gt;&gt; print(v[2])
-import struct  
-buf = struct.pack(&quot;i&quot;*12, *list(range(12)))  
-x = memoryview(buf)  
-y = x.cast(&apos;i&apos;, shape=[2,2,3])  
-print(y.tolist()) 
-返回结果：[[[0, 1, 2], [3, 4, 5]], [[6, 7, 8], [9, 10, 11]]]
-
-总结：所谓内存查看对象，就是对象符合缓冲区协议的对象，为了给别的代码使用缓冲区里的数据，而不必拷贝，就可以直接使用。参考链接：http://blog.csdn.net/caimouse/article/details/43083627
-</code></pre><p><strong>sorted()</strong></p>
-<pre><code>功能：排序
-sorted([5, 2, 3, 1, 4])
-[1, 2, 3, 4, 5]
-</code></pre><p><strong>sum()</strong></p>
-<pre><code>功能：返回整数数字的和
-sum([1,5,8]) #参数是一个list
-返回结果：14
-</code></pre><p><strong>super()</strong></p>
-<pre><code>功能：用来解决多重继承问题
-</code></pre><p><strong>type()</strong></p>
-<pre><code>功能：获取对象的类型
-type(object)
-</code></pre><p><strong>vars()</strong></p>
-<pre><code>功能：本函数是实现返回对象object的属性和属性值的字典对象
-&gt;&gt;&gt; class Foo:
-...     a = 1
-...
-&gt;&gt;&gt; print(vars(Foo))
-{&apos;a&apos;: 1, &apos;__dict__&apos;: &lt;attribute &apos;__dict__&apos; of &apos;Foo&apos; objects&gt;, &apos;__doc__&apos;: None, &apos;__weakref__&apos;: &lt;attribute &apos;__weakref__&apos; of &apos;Foo&apos; objects&gt;, &apos;__module__&apos;: &apos;__main__&apos;}
-
-总结：如果默认不输入参数，就打印当前调用位置的属性和属性值，相当于locals()的功能。如果有参数输入，就只打印这个参数相应的属性和属性值。参考：http://blog.csdn.net/caimouse/article/details/46489079
-</code></pre><p><strong>zip()</strong></p>
-<pre><code>功能：zip函数接受任意多个（包括0个和1个）序列作为参数，返回一个tuple列表
-&gt;&gt;&gt; x = [1,2,3,]
-&gt;&gt;&gt; y = [4,5,6,]
-&gt;&gt;&gt; z = [7,8,9,]
-&gt;&gt;&gt; xyz = zip(x,y,z)
-&gt;&gt;&gt; print(xyz)
-&lt;zip object at 0x00FBD968&gt;
-&gt;&gt;&gt; print(list(xyz))
-[(1, 4, 7), (2, 5, 8), (3, 6, 9)]
-</code></pre><p>random</p>
-<pre><code>功能:产生随机数
-import random
-random.randint(1,99) #从1-99中产生随机数
-</code></pre><p><strong>import</strong>()</p>
-<pre><code>功能：查看模块所在的位置
- __import__(&apos;random&apos;) #参数为一个字符串
-&lt;module &apos;random&apos; from &apos;D:\\Program Files\\Python\\Python35\\python35.zip\\random.pyc&apos;&gt;
-</code></pre><h3 id="open-函数"><a href="#open-函数" class="headerlink" title="open()函数"></a>open()函数</h3><p>博客参考：<a href="http://www.cnblogs.com/songqingbo/p/5102618.html" target="_blank" rel="external">http://www.cnblogs.com/songqingbo/p/5102618.html</a></p>
-<p><strong>read()</strong></p>
-<pre><code>功能：读取文件中的所有内容，返回的类型是字节
-</code></pre><p><strong>readline()</strong></p>
-<pre><code>功能：读取文件中的一行数据。返回的类型是字节
-</code></pre><p><strong>readlines()</strong></p>
-<pre><code>功能：读取文件中的所有内容，返回的类型是list
-</code></pre><p><strong>tell()</strong> </p>
-<pre><code>功能：查看当前指针位置，返回值类型为整数
-</code></pre><p><strong>seek()</strong></p>
-<pre><code>功能：指定当前指针位置
-
-
-files = open(&apos;test.txt&apos;,&apos;r&apos;,encoding=&apos;utf-8&apos;)
-files.seek(5)
-print(files.read()) #读取指为直接切割针5后面的所有字符
-files.truncate() #获取指针5之前的所有字符然后写到原来的文件（或者可以理解）
-files.close()
-</code></pre><p><strong>扩展</strong></p>
-<pre><code>读二进制文件：
-
-    input = open(&apos;data&apos;,&apos;rb&apos;)
-
-读取所有内容：
-
-    f = open(&apos;test.txt&apos;,&apos;r&apos;)
-    try:
-        all_txt_view = f.read()
-    finally:
-        f.close()
-
-读取固定字节：
-
-    f = open(&apos;test.txt&apos;,&apos;rb&apos;)
-    try:
-        while True:
-            chunk = f.read(100)
-            if not chunk:
-                break
-            pass
-    finally:
-        f.close()
-
-读每行：
-
-    list_of_all_the_lines = f.readlines()
-
-如果文件是文本文件，还可以直接遍历文件对象获取每行：
-
-    for line in f:
-        print(line)
-
-写文件写文本文件
-
-    output = open(&apos;data&apos;,&apos;w&apos;)
-
-写入多行：
-
-    f.writeline(list_of_text_string)
-</code></pre><h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><pre><code>作业连接：http://www.cnblogs.com/wupeiqi/articles/4950799.html
-1. 用户输入一个字符串，将其转换成字典 使用json
-2. 增加一条记录
-3. （可选）删除一条
-4. （可选）线上文件修改
-
-
-global       
-        log 127.0.0.1 local2
-        daemon
-        maxconn 256
-        log 127.0.0.1 local2 info
-defaults
-        log global
-        mode http
-        timeout connect 5000ms
-        timeout client 50000ms
-        timeout server 50000ms
-        option  dontlognull
-
-listen stats :8888
-        stats enable
-        stats uri       /admin
-        stats auth      admin:1234
-
-frontend oldboy.org
-        bind 0.0.0.0:80
-        option httplog
-        option httpclose
-        option  forwardfor
-        log global
-        acl www hdr_reg(host) -i www.oldboy.org
-        use_backend www.oldboy.org if www
-
-backend test.oldboy.org
-        server 100.1.7.9 100.1.7.9 weight 20 maxconn 3000
-        #server 100.1.7.9 100.1.7.999 weight 20 maxconn 3000
-
-
-backend buy.oldboy.org
-        server 100.1.7.90 100.1.7.90 weight 20 maxconn 3000
-
-字典：        
-{&quot;backend&quot;: &quot;test.oldboy.org&quot;,
- &quot;record&quot;:{
-        &quot;server&quot;: &quot;100.1.7.999&quot;,
-        &quot;weight&quot;: 20,
-        &quot;maxconn&quot;: 30
-  }
-}
 </code></pre>
       
     </div>
