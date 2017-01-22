@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.songqingbo.cn/"/>
-  <updated>2016-12-29T04:00:51.830Z</updated>
+  <updated>2017-01-14T06:47:16.268Z</updated>
   <id>http://blog.songqingbo.cn/</id>
   
   <author>
@@ -14,6 +14,110 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2017-01-14-Nodejs全栈开发之路-nodejs-http-post请求</title>
+    <link href="http://blog.songqingbo.cn/2017/01/14/2017-01-14-Nodejs%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF-nodejs-http-post%E8%AF%B7%E6%B1%82/"/>
+    <id>http://blog.songqingbo.cn/2017/01/14/2017-01-14-Nodejs全栈开发之路-nodejs-http-post请求/</id>
+    <published>2017-01-14T03:50:50.000Z</published>
+    <updated>2017-01-14T06:47:16.268Z</updated>
+    
+    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;h3 id=&quot;http&quot;&gt;&lt;a href=&quot;#http&quot; class=&quot;headerlink&quot; title=&quot;http&quot;&gt;&lt;/a&gt;http&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/OHtEUi6.jpg&quot; alt=&quot;URl&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;serve.js&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;var http = require(&amp;apos;http&amp;apos;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;var fs = require(&amp;apos;fs&amp;apos;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;http.createServer(function (request, response) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   if(request.url == &amp;apos;/&amp;apos;)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       fs.createReadStream(&amp;apos;./login.html&amp;apos;).pipe(response);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   &amp;#125;else if(request.url == &amp;apos;/login&amp;apos;)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       var str = &amp;apos;&amp;apos;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       var buffers = [];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       request.on(&amp;apos;data&amp;apos;,function (data) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;           buffers.push(data);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;           console.log(str);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       &amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       request.on(&amp;apos;end&amp;apos;,function () &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;           var result = Buffer.concat(buffers);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;           response.end(buffers.toString());&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       &amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   &amp;#125;else&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       response.end(&amp;apos;404&amp;apos;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;).listen(8000);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;console.log(&amp;apos;服务监听在8000端口&amp;apos;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;login.html&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;title&amp;gt;login&amp;lt;/title&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;form action=&amp;quot;/login&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    用户名 &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;username&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    密码 &amp;lt;input type=&amp;quot;password&amp;quot; name=&amp;quot;password&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;登录&amp;quot;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/form&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;ajax&quot;&gt;&lt;a href=&quot;#ajax&quot; class=&quot;headerlink&quot; title=&quot;ajax&quot;&gt;&lt;/a&gt;ajax&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;创建ajax对象&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;var XHR = new XMLHttpRequest();&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;打开请求&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;XHR.open(method,url,async,user,password);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;method    http方法，例如：post、get、put等,大小写不敏感&lt;/li&gt;
+&lt;li&gt;url       请求的url地址，可以为绝对地址也可以为相对地址&lt;/li&gt;
+&lt;li&gt;async     布尔型，指定此请求是否为异步方式，默认为true。如果为真，当状态改变时会调用onreadystatechange属性指定的回调函数&lt;/li&gt;
+&lt;li&gt;user      如果服务器需要验证，此处指定用户名，默认是undefined&lt;/li&gt;
+&lt;li&gt;password  验证信息中的密码部分，默认是undefined&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;注册回调监听&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;readyState XMLHttpRequest对象的状态&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;0(为初始化)   对象已建立，但是尚未初始化(尚未调用open方法)&lt;/li&gt;
+&lt;li&gt;1(初始化)     对象已建立，尚未调用send方法&lt;/li&gt;
+&lt;li&gt;2(发送数据)   send方法已调用，但是当前的状态及http头未知&lt;/li&gt;
+&lt;li&gt;3(数据传送中)  已接收部分数据，因为响应及http头不全，这时通过responseBody和responText获取部分数据会出现错误。&lt;/li&gt;
+&lt;li&gt;4(完成)       数据接收完成，此时可以通过responseBody和responText获取完整的回应数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;h3 id=&quot;http&quot;&gt;&lt;a href=&quot;#http&quot; class=&quot;headerlink&quot; title=&quot;http&quot;&gt;&lt;/a&gt;http&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/OHtEUi6.jpg&quot; 
+    
+    </summary>
+    
+    
+      <category term="Nodejs全栈开发之路" scheme="http://blog.songqingbo.cn/tags/Nodejs%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2017-01-14-Nodejs全栈开发之路-nodejs模块fs(可读流和可写流)</title>
+    <link href="http://blog.songqingbo.cn/2017/01/14/2017-01-14-Nodejs%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF-nodejs%E6%A8%A1%E5%9D%97fs(%E5%8F%AF%E8%AF%BB%E6%B5%81%E5%92%8C%E5%8F%AF%E5%86%99%E6%B5%81)/"/>
+    <id>http://blog.songqingbo.cn/2017/01/14/2017-01-14-Nodejs全栈开发之路-nodejs模块fs(可读流和可写流)/</id>
+    <published>2017-01-14T01:50:50.000Z</published>
+    <updated>2017-01-14T03:49:46.555Z</updated>
+    
+    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;h3 id=&quot;fs模块&quot;&gt;&lt;a href=&quot;#fs模块&quot; class=&quot;headerlink&quot; title=&quot;fs模块&quot;&gt;&lt;/a&gt;fs模块&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;可读流createReadStream&lt;/p&gt;
+&lt;p&gt;  可读流触发的事件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;data  绑定一个data事件监听器会将流切换成流动模式，数据会被尽可能的读出&lt;/li&gt;
+&lt;li&gt;end   该事件会在读完数据后触发&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;error 当数据接收时发生错误时触发&lt;/p&gt;
+&lt;p&gt;可读流的方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;setEncoding   指定编码&lt;/li&gt;
+&lt;li&gt;pause         通知对象停止触发data事件&lt;/li&gt;
+&lt;li&gt;resume        通知对象恢复触发事件&lt;/li&gt;
+&lt;li&gt;pipe          设置管道，将可读流里的内容导入到参数指定的可写流里&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;var fs = require(&amp;apos;fs&amp;apos;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;var rs = fs.createReadStream(&amp;apos;./README.md&amp;apos;,&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    flags:&amp;apos;r&amp;apos;,//表示打开文件进行读操作&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    // encoding:&amp;apos;utf8&amp;apos; //得到的数据是Buffer对象。指定编码输出&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    //下面两个参数可以进行截取读取，取值范围str[i] :start&amp;lt;= i &amp;lt;= end&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    start:1, //读取文件内容的起始位置&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    end:3   //读取文件内容的结束位置&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;rs.setEncoding(&amp;apos;utf8&amp;apos;);//或者可以在创建流之后进行指定编码类型&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;//流是EnventEmitter的子类&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;rs.on(&amp;apos;data&amp;apos;,function (data) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   console.log(data); //输出：&amp;lt;Buffer 23 32 30 31 36 31 32 6e 6f 64 65 0d 0a&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                     //输出:#201612node&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;//当读完文件的时候会触发end事件&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;rs.on(&amp;apos;end&amp;apos;,function () &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    console.log(&amp;apos;读完了!&amp;apos;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;//当读取文件出错的时候会监听到，输出相应的错误&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;rs.on(&amp;apos;error&amp;apos;,function (err) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    console.log(&amp;apos;出错了:&amp;apos;,err);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;var fs = require(&amp;apos;fs&amp;apos;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;var rs = fs.createReadStream(&amp;apos;./README.md&amp;apos;,&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    flags:&amp;apos;r&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    encoding:&amp;apos;utf8&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    highWaterMark:5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;rs.on(&amp;apos;data&amp;apos;,function (data) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    console.log(data);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    rs.pause();//暂停触发data事件&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;setTimeout(function () &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    rs.resume();//5秒钟之后继续触发data事件&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;,5000);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;rs.on(&amp;apos;end&amp;apos;,function () &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    console.log(&amp;apos;读取完毕!&amp;apos;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;rs.on(&amp;apos;error&amp;apos;,function (err) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    console.log(&amp;apos;读取数据出错:&amp;apos;,err);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;//输出:#2016&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;//12nod&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;可写流&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;var fs =require(&amp;apos;fs&amp;apos;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;function copy(src,dst) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    var rs = fs.createReadStream(src);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    var ws = fs.createWriteStream(dst);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    rs.on(&amp;apos;data&amp;apos;,function (data) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        var flag = ws.write(data);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        if(!flag)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            rs.pause();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    ws.on(&amp;apos;drain&amp;apos;,function () &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        rs.resume()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    rs.on(&amp;apos;end&amp;apos;,function () &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        ws.end();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    rs.on(&amp;apos;error&amp;apos;,function (err) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        console.log(err);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;copy(&amp;apos;1.txt&amp;apos;,&amp;apos;2.txt&amp;apos;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;//复制，同copy函数&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;var rs = fs.createReadStream(&amp;apos;./1.txt&amp;apos;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;var ws = fs.createWriteStream(&amp;apos;./3.txt&amp;apos;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;rs.pipe(ws);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Author:@南非波波&lt;/p&gt;
+&lt;h3 id=&quot;fs模块&quot;&gt;&lt;a href=&quot;#fs模块&quot; class=&quot;headerlink&quot; title=&quot;fs模块&quot;&gt;&lt;/a&gt;fs模块&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;可读流createReadStream&lt;/p&gt;
+&lt;p&gt;  可读流触
+    
+    </summary>
+    
+    
+      <category term="Nodejs全栈开发之路" scheme="http://blog.songqingbo.cn/tags/Nodejs%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>2016/12/29 持续交付-发布可靠软件的系统方法完整版</title>
@@ -1067,288 +1171,6 @@ ct ASC;
     
     
       <category term="nodejs开发书籍" scheme="http://blog.songqingbo.cn/tags/nodejs%E5%BC%80%E5%8F%91%E4%B9%A6%E7%B1%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python自动化开发 day17</title>
-    <link href="http://blog.songqingbo.cn/2016/05/14/s12-20160514-day17/"/>
-    <id>http://blog.songqingbo.cn/2016/05/14/s12-20160514-day17/</id>
-    <published>2016-05-14T07:30:00.000Z</published>
-    <updated>2016-07-05T10:37:26.015Z</updated>
-    
-    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
-&lt;p&gt;课程大纲：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/alex3714/articles/5474411.html&quot; title=&quot;常用算法设计&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/alex3714/articles/5474411.html&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;一、冒泡排序算法&quot;&gt;&lt;a href=&quot;#一、冒泡排序算法&quot; class=&quot;headerlink&quot; title=&quot;一、冒泡排序算法&quot;&gt;&lt;/a&gt;一、冒泡排序算法&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;#!/usr/local/env python3
-&amp;apos;&amp;apos;&amp;apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&amp;apos;&amp;apos;&amp;apos;
-import random,time
-#m冒泡排序
-
-def bubble_up1(array):
-    &amp;apos;&amp;apos;&amp;apos;
-    m冒泡排序算法
-    :param array:
-    :return: count: 6190862 time: 6.706383466720581
-    &amp;apos;&amp;apos;&amp;apos;
-    count = 0
-    for i in range(len(array)):
-        for j in range(len(array) - 1 - i):
-            if array[j] &amp;gt; array[j + 1]:
-                temp = array[j + 1]
-                array[j + 1] = array[j]
-                array[j] = temp
-                count += 1
-    print(&amp;quot;count:&amp;quot;, count)
-    print(&amp;quot;array:&amp;quot;, array)
-
-def bubble_up2(array):
-    &amp;apos;&amp;apos;&amp;apos;
-    m冒泡排序算法
-    :param array:
-    :return:count: 5000 time: 3.825218915939331
-    &amp;apos;&amp;apos;&amp;apos;
-    count = 0
-    for i in range(len(array)):
-        for j in range(len(array) - 1 - i):
-            big_temp = j
-            if array[big_temp] &amp;gt; array[j + 1]:
-                big_temp = j + 1
-        temp = array[big_temp]
-        array[i] = array[big_temp]
-        array[big_temp] = temp
-        count += 1
-    print(&amp;quot;count:&amp;quot;, count)
-    print(&amp;quot;array:&amp;quot;, array)
-
-
-if __name__ == &amp;apos;__main__&amp;apos;:
-    array = []
-    for i in range(5000):
-        array.append(random.randrange(1000))
-
-    time_start = time.time()
-    bubble_up2(array)
-    time_end = time.time()
-    #
-    print(array[0:100])
-    print(&amp;quot;time:&amp;quot;,time_end - time_start)
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;二、-选择排序&quot;&gt;&lt;a href=&quot;#二、-选择排序&quot; class=&quot;headerlink&quot; title=&quot;二、 选择排序&quot;&gt;&lt;/a&gt;二、 选择排序&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;def select1(array):
-    &amp;apos;&amp;apos;&amp;apos;
-    选择排序算法v1
-    :param array:
-    :return:count: 1996750 time: 3.2961885929107666
-    &amp;apos;&amp;apos;&amp;apos;
-    count = 0
-    for i in range(len(array)):
-        for j in range(i,len(array)):
-            if array[i] &amp;gt; array[j]:
-                temp = array[j]
-                array[j] = array[i]
-                array[i] = temp
-                count += 1
-    print(&amp;quot;count:&amp;quot;,count)
-    print(&amp;quot;array:&amp;quot;,array)
-
-def select2(array):
-    &amp;apos;&amp;apos;&amp;apos;
-    选择排序算法v2
-    :param array:
-    :return:count: 5000 time: 2.4801418781280518
-    &amp;apos;&amp;apos;&amp;apos;
-    count = 0
-    for i in range(len(array)):
-        smallest_index = i
-        for j in range(i,len(array)):
-            if array[smallest_index] &amp;gt; array[j]:
-                smallest_index = j
-        temp = array[smallest_index]
-        array[smallest_index] = array[i]
-        array[i] = temp
-        count += 1
-    print(&amp;quot;count:&amp;quot;,count)
-    print(&amp;quot;array:&amp;quot;,array)
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;三、直接插入排序算法&quot;&gt;&lt;a href=&quot;#三、直接插入排序算法&quot; class=&quot;headerlink&quot; title=&quot;三、直接插入排序算法&quot;&gt;&lt;/a&gt;三、直接插入排序算法&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;def insert1(array):
-    &amp;apos;&amp;apos;&amp;apos;
-    插入排序算法
-    :param array:
-    :return: count: 4999 time: 3.685210704803467
-    &amp;apos;&amp;apos;&amp;apos;
-    count = 0
-    for index in range(1, len(array)):
-        current_val = array[index]  # 先记下来每次大循环走到的第几个元素的值
-        position = index
-
-        while position &amp;gt; 0 and array[
-                    position - 1] &amp;gt; current_val:  # 当前元素的左边的紧靠的元素比它大,要把左边的元素一个一个的往右移一位,给当前这个值插入到左边挪一个位置出来
-            array[position] = array[position - 1]  # 把左边的一个元素往右移一位
-            position -= 1  # 只一次左移只能把当前元素一个位置 ,还得继续左移只到此元素放到排序好的列表的适当位置 为止
-
-        array[position] = current_val  # 已经找到了左边排序好的列表里不小于current_val的元素的位置,把current_val放在这里
-        count += 1
-    print(&amp;quot;count:&amp;quot;, count)
-    print(array)
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;四、快速排序&quot;&gt;&lt;a href=&quot;#四、快速排序&quot; class=&quot;headerlink&quot; title=&quot;四、快速排序&quot;&gt;&lt;/a&gt;四、快速排序&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;def quick_sort(array,start,end):
-    &amp;apos;&amp;apos;&amp;apos;
-    快速排序算法
-    :param array:
-    :param start:
-    :param end:
-    :return:time: 0.03600192070007324
-    &amp;apos;&amp;apos;&amp;apos;
-    if start &amp;gt;= end:
-        return
-    k = array[start]
-    left_flag = start
-    right_flag = end
-    while left_flag &amp;lt; right_flag:
-        while array[right_flag] &amp;gt; k:
-            right_flag -= 1
-        temp = array[right_flag]
-        array[left_flag] = array[right_flag]
-        array[right_flag] = temp
-
-        while array[left_flag] &amp;lt;= k:
-            left_flag += 1
-        temp = array[left_flag]
-        array[left_flag] = array[right_flag]
-        array[right_flag] = temp
-
-    quick_sort(array,start,left_flag - 1)
-    quick_sort(array,left_flag + 1,end)
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Author:@南非波波&lt;/p&gt;
-&lt;p&gt;课程大纲：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/alex3714/articles/5474411.html&quot; title=&quot;常用算法设计&quot; target=&quot;_blank&quot; rel=&quot;exte
-    
-    </summary>
-    
-    
-      <category term="Python开发之路" scheme="http://blog.songqingbo.cn/tags/Python%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python自动化开发 day16</title>
-    <link href="http://blog.songqingbo.cn/2016/05/07/s12-20160507-day16/"/>
-    <id>http://blog.songqingbo.cn/2016/05/07/s12-20160507-day16/</id>
-    <published>2016-05-07T07:30:00.000Z</published>
-    <updated>2016-07-07T01:55:09.382Z</updated>
-    
-    <content type="html">&lt;p&gt;Author:@南非波波&lt;/p&gt;
-&lt;p&gt;课程大纲：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/alex3714/articles/5457672.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/alex3714/articles/5457672.html&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;一、Django起步&quot;&gt;&lt;a href=&quot;#一、Django起步&quot; class=&quot;headerlink&quot; title=&quot;一、Django起步&quot;&gt;&lt;/a&gt;一、Django起步&lt;/h2&gt;&lt;h3 id=&quot;1-创建Django项目&quot;&gt;&lt;a href=&quot;#1-创建Django项目&quot; class=&quot;headerlink&quot; title=&quot;1.创建Django项目&quot;&gt;&lt;/a&gt;1.创建Django项目&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;两种方式：使用pycharm工具进行创建
-         使用manage命令进行创建
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/UKdz7aG.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-url设计&quot;&gt;&lt;a href=&quot;#2-url设计&quot; class=&quot;headerlink&quot; title=&quot;2.url设计&quot;&gt;&lt;/a&gt;2.url设计&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/2y2zgI4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;3-views视图设计&quot;&gt;&lt;a href=&quot;#3-views视图设计&quot; class=&quot;headerlink&quot; title=&quot;3.views视图设计&quot;&gt;&lt;/a&gt;3.views视图设计&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/M1xkgkw.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/UsZ5fay.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;4-Template版本设计&quot;&gt;&lt;a href=&quot;#4-Template版本设计&quot; class=&quot;headerlink&quot; title=&quot;4.Template版本设计&quot;&gt;&lt;/a&gt;4.Template版本设计&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/LLavnYW.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;二、Template模板渲染&quot;&gt;&lt;a href=&quot;#二、Template模板渲染&quot; class=&quot;headerlink&quot; title=&quot;二、Template模板渲染&quot;&gt;&lt;/a&gt;二、Template模板渲染&lt;/h2&gt;&lt;h3 id=&quot;1-调用后端传递的数据&quot;&gt;&lt;a href=&quot;#1-调用后端传递的数据&quot; class=&quot;headerlink&quot; title=&quot;1.调用后端传递的数据&quot;&gt;&lt;/a&gt;1.调用后端传递的数据&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h3&amp;gt;username:&amp;#123;&amp;#123;user_obj.username&amp;#125;&amp;#125;&amp;lt;/h3&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h3&amp;gt;E-mail:&amp;#123;&amp;#123;user_obj.email&amp;#125;&amp;#125;&amp;lt;/h3&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;2-使用for循环进行遍历数据&quot;&gt;&lt;a href=&quot;#2-使用for循环进行遍历数据&quot; class=&quot;headerlink&quot; title=&quot;2.使用for循环进行遍历数据&quot;&gt;&lt;/a&gt;2.使用for循环进行遍历数据&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;url&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#123;% for user_info in user_obj %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    	&amp;lt;li style=&amp;quot;&amp;quot;&amp;gt;username:&amp;#123;&amp;#123;user_info.username&amp;#125;&amp;#125;,E-mail:&amp;#123;&amp;#123;user_info.email&amp;#125;&amp;#125;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#123;% endfor %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/url&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;3-使用if进行相关条件判断&quot;&gt;&lt;a href=&quot;#3-使用if进行相关条件判断&quot; class=&quot;headerlink&quot; title=&quot;3.使用if进行相关条件判断&quot;&gt;&lt;/a&gt;3.使用if进行相关条件判断&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;url&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#123;% for user_info in user_obj %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#123;#  &amp;#123;% if user_info.username == &amp;quot;swht&amp;quot; %&amp;#125;#&amp;#125; &amp;lt;!--可以直接判断某个字符串，然后进行处理--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    	&amp;#123;% if forloop.counter0|divisibleby:&amp;quot;2&amp;quot; %&amp;#125; &amp;lt;!--使用forloop。counter参数获取遍历的当前数字。counter0是从0开始的索引值，divisibleby:&amp;quot;2&amp;quot;是指能够被2整除--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        	&amp;lt;li style=&amp;quot;background-color: aqua&amp;quot;&amp;gt;username:&amp;#123;&amp;#123;user_info.username&amp;#125;&amp;#125;,E-mail:&amp;#123;&amp;#123;user_info.email&amp;#125;&amp;#125;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#123;% else %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &amp;lt;li style=&amp;quot;&amp;quot;&amp;gt;username:&amp;#123;&amp;#123;user_info.username&amp;#125;&amp;#125;,E-mail:&amp;#123;&amp;#123;user_info.email&amp;#125;&amp;#125;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#123;% endif %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   	&amp;#123;% endfor %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/url&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;4-模板的继承与复用&quot;&gt;&lt;a href=&quot;#4-模板的继承与复用&quot; class=&quot;headerlink&quot; title=&quot;4.模板的继承与复用&quot;&gt;&lt;/a&gt;4.模板的继承与复用&lt;/h3&gt;&lt;p&gt;使用主页的头部进行继承，然后将主体进行重写&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;index.html
-&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% block header-menu %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;ul &amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;li style=&amp;quot;display: inline-block&amp;quot;&amp;gt;Home&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;li style=&amp;quot;display: inline-block&amp;quot;&amp;gt;page1&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;li style=&amp;quot;display: inline-block&amp;quot;&amp;gt;page2&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;lt;li style=&amp;quot;display: inline-block&amp;quot;&amp;gt;page3&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;/ul&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#123;% endblock %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#123;% block content-container %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;h2&amp;gt;这是文章的首页&amp;lt;/h2&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;!--&amp;lt;h3&amp;gt;username:&amp;#123;&amp;#123;user_obj.username&amp;#125;&amp;#125;&amp;lt;/h3&amp;gt;--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;!--&amp;lt;h3&amp;gt;E-mail:&amp;#123;&amp;#123;user_obj.email&amp;#125;&amp;#125;&amp;lt;/h3&amp;gt;--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;url&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#123;% for user_info in user_obj %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;#            &amp;#123;% if user_info.username == &amp;quot;swht&amp;quot; %&amp;#125;#&amp;#125; &amp;lt;!--可以直接判断某个字符串，然后进行处理--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &amp;#123;% if forloop.counter0|divisibleby:&amp;quot;2&amp;quot; %&amp;#125; &amp;lt;!--使用forloop。counter参数获取遍历的当前数字。counter0是从0开始的索引值，divisibleby:&amp;quot;2&amp;quot;是指能够被2整除--&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                &amp;lt;li style=&amp;quot;background-color: aqua&amp;quot;&amp;gt;username:&amp;#123;&amp;#123;user_info.username&amp;#125;&amp;#125;,E-mail:&amp;#123;&amp;#123;user_info.email&amp;#125;&amp;#125;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &amp;#123;% else %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                &amp;lt;li style=&amp;quot;&amp;quot;&amp;gt;username:&amp;#123;&amp;#123;user_info.username&amp;#125;&amp;#125;,E-mail:&amp;#123;&amp;#123;user_info.email&amp;#125;&amp;#125;&amp;lt;/li&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &amp;#123;% endif %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#123;% endfor %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;/url&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#123;% endblock %&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;pre&gt;&lt;code&gt;year.html
-&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% extends &amp;apos;article/index.html&amp;apos; %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% block content-container %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;lt;h1&amp;gt;这是&amp;#123;&amp;#123; year_obj.year &amp;#125;&amp;#125;年的文章&amp;lt;/h1&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% endblock %&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;说明：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% extends &amp;apos;article/index.html&amp;apos; %&amp;#125; 语法是继承主页的所有属性&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% block content-container %&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;% endblock%&amp;#125;  语法说明该语块是可以被重写的&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;模板的继承和重写支持：子继承父、孙继承子&lt;/p&gt;
-&lt;h2 id=&quot;三、配置文件&quot;&gt;&lt;a href=&quot;#三、配置文件&quot; class=&quot;headerlink&quot; title=&quot;三、配置文件&quot;&gt;&lt;/a&gt;三、配置文件&lt;/h2&gt;&lt;h3 id=&quot;1-setting文件说明&quot;&gt;&lt;a href=&quot;#1-setting文件说明&quot; class=&quot;headerlink&quot; title=&quot;1.setting文件说明&quot;&gt;&lt;/a&gt;1.setting文件说明&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  指定了当前项目文件的基础路径&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;SECRET_KEY = &amp;apos;-i6p7t+w6@&amp;amp;duki)8s88tf=_ms%@z8fz4_5g@vhvzp@tij36w$&amp;apos; django通信KEY，我们一般不需要进行修改&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;DEBUG = True  #选项为True时，属于开发环境，当遇到错误时会弹出默认的提示大黄页，当选项为False时，属于生产环境，需要下面的关键字进行配合设置&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;ALLOWED_HOSTS = [] #当DEBUG = False时，ALLOWED_HOSTS = [*]，即允许所有主机访问，当访问的资源不存在时，默认会返回默认的404页面提示&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;INSTALLED_APPS=[] #这里需要配置我们安装的应用的名称&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;TEMPLATES = [] #这里指定项目模板的路径，一般不需要修改，但也可以自定义路径&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;DATABASES = &amp;#123;&amp;#125; #这里默认使用sqlite3数据库进行存储，我们可以修改成支持的其他数据库类型&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;TIME_ZONE = &amp;apos;Asia/Shanghai&amp;apos; #这里的时区参数需要选择上海时区&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;2-设置mysql数据库配置&quot;&gt;&lt;a href=&quot;#2-设置mysql数据库配置&quot; class=&quot;headerlink&quot; title=&quot;2.设置mysql数据库配置&quot;&gt;&lt;/a&gt;2.设置mysql数据库配置&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;DATABASES = &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;apos;default&amp;apos;:&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;apos;ENGINE&amp;apos;:&amp;apos;django.db.backends.mysql&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;apos;NAME&amp;apos;:&amp;apos;blog&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;apos;HOST&amp;apos;:&amp;apos;127.0.0.1&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;apos;PORT&amp;apos;:&amp;apos;3306&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;apos;USER&amp;apos;:&amp;apos;root&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;apos;PASSWORD&amp;apos;:&amp;apos;&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Windows下面安装mysql环境：http://www.cnblogs.com/songqingbo/p/5080847.html&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;创建所需的数据库：&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	create database blog charset utf8;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;3-mysql数据库初始化&quot;&gt;&lt;a href=&quot;#3-mysql数据库初始化&quot; class=&quot;headerlink&quot; title=&quot;3.mysql数据库初始化&quot;&gt;&lt;/a&gt;3.mysql数据库初始化&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;models
-&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;class Author(models.Model):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    first_name = models.CharField(max_length=32)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    last_name = models.CharField(max_length=32)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    email = models.EmailField()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    def __unicode__(self):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        return &amp;quot;&amp;lt;%s %s&amp;gt;&amp;quot; %(self.first_name,self.last_name)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    class Meta:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        verbose_name_plural = u&amp;quot;作者&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    #def __str__()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;class Publisher(models.Model):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    name = models.CharField(max_length=64,unique=True)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    address = models.CharField(max_length=128,null=True,blank=True)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    city = models.CharField(max_length=64)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    state_province = models.CharField(max_length=30,help_text=&amp;quot;put your country code here..&amp;quot;,verbose_name=u&amp;quot;所属省&amp;quot;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    country = models.CharField(max_length=50,editable=False)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    website = models.URLField()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    def __unicode__(self):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        return &amp;quot;&amp;lt;%s&amp;gt;&amp;quot; %(self.name)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;class Book(models.Model):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    name = models.CharField(max_length=128)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    authors = models.ManyToManyField(Author)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    publisher = models.ForeignKey(Publisher)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    #publish_date = models.DateTimeField&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    publish_date = models.DateField()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    def __unicode__(self):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        return &amp;quot;&amp;lt;%s&amp;gt;&amp;quot; %(self.name)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;由于django需要MySQLdb进行连接mysql数据库，需要安装MySQLdb模块和vc++ for python2.7环境包。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;python2 manage.py makemigrations  #生成数据库创建表文件&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	Migrations for &amp;apos;article&amp;apos;:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  0001_initial.py:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	    - Create model Author&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	    - Create model Book&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	    - Create model Publisher&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	    - Add field publisher to book&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;python2 manage.py migrate #将表结构写入数据库&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	Operations to perform:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Apply all migrations: admin, article, contenttypes, auth, sessions&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	Running migrations:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Rendering model states... DONE&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Applying contenttypes.0001_initial... OK&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Applying auth.0001_initial... OK&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Applying admin.0001_initial... OK&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Applying admin.0002_logentry_remove_auto_add... OK&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Applying article.0001_initial... OK&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Applying contenttypes.0002_remove_content_type_name... OK&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Applying auth.0002_alter_permission_name_max_length... OK&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Applying auth.0003_alter_user_email_max_length... OK&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Applying auth.0004_alter_user_username_opts... OK&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Applying auth.0005_alter_user_last_login_null... OK&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Applying auth.0006_require_contenttypes_0002... OK&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  Applying auth.0007_alter_validators_add_error_messages... OK&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;4-创建后台用户&quot;&gt;&lt;a href=&quot;#4-创建后台用户&quot; class=&quot;headerlink&quot; title=&quot;4.创建后台用户&quot;&gt;&lt;/a&gt;4.创建后台用户&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;admin.py&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	#增加下面的语句作用是使用admin后台进行数据库的管理操作&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	import models&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	admin.site.register(models.Author)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	admin.site.register(models.Book)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	admin.site.register(models.Publisher)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;python2 manage.py createsuperuser #创建一个超级用户&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Foh6exY.png&quot; alt=&quot;Django后台增加数据&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;四、使用django命令对数据库进行基础操作&quot;&gt;&lt;a href=&quot;#四、使用django命令对数据库进行基础操作&quot; class=&quot;headerlink&quot; title=&quot;四、使用django命令对数据库进行基础操作&quot;&gt;&lt;/a&gt;四、使用django命令对数据库进行基础操作&lt;/h2&gt;&lt;h3 id=&quot;1-进入python-django-shell&quot;&gt;&lt;a href=&quot;#1-进入python-django-shell&quot; class=&quot;headerlink&quot; title=&quot;1. 进入python django shell&quot;&gt;&lt;/a&gt;1. 进入python django shell&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;shell&amp;gt;&amp;gt;python2 manage.py shell
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;2-查询数据&quot;&gt;&lt;a href=&quot;#2-查询数据&quot; class=&quot;headerlink&quot; title=&quot;2. 查询数据&quot;&gt;&lt;/a&gt;2. 查询数据&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;\&amp;gt;&amp;gt;&amp;gt;from article.models import Publisher
-
-\&amp;gt;&amp;gt;&amp;gt;publisher_list = Publisher.objects.all() #查询所有的出版社列表
-
-\&amp;gt;&amp;gt;&amp;gt;publisher_list[1].name  #查询第2个出版社的名称
-
-\&amp;gt;&amp;gt;&amp;gt;publisher_list[1].id  #查询第2个出版社的id
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-增加一条数据&quot;&gt;&lt;a href=&quot;#3-增加一条数据&quot; class=&quot;headerlink&quot; title=&quot;3. 增加一条数据&quot;&gt;&lt;/a&gt;3. 增加一条数据&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;\&amp;gt;&amp;gt;&amp;gt; p1 = Publisher.objects.create(name=&amp;apos;SWht&amp;apos;,address=&amp;apos;haidian&amp;apos;,city=&amp;apos;beijing&amp;apos;,state_province=&amp;apos;CA&amp;apos;,country=&amp;apos;CN&amp;apos;,website=&amp;apos;http://www.songqingbo.cn&amp;apos;)
-
-\&amp;gt;&amp;gt;&amp;gt;p2 = Publisher(name=&amp;apos;SWht2&amp;apos;,address=&amp;apos;haidian1&amp;apos;,city=&amp;apos;beijing&amp;apos;,state_province=&amp;apos;CA&amp;apos;,country=&amp;apos;CN&amp;apos;,website=&amp;apos;http://www.songqingbo.cn&amp;apos;)
-
-\&amp;gt;&amp;gt;&amp;gt;p2.save()  #增加数据两种方式，1.使用对象的objects的create方法进行数据的创建，2.使用对象的save方法进行数据的保存。
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;4-数据库过滤查询&quot;&gt;&lt;a href=&quot;#4-数据库过滤查询&quot; class=&quot;headerlink&quot; title=&quot;4. 数据库过滤查询&quot;&gt;&lt;/a&gt;4. 数据库过滤查询&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;\&amp;gt;&amp;gt;&amp;gt; from article.models import Author
-
-\&amp;gt;&amp;gt;&amp;gt; author_list = Author.objects.all()
-
-\&amp;gt;&amp;gt;&amp;gt; author_list
-
-[&amp;lt;Author: &amp;lt;shen test&amp;gt;&amp;gt;, &amp;lt;Author: &amp;lt;alix sds&amp;gt;&amp;gt;]
-
-\&amp;gt;&amp;gt;&amp;gt; Author.objects.filter(first_name=&amp;apos;shen&amp;apos;)
-
-[&amp;lt;Author: &amp;lt;shen test&amp;gt;&amp;gt;]
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;5-获取单个对象&quot;&gt;&lt;a href=&quot;#5-获取单个对象&quot; class=&quot;headerlink&quot; title=&quot;5. 获取单个对象&quot;&gt;&lt;/a&gt;5. 获取单个对象&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;\&amp;gt;&amp;gt;&amp;gt; Author.objects.get(first_name=&amp;apos;shen&amp;apos;)
-
-&amp;lt;Author: &amp;lt;shen test&amp;gt;&amp;gt;
-
-\&amp;gt;&amp;gt;&amp;gt; Author.objects.get(id=&amp;apos;1&amp;apos;)
-
-&amp;lt;Author: &amp;lt;shen test&amp;gt;&amp;gt;
-
-\&amp;gt;&amp;gt;&amp;gt; Author.objects.get(id=&amp;apos;2&amp;apos;)
-
-&amp;lt;Author: &amp;lt;alix sds&amp;gt;&amp;gt;
-
-注意：如果查询没有返回结果也会抛出异常
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;6-数据排序&quot;&gt;&lt;a href=&quot;#6-数据排序&quot; class=&quot;headerlink&quot; title=&quot;6. 数据排序&quot;&gt;&lt;/a&gt;6. 数据排序&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;\&amp;gt;&amp;gt;&amp;gt; Author.objects.order_by(&amp;quot;first_name&amp;quot;)
-
-[&amp;lt;Author: &amp;lt;alix sds&amp;gt;&amp;gt;, &amp;lt;Author: &amp;lt;shen test&amp;gt;&amp;gt;]
-
-\&amp;gt;&amp;gt;&amp;gt; Author.objects.order_by(&amp;quot;id&amp;quot;)
-
-[&amp;lt;Author: &amp;lt;shen test&amp;gt;&amp;gt;, &amp;lt;Author: &amp;lt;alix sds&amp;gt;&amp;gt;]
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;7-数据更新&quot;&gt;&lt;a href=&quot;#7-数据更新&quot; class=&quot;headerlink&quot; title=&quot;7. 数据更新&quot;&gt;&lt;/a&gt;7. 数据更新&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;\&amp;gt;&amp;gt;&amp;gt; author = Author.objects.get(last_name=&amp;apos;test&amp;apos;)
-
-\&amp;gt;&amp;gt;&amp;gt; author.last_name = &amp;apos;diaoxia&amp;apos;
-
-\&amp;gt;&amp;gt;&amp;gt; author.save()
-
-\&amp;gt;&amp;gt;&amp;gt; Author.objects.all()
-
-[&amp;lt;Author: &amp;lt;shen diaoxia&amp;gt;&amp;gt;, &amp;lt;Author: &amp;lt;alix sds&amp;gt;&amp;gt;]
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;8-删除对象&quot;&gt;&lt;a href=&quot;#8-删除对象&quot; class=&quot;headerlink&quot; title=&quot;8. 删除对象&quot;&gt;&lt;/a&gt;8. 删除对象&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;\&amp;gt;&amp;gt;&amp;gt; author = Author.objects.get(first_name=&amp;apos;alix&amp;apos;)
-
-\&amp;gt;&amp;gt;&amp;gt; author
-
-&amp;lt;Author: &amp;lt;alix sds&amp;gt;&amp;gt;
-
-\&amp;gt;&amp;gt;&amp;gt; author.delete()
-
-(2L, {u&amp;apos;article.Book_authors&amp;apos;: 1L, u&amp;apos;article.Author&amp;apos;: 1L})
-
-\&amp;gt;&amp;gt;&amp;gt; Author.objects.all()
-
-[&amp;lt;Author: &amp;lt;shen diaoxia&amp;gt;&amp;gt;]
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Author:@南非波波&lt;/p&gt;
-&lt;p&gt;课程大纲：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/alex3714/articles/5457672.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ww
-    
-    </summary>
-    
-    
-      <category term="Python开发之路" scheme="http://blog.songqingbo.cn/tags/Python%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B7%AF/"/>
     
   </entry>
   

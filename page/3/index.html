@@ -315,6 +315,424 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-s12-20160523-day18" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/23/s12-20160523-day18/" class="article-date">
+      <time datetime="2016-05-23T07:30:00.000Z" itemprop="datePublished">2016-05-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/23/s12-20160523-day18/">python自动化开发 day18</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author:@南非波波</p>
+<p>课程大纲：</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-s12-20160514-day17 算法(冒泡、选择、直接插入、快速)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/14/s12-20160514-day17 算法(冒泡、选择、直接插入、快速)/" class="article-date">
+      <time datetime="2016-05-14T07:30:00.000Z" itemprop="datePublished">2016-05-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/14/s12-20160514-day17 算法(冒泡、选择、直接插入、快速)/">python自动化开发 day17</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author:@南非波波</p>
+<p>课程大纲：</p>
+<p><a href="http://www.cnblogs.com/alex3714/articles/5474411.html" title="常用算法设计" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5474411.html</a></p>
+<h2 id="一、冒泡排序算法"><a href="#一、冒泡排序算法" class="headerlink" title="一、冒泡排序算法"></a>一、冒泡排序算法</h2><pre><code>#!/usr/local/env python3
+&apos;&apos;&apos;
+Author:@南非波波
+Blog:http://www.cnblogs.com/songqingbo/
+E-mail:qingbo.song@gmail.com
+&apos;&apos;&apos;
+import random,time
+#m冒泡排序
+
+def bubble_up1(array):
+    &apos;&apos;&apos;
+    m冒泡排序算法
+    :param array:
+    :return: count: 6190862 time: 6.706383466720581
+    &apos;&apos;&apos;
+    count = 0
+    for i in range(len(array)):
+        for j in range(len(array) - 1 - i):
+            if array[j] &gt; array[j + 1]:
+                temp = array[j + 1]
+                array[j + 1] = array[j]
+                array[j] = temp
+                count += 1
+    print(&quot;count:&quot;, count)
+    print(&quot;array:&quot;, array)
+
+def bubble_up2(array):
+    &apos;&apos;&apos;
+    m冒泡排序算法
+    :param array:
+    :return:count: 5000 time: 3.825218915939331
+    &apos;&apos;&apos;
+    count = 0
+    for i in range(len(array)):
+        for j in range(len(array) - 1 - i):
+            big_temp = j
+            if array[big_temp] &gt; array[j + 1]:
+                big_temp = j + 1
+        temp = array[big_temp]
+        array[i] = array[big_temp]
+        array[big_temp] = temp
+        count += 1
+    print(&quot;count:&quot;, count)
+    print(&quot;array:&quot;, array)
+
+
+if __name__ == &apos;__main__&apos;:
+    array = []
+    for i in range(5000):
+        array.append(random.randrange(1000))
+
+    time_start = time.time()
+    bubble_up2(array)
+    time_end = time.time()
+    #
+    print(array[0:100])
+    print(&quot;time:&quot;,time_end - time_start)
+</code></pre><h2 id="二、-选择排序"><a href="#二、-选择排序" class="headerlink" title="二、 选择排序"></a>二、 选择排序</h2><pre><code>def select1(array):
+    &apos;&apos;&apos;
+    选择排序算法v1
+    :param array:
+    :return:count: 1996750 time: 3.2961885929107666
+    &apos;&apos;&apos;
+    count = 0
+    for i in range(len(array)):
+        for j in range(i,len(array)):
+            if array[i] &gt; array[j]:
+                temp = array[j]
+                array[j] = array[i]
+                array[i] = temp
+                count += 1
+    print(&quot;count:&quot;,count)
+    print(&quot;array:&quot;,array)
+
+def select2(array):
+    &apos;&apos;&apos;
+    选择排序算法v2
+    :param array:
+    :return:count: 5000 time: 2.4801418781280518
+    &apos;&apos;&apos;
+    count = 0
+    for i in range(len(array)):
+        smallest_index = i
+        for j in range(i,len(array)):
+            if array[smallest_index] &gt; array[j]:
+                smallest_index = j
+        temp = array[smallest_index]
+        array[smallest_index] = array[i]
+        array[i] = temp
+        count += 1
+    print(&quot;count:&quot;,count)
+    print(&quot;array:&quot;,array)
+</code></pre><h2 id="三、直接插入排序算法"><a href="#三、直接插入排序算法" class="headerlink" title="三、直接插入排序算法"></a>三、直接插入排序算法</h2><pre><code>def insert1(array):
+    &apos;&apos;&apos;
+    插入排序算法
+    :param array:
+    :return: count: 4999 time: 3.685210704803467
+    &apos;&apos;&apos;
+    count = 0
+    for index in range(1, len(array)):
+        current_val = array[index]  # 先记下来每次大循环走到的第几个元素的值
+        position = index
+
+        while position &gt; 0 and array[
+                    position - 1] &gt; current_val:  # 当前元素的左边的紧靠的元素比它大,要把左边的元素一个一个的往右移一位,给当前这个值插入到左边挪一个位置出来
+            array[position] = array[position - 1]  # 把左边的一个元素往右移一位
+            position -= 1  # 只一次左移只能把当前元素一个位置 ,还得继续左移只到此元素放到排序好的列表的适当位置 为止
+
+        array[position] = current_val  # 已经找到了左边排序好的列表里不小于current_val的元素的位置,把current_val放在这里
+        count += 1
+    print(&quot;count:&quot;, count)
+    print(array)
+</code></pre><h2 id="四、快速排序"><a href="#四、快速排序" class="headerlink" title="四、快速排序"></a>四、快速排序</h2><pre><code>def quick_sort(array,start,end):
+    &apos;&apos;&apos;
+    快速排序算法
+    :param array:
+    :param start:
+    :param end:
+    :return:time: 0.03600192070007324
+    &apos;&apos;&apos;
+    if start &gt;= end:
+        return
+    k = array[start]
+    left_flag = start
+    right_flag = end
+    while left_flag &lt; right_flag:
+        while array[right_flag] &gt; k:
+            right_flag -= 1
+        temp = array[right_flag]
+        array[left_flag] = array[right_flag]
+        array[right_flag] = temp
+
+        while array[left_flag] &lt;= k:
+            left_flag += 1
+        temp = array[left_flag]
+        array[left_flag] = array[right_flag]
+        array[right_flag] = temp
+
+    quick_sort(array,start,left_flag - 1)
+    quick_sort(array,left_flag + 1,end)
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-s12-20160507-day16 Django框架一(MTV架构、url语法、Tempate渲染、数据库配置、ORM、Admin)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/07/s12-20160507-day16 Django框架一(MTV架构、url语法、Tempate渲染、数据库配置、ORM、Admin)/" class="article-date">
+      <time datetime="2016-05-07T07:30:00.000Z" itemprop="datePublished">2016-05-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/07/s12-20160507-day16 Django框架一(MTV架构、url语法、Tempate渲染、数据库配置、ORM、Admin)/">python自动化开发 day16</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author:@南非波波</p>
+<p>课程大纲：</p>
+<p><a href="http://www.cnblogs.com/alex3714/articles/5457672.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5457672.html</a></p>
+<h2 id="一、Django起步"><a href="#一、Django起步" class="headerlink" title="一、Django起步"></a>一、Django起步</h2><p><img src="http://i.imgur.com/uHhXk5X.png" alt="MTV模型"></p>
+<h3 id="1-创建Django项目"><a href="#1-创建Django项目" class="headerlink" title="1.创建Django项目"></a>1.创建Django项目</h3><pre><code>两种方式：使用pycharm工具进行创建
+         使用manage命令进行创建
+</code></pre><p><img src="http://i.imgur.com/UKdz7aG.png" alt=""></p>
+<h3 id="2-url设计"><a href="#2-url设计" class="headerlink" title="2.url设计"></a>2.url设计</h3><p><img src="http://i.imgur.com/2y2zgI4.png" alt=""></p>
+<h3 id="3-views视图设计"><a href="#3-views视图设计" class="headerlink" title="3.views视图设计"></a>3.views视图设计</h3><p><img src="http://i.imgur.com/M1xkgkw.png" alt=""></p>
+<p><img src="http://i.imgur.com/UsZ5fay.png" alt=""></p>
+<h3 id="4-Template版本设计"><a href="#4-Template版本设计" class="headerlink" title="4.Template版本设计"></a>4.Template版本设计</h3><p><img src="http://i.imgur.com/LLavnYW.png" alt=""></p>
+<h2 id="二、Template模板渲染"><a href="#二、Template模板渲染" class="headerlink" title="二、Template模板渲染"></a>二、Template模板渲染</h2><h3 id="1-调用后端传递的数据"><a href="#1-调用后端传递的数据" class="headerlink" title="1.调用后端传递的数据"></a>1.调用后端传递的数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;username:&#123;&#123;user_obj.username&#125;&#125;&lt;/h3&gt;</div><div class="line">&lt;h3&gt;E-mail:&#123;&#123;user_obj.email&#125;&#125;&lt;/h3&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-使用for循环进行遍历数据"><a href="#2-使用for循环进行遍历数据" class="headerlink" title="2.使用for循环进行遍历数据"></a>2.使用for循环进行遍历数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;url&gt;</div><div class="line">    &#123;% for user_info in user_obj %&#125;</div><div class="line">    	&lt;li style=&quot;&quot;&gt;username:&#123;&#123;user_info.username&#125;&#125;,E-mail:&#123;&#123;user_info.email&#125;&#125;&lt;/li&gt;</div><div class="line">    &#123;% endfor %&#125;</div><div class="line">&lt;/url&gt;</div></pre></td></tr></table></figure>
+<h3 id="3-使用if进行相关条件判断"><a href="#3-使用if进行相关条件判断" class="headerlink" title="3.使用if进行相关条件判断"></a>3.使用if进行相关条件判断</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;url&gt;</div><div class="line">	&#123;% for user_info in user_obj %&#125;</div><div class="line">	&#123;#  &#123;% if user_info.username == &quot;swht&quot; %&#125;#&#125; &lt;!--可以直接判断某个字符串，然后进行处理--&gt;</div><div class="line">    	&#123;% if forloop.counter0|divisibleby:&quot;2&quot; %&#125; &lt;!--使用forloop。counter参数获取遍历的当前数字。counter0是从0开始的索引值，divisibleby:&quot;2&quot;是指能够被2整除--&gt;</div><div class="line">        	&lt;li style=&quot;background-color: aqua&quot;&gt;username:&#123;&#123;user_info.username&#125;&#125;,E-mail:&#123;&#123;user_info.email&#125;&#125;&lt;/li&gt;</div><div class="line">        &#123;% else %&#125;</div><div class="line">            &lt;li style=&quot;&quot;&gt;username:&#123;&#123;user_info.username&#125;&#125;,E-mail:&#123;&#123;user_info.email&#125;&#125;&lt;/li&gt;</div><div class="line">        &#123;% endif %&#125;</div><div class="line"></div><div class="line">   	&#123;% endfor %&#125;</div><div class="line">&lt;/url&gt;</div></pre></td></tr></table></figure>
+<h3 id="4-模板的继承与复用"><a href="#4-模板的继承与复用" class="headerlink" title="4.模板的继承与复用"></a>4.模板的继承与复用</h3><p>使用主页的头部进行继承，然后将主体进行重写</p>
+<pre><code>index.html
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&#123;% block header-menu %&#125;</div><div class="line">    &lt;ul &gt;</div><div class="line">        &lt;li style=&quot;display: inline-block&quot;&gt;Home&lt;/li&gt;</div><div class="line">        &lt;li style=&quot;display: inline-block&quot;&gt;page1&lt;/li&gt;</div><div class="line">        &lt;li style=&quot;display: inline-block&quot;&gt;page2&lt;/li&gt;</div><div class="line">        &lt;li style=&quot;display: inline-block&quot;&gt;page3&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    &#123;% endblock %&#125;</div><div class="line">    &#123;% block content-container %&#125;</div><div class="line">    &lt;h2&gt;这是文章的首页&lt;/h2&gt;</div><div class="line">    &lt;!--&lt;h3&gt;username:&#123;&#123;user_obj.username&#125;&#125;&lt;/h3&gt;--&gt;</div><div class="line">    &lt;!--&lt;h3&gt;E-mail:&#123;&#123;user_obj.email&#125;&#125;&lt;/h3&gt;--&gt;</div><div class="line">    &lt;url&gt;</div><div class="line">        &#123;% for user_info in user_obj %&#125;</div><div class="line">&#123;#            &#123;% if user_info.username == &quot;swht&quot; %&#125;#&#125; &lt;!--可以直接判断某个字符串，然后进行处理--&gt;</div><div class="line">            &#123;% if forloop.counter0|divisibleby:&quot;2&quot; %&#125; &lt;!--使用forloop。counter参数获取遍历的当前数字。counter0是从0开始的索引值，divisibleby:&quot;2&quot;是指能够被2整除--&gt;</div><div class="line">                &lt;li style=&quot;background-color: aqua&quot;&gt;username:&#123;&#123;user_info.username&#125;&#125;,E-mail:&#123;&#123;user_info.email&#125;&#125;&lt;/li&gt;</div><div class="line">            &#123;% else %&#125;</div><div class="line">                &lt;li style=&quot;&quot;&gt;username:&#123;&#123;user_info.username&#125;&#125;,E-mail:&#123;&#123;user_info.email&#125;&#125;&lt;/li&gt;</div><div class="line">            &#123;% endif %&#125;</div><div class="line"></div><div class="line">        &#123;% endfor %&#125;</div><div class="line">    &lt;/url&gt;</div><div class="line">    &#123;% endblock %&#125;</div></pre></td></tr></table></figure>
+<pre><code>year.html
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;% extends &apos;article/index.html&apos; %&#125;</div><div class="line">&#123;% block content-container %&#125;</div><div class="line">    &lt;h1&gt;这是&#123;&#123; year_obj.year &#125;&#125;年的文章&lt;/h1&gt;</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure>
+<p>说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% extends &apos;article/index.html&apos; %&#125; 语法是继承主页的所有属性</div><div class="line">&#123;% block content-container %&#125;</div><div class="line">&#123;% endblock%&#125;  语法说明该语块是可以被重写的</div></pre></td></tr></table></figure>
+<p>模板的继承和重写支持：子继承父、孙继承子</p>
+<h2 id="三、配置文件"><a href="#三、配置文件" class="headerlink" title="三、配置文件"></a>三、配置文件</h2><h3 id="1-setting文件说明"><a href="#1-setting文件说明" class="headerlink" title="1.setting文件说明"></a>1.setting文件说明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  指定了当前项目文件的基础路径</div><div class="line">SECRET_KEY = &apos;-i6p7t+w6@&amp;duki)8s88tf=_ms%@z8fz4_5g@vhvzp@tij36w$&apos; django通信KEY，我们一般不需要进行修改</div><div class="line"></div><div class="line">DEBUG = True  #选项为True时，属于开发环境，当遇到错误时会弹出默认的提示大黄页，当选项为False时，属于生产环境，需要下面的关键字进行配合设置</div><div class="line">ALLOWED_HOSTS = [] #当DEBUG = False时，ALLOWED_HOSTS = [*]，即允许所有主机访问，当访问的资源不存在时，默认会返回默认的404页面提示</div><div class="line">INSTALLED_APPS=[] #这里需要配置我们安装的应用的名称</div><div class="line">TEMPLATES = [] #这里指定项目模板的路径，一般不需要修改，但也可以自定义路径</div><div class="line">DATABASES = &#123;&#125; #这里默认使用sqlite3数据库进行存储，我们可以修改成支持的其他数据库类型</div><div class="line">TIME_ZONE = &apos;Asia/Shanghai&apos; #这里的时区参数需要选择上海时区</div></pre></td></tr></table></figure>
+<h3 id="2-设置mysql数据库配置"><a href="#2-设置mysql数据库配置" class="headerlink" title="2.设置mysql数据库配置"></a>2.设置mysql数据库配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    &apos;default&apos;:&#123;</div><div class="line">        &apos;ENGINE&apos;:&apos;django.db.backends.mysql&apos;,</div><div class="line">        &apos;NAME&apos;:&apos;blog&apos;,</div><div class="line">        &apos;HOST&apos;:&apos;127.0.0.1&apos;,</div><div class="line">        &apos;PORT&apos;:&apos;3306&apos;,</div><div class="line">        &apos;USER&apos;:&apos;root&apos;,</div><div class="line">        &apos;PASSWORD&apos;:&apos;&apos;,</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Windows下面安装mysql环境：http://www.cnblogs.com/songqingbo/p/5080847.html</div><div class="line"></div><div class="line">创建所需的数据库：</div><div class="line">	create database blog charset utf8;</div></pre></td></tr></table></figure>
+<h3 id="3-mysql数据库初始化"><a href="#3-mysql数据库初始化" class="headerlink" title="3.mysql数据库初始化"></a>3.mysql数据库初始化</h3><pre><code>models
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class Author(models.Model):</div><div class="line">    first_name = models.CharField(max_length=32)</div><div class="line">    last_name = models.CharField(max_length=32)</div><div class="line">    email = models.EmailField()</div><div class="line">    def __unicode__(self):</div><div class="line">        return &quot;&lt;%s %s&gt;&quot; %(self.first_name,self.last_name)</div><div class="line"></div><div class="line">    class Meta:</div><div class="line">        verbose_name_plural = u&quot;作者&quot;</div><div class="line">    #def __str__()</div><div class="line">class Publisher(models.Model):</div><div class="line">    name = models.CharField(max_length=64,unique=True)</div><div class="line">    address = models.CharField(max_length=128,null=True,blank=True)</div><div class="line">    city = models.CharField(max_length=64)</div><div class="line">    state_province = models.CharField(max_length=30,help_text=&quot;put your country code here..&quot;,verbose_name=u&quot;所属省&quot;)</div><div class="line">    country = models.CharField(max_length=50,editable=False)</div><div class="line">    website = models.URLField()</div><div class="line">    def __unicode__(self):</div><div class="line">        return &quot;&lt;%s&gt;&quot; %(self.name)</div><div class="line">class Book(models.Model):</div><div class="line">    name = models.CharField(max_length=128)</div><div class="line">    authors = models.ManyToManyField(Author)</div><div class="line">    publisher = models.ForeignKey(Publisher)</div><div class="line">    #publish_date = models.DateTimeField</div><div class="line">    publish_date = models.DateField()</div><div class="line">    def __unicode__(self):</div><div class="line">        return &quot;&lt;%s&gt;&quot; %(self.name)</div></pre></td></tr></table></figure>
+<p>由于django需要MySQLdb进行连接mysql数据库，需要安装MySQLdb模块和vc++ for python2.7环境包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">python2 manage.py makemigrations  #生成数据库创建表文件</div><div class="line">	Migrations for &apos;article&apos;:</div><div class="line">	  0001_initial.py:</div><div class="line">	    - Create model Author</div><div class="line">	    - Create model Book</div><div class="line">	    - Create model Publisher</div><div class="line">	    - Add field publisher to book</div><div class="line">python2 manage.py migrate #将表结构写入数据库</div><div class="line">	Operations to perform:</div><div class="line">	  Apply all migrations: admin, article, contenttypes, auth, sessions</div><div class="line">	Running migrations:</div><div class="line">	  Rendering model states... DONE</div><div class="line">	  Applying contenttypes.0001_initial... OK</div><div class="line">	  Applying auth.0001_initial... OK</div><div class="line">	  Applying admin.0001_initial... OK</div><div class="line">	  Applying admin.0002_logentry_remove_auto_add... OK</div><div class="line">	  Applying article.0001_initial... OK</div><div class="line">	  Applying contenttypes.0002_remove_content_type_name... OK</div><div class="line">	  Applying auth.0002_alter_permission_name_max_length... OK</div><div class="line">	  Applying auth.0003_alter_user_email_max_length... OK</div><div class="line">	  Applying auth.0004_alter_user_username_opts... OK</div><div class="line">	  Applying auth.0005_alter_user_last_login_null... OK</div><div class="line">	  Applying auth.0006_require_contenttypes_0002... OK</div><div class="line">	  Applying auth.0007_alter_validators_add_error_messages... OK</div></pre></td></tr></table></figure>
+<h3 id="4-创建后台用户"><a href="#4-创建后台用户" class="headerlink" title="4.创建后台用户"></a>4.创建后台用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">admin.py</div><div class="line">	#增加下面的语句作用是使用admin后台进行数据库的管理操作</div><div class="line">	import models</div><div class="line">	admin.site.register(models.Author)</div><div class="line">	admin.site.register(models.Book)</div><div class="line">	admin.site.register(models.Publisher)</div><div class="line">python2 manage.py createsuperuser #创建一个超级用户</div></pre></td></tr></table></figure>
+<p><img src="http://i.imgur.com/Foh6exY.png" alt="Django后台增加数据"></p>
+<h2 id="四、使用django命令对数据库进行基础操作"><a href="#四、使用django命令对数据库进行基础操作" class="headerlink" title="四、使用django命令对数据库进行基础操作"></a>四、使用django命令对数据库进行基础操作</h2><h3 id="1-进入python-django-shell"><a href="#1-进入python-django-shell" class="headerlink" title="1. 进入python django shell"></a>1. 进入python django shell</h3><pre><code>shell&gt;&gt;python2 manage.py shell
+</code></pre><h3 id="2-查询数据"><a href="#2-查询数据" class="headerlink" title="2. 查询数据"></a>2. 查询数据</h3><pre><code>\&gt;&gt;&gt;from article.models import Publisher
+
+\&gt;&gt;&gt;publisher_list = Publisher.objects.all() #查询所有的出版社列表
+
+\&gt;&gt;&gt;publisher_list[1].name  #查询第2个出版社的名称
+
+\&gt;&gt;&gt;publisher_list[1].id  #查询第2个出版社的id
+</code></pre><h3 id="3-增加一条数据"><a href="#3-增加一条数据" class="headerlink" title="3. 增加一条数据"></a>3. 增加一条数据</h3><pre><code>\&gt;&gt;&gt; p1 = Publisher.objects.create(name=&apos;SWht&apos;,address=&apos;haidian&apos;,city=&apos;beijing&apos;,state_province=&apos;CA&apos;,country=&apos;CN&apos;,website=&apos;http://www.songqingbo.cn&apos;)
+
+\&gt;&gt;&gt;p2 = Publisher(name=&apos;SWht2&apos;,address=&apos;haidian1&apos;,city=&apos;beijing&apos;,state_province=&apos;CA&apos;,country=&apos;CN&apos;,website=&apos;http://www.songqingbo.cn&apos;)
+
+\&gt;&gt;&gt;p2.save()  #增加数据两种方式，1.使用对象的objects的create方法进行数据的创建，2.使用对象的save方法进行数据的保存。
+</code></pre><h3 id="4-数据库过滤查询"><a href="#4-数据库过滤查询" class="headerlink" title="4. 数据库过滤查询"></a>4. 数据库过滤查询</h3><pre><code>\&gt;&gt;&gt; from article.models import Author
+
+\&gt;&gt;&gt; author_list = Author.objects.all()
+
+\&gt;&gt;&gt; author_list
+
+[&lt;Author: &lt;shen test&gt;&gt;, &lt;Author: &lt;alix sds&gt;&gt;]
+
+\&gt;&gt;&gt; Author.objects.filter(first_name=&apos;shen&apos;)
+
+[&lt;Author: &lt;shen test&gt;&gt;]
+</code></pre><h3 id="5-获取单个对象"><a href="#5-获取单个对象" class="headerlink" title="5. 获取单个对象"></a>5. 获取单个对象</h3><pre><code>\&gt;&gt;&gt; Author.objects.get(first_name=&apos;shen&apos;)
+
+&lt;Author: &lt;shen test&gt;&gt;
+
+\&gt;&gt;&gt; Author.objects.get(id=&apos;1&apos;)
+
+&lt;Author: &lt;shen test&gt;&gt;
+
+\&gt;&gt;&gt; Author.objects.get(id=&apos;2&apos;)
+
+&lt;Author: &lt;alix sds&gt;&gt;
+
+注意：如果查询没有返回结果也会抛出异常
+</code></pre><h3 id="6-数据排序"><a href="#6-数据排序" class="headerlink" title="6. 数据排序"></a>6. 数据排序</h3><pre><code>\&gt;&gt;&gt; Author.objects.order_by(&quot;first_name&quot;)
+
+[&lt;Author: &lt;alix sds&gt;&gt;, &lt;Author: &lt;shen test&gt;&gt;]
+
+\&gt;&gt;&gt; Author.objects.order_by(&quot;id&quot;)
+
+[&lt;Author: &lt;shen test&gt;&gt;, &lt;Author: &lt;alix sds&gt;&gt;]
+</code></pre><h3 id="7-数据更新"><a href="#7-数据更新" class="headerlink" title="7. 数据更新"></a>7. 数据更新</h3><pre><code>\&gt;&gt;&gt; author = Author.objects.get(last_name=&apos;test&apos;)
+
+\&gt;&gt;&gt; author.last_name = &apos;diaoxia&apos;
+
+\&gt;&gt;&gt; author.save()
+
+\&gt;&gt;&gt; Author.objects.all()
+
+[&lt;Author: &lt;shen diaoxia&gt;&gt;, &lt;Author: &lt;alix sds&gt;&gt;]
+</code></pre><h3 id="8-删除对象"><a href="#8-删除对象" class="headerlink" title="8. 删除对象"></a>8. 删除对象</h3><pre><code>\&gt;&gt;&gt; author = Author.objects.get(first_name=&apos;alix&apos;)
+
+\&gt;&gt;&gt; author
+
+&lt;Author: &lt;alix sds&gt;&gt;
+
+\&gt;&gt;&gt; author.delete()
+
+(2L, {u&apos;article.Book_authors&apos;: 1L, u&apos;article.Author&apos;: 1L})
+
+\&gt;&gt;&gt; Author.objects.all()
+
+[&lt;Author: &lt;shen diaoxia&gt;&gt;]
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-s12-20160430-day15" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -4147,1396 +4565,6 @@ ssh_client.close()
 
 
   
-    <article id="post-s12-20160130-day06" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/20/s12-20160130-day06/" class="article-date">
-      <time datetime="2016-02-20T07:30:00.000Z" itemprop="datePublished">2016-02-20</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/20/s12-20160130-day06/">python自动化开发 day06</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Author:@南非波波</p>
-<p>课程大纲：</p>
-<p>day05</p>
-<p><a href="http://www.cnblogs.com/alex3714/articles/5161349.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5161349.html</a></p>
-<p>day06</p>
-<p><a href="http://www.cnblogs.com/alex3714/articles/5188179.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5188179.html</a></p>
-<h2 id="一、模块回顾"><a href="#一、模块回顾" class="headerlink" title="一、模块回顾"></a>一、模块回顾</h2><h3 id="1-os模块"><a href="#1-os模块" class="headerlink" title="1. os模块"></a>1. os模块</h3><h3 id="2-sys模块"><a href="#2-sys模块" class="headerlink" title="2. sys模块"></a>2. sys模块</h3><h3 id="3-shutil模块"><a href="#3-shutil模块" class="headerlink" title="3. shutil模块"></a>3. shutil模块</h3><p>高级的 文件、文件夹、压缩包 处理模块</p>
-<p>shutil.copyfileobj(fsrc, fdst[, length])</p>
-<pre><code>功能：将文件内容拷贝到另一个文件中，可以部分内容
-</code></pre><p>shutil.copyfile(src, dst)</p>
-<pre><code>功能：仅拷贝文件
-</code></pre><p>shutil.copymode(src, dst)</p>
-<pre><code>功能：仅拷贝权限，内容、组、用户均不变
-</code></pre><p>shutil.copystat(src, dst)</p>
-<pre><code>功能：拷贝状态的信息，包括：mode bits, atime, mtime, flags
-</code></pre><p>shutil.copy(src, dst)</p>
-<pre><code>功能：拷贝文件和权限
-</code></pre><p>shutil.copy2(src, dst)</p>
-<pre><code>功能：拷贝文件和状态信息
-
-1. zipfile
-
-
-2. tarfile
-</code></pre><h3 id="4-shelve模块"><a href="#4-shelve模块" class="headerlink" title="4. shelve模块"></a>4. shelve模块</h3><p>二次封装pickle模块功能，对比pickle而言，shelve实现了按照‘键’来取值</p>
-<p>示例：</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import shelve
-
-name = [&apos;swht&apos;,&apos;shen&apos;,&apos;test&apos;]
-class Test(object):
-    def __init__(self,n):
-        self.n = n
-t1 = Test(1234)
-t2 = Test(123456)
-
-#存数据
-# shelve_file = shelve.open(&apos;ret.txt&apos;)
-# shelve_file[&apos;use&apos;] = name
-# shelve_file[&apos;t1&apos;] = t1
-# shelve_file[&apos;t2&apos;] = t2
-# shelve_file.close()
-
-#取数据
-shelve_load = shelve.open(&apos;ret.txt&apos;)
-a = shelve_load.get(&apos;use&apos;)
-print(a)
-b = shelve_load.get(&apos;t1&apos;)
-print(b.n)
-c = shelve_load.get(&apos;t2&apos;)
-print(c.n)
-shelve_load.close()
-</code></pre><h3 id="5-configparser模块"><a href="#5-configparser模块" class="headerlink" title="5.configparser模块"></a>5.configparser模块</h3><p>示例：</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import configparser
-
-#生成文档
-#[&quot;DEFAULT&quot;]是一个全局模块，对所有的模块生效
-&apos;&apos;&apos;
-config = configparser.ConfigParser()
-config[&quot;DEFAULT&quot;] = {&apos;ServerAliveInterval&apos;: &apos;45&apos;,
-                      &apos;Compression&apos;: &apos;yes&apos;,
-                     &apos;CompressionLevel&apos;: &apos;9&apos;}
-
-config[&apos;bitbucket.org&apos;] = {}
-config[&apos;bitbucket.org&apos;][&apos;User&apos;] = &apos;hg&apos;
-config[&apos;topsecret.server.com&apos;] = {}
-topsecret = config[&apos;topsecret.server.com&apos;]
-topsecret[&apos;Host Port&apos;] = &apos;50022&apos;     # mutates the parser
-topsecret[&apos;ForwardX11&apos;] = &apos;no&apos;  # same here
-config[&apos;DEFAULT&apos;][&apos;ForwardX11&apos;] = &apos;yes&apos;
-with open(&apos;example.ini&apos;, &apos;w&apos;) as configfile:
-   config.write(configfile)
-&apos;&apos;&apos;
-
-#查询
-&apos;&apos;&apos;
-config = configparser.ConfigParser()
-config.read(&apos;example.ini&apos;)
-print(config.sections())  #[&apos;bitbucket.org&apos;, &apos;topsecret.server.com&apos;]
-if &apos;bitbucket.org&apos; in config:
-    print(&apos;True&apos;)
-print(&quot;[&apos;bitbucket.org&apos;][&apos;User&apos;]:&quot;,config[&apos;bitbucket.org&apos;][&apos;User&apos;])
-print(&quot;[&apos;bitbucket.org&apos;][&apos;Compression&apos;]:&quot;,config[&apos;bitbucket.org&apos;][&apos;Compression&apos;])
-for key in config[&apos;bitbucket.org&apos;]:
-    print(key)
-&apos;&apos;&apos;
-#读
-&apos;&apos;&apos;
-config = configparser.ConfigParser()
-config.read(&apos;example.ini&apos;)
-secs = config.sections()
-print(secs) #[&apos;bitbucket.org&apos;, &apos;topsecret.server.com&apos;]
-
-options = config.options(&apos;topsecret.server.com&apos;)
-print(options) #[&apos;host port&apos;, &apos;forwardx11&apos;, &apos;compression&apos;, &apos;serveraliveinterval&apos;, &apos;compressionlevel&apos;]
-
-item_list = config.items(&apos;bitbucket.org&apos;)
-print(item_list) #[(&apos;compression&apos;, &apos;yes&apos;), (&apos;serveraliveinterval&apos;, &apos;45&apos;), (&apos;compressionlevel&apos;, &apos;9&apos;), (&apos;forwardx11&apos;, &apos;yes&apos;), (&apos;user&apos;, &apos;hg&apos;)]
-
-val = config.get(&apos;bitbucket.org&apos;,&apos;compression&apos;)
-print(val)
-&apos;&apos;&apos;
-
-#改写
-config = configparser.ConfigParser()
-config.read(&apos;example.ini&apos;)
-
-#实现从原来的文件中读取，删除[bitbucket.org]模块后将其他内容写到example_new.ini文件中
-# sec = config.remove_section(&apos;bitbucket.org&apos;)
-# config.write(open(&apos;example_new.ini&apos;, &quot;w&quot;))
-
-#添加[swht]模块
-# sec = config.has_section(&apos;swht&apos;)
-# sec = config.add_section(&apos;swht&apos;)
-# config.write(open(&apos;example_new1.ini&apos;, &quot;w&quot;))
-</code></pre><h3 id="6-hashlib模块"><a href="#6-hashlib模块" class="headerlink" title="6. hashlib模块"></a>6. hashlib模块</h3><p>该模块提供了多个算法对字符串进行加密操作。</p>
-<p>示例代码：</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import hashlib
-
-&apos;&apos;&apos;
-#md5加密
-md5num = hashlib.md5()
-md5num.update(b&quot;shendiaoxia1278@sohu.com&quot;)
-print(md5num.hexdigest()) #7e023c9fafc96423da854e4923f466a1
-&apos;&apos;&apos;
-
-&apos;&apos;&apos;
-#sha1加密
-sha1num = hashlib.sha1()
-sha1num.update(b&quot;shendiaoxia1278@sohu.com&quot;)
-print(sha1num.hexdigest()) #dd8d5deaa16c2dde03785aac99943f8f75bfaba9
-&apos;&apos;&apos;
-
-&apos;&apos;&apos;
-#sha256加密
-hash = hashlib.sha256()
-hash.update(b&quot;shendiaoxia1278@sohu.com&quot;)
-print(hash.hexdigest()) #14b03e2271da2cc9b0cc3ff73727c6d3ba6ba17077470a92162f7b46c9d1d968
-&apos;&apos;&apos;
-
-&apos;&apos;&apos;
-#sha384加密
-hash = hashlib.sha384()
-hash.update(b&quot;shendiaoxia1278@sohu.com&quot;)
-print(hash.hexdigest()) #a27bbc0d66d6b8b00a7ebfcad662ebed385fe2098898dfe23b88ffa88e1b6565d82e7eee5c9950c90231d0c0aa286e00
-&apos;&apos;&apos;
-
-&apos;&apos;&apos;
-#sha512加密
-hash = hashlib.sha512()
-hash.update(b&quot;shendiaoxia1278@sohu.com&quot;)
-print(hash.hexdigest()) #42bb1886bba49373c8f8177fba32a58a1f31af7272219789db52776428789f4a39970da9a36fdef6ab76651ed9f07e0fa140e4fa7dd325cb52559389bb80ceab
-&apos;&apos;&apos;
-</code></pre><p>高级加密代码</p>
-<pre><code>&apos;&apos;&apos;
-# import hashlib
-
-# ######## md5 #######
-hash = hashlib.md5(b&apos;898oaFs09f&apos;)
-hash.update(b&quot;shendiaoxia1278@sohu.com&quot;)
-print(hash.hexdigest()) #2aa29d812ca08b39d96f9441775420ba
-&apos;&apos;&apos;
-
-&apos;&apos;&apos;
-import hmac
-
-#可以使用在用户登录的时候，使用用户输入的用户名和密码进行加密后作为用户的密码
-
-hash = hmac.new(b&quot;shendiaoxia1278@sohu.com&quot;)
-hash.update(b&quot;swht&quot;)
-print(hash.hexdigest()) #c65d9bc3f37d6cfb9a9c959a18463bf4
-
-&apos;&apos;&apos;
-</code></pre><h3 id="7-subprocess模块"><a href="#7-subprocess模块" class="headerlink" title="7. subprocess模块"></a>7. subprocess模块</h3><pre><code>1. python2.7
-
-    import subprocess
-    #默认状态shell = False，必须使用一个列表的方式将shell命令传递进去
-    ret = subprocess.call([&quot;ls&quot;, &quot;-l&quot;], shell=False)
-    #使用shell = True告诉subprocess模块对用户传入的shell命令不转义，即使用原生shell命令
-    ret = subprocess.call(&quot;ls -l&quot;, shell=True)
-
-
-2. python3.5
-</code></pre><h4 id="8-logging模块"><a href="#8-logging模块" class="headerlink" title="8. logging模块"></a>8. logging模块</h4><p>示例：</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import logging
-
-# logging.warning(&quot;user [swht] is start the systerm!&quot;)
-# logging.critical(&quot;server is down!&quot;)
-#创建日志
-logger = logging.getLogger(&apos;[Test-Log]&apos;)
-logger.setLevel(logging.DEBUG) #全局级别优先级较高
-
-#创建一个控制台的handler并设置日志级别
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
-
-#创建一个文件的handler并设置日志级别
-fh = logging.FileHandler(&quot;access.log&quot;)
-fh.setLevel(logging.WARNING)
-#创建日期格式
-
-fomatter = logging.Formatter(&apos;%(asctime)s %(name)s %(levelname)s %(message)s&apos;,datefmt=&apos;%Y-%m-%d %H:%M:%S&apos;)
-
-#add formatter to ch and fh
-ch.setFormatter(fomatter)
-fh.setFormatter(fomatter)
-
-logger.addHandler(ch)
-logger.addHandler(fh)
-
-# &apos;application&apos; code
-logger.debug(&apos;debug message&apos;)
-logger.info(&apos;info message&apos;)
-logger.warn(&apos;warn message&apos;)
-logger.error(&apos;error message&apos;)
-logger.critical(&apos;critical message&apos;)
-
-#输出格式：
-&apos;&apos;&apos;
-2016-02-20 16:53:27 [Test-Log] DEBUG debug message
-2016-02-20 16:53:27 [Test-Log] INFO info message
-2016-02-20 16:53:27 [Test-Log] WARNING warn message
-2016-02-20 16:53:27 [Test-Log] ERROR error message
-2016-02-20 16:53:27 [Test-Log] CRITICAL critical message
-&apos;&apos;&apos;
-</code></pre><h2 id="二、面向对象编程"><a href="#二、面向对象编程" class="headerlink" title="二、面向对象编程"></a>二、面向对象编程</h2><h3 id="1-面向对象的介绍"><a href="#1-面向对象的介绍" class="headerlink" title="1. 面向对象的介绍"></a>1. 面向对象的介绍</h3><pre><code>1.    不要写重复的代码
-2.    代码易扩展，程序遵循易读、易改的原则
-</code></pre><h3 id="2-面向对象的特性"><a href="#2-面向对象的特性" class="headerlink" title="2. 面向对象的特性"></a>2. 面向对象的特性</h3><pre><code>1.    封装
-2.    继承
-    1.    基类或父类或超类
-    2.    子类或派生类
-    一般情况下，一个子类只能有一个基类，但在python中，一个子类是可以继承多个基类，实现多重继承，可以通过多级继承来实现；继承的过程就是从一般到特殊的过程
-3.    多态
-    实现接口的重用
-</code></pre><h3 id="3-类、方法"><a href="#3-类、方法" class="headerlink" title="3. 类、方法"></a>3. 类、方法</h3><h4 id="类-class"><a href="#类-class" class="headerlink" title="类 class"></a>类 class</h4><p>示例：</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-class Role(object):
-    def __init__(self,name,role,weapon,life_value):
-        self.name = name
-        self.role = role
-        self.weapon = weapon
-        self.life_value = life_value
-    def buy_weapon(self,weapon):
-        self.weapon = weapon
-        print(&quot;%s 成功购买[%s]&quot; % (self.name,weapon))
-
-#实例化
-p1 = Role(&apos;swht&apos;,&apos;p&apos;,&apos;A11&apos;,100)
-t1 = Role(&apos;shen&apos;,&apos;t&apos;,&apos;A11&apos;,100)
-
-print(&quot;p1[weapon]初始值:&quot;,p1.weapon)
-print(&quot;t1[weapon]初始值:&quot;,t1.weapon)
-
-#买枪行为
-p1.buy_weapon(&quot;AK65&quot;)
-t1.buy_weapon(&quot;AK60&quot;)
-
-print(&quot;p1[weapon]当前值:&quot;,p1.weapon)
-print(&quot;t1[weapon]当前值:&quot;,t1.weapon)
-</code></pre><h4 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h4><pre><code>模拟人生游戏
-
-    1.    至少有两个不同的角色
-    2.    玩的过程中，必须有交互
-    3.    根据不同的交互产生不同的行为
-    4.    一定要用到面向对象编程的语法及思想
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-s12-20160130-day05" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/30/s12-20160130-day05/" class="article-date">
-      <time datetime="2016-01-30T07:30:00.000Z" itemprop="datePublished">2016-01-30</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/30/s12-20160130-day05/">python自动化开发 day05</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Author:@南非波波</p>
-<p>课程大纲：</p>
-<p>day04</p>
-<p><a href="http://www.cnblogs.com/alex3714/articles/5143440.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5143440.html</a></p>
-<p>day05</p>
-<p><a href="http://www.cnblogs.com/alex3714/articles/5161349.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5161349.html</a></p>
-<h2 id="一、正则深入"><a href="#一、正则深入" class="headerlink" title="一、正则深入"></a>一、正则深入</h2><h3 id="re"><a href="#re" class="headerlink" title="re"></a>re</h3><p>匹配数字开头</p>
-<pre><code>import re
-#匹配以数字开头
-p = re.compile(&quot;^[0-9]&quot;) #使用compile进行编译正则表达式，在大量匹配处理的时候非常有效
-m = p.match(&quot;14534Abc&quot;)
-print(m.group()) #输出结果：1
-&apos;&apos;&apos;
-m = re.match(&quot;^[0-9]&quot;,&quot;14534Abc&quot;)
-print(m.group()) #输出结果：1
-&apos;&apos;&apos;
-</code></pre><p>匹配数字、字母等开头</p>
-<pre><code>import re
-#匹配以数字和字母开头
-p = re.compile(&quot;^[0-9A-Za-z]&quot;)
-m = p.match(&quot;AK14534Abc&quot;)
-print(m.group()) #输出结果：A
-</code></pre><p>匹配IP地址：</p>
-<pre><code>#匹配IP地址
-string = &apos;180.115.183.45 - - [03/Feb/2016:10:35:50 +0800] &quot;CONNECT imppl.tradedoubler.com:443 HTTP/1.0&quot; 400 172 &quot;-&quot; &quot;-&quot;&apos;
-p = re.compile(&quot;([0-9]{1,3}\.){3}\d{1,3}&quot;)
-ip = p.match(string).group()
-# ip = re.match(&quot;([0-9]{1,3}\.){3}\d{1,3}&quot;,string).group()
-print(ip)
-</code></pre><p><strong>正则表达式常用5种操作</strong></p>
-<p>re.match(pattern,string) #从头匹配</p>
-<p>re.search(pattern,string) #匹配整个字符串，直到找到一个匹配</p>
-<p>re.split() #将匹配到的格式当做分隔点对字符串分成列表类型</p>
-<pre><code>示例：
-import re
-string = &quot;2016 02 02  00:26:35 Statistic_Svncommit.py[line:50] INFO [&apos;A6909850956019&apos;, &apos;A6997448878578&apos;, &apos;A6909712867884&apos;, &apos;A6996408725555&apos;, &apos;A6908651568946&apos;, &apos;A6996150172637&apos;, &apos;A6909747538711&apos;, &apos;A6994084740002&apos;, &apos;A6908427730549&apos;, &apos;A6982187752993&apos;, &apos;A6909861345295&apos;, &apos;A6909860252981&apos;, &apos;A6905214359647&apos;, &apos;A6995115894134&apos;]&quot;
-strlist = re.search(&quot;\[\&apos;.*?\&apos;\]&quot;,string).group().lstrip(&quot;[&quot;).rstrip(&quot;]&quot;)
-list1 = re.sub(&quot;[\&apos;&apos; &apos;]&quot;,&quot;&quot;,strlist).split(&quot;,&quot;)
-print(list1)
-
-返回结果：[&apos;A6909850956019&apos;, &apos;A6997448878578&apos;, &apos;A6909712867884&apos;, &apos;A6996408725555&apos;, &apos;A6908651568946&apos;, &apos;A6996150172637&apos;, &apos;A6909747538711&apos;, &apos;A6994084740002&apos;, &apos;A6908427730549&apos;, &apos;A6982187752993&apos;, &apos;A6909861345295&apos;, &apos;A6909860252981&apos;, &apos;A6905214359647&apos;, &apos;A6995115894134&apos;]
-列表类型
-
-m = re.split(&quot;[0-9]&quot;, &quot;swht1swht2jack3helenrachel8&quot;)
-print(m) #[&apos;swht&apos;, &apos;swht&apos;, &apos;jack&apos;, &apos;helenrachel&apos;, &apos;&apos;]
-</code></pre><p>re.findall()　# 找到所有要匹配的字符并返回列表格式</p>
-<pre><code>示例：
-import re
-string = &quot;sdsdss(welcome)dff(china)&quot;
-m = re.findall(&apos;\(.*?\)&apos;,string) #匹配所有以（开头和以）结尾的字符串,返回类型为list
-print(m) #[&apos;(welcome)&apos;, &apos;(china)&apos;]
-print(type(m))  #&lt;class &apos;list&apos;&gt;
-</code></pre><p>re.sub(pattern, repl, string, count,flag) # 替换匹配到的字符</p>
-<pre><code>示例：
-import re
-string = &quot;sdsdss(welcome)dff(china)&quot;
-m = re.sub(&quot;\(|\)&quot;,&quot;\&quot;&quot;,string) #匹配&quot;(&quot;或者&quot;)&quot;，然后将其替换成双引号
-print(m) #sdsdss&quot;welcome&quot;dff&quot;china&quot;
-print(type(m)) #&lt;class &apos;str&apos;&gt;
-</code></pre><p><strong>模式</strong></p>
-<p>re.I #大小写不敏感</p>
-<pre><code>import rz
-string = &quot;swht&quot;
-m = re.search(&quot;[A-Z]&quot;,string,flags = re.I)
-print(m.group()) #s
-</code></pre><h4 id="匹配手机号："><a href="#匹配手机号：" class="headerlink" title="匹配手机号："></a>匹配手机号：</h4><pre><code>import re
-string = &quot;sdssaawa15865921165sdsdscf&quot;
-m = re.search(&quot;(1)([358]\d{9})&quot;,string)
-print(m.group())
-</code></pre><h4 id="匹配IP地址"><a href="#匹配IP地址" class="headerlink" title="匹配IP地址:"></a>匹配IP地址:</h4><pre><code>import re
-ip_addr = &quot;inet 192.168.60.223 netmask 0xffffff00 broadcast 192.168.60.255&quot;
-IP = re.search(&quot;(([1-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-5][0-5])\.){3}[0-9]{1,3}&quot;,ip_addr)
-print(IP.group()) #192.168.60.223
-</code></pre><h4 id="匹配邮箱地址："><a href="#匹配邮箱地址：" class="headerlink" title="匹配邮箱地址："></a>匹配邮箱地址：</h4><pre><code>import re
-emailstr = &quot;qingbo.song@gmail.com www.baidu.com&quot;
-email = re.search(&quot;^[a-z]([0-9a-z]|\.){4,20}@[0-9a-z]{0,10}\.[0-9a-z]{0,8}&quot;,emailstr)
-print(email.group()) #qingbo.song@gmail.com
-
-#只匹配gmail邮箱
-import
-emailstr = &quot;qingbo.song@gmail.com www.baidu.com&quot;
-email = re.search(&quot;^[a-z]([0-9a-z]|\.){4,20}@gmail\.com&quot;,emailstr)
-if email:
-    print(email.group()) #qingbo.song@gmail.com
-else:
-    print(&quot;系统只接受gamil邮箱注册,感谢你的支持!&quot;)
-</code></pre><h2 id="二、冒泡排序算法"><a href="#二、冒泡排序算法" class="headerlink" title="二、冒泡排序算法"></a>二、冒泡排序算法</h2><pre><code>示例代码：
-#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-li = [11,78,45,12,90,34,56]
-
-# for m in range(1,len(li)):
-#     for i in range(len(li) - 1):
-#         if li[i] &gt; li[i+1]:
-#             temp = li[i]
-#             li[i] = li[i+1]
-#             li[i+1] = temp
-# print(li)
-
-for m in range(len(li) - 1):
-    for n in range(m+1,len(li)):
-        if li[m] &gt; li[n]:
-            temp = li[m]
-            li[m] = li[n]
-            li[n] = temp
-print(li) #[11, 12, 34, 45, 56, 78, 90]
-
-#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-data = [11,78,45,12,90,34,56]
-for i in range(1,len(data)):
-    for j in range(len(data) - i):
-        if data[j] &gt; data[j+1]:
-            tmp = data[j]
-            data[j+1] = data[j]
-            data[j] = tmp
-print(data)
-</code></pre><h2 id="三、模块"><a href="#三、模块" class="headerlink" title="三、模块"></a>三、模块</h2><h3 id="模块介绍"><a href="#模块介绍" class="headerlink" title="模块介绍"></a>模块介绍</h3><pre><code>模块：用一坨代码实现了某个功能的代码集合。
-类似于函数式编程和面向过程编程，函数式编程则完成一个功能，其他代码用来处理和代码间的耦合。可能需要多个.py的文件组成。
-
-模块类型：
-    1. 自定义模块
-    2. 内置标准模块（标准库）
-    3. 开源模块
-        1. 下载：
-            1. yum
-            2. apt-get
-            3. pip
-            4. easy_install
-            5. 源码编译安装 python stup.py install
-</code></pre><h3 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h3><pre><code>import module
-from module.xx.xx import xx
-from module.xx.xx import xx as rename  
-#不推荐下面的导入方式，如果被导入的模块中含有与当前文件中相同名称的函数，容易产生调用混乱。
-from module.xx.xx import * 
-</code></pre><h2 id="四、自定义模块"><a href="#四、自定义模块" class="headerlink" title="四、自定义模块"></a>四、自定义模块</h2><h3 id="模块框架"><a href="#模块框架" class="headerlink" title="模块框架"></a>模块框架</h3><pre><code>1. backend
-    1. logic
-        handle.py
-            #!/usr/local/env python3
-            &apos;&apos;&apos;
-            Author:@南非波波
-            Blog:http://www.cnblogs.com/songqingbo/
-            E-mail:qingbo.song@gmail.com
-            &apos;&apos;&apos;
-            from backend.database.sql_select import select
-            def home():
-                print(&quot;welcome to home page!&quot;)
-                q_data = select(&quot;user&quot;,&quot;test&quot;)
-                print(&quot;query res:%s&quot; % q_data)
-
-            def tv():
-                print(&quot;welcome to tv page!&quot;)
-
-            def moive():
-                print(&quot;welcome to moive page!&quot;)
-    2. database
-        1. sql_select.py
-            #!/usr/local/env python3
-            &apos;&apos;&apos;
-            Author:@南非波波
-            Blog:http://www.cnblogs.com/songqingbo/
-            E-mail:qingbo.song@gmail.com
-            &apos;&apos;&apos;
-            &apos;&apos;&apos;
-            增加模块的路径。下面的语句增加的是dj路径
-            该功能解决的是在子模块中的文件单独调试的时候无法获取父模块路径，导致在导入其他模块的时候报错
-            &apos;&apos;&apos;
-            import sys,os
-            #获取dj的绝对路径
-            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-            #将获取的路径添加到系统环境变量中
-            sys.path.append(base_dir)
-
-
-            from config import settings
-            from backend.database.user_auth import db_auth
-
-            def select(table,column):
-                if db_auth(settings):
-                    if table == &quot;user&quot;:
-                        user_info = {
-                            &quot;001&quot;:[&quot;swht&quot;,24,&quot;yunwei&quot;],
-                            &quot;002&quot;:[&quot;shen&quot;,26,&quot;dba&quot;],
-                            &quot;003&quot;:[&quot;test&quot;,28,&quot;student&quot;],
-                        }
-                        return user_info
-        2. user_auth.py
-            #!/usr/local/env python3
-            &apos;&apos;&apos;
-            Author:@南非波波
-            Blog:http://www.cnblogs.com/songqingbo/
-            E-mail:qingbo.song@gmail.com
-            &apos;&apos;&apos;
-            def db_auth(configs):
-                if configs.DATABASES[&quot;user&quot;] == &quot;root&quot; and configs.DATABASES[&quot;password&quot;] == 123:
-                    print(&quot;验证通过!&quot;)
-                    return True
-                else:
-                    print(&quot;验证错误!&quot;)
-
-2. frontend
-3. config
-    settings
-        #!/usr/local/env python3
-        &apos;&apos;&apos;
-        Author:@南非波波
-        Blog:http://www.cnblogs.com/songqingbo/
-        E-mail:qingbo.song@gmail.com
-        &apos;&apos;&apos;
-
-        DATABASES = {
-            &quot;engine&quot;:&quot;mysql&quot;,
-            &quot;host&quot;:&quot;localhost&quot;,
-            &quot;port&quot;:3306,
-            &quot;user&quot;:&quot;root&quot;,
-            &quot;password&quot;:123,
-        }
-4. user_main.py
-    #!/usr/local/env python3
-    &apos;&apos;&apos;
-    Author:@南非波波
-    Blog:http://www.cnblogs.com/songqingbo/
-    E-mail:qingbo.song@gmail.com
-    &apos;&apos;&apos;
-
-    from backend.logic import handle
-
-    handle.home()
-</code></pre><h2 id="五、标准模块"><a href="#五、标准模块" class="headerlink" title="五、标准模块"></a>五、标准模块</h2><p>参考：<a href="http://www.cnblogs.com/wupeiqi/articles/4963027.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/4963027.html</a></p>
-<h3 id="time-amp-datetime模块"><a href="#time-amp-datetime模块" class="headerlink" title="time &amp; datetime模块"></a>time &amp; datetime模块</h3><pre><code>import time
-import datetime
-
-#作用：计算一个程序从执行到结束用的时间 
-print(time.clock()) #返回处理器时间,3.3开始已废弃
-print(time.process_time()) #返回处理器时间,3.3开始已废弃
-
-#获取系统的当前时间，从1970年1月1日0：00到当前时间的秒数
-print(time.time()) #返回当前系统时间戳
-
-#格式化输出的时间
-print(time.ctime()) #输出Tue Jan 26 18:23:48 2016 ,当前系统时间
-print(time.ctime(time.time()-86640)) #将时间戳转为字符串格式，输出昨天的时间Tue Jan 25 18:23:48 2016
-
-#time.struct_time(tm_year=2016, tm_mon=2,c=48, tm_wday=5, tm_yday=44, tm_isdst=0)
-#gmtime是从零时区算起的格林时间
-print(time.gmtime(time.time()-86640)) #将时间戳转换成struct_time格式
-#当前时间，是按照系统当前时区算起的
-print(time.localtime(time.time()-86640)) #将时间戳转换成struct_time格式,但返回 的本地时间
-print(time.mktime(time.localtime())) #与time.localtime()功能相反,将struct_time格式转回成时间戳格式
-#time.sleep(4) #sleep
-
-#格式化输出时间
-print(time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;,time.gmtime()) ) #将struct_time格式转成指定的字符串格式
-#time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;,time.localtime())
-#&apos;2016-02-14 12:45:49&apos;
-
-print(time.strptime(&quot;2016-01-28&quot;,&quot;%Y-%m-%d&quot;) ) #将字符串格式转换成struct_time格式
-
-#datetime module
-
-#将时间戳转换成日期格式
-print(datetime.date.today()) #输出格式python2 2016-01-26  python3：datetime.date(2016, 2, 14)
-print(datetime.date.fromtimestamp(time.time()-864400) ) #2016-01-16 将时间戳转成日期格式
-current_time = datetime.datetime.now() #
-print(current_time) #输出2016-01-26 19:04:30.335935
-print(current_time.timetuple()) #返回struct_time格式
-
-#datetime.replace([year[, month[, day[, hour[, minute[, second[, microsecond[, tzinfo]]]]]]]])
-#将当前的时间替换成输入的时间
-print(current_time.replace(2014,9,12)) #输出2014-09-12 19:06:24.074900,返回当前时间,但指定的值将被替换
-
-str_to_date = datetime.datetime.strptime(&quot;21/11/06 16:30&quot;, &quot;%d/%m/%y %H:%M&quot;) #将字符串转换成日期格式
-new_date = datetime.datetime.now() + datetime.timedelta(days=10) #比现在加10天
-new_date = datetime.datetime.now() + datetime.timedelta(days=-10) #比现在减10天
-new_date = datetime.datetime.now() + datetime.timedelta(hours=-10) #比现在减10小时
-new_date = datetime.datetime.now() + datetime.timedelta(seconds=120) #比现在+120s
-print(new_date)
-</code></pre><h3 id="random模块"><a href="#random模块" class="headerlink" title="random模块"></a>random模块</h3><h4 id="产生随机数"><a href="#产生随机数" class="headerlink" title="产生随机数"></a>产生随机数</h4><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import random
-
-#产生随机小数
-print(random.random())
-&apos;&apos;&apos;
-0.8426794741026359
-0.8703558703687821
-&apos;&apos;&apos;
-
-#产生随机整数
-print(random.randint(1,10))
-print(random.randrange(1,10))
-&apos;&apos;&apos;
-1
-9
-&apos;&apos;&apos;
-</code></pre><h4 id="生成随机验证码"><a href="#生成随机验证码" class="headerlink" title="生成随机验证码"></a>生成随机验证码</h4><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-&apos;&apos;&apos;
-生成n位随机数，包含大写字母和数字
-&apos;&apos;&apos;
-import random
-def checkcode(n):
-    checkcode = &apos;&apos;
-    for i in range(n):
-        current = random.randrange(0,4)
-        if current != i:
-            tmp = chr(random.randint(65,90))
-        else:
-            tmp = random.randint(0,9)
-        checkcode += str(tmp)
-    return checkcode
-
-print(checkcode(6))
-</code></pre><h3 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h3><p>提供对操作系统进行调用的接口</p>
-<pre><code>os.getcwd() 获取当前工作目录，即当前python脚本工作的目录路径
-os.chdir(&quot;dirname&quot;)  改变当前脚本工作目录；相当于shell下cd
-os.curdir  返回当前目录: (&apos;.&apos;)
-os.pardir  获取当前目录的父目录字符串名：(&apos;..&apos;)
-os.makedirs(&apos;dirname1/dirname2&apos;)    可生成多层递归目录
-os.removedirs(&apos;dirname1&apos;) 删除空的目录，或多级空目录
-os.mkdir(&apos;dirname&apos;)    生成单级目录；相当于shell中mkdir dirname
-os.rmdir(&apos;dirname&apos;)    删除单级空目录，若目录不为空则无法删除，报错；相当于shell中rmdir dirname
-os.listdir(&apos;dirname&apos;)    列出指定目录下的所有文件和子目录，包括隐藏文件，并以列表方式打印
-os.remove()  删除一个文件
-os.rename(&quot;oldname&quot;,&quot;newname&quot;)  重命名文件/目录，或者移动，相当于shell命令mv
-os.stat(&apos;path/filename&apos;)  获取文件/目录信息
-os.sep    输出操作系统特定的路径分隔符，win下为&quot;\\&quot;,Linux下为&quot;/&quot;
-os.linesep    输出当前平台使用的行终止符，win下为&quot;\t\n&quot;,Linux下为&quot;\n&quot;
-os.pathsep    输出用于分割文件路径的字符串
-os.name    输出字符串指示当前使用平台。win-&gt;&apos;nt&apos;; Linux-&gt;&apos;posix&apos;
-os.system(&quot;bash command&quot;)  运行shell命令，直接显示，只是单个shell命令的执行
-os.environ  获取系统环境变量
-os.path.abspath(path)  返回path规范化的绝对路径
-os.path.split(path)  将path分割成目录和文件名二元组返回
-os.path.dirname(path)  返回path的目录。其实就是os.path.split(path)的第一个元素
-os.path.basename(path)  返回path最后的文件名。如何path以／或\结尾，那么就会返回空值。即os.path.split(path)的第二个元素
-os.path.exists(path)  如果path存在，返回True；如果path不存在，返回False
-os.path.isabs(path)  如果path是绝对路径，返回True
-os.path.isfile(path)  如果path是一个存在的文件，返回True。否则返回False
-os.path.isdir(path)  如果path是一个存在的目录，则返回True。否则返回False
-os.path.join(path1[, path2[, ...]])  将多个路径组合后返回，第一个绝对路径之前的参数将被忽略
-os.path.getatime(path)  返回path所指向的文件或者目录的最后存取时间
-os.path.getmtime(path)  返回path所指向的文件或者目录的最后修改时间
-</code></pre><h3 id="sys模块"><a href="#sys模块" class="headerlink" title="sys模块"></a>sys模块</h3><pre><code>sys.argv           命令行参数List，第一个元素是程序本身路径
-sys.exit(n)        退出程序，正常退出时exit(0)
-sys.version        获取Python解释程序的版本信息
-sys.maxint         最大的Int值
-sys.path           返回模块的搜索路径，初始化时使用PYTHONPATH环境变量的值
-sys.platform       返回操作系统平台名称
-sys.stdout.write(&apos;please:&apos;)
-val = sys.stdin.readline()[:-1] #输入一行内容，减去后面的最后一个\n
-</code></pre><h4 id="使用sys和time模块生成进度条"><a href="#使用sys和time模块生成进度条" class="headerlink" title="使用sys和time模块生成进度条"></a>使用sys和time模块生成进度条</h4><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-&apos;&apos;&apos;
-生成进度条。调用函数输入的参数为进度条长度
-&apos;&apos;&apos;
-import sys,time
-def processbar(rangenum):
-    for i in range(rangenum):
-        if i == 0:
-            sys.stdout.write(&quot;0%[#&quot;)
-        elif i == rangenum - 1:
-            sys.stdout.write(&quot;#]100%&quot;)
-        else:
-            sys.stdout.write(&quot;#&quot;)
-            #刷新缓存，使其实时显示出来
-            sys.stdout.flush()
-            time.sleep(0.5)
-
-processbar(16)
-</code></pre><h3 id="json-和-pickle"><a href="#json-和-pickle" class="headerlink" title="json 和 pickle"></a>json 和 pickle</h3><h4 id="json和pickle是用于序列化的两个模块："><a href="#json和pickle是用于序列化的两个模块：" class="headerlink" title="json和pickle是用于序列化的两个模块："></a>json和pickle是用于序列化的两个模块：</h4><pre><code>json：用于处理字符串和python数据类型间的转换
-pickle：用于处理python特有类型和python数据类型间的转换
-</code></pre><h4 id="json"><a href="#json" class="headerlink" title="json"></a>json</h4><pre><code>json模块提供了四个功能：dumps、dump、loads、load
-json在所有的语言中都通用，存取的直接字符
-</code></pre><h4 id="pickle"><a href="#pickle" class="headerlink" title="pickle"></a>pickle</h4><pre><code>pickle模块提供了四个功能：dumps、dump、loads、load
-在python中独有一个模块，存取二进制字符
-不仅仅可以序列化简单的字符、列表、字典，还能序列化函数、类以至于整个程序
-</code></pre><h4 id="关于dump和dumps的区别"><a href="#关于dump和dumps的区别" class="headerlink" title="关于dump和dumps的区别"></a>关于dump和dumps的区别</h4><pre><code>dump直接将序列化后的字符写到文件中，dumps是将序列化后的字符先赋给一个变量，然后再有write方法将其写入到文件中
-</code></pre><h4 id="关于load和loads的区别"><a href="#关于load和loads的区别" class="headerlink" title="关于load和loads的区别"></a>关于load和loads的区别</h4><pre><code>load直接从文件中读取内容，loads是从内存中获取文件的内容
-</code></pre><h3 id="shutil模块"><a href="#shutil模块" class="headerlink" title="shutil模块"></a>shutil模块</h3><p>高级的 文件、文件夹、压缩包 处理模块</p>
-<p>shutil.copyfileobj(fsrc, fdst[, length])</p>
-<pre><code>功能：将文件内容拷贝到另一个文件中，可以部分内容
-</code></pre><p>shutil.copyfile(src, dst)</p>
-<pre><code>功能：仅拷贝文件
-</code></pre><p>shutil.copymode(src, dst)</p>
-<pre><code>功能：仅拷贝权限，内容、组、用户均不变
-</code></pre><p>shutil.copystat(src, dst)</p>
-<pre><code>功能：拷贝状态的信息，包括：mode bits, atime, mtime, flags
-</code></pre><p>shutil.copy(src, dst)</p>
-<pre><code>功能：拷贝文件和权限
-</code></pre><p>shutil.copy2(src, dst)</p>
-<pre><code>功能：拷贝文件和状态信息
-</code></pre><h3 id="作业需求："><a href="#作业需求：" class="headerlink" title="作业需求："></a>作业需求：</h3><pre><code>模拟实现一个ATM + 购物商城程序
-
-额度 15000或自定义
-实现购物商城，买东西加入 购物车，调用信用卡接口结账
-可以提现，手续费5%
-每月22号出账单，每月10号为还款日，过期未还，按欠款总额 万分之5 每日计息
-支持多账户登录
-支持账户间转账
-记录每月日常消费流水
-提供还款接口
-ATM记录操作日志
-提供管理接口，包括添加账户、用户额度，冻结账户等。
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-s12-20160123-day04" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/23/s12-20160123-day04/" class="article-date">
-      <time datetime="2016-01-23T07:30:00.000Z" itemprop="datePublished">2016-01-23</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/23/s12-20160123-day04/">python自动化开发 day04</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Author:@南非波波</p>
-<p>课程大纲：</p>
-<p>day03</p>
-<p><a href="http://www.cnblogs.com/wupeiqi/articles/5133343.html" target="_blank" rel="external">http://www.cnblogs.com/wupeiqi/articles/5133343.html</a></p>
-<p>day04</p>
-<p><a href="http://www.cnblogs.com/alex3714/articles/5143440.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5143440.html</a></p>
-<h2 id="一、迭代器-amp-amp-生成器"><a href="#一、迭代器-amp-amp-生成器" class="headerlink" title="一、迭代器 &amp;&amp; 生成器"></a>一、迭代器 &amp;&amp; 生成器</h2><h3 id="1-迭代器"><a href="#1-迭代器" class="headerlink" title="1.迭代器"></a>1.迭代器</h3><pre><code>迭代器是访问集合元素的一种方式。迭代器只能往前不能往后。迭代器对象从集合的第一个集合开始访问，直到所有的元素被访问完。
-优点：不需要事先准备整个迭代过程中的所有元素
-</code></pre><h4 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h4><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-names = iter([&apos;swht&apos;,&apos;shen&apos;,&apos;jack&apos;])
-print(names)
-print(names.__next__())
-print(names.__next__())
-print(names.__next__())
-
-返回结果：
-    &lt;list_iterator object at 0x000000000114C7B8&gt;
-    swht
-    shen
-    jack
-</code></pre><h3 id="2-生成器"><a href="#2-生成器" class="headerlink" title="2.生成器"></a>2.生成器</h3><pre><code>定义：generator，一个函数调用时返回一个迭代器，那这个函数就叫做生成器。
-
-作用：yield实现函数中断，并保存函数中断时的状态。中断后，程序可以继续执行下面的代码，而且可以随时可以回头再执行之前中断的函数。
-    可以通过yield实现在单线程的情况下实现并发运算的效果
-</code></pre><h4 id="测试代码-1"><a href="#测试代码-1" class="headerlink" title="测试代码"></a>测试代码</h4><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-def money(num):
-    while num &gt; 0:
-        print(&quot;取款100元!&quot;)
-        num -= 100
-        yield 100
-        print(&quot;你当前还有%s元&quot; % num)
-
-ATM = money(500)
-print(type(ATM))
-print(ATM.__next__())
-print(ATM.__next__())
-print(&quot;吃包子....&quot;)
-print(ATM.__next__())
-print(ATM.__next__())
-
-返回结果：
-    &lt;class &apos;generator&apos;&gt;
-    取款100元!
-    100
-    你当前还有400元
-    取款100元!
-    100
-    吃包子....
-    你当前还有300元
-    取款100元!
-    100
-    你当前还有200元
-    取款100元!
-    100
-</code></pre><h3 id="实现异步：【生产者-消费者模型】"><a href="#实现异步：【生产者-消费者模型】" class="headerlink" title="实现异步：【生产者-消费者模型】"></a>实现异步：【生产者-消费者模型】</h3><p>yield参数可以实现返回参数和接收参数，使用send方法可以将值传递到生成器中去</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-import time
-def consumer(name):
-    print(&quot;%s 开始准备吃包子!&quot; % name)
-    while True:
-        baozi = yield #yield可以返回一个值，也可以接收一个值
-        print(&quot;第[%s]波包子来了,被[%s]吃了!&quot; % (baozi,name))
-
-def producer(name):
-    c1 = consumer(&apos;swht&apos;)
-    c2 = consumer(&apos;shen&apos;)
-    c1.__next__()
-    c2.__next__()
-    print(&quot;==%s开始准备做包子!==&quot; % name)
-    for i in range(10):
-        time.sleep(1)
-        print(&quot;**%s做了两个包子!**&quot; % name)
-        c1.send(i) #使用send方法将值传递给yield
-        c2.send(i)
-
-producer(&apos;alex&apos;)
-</code></pre><p>返回结果：</p>
-<pre><code>swht 开始准备吃包子!
-shen 开始准备吃包子!
-==alex开始准备做包子!==
-**alex做了两个包子!**
-第[0]波包子来了,被[swht]吃了!
-第[0]波包子来了,被[shen]吃了!
-**alex做了两个包子!**
-第[1]波包子来了,被[swht]吃了!
-第[1]波包子来了,被[shen]吃了!
-**alex做了两个包子!**
-第[2]波包子来了,被[swht]吃了!
-第[2]波包子来了,被[shen]吃了!
-**alex做了两个包子!**
-第[3]波包子来了,被[swht]吃了!
-第[3]波包子来了,被[shen]吃了!
-**alex做了两个包子!**
-第[4]波包子来了,被[swht]吃了!
-第[4]波包子来了,被[shen]吃了!
-**alex做了两个包子!**
-第[5]波包子来了,被[swht]吃了!
-第[5]波包子来了,被[shen]吃了!
-**alex做了两个包子!**
-第[6]波包子来了,被[swht]吃了!
-第[6]波包子来了,被[shen]吃了!
-**alex做了两个包子!**
-第[7]波包子来了,被[swht]吃了!
-第[7]波包子来了,被[shen]吃了!
-**alex做了两个包子!**
-第[8]波包子来了,被[swht]吃了!
-第[8]波包子来了,被[shen]吃了!
-**alex做了两个包子!**
-第[9]波包子来了,被[swht]吃了!
-第[9]波包子来了,被[shen]吃了!
-</code></pre><h2 id="二、装饰器"><a href="#二、装饰器" class="headerlink" title="二、装饰器"></a>二、装饰器</h2><pre><code>装饰器又叫语法塘
-</code></pre><h3 id="装饰器调用原理"><a href="#装饰器调用原理" class="headerlink" title="装饰器调用原理"></a>装饰器调用原理</h3><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-def login(func):
-    print(&quot;To passed!&quot;)
-    return func
-
-def home(name):
-    print(&quot;Welcome [%s] to home page!&quot; % name)
-
-def tv(name):
-    print(&quot;Welcome [%s] to TV page!&quot; % name)
-
-def moive(name):
-    print(&quot;Welcome [%s] to Moive page!&quot; % name)
-
-tv = login(tv)  #将tv函数的内存地址传递到login()函数中，然后将tv的内存地址返回并赋给变量tv
-tv(&quot;swht&quot;) #变量调用相当于函数的调用
-</code></pre><h3 id="装饰器实现"><a href="#装饰器实现" class="headerlink" title="装饰器实现"></a>装饰器实现</h3><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-def login(func): #程序执行时返回inner函数的内存地址
-    def inner(*arg,**kwargs):
-        print(&quot;To passed!&quot;)
-        return func(*arg,**kwargs)
-    return inner
-
-def home(name):
-    print(&quot;Welcome [%s] to home page!&quot; % name)
-
-@login
-def tv(name):
-    print(&quot;Welcome [%s] to TV page!&quot; % name)
-
-def moive(name):
-    print(&quot;Welcome [%s] to Moive page!&quot; % name)
-tv(&quot;swht&quot;)
-</code></pre><p>返回结果：</p>
-<pre><code>To passed!
-Welcome [swht] to TV page!
-</code></pre><h3 id="多参数装饰器"><a href="#多参数装饰器" class="headerlink" title="多参数装饰器"></a>多参数装饰器</h3><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-def Before(request,kargs):
-    print(&apos;before&apos;)
-
-def After(request,kargs):
-    print(&apos;after&apos;)
-
-
-def Filter(before_func,after_func):
-    def outer(main_func):
-        def wrapper(request,kargs):
-
-            before_result = before_func(request,kargs)
-            if(before_result != None):
-                return before_result
-
-            main_result = main_func(request,kargs)
-            if(main_result != None):
-                return main_result
-
-            after_result = after_func(request,kargs)
-            if(after_result != None):
-                return after_result
-
-        return wrapper
-    return outer
-
-@Filter(Before, After)
-def Index(request,kargs):
-    print(&apos;index&apos;)
-
-Index(&quot;swht&quot;,&quot;123&quot;)
-</code></pre><h3 id="实现流程"><a href="#实现流程" class="headerlink" title="实现流程"></a>实现流程</h3><pre><code>&apos;&apos;&apos;
-1.程序运行，读取顺序 @Filter --&gt; Index()
-2.@Filter运行机制：
-    1）将Before, After传递给Filter()，执行outer()；
-    2）将Index传递给outer()函数，执行wrapper()，返回outer；
-    3）将Index()中的两个参数request,kargs传递给wrapper()函数，执行：
-        1）执行before_func()即Before()并判断返回值，打印before
-        2）执行main_func()即Index()并判断返回值，打印index
-        3）执行after_func()即After()并判断返回值，打印after
-3.程序结束
-&apos;&apos;&apos;
-</code></pre><h2 id="三、递归"><a href="#三、递归" class="headerlink" title="三、递归"></a>三、递归</h2><h3 id="演示递归进出过程：【栈的实现：后进先出】"><a href="#演示递归进出过程：【栈的实现：后进先出】" class="headerlink" title="演示递归进出过程：【栈的实现：后进先出】"></a>演示递归进出过程：【栈的实现：后进先出】</h3><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-def calc(n):
-    print(n)
-    if n/2 &gt; 1:
-        res = calc(n/2)
-        print(&apos;res:&apos;,res)
-    print(&apos;n:&apos;,n)
-    return n
-calc(10)
-&apos;&apos;&apos;
-递归进入多少层，最后函数结束退出的时候就是退出多少层
-&apos;&apos;&apos;
-</code></pre><p>返回结果：</p>
-<pre><code>10
-5.0
-2.5
-1.25
-n: 1.25
-res: 1.25
-n: 2.5
-res: 2.5
-n: 5.0
-res: 5.0
-n: 10
-</code></pre><h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-def sum(arg1,arg2,stop):
-    if arg1 == 0:
-        print(arg1,arg2)
-    arg3 = arg1 + arg2
-    print(arg3)
-    if arg3 &lt; stop:
-        sum(arg2,arg3,stop)
-
-sum(0,1,500)
-</code></pre><p>返回结果：</p>
-<pre><code>0 1
-1
-2
-3
-5
-8
-13
-21
-34
-55
-89
-144
-233
-377
-610
-</code></pre><h2 id="四、二分查找"><a href="#四、二分查找" class="headerlink" title="四、二分查找"></a>四、二分查找</h2><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-def binary_search(data_source,find_num):
-    mid = int(len(data_source)/2)  #列表折中
-    if len(data_source) &gt;= 1: #如果列表的长度值大于1，则递归
-        if data_source[mid] &gt; find_num: #如果中间值大于查找值，这说明查找值在中间值的左侧
-            print(&quot;%s\tis\tthe\tleft\tof \t%s&quot; % (find_num,data_source[mid]))
-            binary_search(data_source[:mid],find_num)
-        elif data_source[mid] &lt; find_num: #如果中间值小于查找值，这说明查找值在中间值的右侧
-            print(&quot;%s\tis\tthe\tright\tof \t%s&quot; % (find_num,data_source[mid]))
-            binary_search(data_source[mid:],find_num)
-        else:
-            print(&quot;已经查找到\t%s&quot; % find_num)
-    else: #否则返回值，查找不到
-        print(&quot;查不到该数值!&quot;)
-
-if __name__ == &quot;__main__&quot;:
-    data = list(range(1,90000))
-    binary_search(data,65535)
-</code></pre><h2 id="五、二维数组"><a href="#五、二维数组" class="headerlink" title="五、二维数组"></a>五、二维数组</h2><p>二维数组的概念是在c、c++等语言中出现并定义，在python没有数组概念，对应的则是列表。所以我们这里称为二维数组则是对二维列表的称谓。</p>
-<p>需求：</p>
-<pre><code>转换二维数组
-初始列表：
-    [0, 1, 2, 3]
-    [0, 1, 2, 3]
-    [0, 1, 2, 3]
-    [0, 1, 2, 3]
-    =================
-转换后列表：
-    [0, 0, 0, 0]
-    [1, 1, 1, 1]
-    [2, 2, 2, 2]
-    [3, 3, 3, 3]
-</code></pre><p>代码实现：</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-data = [[col for col in range(4)] for row in range(4)]
-# for i in a:
-#     print(i)
-for col in range(4):
-    for row in range(col,4):
-        data[col][row],data[row][col] = data[row][col],data[col][row]
-for i in data:
-    print(i)
-print(a)
-</code></pre><p>改进型：</p>
-<pre><code>data = [[col for col in range(4)] for row in range(4)]
-for col in range(len(data)):
-    for row in data[col]:
-        data[col][row],data[row][col] = data[row][col],data[col][row]
-for i in data:
-    print(i)
-</code></pre><h2 id="六、正则表达式"><a href="#六、正则表达式" class="headerlink" title="六、正则表达式"></a>六、正则表达式</h2><pre><code>熟悉Linux环境的朋友肯定熟悉，用来操作字符或者文本文件时操作的快速匹配语言。正则表达式是用于处理字符串的强大工具，拥有自己独特的语法以及一个独立的处理引擎，效率上可能不如str自带的方法，但功能十分强大。
-</code></pre><p>语法：</p>
-<p><strong>一般字符</strong></p>
-<pre><code>匹配自身
-示例：
-import re
-
-str1 = &apos;23434sjsjdd523^&amp;(csd#@52&apos;
-print(re.match(&apos;abc&apos;,str1))
-返回值为：None #说明此时没有匹配到。
-print(re.match(&apos;23&apos;,str1))
-返回值为：&lt;_sre.SRE_Match object; span=(0, 2), match=&apos;23&apos;&gt; #匹配到自身并返回类型
-</code></pre><p><strong>.</strong></p>
-<pre><code>匹配任意除换行符&apos;\n&apos;外的字符，在DOALL模式中也能匹配换行符。
-示例：
-import re
-
-str1 = &apos;23434sjsjdd523^&amp;(csd#@52&apos;
-print(re.match(&apos;.&apos;,str1))
-返回结果：&lt;_sre.SRE_Match object; span=(0, 1), match=&apos;2&apos;&gt; #匹配到任意字符&apos;2&apos;
-</code></pre><p><strong>\</strong></p>
-<pre><code>转义字符，使后一个字符改变原来的意思。如果字符串中有字符*需要匹配，可以使用\*或者字符集[*]
-示例：
-a\\c  --&gt;a\c
-</code></pre><p><strong>[…]</strong></p>
-<pre><code>字符集(字符类).对应的位置可以是字符集中任意字符。字符集中的字符可以逐个列出，也可以给出范围，如[abc]或[a-c]。第一个字符如果是^则表示取反，如[^abc]表示不是abc的其他字符。
-所有的特殊字符在字符集中都失去其原有的特殊含义。在字符集中如果要使用]、-或^，都可以在前面加上反斜杠，或把]、-放在第一个字符，把^放在非第一个字符。
-示例：a[bcd]e --&gt;abe ace ade
-</code></pre><p><strong>预定义字符：</strong><br><img src="http://i.imgur.com/6Kgqmam.png" alt=""></p>
-<p><strong>数量词：</strong><br><img src="http://i.imgur.com/DDsI4dU.png" alt=""></p>
-<p><strong>边界匹配：</strong><br><img src="http://i.imgur.com/Ga3Fdf1.png" alt=""></p>
-<p><strong>逻辑、分组</strong><br><img src="http://i.imgur.com/1qVGb25.png" alt=""></p>
-<p>正则表达式模块<strong>re</strong></p>
-<pre><code>Python通过re模块提供对正则表达式的支持。使用re的一般步骤是先将正则表达式的字符串形式编译为Pattern实例，然后使用Pattern实例处理文本并获得匹配结果（一个Match实例），最后使用Match实例获得信息，进行其他的操作。
-</code></pre><p>示例：</p>
-<pre><code>import re
-
-test1 = re.compile(r&apos;hello&apos;)  #使用re.compile编译成Pattern实例
-test12 = test1.match(&apos;hello world!&apos;) #使用Pattern匹配文本，获得匹配结果，无法匹配时返回None
-
-if test12:
-    print(test12.group()) #使用test12获得分组信息
-#输出  hello
-
-#the same as top
-m = re.match(r&apos;hello&apos;, &apos;hello world!&apos;)
-print(m.group())
-</code></pre><h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><pre><code>match(string[,pos[endpos]])|re.match(patern,string[,flags]):
-从string的pos下标处起尝试匹配pattern；如果pattern结束时仍可匹配，则返回一个Match对象；如果匹配过程中pattern无法匹配，或者匹配未结束就已到达endpos，则返回None。 
-pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。
-（re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none.）
-测试代码：
-    m = re.match(&apos;hello&apos;, &apos;hello world!&apos;)
-    print(m.group())
-    返回值为：hello
-
-    print(re.match(&apos;www&apos;,&apos;www.apicloud.com&apos;).span()) #在起始位置匹配
-    print(re.match(&apos;com&apos;,&apos;www.apicloud.com&apos;)) #不在起始位置匹配
-
-    返回结果：
-    (0, 3)
-    None
-
-    import re
-
-    line = &quot;Cats are smarter than dogs&quot;
-    matchObj = re.match( r&apos;(.*) are (.*?) .*&apos;, line, re.M|re.I)
-    #.* 匹配任意字符且匹配前一个字符0或无限次
-    #.*? 匹配任意字符，且匹配前一个字符0或无限次，且匹配前一个字符0次或1次
-    if matchObj:
-       print(&quot;matchObj.group() : &quot;, matchObj.group())
-       print(&quot;matchObj.group(1) : &quot;, matchObj.group(1))
-       print(&quot;matchObj.group(2) : &quot;, matchObj.group(2))
-    else:
-       print(&quot;No match!!&quot;)
-
-    返回结果：
-    matchObj.group() :  Cats are smarter than dogs
-    matchObj.group(1) :  Cats
-    matchObj.group(2) :  smarter
-</code></pre><h3 id="search"><a href="#search" class="headerlink" title="search"></a>search</h3><pre><code>功能：re.search 扫描整个字符串并返回第一个成功的匹配
-语法：re.search(pattern, string, flags=0)
-参数：pattern 匹配的正则表达式
-     string  要匹配的字符串
-     flags   标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。
-
-测试代码：
-    import re
-    print(re.search(&apos;www&apos;, &apos;www.apicloud.com&apos;).span())  # 在起始位置匹配
-    print(re.search(&apos;com&apos;, &apos;www.apicloud.com&apos;).span())         # 不在起始位置匹配
-    返回结果：
-    (0, 3)
-    (13, 16)
-
-    import re
-    line = &quot;Cats are smarter than dogs&quot;
-    searchObj = re.search( r&apos;(.*) are (.*?) .*&apos;, line, re.M|re.I)
-    if searchObj:
-       print(&quot;searchObj.group() : &quot;, searchObj.group())
-       print(&quot;searchObj.group(1) : &quot;, searchObj.group(1))
-       print(&quot;searchObj.group(2) : &quot;, searchObj.group(2))
-    else:
-       print(&quot;Nothing found!!&quot;)
-
-    #返回结果：
-    # searchObj.group() :  Cats are smarter than dogs
-    # searchObj.group(1) :  Cats
-    # searchObj.group(2) :  smarter
-</code></pre><h3 id="对比match和search"><a href="#对比match和search" class="headerlink" title="对比match和search"></a>对比match和search</h3><pre><code>re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None；而re.search匹配整个字符串，直到找到一个匹配。
-示例代码：
-    import re
-    line = &quot;Cats are smarter than dogs&quot;
-    matchObj = re.match( r&apos;dogs&apos;, line, re.M|re.I)
-    if matchObj:
-       print(&quot;match --&gt; matchObj.group() : &quot;, matchObj.group())
-    else:
-       print(&quot;match --&gt; No match!!&quot;)
-
-    searchObj = re.search( r&apos;dogs&apos;, line, re.M|re.I)
-    if searchObj:
-       print(&quot;search --&gt; searchObj.group() : &quot;, searchObj.group())
-    else:
-       print(&quot;search --&gt; No search!!&quot;)
-
-    #返回结果：
-    # match --&gt; No match!!
-    # search --&gt; searchObj.group() :  dogs
-</code></pre><p><strong>sub</strong></p>
-<pre><code>功能：re.sub用户替换字符串中的匹配项
-语法：re.sub(pattern, repl, string, max=0)
-测试代码：
-    import re
-    phone = &quot;2004-959-559 # This is Phone Number&quot;
-    # Delete Python-style comments
-    num1 = re.sub(r&apos; .*$&apos;, &quot;&quot;, phone) #匹配&apos; &apos;空格到字符串默认的所有任意字符，删除
-    print(&quot;Phone Num : &quot;, num1)  #Phone Num :  2004-959-559   最后一个字符后面没有空格
-    num2 = re.sub(r&apos;#.*$&apos;, &quot;&quot;, phone) #匹配#到字符串默认的所有任意字符，删除
-    print(&quot;Phone Num : &quot;, num2) #Phone Num :  2004-959-559  最后一个字符后面有一个空格
-
-    # Remove anything other than digits
-    num3 = re.sub(r&apos;\D&apos;, &quot;&quot;, phone) #匹配非数字字符，然后删除
-    print(&quot;Phone Num : &quot;, num3) #Phone Num :  2004959559
-</code></pre><h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><pre><code>计算器开发
-
-1. 实现加减乘除及拓号优先级解析
-2. 用户输入 1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2) )等类似公式后，必须自己解析里面的(),+,-,*,/符号和公式，运算后得出结果，结果必须与真实的计算器所得出的结果一致
-
-博客地址：http://www.cnblogs.com/songqingbo/p/5168125.html
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -5548,7 +4576,7 @@ pos和endpos的默认值分别是0和len(sring);re.match()无法指定这两个�
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016  <a href="https://github.com/swht" target="_blank" title="南非波波github主页">南非波波</a>
+                2016-2017  <a href="https://github.com/swht" target="_blank" title="南非波波github主页">南非波波</a>
             </div>
             <div class="footer-right">
                 <!-- <a href="http://www.cnblogs.com/songqingbo/" target="_blank" title="南非波波博客园主页">南非波波博客园主页</a> -->

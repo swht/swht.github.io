@@ -315,6 +315,184 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017-01-14-Nodejs全栈开发之路-nodejs-http-post请求" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/14/2017-01-14-Nodejs全栈开发之路-nodejs-http-post请求/" class="article-date">
+      <time datetime="2017-01-14T03:50:50.000Z" itemprop="datePublished">2017-01-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/14/2017-01-14-Nodejs全栈开发之路-nodejs-http-post请求/">2017-01-14-Nodejs全栈开发之路-nodejs-http-post请求</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author:@南非波波</p>
+<h3 id="http"><a href="#http" class="headerlink" title="http"></a>http</h3><p><img src="http://i.imgur.com/OHtEUi6.jpg" alt="URl"></p>
+<ul>
+<li><p>serve.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var http = require(&apos;http&apos;);</div><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line">http.createServer(function (request, response) &#123;</div><div class="line">   if(request.url == &apos;/&apos;)&#123;</div><div class="line">       fs.createReadStream(&apos;./login.html&apos;).pipe(response);</div><div class="line">   &#125;else if(request.url == &apos;/login&apos;)&#123;</div><div class="line">       var str = &apos;&apos;;</div><div class="line">       var buffers = [];</div><div class="line">       request.on(&apos;data&apos;,function (data) &#123;</div><div class="line">           buffers.push(data);</div><div class="line">           console.log(str);</div><div class="line">       &#125;);</div><div class="line">       request.on(&apos;end&apos;,function () &#123;</div><div class="line">           var result = Buffer.concat(buffers);</div><div class="line">           response.end(buffers.toString());</div><div class="line">       &#125;);</div><div class="line">   &#125;else&#123;</div><div class="line">       response.end(&apos;404&apos;);</div><div class="line">   &#125;</div><div class="line">&#125;).listen(8000);</div><div class="line">console.log(&apos;服务监听在8000端口&apos;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>login.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;login&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;form action=&quot;/login&quot; method=&quot;post&quot;&gt;</div><div class="line">    用户名 &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;</div><div class="line">    密码 &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</div><div class="line">    &lt;input type=&quot;submit&quot; value=&quot;登录&quot;&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h3><ul>
+<li><p>创建ajax对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var XHR = new XMLHttpRequest();</div></pre></td></tr></table></figure>
+</li>
+<li><p>打开请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">XHR.open(method,url,async,user,password);</div></pre></td></tr></table></figure>
+<ul>
+<li>method    http方法，例如：post、get、put等,大小写不敏感</li>
+<li>url       请求的url地址，可以为绝对地址也可以为相对地址</li>
+<li>async     布尔型，指定此请求是否为异步方式，默认为true。如果为真，当状态改变时会调用onreadystatechange属性指定的回调函数</li>
+<li>user      如果服务器需要验证，此处指定用户名，默认是undefined</li>
+<li>password  验证信息中的密码部分，默认是undefined</li>
+</ul>
+</li>
+<li><p>注册回调监听</p>
+<ul>
+<li><p>readyState XMLHttpRequest对象的状态</p>
+<ul>
+<li>0(为初始化)   对象已建立，但是尚未初始化(尚未调用open方法)</li>
+<li>1(初始化)     对象已建立，尚未调用send方法</li>
+<li>2(发送数据)   send方法已调用，但是当前的状态及http头未知</li>
+<li>3(数据传送中)  已接收部分数据，因为响应及http头不全，这时通过responseBody和responText获取部分数据会出现错误。</li>
+<li>4(完成)       数据接收完成，此时可以通过responseBody和responText获取完整的回应数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nodejs全栈开发之路/">Nodejs全栈开发之路</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017-01-14-Nodejs全栈开发之路-nodejs模块fs(可读流和可写流)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/14/2017-01-14-Nodejs全栈开发之路-nodejs模块fs(可读流和可写流)/" class="article-date">
+      <time datetime="2017-01-14T01:50:50.000Z" itemprop="datePublished">2017-01-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/14/2017-01-14-Nodejs全栈开发之路-nodejs模块fs(可读流和可写流)/">2017-01-14-Nodejs全栈开发之路-nodejs模块fs(可读流和可写流)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author:@南非波波</p>
+<h3 id="fs模块"><a href="#fs模块" class="headerlink" title="fs模块"></a>fs模块</h3><ul>
+<li><p>可读流createReadStream</p>
+<p>  可读流触发的事件</p>
+<ul>
+<li>data  绑定一个data事件监听器会将流切换成流动模式，数据会被尽可能的读出</li>
+<li>end   该事件会在读完数据后触发</li>
+<li><p>error 当数据接收时发生错误时触发</p>
+<p>可读流的方法</p>
+</li>
+<li>setEncoding   指定编码</li>
+<li>pause         通知对象停止触发data事件</li>
+<li>resume        通知对象恢复触发事件</li>
+<li>pipe          设置管道，将可读流里的内容导入到参数指定的可写流里</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line">var rs = fs.createReadStream(&apos;./README.md&apos;,&#123;</div><div class="line">    flags:&apos;r&apos;,//表示打开文件进行读操作</div><div class="line">    // encoding:&apos;utf8&apos; //得到的数据是Buffer对象。指定编码输出</div><div class="line">    //下面两个参数可以进行截取读取，取值范围str[i] :start&lt;= i &lt;= end</div><div class="line">    start:1, //读取文件内容的起始位置</div><div class="line">    end:3   //读取文件内容的结束位置</div><div class="line">&#125;);</div><div class="line">rs.setEncoding(&apos;utf8&apos;);//或者可以在创建流之后进行指定编码类型</div><div class="line">//流是EnventEmitter的子类</div><div class="line">rs.on(&apos;data&apos;,function (data) &#123;</div><div class="line">   console.log(data); //输出：&lt;Buffer 23 32 30 31 36 31 32 6e 6f 64 65 0d 0a&gt;</div><div class="line">                     //输出:#201612node</div><div class="line">&#125;);</div><div class="line">//当读完文件的时候会触发end事件</div><div class="line">rs.on(&apos;end&apos;,function () &#123;</div><div class="line">    console.log(&apos;读完了!&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//当读取文件出错的时候会监听到，输出相应的错误</div><div class="line">rs.on(&apos;error&apos;,function (err) &#123;</div><div class="line">    console.log(&apos;出错了:&apos;,err);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line">var rs = fs.createReadStream(&apos;./README.md&apos;,&#123;</div><div class="line">    flags:&apos;r&apos;,</div><div class="line">    encoding:&apos;utf8&apos;,</div><div class="line">    highWaterMark:5</div><div class="line">&#125;);</div><div class="line">rs.on(&apos;data&apos;,function (data) &#123;</div><div class="line">    console.log(data);</div><div class="line">    rs.pause();//暂停触发data事件</div><div class="line">&#125;);</div><div class="line">setTimeout(function () &#123;</div><div class="line">    rs.resume();//5秒钟之后继续触发data事件</div><div class="line">&#125;,5000);</div><div class="line">rs.on(&apos;end&apos;,function () &#123;</div><div class="line">    console.log(&apos;读取完毕!&apos;);</div><div class="line">&#125;);</div><div class="line">rs.on(&apos;error&apos;,function (err) &#123;</div><div class="line">    console.log(&apos;读取数据出错:&apos;,err);</div><div class="line">&#125;);</div><div class="line">//输出:#2016</div><div class="line">//12nod</div></pre></td></tr></table></figure>
+<ul>
+<li>可写流</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">var fs =require(&apos;fs&apos;);</div><div class="line">function copy(src,dst) &#123;</div><div class="line">    var rs = fs.createReadStream(src);</div><div class="line">    var ws = fs.createWriteStream(dst);</div><div class="line">    rs.on(&apos;data&apos;,function (data) &#123;</div><div class="line">        var flag = ws.write(data);</div><div class="line">        if(!flag)&#123;</div><div class="line">            rs.pause();</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    ws.on(&apos;drain&apos;,function () &#123;</div><div class="line">        rs.resume()</div><div class="line">    &#125;);</div><div class="line">    rs.on(&apos;end&apos;,function () &#123;</div><div class="line">        ws.end();</div><div class="line">    &#125;);</div><div class="line">    rs.on(&apos;error&apos;,function (err) &#123;</div><div class="line">        console.log(err);</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line">copy(&apos;1.txt&apos;,&apos;2.txt&apos;);</div><div class="line"></div><div class="line">//复制，同copy函数</div><div class="line">var rs = fs.createReadStream(&apos;./1.txt&apos;);</div><div class="line">var ws = fs.createWriteStream(&apos;./3.txt&apos;);</div><div class="line">rs.pipe(ws);</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nodejs全栈开发之路/">Nodejs全栈开发之路</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-2016-12-29-nodejs开发书籍-持续交付-发布可靠软件的系统方法完整版" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1429,128 +1607,6 @@ ct ASC;
 
 
   
-    <article id="post-2016-08-31-python开发书籍-Python-入门指南3-5-1-中文" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/31/2016-08-31-python开发书籍-Python-入门指南3-5-1-中文/" class="article-date">
-      <time datetime="2016-08-31T08:50:06.000Z" itemprop="datePublished">2016-08-31</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/31/2016-08-31-python开发书籍-Python-入门指南3-5-1-中文/">2016-08-31-python开发书籍-Python 入门指南3.5.1 中文</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Author:@南非波波</p>
-<p><a href="http://blog.songqingbo.cn/pdf/python/Python入门指南3.5.1中文.chm" title="Python入门指南3.5.1中文.chm">Python 入门指南3.5.1 中文</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python开发书籍/">python开发书籍</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-08-31-python开发书籍-DjangoBook2-0中文版" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/31/2016-08-31-python开发书籍-DjangoBook2-0中文版/" class="article-date">
-      <time datetime="2016-08-31T08:48:46.000Z" itemprop="datePublished">2016-08-31</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/31/2016-08-31-python开发书籍-DjangoBook2-0中文版/">2016-08-31-python开发书籍-DjangoBook2.0中文版</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Author:@南非波波</p>
-<p><a href="http://blog.songqingbo.cn/pdf/python/DjangoBook2.0中文版.pdf" title="DjangoBook2.0中文版.pdf">DjangoBook2.0中文版.pdf</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python开发书籍/">python开发书籍</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1562,7 +1618,7 @@ ct ASC;
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016  <a href="https://github.com/swht" target="_blank" title="南非波波github主页">南非波波</a>
+                2016-2017  <a href="https://github.com/swht" target="_blank" title="南非波波github主页">南非波波</a>
             </div>
             <div class="footer-right">
                 <!-- <a href="http://www.cnblogs.com/songqingbo/" target="_blank" title="南非波波博客园主页">南非波波博客园主页</a> -->
