@@ -315,6 +315,70 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2016-08-20-软件开发方法书籍-MEAN-Web开发" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/20/2016-08-20-软件开发方法书籍-MEAN-Web开发/" class="article-date">
+      <time datetime="2016-08-20T10:42:34.000Z" itemprop="datePublished">2016-08-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/20/2016-08-20-软件开发方法书籍-MEAN-Web开发/">2016/08/20 [nodejs开发书籍]MEAN Web开发</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Author:@南非波波</p>
+<p><a href="http://blog.songqingbo.cn/pdf/nodejs/MEANWeb开发.pdf" title="MEAN Web开发.pdf">MEAN WEB开发</a></p>
+<p><a href="http://blog.songqingbo.cn/pdf/nodejs/MEANWeb开发代码.zip" title="MEAN Web开发代码.zip">MEAN Web开发代码</a></p>
+<p>声明：本电子书为为本人从图灵社区所购，涉及版权，请读者不要私自传播。本平台仅提供在线阅读功能。如果您觉得此书帮助了您，同时也想帮作者分摊一部分电子书版权费。欢迎通过微信二维码进行资助，非常感谢。</p>
+<p><img src="http://blog.songqingbo.cn/img/微信收款.png" width="30%" height="30%"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs开发书籍/">nodejs开发书籍</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-s12-20160523-day18" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -4067,474 +4131,6 @@ manager
 </code></pre><p>进程同步</p>
 <p>进程池</p>
 <pre><code>开启一个进程的系统开销太大，设置进程池限制启动的进程数，以达到保护系统的目的。另外在线程池内的进程可以实现同步或异步调用。
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python开发之路/">Python开发之路</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-s12-20160227-day07" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/27/s12-20160227-day07/" class="article-date">
-      <time datetime="2016-02-27T07:30:00.000Z" itemprop="datePublished">2016-02-27</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/27/s12-20160227-day07/">python自动化开发 day07</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Author:@南非波波</p>
-<p>课程大纲：</p>
-<p>day06</p>
-<p><a href="http://www.cnblogs.com/alex3714/articles/5188179.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5188179.html</a></p>
-<p>day07</p>
-<p><a href="http://www.cnblogs.com/alex3714/articles/5213184.html" target="_blank" rel="external">http://www.cnblogs.com/alex3714/articles/5213184.html</a></p>
-<h2 id="一、类的多态、继承"><a href="#一、类的多态、继承" class="headerlink" title="一、类的多态、继承"></a>一、类的多态、继承</h2><h3 id="类的多态：统一接口调用"><a href="#类的多态：统一接口调用" class="headerlink" title="类的多态：统一接口调用"></a>类的多态：统一接口调用</h3><pre><code>#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-class Animal:
-    def __init__(self, name):    # Constructor of the class
-        self.name = name
-    def talk(self):              # Abstract method, defined by convention only
-        raise NotImplementedError(&quot;Subclass must implement abstract method&quot;)
-    hobbie = &apos;ddd&apos;
-class Cat(Animal):
-    def talk(self):
-        return &apos;Meow!&apos;
-class Dog(Animal):
-    def talk(self):
-        return &apos;Woof! Woof!&apos;
-
-animals = [Cat(&apos;Missy&apos;),
-           Dog(&apos;Lassie&apos;)]
-
-for animal in animals:
-    print(animal.name + &apos;: &apos; + animal.talk())
-</code></pre><h3 id="类的方法：示例"><a href="#类的方法：示例" class="headerlink" title="类的方法：示例"></a>类的方法：示例</h3><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-class Animal(object):
-    &apos;&apos;&apos;
-    定义一个动物类
-    &apos;&apos;&apos;
-    def __init__(self,name):
-        self.name = name
-        self.__num = None #定义成私有变量，只能在类中访问
-
-    # def talk(self):
-    #     print(&quot;%s is talking!&quot; % self.name)
-    hobbie = &quot;shen&quot; #类变量，静态字段
-    @classmethod  #类方法，不能访问实例变量
-    def talk(self):
-        print(&quot;%s is talking!&quot; % self.hobbie)
-    # def work(self):
-    #     print(&quot;%s is working!&quot; % self.name)
-
-    @staticmethod #静态方法，不能访问类变量和实例变量
-    def work():
-        print(&quot;It is working!&quot;)
-
-    # def walk(self):
-    #     print(&quot;%s is walking!&quot; % self.name)
-    @property #把方法编程静态属性
-    def walk(self,num):
-        return self.__num
-    @walk.setter #传值
-    def walk(self,num):
-        self.__num = num
-        print(self.__num)
-    @walk.deleter  #删值
-    def walk(self):
-        print(&quot;del num&quot;)
-c = Animal(&quot;swht&quot;)
-# c.talk()
-# c.work()
-c.walk = 3
-del c.walk
-print(&quot;OUT:&quot;,c._Animal__num)  #特例情况下可以通过这种方式访问私有变量
-</code></pre><h3 id="经典类与新式类"><a href="#经典类与新式类" class="headerlink" title="经典类与新式类"></a>经典类与新式类</h3><p>经典类和新式类区别：</p>
-<p>经典类：使用深度优先进行继承<br>新式类：使用广度优先进行继承</p>
-<p>另外：经典类和新式类在python-3.X平台上会默认使用广度优先进行继承，而在python-2.X中则体现上述区别</p>
-<h3 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h3><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-class A:
-    print(&quot;A&quot;)
-    def f2(self):
-        print(&quot;f2 from A&quot;)
-class B(A):
-    print(&quot;B&quot;)
-    def f1(self):
-        print(&quot;f1 from B&quot;)
-    def f2(self):
-        print(&quot;f2 from B&quot;)
-class C(A):
-    print(&quot;C&quot;)
-    def f2(self):
-        print(&quot;f2 from C&quot;)
-
-class D(B,C):
-    pass
-
-d = D()
-d.f1()
-d.f2()
-
-&apos;&apos;&apos;
-广度优先算法继承。先将B类中的f2()注释掉，D自动继承C.f2()，如果再将C类中的f2()，D自动继承A.f2()
-&apos;&apos;&apos;
-</code></pre><h3 id="类的特殊成员"><a href="#类的特殊成员" class="headerlink" title="类的特殊成员"></a>类的特殊成员</h3><pre><code>__doc__:查看类的注释
-__init__:构造方法，通过类创建对象时，自动触发执行。
-__module__:表示当前操作的对象在那个模块
-__class__:表示当前操作的对象的类是什么
-__del__:析构方法,解释器进行垃圾回收时自动触发
-__call__:对象加()执行call方法
-__new__：实例化时new方法执行了__init__
-__metaclass__：通过改写metaclass方法达到构建自己需要的类的目的
-__dict__:以字典的形式显示类对象中的成员。使用场景：查看类中有多少成员（只显示类变量，不显示实例变量）
-__str__:如果一个类中定义了__str__方法，那么在打印 对象 时，默认输出该方法的返回值。
-__iter__:用于迭代器，之所以列表、字典、元组可以进行for循环，是因为类型内部定义了 __iter__ 
-</code></pre><h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-class People(object):
-    &apos;&apos;&apos;
-    定义一个人类
-    &apos;&apos;&apos;
-    def __init__(self,name,age):
-        &apos;&apos;&apos;
-        定义属性
-        :param name: 人类的名字
-        :param age: 人类的年龄属性
-        :return:
-        &apos;&apos;&apos;
-        self.name = name
-        self.age = age
-
-    def china_man(self):
-        pass
-
-chinese = People(&quot;swht&quot;,27)
-#__doc__:查看类的注释
-print(chinese.__doc__) #  定义一个人类
-#__dict__:以字典的形式显示类对象中的成员。使用场景：查看类中有多少成员（只显示类变量，不显示实例变量）
-print(chinese.__dict__) #{&apos;age&apos;: 27, &apos;name&apos;: &apos;swht&apos;}
-#__module__:表示当前操作的对象在那个模块
-print(chinese.__module__) #__main__
-#__class__:表示当前操作的对象的类是什么
-print(chinese.__class__) #&lt;class &apos;__main__.People&apos;&gt;
-</code></pre><h3 id="构造类的方法"><a href="#构造类的方法" class="headerlink" title="构造类的方法"></a>构造类的方法</h3><p><a href="http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python" target="_blank" rel="external">http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python</a></p>
-<p>一句话构建一个类</p>
-<pre><code>Foo = type(&apos;Foo&apos;,(object,), {&apos;func&apos;: func}) 
-    #type第一个参数：类名
-    #type第二个参数：当前类的基类
-    #type第三个参数：类的成员
-</code></pre><p><img src="http://i.imgur.com/dmSh15M.png" alt=""></p>
-<h3 id="反射方法"><a href="#反射方法" class="headerlink" title="反射方法"></a>反射方法</h3><p>hasattr：判断实例中是否存在指定输入的方法</p>
-<pre><code>hasattr(server,sys.argv[1])  返回值是布尔型 True or False
-</code></pre><p>getattr:获取实例中的方法</p>
-<pre><code>func = getattr(server,sys.argv[1])  获取对象方法的内存地址
-</code></pre><p>setattr:将自定义的某个方法设定到特定实例中去使用</p>
-<pre><code>setattr(server,&apos;run&apos;,test_run) 将特定方法test_run绑定给实例server，并重命名为run方法
-server.run()  实例server可以指定调用方法run
-</code></pre><p>delattr:删除实例的成员变量或者类的方法，不能删除实例的方法</p>
-<pre><code>#delattr可以删除类的方法、实例的成员变量
-# delattr(server,&apos;start&apos;) #尝试删除实例的方法是错误的
-# delattr(server,&quot;host&quot;) #删除实例的变量
-# delattr(Webserver,&apos;start&apos;)
-# server.start() #AttributeError: &apos;Webserver&apos; object has no attribute &apos;start&apos;
-</code></pre><p>完整示例代码：</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-import sys
-class Webserver(object):
-    &apos;&apos;&apos;
-    定义一个web server启动、关闭类
-    &apos;&apos;&apos;
-    def __init__(self,host,port):
-        &apos;&apos;&apos;
-        初始化类
-        :param host: 主机地址
-        :param port: 主机端口号
-        :return:
-        &apos;&apos;&apos;
-        self.host = host
-        self.port = port
-    def start(self):
-        &apos;&apos;&apos;
-        服务启动方法
-        :return:
-        &apos;&apos;&apos;
-        print(&quot;service is starting...&quot;)
-
-    def stop(self):
-        &apos;&apos;&apos;
-        服务停止方法
-        :return:
-        &apos;&apos;&apos;
-        print(&quot;service is stopping ...&quot;)
-
-    def restart(self):
-        &apos;&apos;&apos;
-        服务重启方法
-        :return:
-        &apos;&apos;&apos;
-        self.stop()
-        self.start()
-
-#定义一个特殊运行的函数，绑定到实例server上去
-def test_run():
-    print(&quot;测试运行...&quot;)
-
-server = Webserver(&quot;localhost&quot;,80)
-if hasattr(server,sys.argv[1]):
-    func = getattr(server,sys.argv[1])
-    func()
-#setattr主要作用是将一个单独定义的函数添加到实例中，对于类或者其他实例而言，该函数对其不生效
-setattr(server,&apos;run&apos;,test_run)
-server.run()
-
-#delattr可以删除类的方法、实例的成员变量
-# delattr(server,&apos;start&apos;) #尝试删除实例的方法是错误的
-# delattr(server,&quot;host&quot;) #删除实例的变量
-# delattr(Webserver,&apos;start&apos;)
-# server.start() #AttributeError: &apos;Webserver&apos; object has no attribute &apos;start&apos;
-</code></pre><h2 id="二、socket网络编程"><a href="#二、socket网络编程" class="headerlink" title="二、socket网络编程"></a>二、socket网络编程</h2><h3 id="简单实现C-S交互实例："><a href="#简单实现C-S交互实例：" class="headerlink" title="简单实现C/S交互实例："></a>简单实现C/S交互实例：</h3><p>示例代码：</p>
-<pre><code>实现简单的client与server端数据交互（一句话）
-</code></pre><p>socket_server</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-import socket
-
-ip_port = (&quot;127.0.0.1&quot;,5000)
-sk = socket.socket()
-sk.bind(ip_port)
-sk.listen(5)
-
-while True:
-    print(&quot;南非波波server is Listening....&quot;)
-    conn,addr = sk.accept()
-    client_data = conn.recv(1024)
-    print(str(client_data,&quot;utf8&quot;))
-    conn.sendall(bytes(&quot;落花不是无情物，化作春泥更护花！&quot;,&quot;utf8&quot;))
-    conn.close()
-</code></pre><p>socket_client</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-import socket
-ip_port = (&quot;127.0.0.1&quot;,5000)
-
-sk = socket.socket()
-sk.connect(ip_port)
-
-sk.sendall(bytes(&quot;夕阳无限好，只是近黄昏&quot;,&quot;utf8&quot;))
-
-server_reply = sk.recv(1024)
-print(str(server_reply,&quot;utf8&quot;))
-sk.close()
-</code></pre><p>改善代码1：</p>
-<pre><code>实现多个client与server进行串行交互
-</code></pre><p>socket-server1 </p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-import socket
-
-ip_port = (&quot;127.0.0.1&quot;,5000)
-sk = socket.socket()
-sk.bind(ip_port)
-sk.listen(5)
-
-while True:
-    print(&quot;南非波波server is Listening....&quot;)
-    conn,addr = sk.accept()
-    client_data = conn.recv(1024)
-    print(str(client_data,&quot;utf8&quot;))
-    # conn.sendall(bytes(&quot;落花不是无情物，化作春泥更护花！&quot;,&quot;utf8&quot;))
-    while True:
-        try:
-            client_data = conn.recv(1024)
-            if not client_data:
-                break
-            print(&quot;recv:&quot;,str(client_data,&quot;utf8&quot;))
-            conn.send(client_data)
-        except Exception:
-            print(&quot;客户端断开!&quot;)
-            break
-    conn.close()
-</code></pre><p>socket-client1</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-
-import socket
-ip_port = (&quot;127.0.0.1&quot;,5000)
-
-sk = socket.socket()
-sk.connect(ip_port)
-
-# sk.sendall(bytes(&quot;夕阳无限好，只是近黄昏&quot;,&quot;utf8&quot;))
-
-server_reply = sk.recv(1024)
-print(str(server_reply,&quot;utf8&quot;))
-while True:
-    client_data = input(&quot;&gt;&gt;:&quot;).strip()
-    if not client_data:
-        continue
-    if client_data == &apos;q&apos;:
-        break
-    sk.send(bytes(client_data,&quot;utf8&quot;))
-    print(client_data)
-sk.close()
-</code></pre><p>最终代码：</p>
-<pre><code>实现简单的ssh命令交互，获取Linux系统的相关信息
-</code></pre><p>socket-server2</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import socket
-import subprocess
-
-ip_port = (&quot;127.0.0.1&quot;,5000)  #定义服务监听的ip地址和端口
-ssh = socket.socket()
-ssh.bind(ip_port) #进行地址和端口绑定
-ssh.listen(5) #设定做多5个并发连接
-
-while True:
-    print(&quot;南非波波Server is waiting...&quot;)
-    conn,addr = ssh.accept()
-    while True:
-        client_data = conn.recv(1024)  #介绍client发过来的数据，最大接收字节1024
-        if not client_data: #如果client_data为空，则跳出循环
-            break
-        cmd = str(client_data,&quot;utf8&quot;) #获取client_data数据并进行类型和编码转换
-        print(&quot;server recv:&quot;,cmd)
-        cmd_call = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE) #以原生shell命令的形式指定client的强求指定，并将结果输出到cmd_result
-        cmd_result = cmd_call.stdout.read()
-        if len(cmd_result) == 0: #如果命令没有结果返回，则需要给client返回一个提示，否则控制台会阻塞
-            cmd_result = b&quot;cmd execution has no output..&quot;
-
-        #client不能一次性接收过多的数据包，需要server端先告知client端需要传输的数据多少。然后由client端分开接收
-        ack_msg = bytes(&quot;CMD_RESULT_SIZE|%s&quot; % len(cmd_result),&quot;utf8&quot;) #发送数据传输认证标志
-        conn.send(ack_msg)
-        client_ack = conn.recv(50)
-        if client_ack.decode() == &apos;CLIENT_READY_TO_RECV&apos;:
-            conn.send(cmd_result) #数据传输
-    conn.close()
-</code></pre><p>socket-client2</p>
-<pre><code>#!/usr/local/env python3
-&apos;&apos;&apos;
-Author:@南非波波
-Blog:http://www.cnblogs.com/songqingbo/
-E-mail:qingbo.song@gmail.com
-&apos;&apos;&apos;
-import socket
-
-ip_port = (&quot;127.0.0.1&quot;,5000)
-ssh_client = socket.socket()
-ssh_client.connect(ip_port)
-
-while True:
-    user_input = input(&quot;ssh-client:&quot;).strip()
-    if len(user_input) == 0:
-        continue
-    if user_input == &apos;q&apos;:
-        break
-    ssh_client.send(bytes(user_input,&apos;utf8&apos;))
-    #ack_msg = b&quot;CMD_RESULT_SIZE|%s&quot; % len(cmd_result)
-    server_ack_msg = ssh_client.recv(100)
-    cmd_res_msg = str(server_ack_msg.decode()).split(&quot;|&quot;)
-    if cmd_res_msg[0] == &quot;CMD_RESULT_SIZE&quot;:
-        cmd_res_size = int(cmd_res_msg[1])
-        ssh_client.send(b&quot;CLIENT_READY_TO_RECV&quot;)
-    res = &apos;&apos;
-    received_size = 0
-    while received_size &lt; cmd_res_size:
-        server_data = ssh_client.recv(500)
-        received_size += len(server_data)
-        res += str(server_data.decode())
-    else:
-        print(res)
-        print(&quot;-----------recv don----------&quot;)
-ssh_client.close()
 </code></pre>
       
     </div>
